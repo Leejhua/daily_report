@@ -1,0 +1,223 @@
+2025-08-20 12:02:48 - src.utils.logger - INFO - 日志系统初始化完成 - 级别: INFO, 文件: logs/analyzer.log
+2025-08-20 12:02:49 - src.clients.github_client - INFO - GitHub客户端初始化成功 (仓库级别): LambdaTheory/main
+2025-08-20 12:02:50 - src.clients.glm_client - INFO - GLM-4.5客户端初始化成功
+2025-08-20 12:02:50 - src.clients.github_client - INFO - 正在获取 2025-08-20 的日结讨论...
+2025-08-20 12:02:51 - src.clients.github_client - INFO - 找到 0 个相关讨论
+2025-08-20 12:03:33 - src.utils.logger - INFO - 日志系统初始化完成 - 级别: INFO, 文件: logs/analyzer.log
+2025-08-20 12:03:34 - src.clients.github_client - INFO - GitHub客户端初始化成功 (仓库级别): LambdaTheory/main
+2025-08-20 12:03:35 - src.clients.glm_client - INFO - GLM-4.5客户端初始化成功
+2025-08-20 12:03:35 - src.clients.github_client - INFO - 正在获取 2025-08-20 的日结讨论...
+2025-08-20 12:03:36 - src.clients.github_client - INFO - 找到 0 个相关讨论
+2025-08-20 12:03:36 - src.analyzers.daily_analyzer - INFO - 开始分析指定讨论 #60
+2025-08-20 12:03:36 - src.clients.github_client - INFO - 正在获取 2025-08-20 的日结讨论...
+2025-08-20 12:03:37 - src.clients.github_client - INFO - 找到 0 个相关讨论
+2025-08-20 12:04:10 - src.utils.logger - INFO - 日志系统初始化完成 - 级别: INFO, 文件: logs/analyzer.log
+2025-08-20 12:04:11 - src.clients.github_client - INFO - GitHub客户端初始化成功 (仓库级别): LambdaTheory/main
+2025-08-20 12:04:12 - src.clients.glm_client - INFO - GLM-4.5客户端初始化成功
+2025-08-20 12:04:12 - src.clients.github_client - INFO - 正在获取 2025-08-20 的日结讨论...
+2025-08-20 12:04:13 - src.clients.github_client - INFO - 找到 0 个相关讨论
+2025-08-20 12:04:13 - src.analyzers.daily_analyzer - INFO - 开始分析指定讨论 #60
+2025-08-20 12:04:13 - src.clients.github_client - INFO - 正在获取 2025-08-20 的日结讨论...
+2025-08-20 12:04:14 - src.clients.github_client - INFO - 找到 0 个相关讨论
+2025-08-20 12:04:14 - src.clients.github_client - INFO - 正在向讨论 #60 发布分析评论...
+2025-08-20 12:04:15 - src.clients.github_client - INFO - 回复评论 DC_kwDOPMm80c4A2A4w (作者: Leejhua)
+2025-08-20 12:04:16 - src.clients.github_client - INFO - 分析评论发布成功，评论ID: DC_kwDOPMm80c4A2A57
+2025-08-20 12:27:28 - src.utils.logger - INFO - 日志系统初始化完成 - 级别: INFO, 文件: logs/analyzer.log
+2025-08-20 12:27:28 - debug_daily_plan - INFO - 配置加载成功
+2025-08-20 12:27:29 - src.clients.github_client - INFO - GitHub客户端初始化成功 (仓库级别): LambdaTheory/main
+2025-08-20 12:27:29 - debug_daily_plan - INFO - GitHub客户端初始化成功
+2025-08-20 12:27:29 - src.clients.github_client - INFO - 正在获取 2025-08-20 的日结讨论...
+2025-08-20 12:27:30 - src.clients.github_client - INFO - 总共获取到 63 个讨论
+2025-08-20 12:27:30 - src.clients.github_client - INFO - 找到 1 个相关讨论
+2025-08-20 12:27:30 - debug_daily_plan - INFO - 获取到 1 个日结讨论
+2025-08-20 12:27:31 - src.clients.github_client - INFO - 总共获取到 63 个讨论
+2025-08-20 12:27:32 - debug_daily_plan - ERROR - 调试过程中出错: 'GitHubClient' object has no attribute '_get_discussion_comments'
+2025-08-20 12:27:46 - src.utils.logger - INFO - 日志系统初始化完成 - 级别: INFO, 文件: logs/analyzer.log
+2025-08-20 12:27:46 - debug_daily_plan - INFO - 配置加载成功
+2025-08-20 12:27:47 - src.clients.github_client - INFO - GitHub客户端初始化成功 (仓库级别): LambdaTheory/main
+2025-08-20 12:27:47 - debug_daily_plan - INFO - GitHub客户端初始化成功
+2025-08-20 12:27:47 - src.clients.github_client - INFO - 正在获取 2025-08-20 的日结讨论...
+2025-08-20 12:27:48 - src.clients.github_client - INFO - 总共获取到 63 个讨论
+2025-08-20 12:27:48 - src.clients.github_client - INFO - 找到 1 个相关讨论
+2025-08-20 12:27:48 - debug_daily_plan - INFO - 获取到 1 个日结讨论
+2025-08-20 12:27:49 - src.clients.github_client - INFO - 总共获取到 63 个讨论
+2025-08-20 12:27:51 - src.clients.github_client - INFO - 总共获取到 63 个讨论
+2025-08-20 12:52:14 - src.utils.logger - INFO - 日志系统初始化完成 - 级别: INFO, 文件: logs/analyzer.log
+2025-08-20 12:52:14 - test_discussion_64 - INFO - 配置加载成功
+2025-08-20 12:52:15 - src.clients.github_client - INFO - GitHub客户端初始化成功 (仓库级别): LambdaTheory/main
+2025-08-20 12:52:15 - src.clients.glm_client - INFO - GLM-4.5客户端初始化成功
+2025-08-20 12:52:15 - test_discussion_64 - ERROR - 测试过程中出错: DailyAnalyzer.__init__() takes 2 positional arguments but 3 were given
+2025-08-20 12:52:34 - src.utils.logger - INFO - 日志系统初始化完成 - 级别: INFO, 文件: logs/analyzer.log
+2025-08-20 12:52:34 - test_discussion_64 - INFO - 配置加载成功
+2025-08-20 12:52:35 - src.clients.github_client - INFO - GitHub客户端初始化成功 (仓库级别): LambdaTheory/main
+2025-08-20 12:52:36 - src.clients.glm_client - INFO - GLM-4.5客户端初始化成功
+2025-08-20 12:52:36 - test_discussion_64 - ERROR - 测试过程中出错: 'GitHubClient' object has no attribute 'get_discussion_by_number'
+2025-08-20 12:52:58 - src.utils.logger - INFO - 日志系统初始化完成 - 级别: INFO, 文件: logs/analyzer.log
+2025-08-20 12:52:58 - test_discussion_64 - INFO - 配置加载成功
+2025-08-20 12:52:58 - src.clients.github_client - INFO - GitHub客户端初始化成功 (仓库级别): LambdaTheory/main
+2025-08-20 12:52:59 - src.clients.glm_client - INFO - GLM-4.5客户端初始化成功
+2025-08-20 12:53:01 - src.clients.github_client - INFO - 总共获取到 64 个讨论
+2025-08-20 12:53:03 - src.clients.github_client - INFO - 总共获取到 64 个讨论
+2025-08-20 12:53:04 - test_discussion_64 - ERROR - 测试过程中出错: 'DailyAnalyzer' object has no attribute 'analyze_daily_report'
+2025-08-20 12:53:41 - src.utils.logger - INFO - 日志系统初始化完成 - 级别: INFO, 文件: logs/analyzer.log
+2025-08-20 12:53:41 - test_discussion_64 - INFO - 配置加载成功
+2025-08-20 12:53:42 - src.clients.github_client - INFO - GitHub客户端初始化成功 (仓库级别): LambdaTheory/main
+2025-08-20 12:53:42 - src.clients.glm_client - INFO - GLM-4.5客户端初始化成功
+2025-08-20 12:53:44 - src.clients.github_client - INFO - 总共获取到 64 个讨论
+2025-08-20 12:53:45 - src.clients.github_client - INFO - 总共获取到 64 个讨论
+2025-08-20 12:53:46 - src.analyzers.daily_analyzer - INFO - 开始分析指定讨论 #64
+2025-08-20 12:53:46 - src.clients.github_client - INFO - 正在获取 2025-08-20 的日结讨论...
+2025-08-20 12:53:47 - src.clients.github_client - INFO - 总共获取到 64 个讨论
+2025-08-20 12:53:47 - src.clients.github_client - INFO - 找到 2 个相关讨论
+2025-08-20 12:53:47 - src.analyzers.daily_analyzer - INFO - 开始分析讨论 #64: 测试
+2025-08-20 12:53:48 - src.clients.github_client - INFO - 总共获取到 64 个讨论
+2025-08-20 12:53:49 - src.clients.glm_client - INFO - 正在生成综合分析报告...
+2025-08-20 12:53:49 - src.clients.glm_client - INFO - 正在进行工作偏离度分析...
+2025-08-20 12:53:58 - src.clients.glm_client - INFO - 正在进行内容清晰度分析...
+2025-08-20 12:54:10 - src.clients.glm_client - INFO - 正在进行计划一致性分析...
+2025-08-20 12:54:21 - src.clients.glm_client - INFO - 综合分析报告生成完成
+2025-08-20 12:54:21 - src.clients.github_client - INFO - 正在向讨论 #64 发布分析评论...
+2025-08-20 12:54:22 - src.clients.github_client - INFO - 回复评论 DC_kwDOPMm80c4A2BB4 (作者: Leejhua)
+2025-08-20 12:54:23 - src.clients.github_client - INFO - 分析评论发布成功，评论ID: DC_kwDOPMm80c4A2BCF
+2025-08-20 12:54:23 - src.analyzers.daily_analyzer - INFO - 讨论 #64 分析完成，评论发布: 成功
+2025-08-20 12:55:10 - src.utils.logger - INFO - 日志系统初始化完成 - 级别: INFO, 文件: logs/analyzer.log
+2025-08-20 12:55:10 - test_discussion_64 - INFO - 配置加载成功
+2025-08-20 12:55:11 - src.clients.github_client - INFO - GitHub客户端初始化成功 (仓库级别): LambdaTheory/main
+2025-08-20 12:55:12 - src.clients.glm_client - INFO - GLM-4.5客户端初始化成功
+2025-08-20 12:55:14 - src.clients.github_client - INFO - 总共获取到 64 个讨论
+2025-08-20 12:55:15 - src.clients.github_client - INFO - 总共获取到 64 个讨论
+2025-08-20 12:55:16 - src.analyzers.daily_analyzer - INFO - 开始分析指定讨论 #64
+2025-08-20 12:55:16 - src.clients.github_client - INFO - 正在获取 2025-08-20 的日结讨论...
+2025-08-20 12:55:17 - src.clients.github_client - INFO - 总共获取到 64 个讨论
+2025-08-20 12:55:17 - src.clients.github_client - INFO - 找到 2 个相关讨论
+2025-08-20 12:55:17 - src.analyzers.daily_analyzer - INFO - 开始分析讨论 #64: 测试
+2025-08-20 12:55:18 - src.clients.github_client - INFO - 总共获取到 64 个讨论
+2025-08-20 12:55:19 - src.clients.glm_client - INFO - 正在生成综合分析报告...
+2025-08-20 12:55:19 - src.clients.glm_client - INFO - 正在进行工作偏离度分析...
+2025-08-20 12:55:26 - src.clients.glm_client - INFO - 正在进行内容清晰度分析...
+2025-08-20 12:55:41 - src.clients.glm_client - INFO - 正在进行计划一致性分析...
+2025-08-20 12:55:48 - src.clients.glm_client - INFO - 综合分析报告生成完成
+2025-08-20 12:55:48 - src.clients.github_client - INFO - 正在向讨论 #64 发布分析评论...
+2025-08-20 12:55:49 - src.clients.github_client - INFO - 回复评论 DC_kwDOPMm80c4A2BB4 (作者: Leejhua)
+2025-08-20 12:55:54 - src.clients.github_client - INFO - 分析评论发布成功，评论ID: DC_kwDOPMm80c4A2BCP
+2025-08-20 12:55:54 - src.analyzers.daily_analyzer - INFO - 讨论 #64 分析完成，评论发布: 成功
+2025-08-20 13:00:26 - src.utils.logger - INFO - 日志系统初始化完成 - 级别: INFO, 文件: logs/analyzer.log
+2025-08-20 13:00:26 - test_discussion_64 - INFO - 配置加载成功
+2025-08-20 13:00:27 - src.clients.github_client - INFO - GitHub客户端初始化成功 (仓库级别): LambdaTheory/main
+2025-08-20 13:00:27 - src.clients.glm_client - INFO - GLM-4.5客户端初始化成功
+2025-08-20 13:00:29 - src.clients.github_client - INFO - 总共获取到 64 个讨论
+2025-08-20 13:00:31 - src.clients.github_client - INFO - 总共获取到 64 个讨论
+2025-08-20 13:00:33 - src.analyzers.daily_analyzer - INFO - 开始分析指定讨论 #64
+2025-08-20 13:00:33 - src.clients.github_client - INFO - 正在获取 2025-08-20 的日结讨论...
+2025-08-20 13:00:36 - src.clients.github_client - INFO - 总共获取到 64 个讨论
+2025-08-20 13:00:36 - src.clients.github_client - INFO - 找到 2 个相关讨论
+2025-08-20 13:00:36 - src.analyzers.daily_analyzer - INFO - 开始分析讨论 #64: 测试
+2025-08-20 13:00:37 - src.clients.github_client - INFO - 总共获取到 64 个讨论
+2025-08-20 13:00:39 - src.clients.glm_client - INFO - 正在生成综合分析报告...
+2025-08-20 13:00:45 - src.clients.glm_client - INFO - 综合分析报告生成完成
+2025-08-20 13:00:45 - src.clients.github_client - INFO - 正在向讨论 #64 发布分析评论...
+2025-08-20 13:00:46 - src.clients.github_client - INFO - 回复评论 DC_kwDOPMm80c4A2BB4 (作者: Leejhua)
+2025-08-20 13:00:47 - src.clients.github_client - INFO - 分析评论发布成功，评论ID: DC_kwDOPMm80c4A2BDO
+2025-08-20 13:00:47 - src.analyzers.daily_analyzer - INFO - 讨论 #64 分析完成，评论发布: 成功
+2025-08-20 13:02:35 - src.utils.logger - INFO - 日志系统初始化完成 - 级别: INFO, 文件: logs/analyzer.log
+2025-08-20 13:02:35 - src.clients.github_client - ERROR - GitHub客户端初始化失败: 'Config' object has no attribute 'token'
+2025-08-20 13:02:35 - __main__ - ERROR - 测试失败: 'Config' object has no attribute 'token'
+Traceback (most recent call last):
+  File "D:\cursor_glm\test_simple_analysis.py", line 38, in test_simple_analysis
+    github_client = GitHubClient(config)
+  File "D:\cursor_glm\src\clients\github_client.py", line 55, in __init__
+    login_or_token=config.token,
+                   ^^^^^^^^^^^^
+AttributeError: 'Config' object has no attribute 'token'
+2025-08-20 13:02:49 - src.utils.logger - INFO - 日志系统初始化完成 - 级别: INFO, 文件: logs/analyzer.log
+2025-08-20 13:02:49 - src.clients.glm_client - ERROR - GLM-4.5客户端初始化失败: 'Config' object has no attribute 'api_key'
+2025-08-20 13:02:49 - __main__ - ERROR - 测试失败: 'Config' object has no attribute 'api_key'
+Traceback (most recent call last):
+  File "D:\cursor_glm\test_simple_analysis.py", line 38, in test_simple_analysis
+    glm_client = GLMClient(config)
+  File "D:\cursor_glm\src\clients\glm_client.py", line 37, in __init__
+    api_key=config.api_key,
+            ^^^^^^^^^^^^^^
+AttributeError: 'Config' object has no attribute 'api_key'
+2025-08-20 13:06:13 - src.utils.logger - INFO - 日志系统初始化完成 - 级别: INFO, 文件: logs/analyzer.log
+2025-08-20 13:06:14 - src.clients.glm_client - INFO - GLM-4.5客户端初始化成功
+2025-08-20 13:06:14 - src.clients.glm_client - INFO - 正在生成综合分析报告...
+2025-08-20 13:06:19 - src.clients.glm_client - INFO - 综合分析报告生成完成
+2025-08-20 13:06:19 - src.clients.glm_client - INFO - 正在生成综合分析报告...
+2025-08-20 13:06:26 - src.utils.logger - INFO - 日志系统初始化完成 - 级别: INFO, 文件: logs/analyzer.log
+2025-08-20 13:06:26 - test_discussion_64 - INFO - 配置加载成功
+2025-08-20 13:06:27 - src.clients.github_client - INFO - GitHub客户端初始化成功 (仓库级别): LambdaTheory/main
+2025-08-20 13:06:28 - src.clients.glm_client - INFO - GLM-4.5客户端初始化成功
+2025-08-20 13:06:30 - src.clients.github_client - INFO - 总共获取到 64 个讨论
+2025-08-20 13:06:32 - src.clients.github_client - INFO - 总共获取到 64 个讨论
+2025-08-20 13:06:34 - src.analyzers.daily_analyzer - INFO - 开始分析指定讨论 #64
+2025-08-20 13:06:34 - src.clients.github_client - INFO - 正在获取 2025-08-20 的日结讨论...
+2025-08-20 13:06:36 - src.clients.github_client - INFO - 总共获取到 64 个讨论
+2025-08-20 13:06:36 - src.clients.github_client - INFO - 找到 2 个相关讨论
+2025-08-20 13:06:36 - src.analyzers.daily_analyzer - INFO - 开始分析讨论 #64: 测试
+2025-08-20 13:06:38 - src.clients.github_client - INFO - 总共获取到 64 个讨论
+2025-08-20 13:06:39 - src.clients.glm_client - INFO - 正在生成综合分析报告...
+2025-08-20 13:06:46 - src.clients.glm_client - INFO - 综合分析报告生成完成
+2025-08-20 13:06:46 - src.clients.github_client - INFO - 正在向讨论 #64 发布分析评论...
+2025-08-20 13:06:48 - src.clients.github_client - INFO - 回复评论 DC_kwDOPMm80c4A2BB4 (作者: Leejhua)
+2025-08-20 13:06:50 - src.clients.github_client - INFO - 分析评论发布成功，评论ID: DC_kwDOPMm80c4A2BFC
+2025-08-20 13:06:50 - src.analyzers.daily_analyzer - INFO - 讨论 #64 分析完成，评论发布: 成功
+2025-08-20 13:39:18 - src.utils.logger - INFO - 日志系统初始化完成 - 级别: INFO, 文件: logs/analyzer.log
+2025-08-20 13:39:18 - test_discussion_64 - INFO - 配置加载成功
+2025-08-20 13:39:19 - src.clients.github_client - INFO - GitHub客户端初始化成功 (仓库级别): LambdaTheory/main
+2025-08-20 13:39:20 - src.clients.glm_client - INFO - GLM-4.5客户端初始化成功
+2025-08-20 13:39:21 - src.clients.github_client - INFO - 总共获取到 64 个讨论
+2025-08-20 13:39:23 - src.clients.github_client - INFO - 总共获取到 64 个讨论
+2025-08-20 13:39:23 - src.analyzers.daily_analyzer - INFO - 开始分析指定讨论 #64
+2025-08-20 13:39:23 - src.clients.github_client - INFO - 正在获取 2025-08-20 的日结讨论...
+2025-08-20 13:39:25 - src.clients.github_client - INFO - 总共获取到 64 个讨论
+2025-08-20 13:39:25 - src.clients.github_client - INFO - 找到 2 个相关讨论
+2025-08-20 13:39:25 - src.analyzers.daily_analyzer - INFO - 开始分析讨论 #64: 测试
+2025-08-20 13:39:27 - src.clients.github_client - INFO - 总共获取到 64 个讨论
+2025-08-20 13:39:27 - src.clients.glm_client - INFO - 正在生成综合分析报告...
+2025-08-20 13:39:35 - src.clients.glm_client - INFO - 综合分析报告生成完成
+2025-08-20 13:39:35 - src.clients.github_client - INFO - 正在向讨论 #64 发布分析评论...
+2025-08-20 13:39:36 - src.clients.github_client - INFO - 回复评论 DC_kwDOPMm80c4A2BB4 (作者: Leejhua)
+2025-08-20 13:39:37 - src.clients.github_client - INFO - 分析评论发布成功，评论ID: DC_kwDOPMm80c4A2BK5
+2025-08-20 13:39:37 - src.analyzers.daily_analyzer - INFO - 讨论 #64 分析完成，评论发布: 成功
+2025-08-20 13:39:45 - src.utils.logger - INFO - 日志系统初始化完成 - 级别: INFO, 文件: logs/analyzer.log
+2025-08-20 13:39:46 - src.clients.glm_client - INFO - GLM-4.5客户端初始化成功
+2025-08-20 13:39:46 - src.clients.glm_client - INFO - 正在生成综合分析报告...
+2025-08-20 13:39:55 - src.clients.glm_client - INFO - 综合分析报告生成完成
+2025-08-20 13:39:55 - src.clients.glm_client - INFO - 正在生成综合分析报告...
+2025-08-20 13:44:19 - src.utils.logger - INFO - 日志系统初始化完成 - 级别: INFO, 文件: logs/analyzer.log
+2025-08-20 13:44:19 - test_discussion_64 - INFO - 配置加载成功
+2025-08-20 13:44:20 - src.clients.github_client - INFO - GitHub客户端初始化成功 (仓库级别): LambdaTheory/main
+2025-08-20 13:44:21 - src.clients.glm_client - INFO - GLM-4.5客户端初始化成功
+2025-08-20 13:44:22 - src.clients.github_client - INFO - 总共获取到 64 个讨论
+2025-08-20 13:44:23 - src.clients.github_client - INFO - 总共获取到 64 个讨论
+2025-08-20 13:44:25 - src.analyzers.daily_analyzer - INFO - 开始分析指定讨论 #64
+2025-08-20 13:44:25 - src.clients.github_client - INFO - 正在获取 2025-08-20 的日结讨论...
+2025-08-20 13:44:26 - src.clients.github_client - INFO - 总共获取到 64 个讨论
+2025-08-20 13:44:26 - src.clients.github_client - INFO - 找到 2 个相关讨论
+2025-08-20 13:44:26 - src.analyzers.daily_analyzer - INFO - 开始分析讨论 #64: 测试
+2025-08-20 13:44:28 - src.clients.github_client - INFO - 总共获取到 64 个讨论
+2025-08-20 13:44:30 - src.clients.github_client - INFO - 总共获取到 64 个讨论
+2025-08-20 13:44:31 - src.clients.glm_client - INFO - 正在分析日报内容...
+2025-08-20 13:44:37 - src.clients.github_client - INFO - 正在向讨论 #64 发布分析评论...
+2025-08-20 13:44:38 - src.clients.github_client - INFO - 回复评论 DC_kwDOPMm80c4A2BB4 (作者: Leejhua)
+2025-08-20 13:44:39 - src.clients.github_client - INFO - 分析评论发布成功，评论ID: DC_kwDOPMm80c4A2BLc
+2025-08-20 13:44:39 - src.analyzers.daily_analyzer - INFO - 讨论 #64 分析完成，评论发布: 成功
+2025-08-20 14:30:48 - src.utils.logger - INFO - 日志系统初始化完成 - 级别: INFO, 文件: logs/analyzer.log
+2025-08-20 14:30:48 - test_discussion_64 - INFO - 配置加载成功
+2025-08-20 14:30:49 - src.clients.github_client - INFO - GitHub客户端初始化成功 (仓库级别): LambdaTheory/main
+2025-08-20 14:30:50 - src.clients.glm_client - INFO - GLM-4.5客户端初始化成功
+2025-08-20 14:30:51 - src.clients.github_client - INFO - 总共获取到 64 个讨论
+2025-08-20 14:30:52 - src.clients.github_client - INFO - 总共获取到 64 个讨论
+2025-08-20 14:30:53 - src.analyzers.daily_analyzer - INFO - 开始分析指定讨论 #64
+2025-08-20 14:30:53 - src.clients.github_client - INFO - 正在获取 2025-08-20 的日结讨论...
+2025-08-20 14:30:54 - src.clients.github_client - INFO - 总共获取到 64 个讨论
+2025-08-20 14:30:54 - src.clients.github_client - INFO - 找到 8 个相关讨论
+2025-08-20 14:30:54 - src.analyzers.daily_analyzer - INFO - 开始分析讨论 #64: 测试
+2025-08-20 14:30:56 - src.clients.github_client - INFO - 总共获取到 64 个讨论
+2025-08-20 14:30:58 - src.clients.github_client - INFO - 总共获取到 64 个讨论
+2025-08-20 14:30:59 - src.clients.glm_client - INFO - 正在分析日报内容...
+2025-08-20 14:31:07 - src.clients.github_client - INFO - 正在向讨论 #64 发布分析评论...
+2025-08-20 14:31:08 - src.clients.github_client - INFO - 回复评论 DC_kwDOPMm80c4A2BB4 (作者: Leejhua)
+2025-08-20 14:31:09 - src.clients.github_client - INFO - 分析评论发布成功，评论ID: DC_kwDOPMm80c4A2BQu
+2025-08-20 14:31:09 - src.analyzers.daily_analyzer - INFO - 讨论 #64 分析完成，评论发布: 成功

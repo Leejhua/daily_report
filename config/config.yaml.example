@@ -1,0 +1,66 @@
+# GitHub Discussions 自动化分析服务配置文件
+
+# GitHub配置
+github:
+  organization: "your-org"          # GitHub组织名称
+  repository: ""                    # 仓库名称（组织级别Discussions时可为空）
+  discussion_category: "2 - 日结"   # Discussion分类名称
+  api_base_url: "https://api.github.com"
+  timeout: 30                       # API请求超时时间(秒)
+  use_org_discussions: true         # true=组织级别, false=仓库级别
+
+# GLM-4.5模型配置
+glm:
+  model: "glm-4-flash"             # 使用的模型名称
+  temperature: 0.7                  # 生成温度参数
+  max_tokens: 2000                 # 最大生成token数
+  top_p: 0.9                       # Top-p采样参数
+  timeout: 60                      # API请求超时时间(秒)
+
+# 分析功能配置
+analysis:
+  enable_deviation_analysis: true   # 启用偏离度分析
+  enable_clarity_analysis: true     # 启用清晰度分析  
+  enable_consistency_analysis: true # 启用一致性分析
+  
+  # 分析阈值配置
+  thresholds:
+    deviation_warning: 0.3          # 偏离度警告阈值
+    deviation_critical: 0.5         # 偏离度严重阈值
+    clarity_minimum: 0.6            # 清晰度最低要求
+    consistency_minimum: 0.7        # 一致性最低要求
+
+# 定时任务配置
+scheduler:
+  cron_expression: "0 18 * * *"     # Cron表达式：每天18:00执行
+  timezone: "Asia/Shanghai"         # 时区设置
+  retry_attempts: 3                 # 失败重试次数
+  retry_delay: 300                  # 重试延迟(秒)
+  max_execution_time: 1800          # 最大执行时间(秒)
+
+# 日志配置
+logging:
+  level: "INFO"                     # 日志级别
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file_path: "logs/analyzer.log"    # 日志文件路径
+  max_size: "10MB"                  # 日志文件最大大小
+  backup_count: 5                   # 备份文件数量
+  
+# 性能配置
+performance:
+  max_concurrent_requests: 5        # 最大并发请求数
+  request_pool_size: 10            # 请求池大小
+  cache_enabled: true              # 启用缓存
+  cache_ttl: 3600                  # 缓存过期时间(秒)
+
+# 通知配置(可选)
+notifications:
+  enabled: false                   # 启用通知
+  webhook_url: ""                  # Webhook URL
+  email:
+    enabled: false
+    smtp_server: ""
+    smtp_port: 587
+    username: ""
+    password: ""
+    recipients: []

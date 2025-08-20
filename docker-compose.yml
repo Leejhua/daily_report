@@ -1,0 +1,105 @@
+version: '3.8'
+
+services:
+  github-analyzer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: github-discussions-analyzer
+    restart: unless-stopped
+    
+    # 环境变量配置
+    environment:
+      # GitHub配置
+      - GITHUB_TOKEN=${GITHUB_TOKEN}
+      - GITHUB_ORG=${GITHUB_ORG}
+      - GITHUB_REPO=${GITHUB_REPO}
+      
+      # GLM-4.5配置
+      - GLM_API_KEY=${GLM_API_KEY}
+      - GLM_BASE_URL=${GLM_BASE_URL:-https://open.bigmodel.cn/api/paas/v4/}
+      
+      # 调度配置
+      - SCHEDULE_CRON=${SCHEDULE_CRON:-0 18 * * *}
+      - TIMEZONE=${TIMEZONE:-Asia/Shanghai}
+      
+      # 日志配置
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - LOG_FILE=logs/analyzer.log
+      
+      # 分析配置
+      - ENABLE_DEVIATION_ANALYSIS=${ENABLE_DEVIATION_ANALYSIS:-true}
+      - ENABLE_CLARITY_ANALYSIS=${ENABLE_CLARITY_ANALYSIS:-true}
+      - ENABLE_CONSISTENCY_ANALYSIS=${ENABLE_CONSISTENCY_ANALYSIS:-true}
+      
+      # 性能配置
+      - MAX_CONCURRENT_REQUESTS=${MAX_CONCURRENT_REQUESTS:-5}
+      - REQUEST_TIMEOUT=${REQUEST_TIMEOUT:-30}
+      - RETRY_ATTEMPTS=${RETRY_ATTEMPTS:-3}
+      - RETRY_DELAY=${RETRY_DELAY:-300}
+    
+    # 挂载配置文件和日志目录
+    volumes:
+      - ./config:/app/config:ro
+      - ./logs:/app/logs
+      - ./data:/app/data  # 可选：用于缓存数据
+    
+    # 网络配置
+    networks:
+      - analyzer-network
+    
+    # 健康检查
+    healthcheck:
+      test: ["CMD", "python", "-c", "import sys; sys.path.append('/app'); from src.config import Config; config = Config(); config.validate()"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    
+    # 日志配置
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    
+    # 资源限制
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: '0.5'
+        reservations:
+          memory: 256M
+          cpus: '0.25'
+
+networks:
+  analyzer-network:
+    driver: bridge
+
+# 可选：添加监控服务
+# services:
+#   prometheus:
+#     image: prom/prometheus:latest
+#     container_name: prometheus
+#     ports:
+#       - "9090:9090"
+#     volumes:
+#       - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+#     networks:
+#       - analyzer-network
+#   
+#   grafana:
+#     image: grafana/grafana:latest
+#     container_name: grafana
+#     ports:
+#       - "3000:3000"
+#     environment:
+#       - GF_SECURITY_ADMIN_PASSWORD=admin
+#     volumes:
+#       - grafana-storage:/var/lib/grafana
+#     networks:
+#       - analyzer-network
+
+# volumes:
+#   grafana-storage:

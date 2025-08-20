@@ -1,0 +1,122 @@
+{
+  "环境文件检查": {
+    "success": true,
+    "message": "找到.env配置文件",
+    "details": {},
+    "timestamp": "2025-08-20T13:00:55.584160"
+  },
+  "配置加载": {
+    "success": true,
+    "message": "配置文件加载成功",
+    "details": {},
+    "timestamp": "2025-08-20T13:00:55.585411"
+  },
+  "环境变量检查": {
+    "success": true,
+    "message": "所有必需环境变量已配置",
+    "details": {},
+    "timestamp": "2025-08-20T13:00:55.585481"
+  },
+  "GitHub连接": {
+    "success": true,
+    "message": "GitHub API连接成功",
+    "details": {},
+    "timestamp": "2025-08-20T13:00:56.406399"
+  },
+  "Discussion分类": {
+    "success": true,
+    "message": "找到分类: 2 - 日结",
+    "details": {},
+    "timestamp": "2025-08-20T13:00:58.755097"
+  },
+  "目标分类检查": {
+    "success": true,
+    "message": "找到目标分类: 2 - 日结",
+    "details": {},
+    "timestamp": "2025-08-20T13:00:58.755216"
+  },
+  "日结讨论获取": {
+    "success": true,
+    "message": "找到 2 个今日相关讨论",
+    "details": {},
+    "timestamp": "2025-08-20T13:01:00.290654"
+  },
+  "周期计划提取": {
+    "success": true,
+    "message": "提取长度: 88 字符",
+    "details": {},
+    "timestamp": "2025-08-20T13:01:04.259267"
+  },
+  "日报内容提取": {
+    "success": false,
+    "message": "提取长度: 0 字符",
+    "details": {},
+    "timestamp": "2025-08-20T13:01:04.259393"
+  },
+  "日计划提取": {
+    "success": false,
+    "message": "提取长度: 0 字符",
+    "details": {},
+    "timestamp": "2025-08-20T13:01:04.259445"
+  },
+  "讨论#64内容提取": {
+    "success": true,
+    "message": "标题: 测试...",
+    "details": {},
+    "timestamp": "2025-08-20T13:01:06.818704"
+  },
+  "GLM连接": {
+    "success": true,
+    "message": "GLM API连接成功",
+    "details": {},
+    "timestamp": "2025-08-20T13:01:08.440722"
+  },
+  "偏离度分析": {
+    "success": true,
+    "message": "评分: 5.0/10, 完成率: 50.0%",
+    "details": {},
+    "timestamp": "2025-08-20T13:01:15.660482"
+  },
+  "清晰度分析": {
+    "success": true,
+    "message": "清晰度: 5.0/10, 具体性: 5.0/10, 完整性: 5.0/10",
+    "details": {},
+    "timestamp": "2025-08-20T13:01:22.837478"
+  },
+  "一致性分析": {
+    "success": true,
+    "message": "一致性: 5.0/10, 对齐度: 5.0/10",
+    "details": {},
+    "timestamp": "2025-08-20T13:01:35.805341"
+  },
+  "综合分析报告": {
+    "success": true,
+    "message": "报告长度: 211 字符",
+    "details": {},
+    "timestamp": "2025-08-20T13:01:39.198114"
+  },
+  "整体连接测试": {
+    "success": true,
+    "message": "GitHub: True, GLM: True",
+    "details": {},
+    "timestamp": "2025-08-20T13:01:42.856779"
+  },
+  "分析预览生成": {
+    "success": true,
+    "message": "报告长度: 37 字符",
+    "details": {},
+    "timestamp": "2025-08-20T13:01:49.971968"
+  },
+  "调度器配置": {
+    "success": true,
+    "message": "Cron: 0 18 * * *, 时区: Asia/Shanghai",
+    "details": {},
+    "timestamp": "2025-08-20T13:01:51.666526"
+  },
+  "下次执行时间": {
+    "success": true,
+    "message": "下次运行: 2025-08-20T18:00:00+08:00",
+    "details": {},
+    "timestamp": "2025-08-20T13:01:51.666691"
+  }
+}

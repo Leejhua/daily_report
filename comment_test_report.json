@@ -1,0 +1,31 @@
+{
+  "timestamp": "2025-08-20T11:58:16.741002",
+  "tests": [
+    {
+      "name": "GitHub连接测试",
+      "success": true,
+      "details": "连接正常"
+    },
+    {
+      "name": "设置测试讨论",
+      "success": true,
+      "details": "将使用讨论 #60 进行评论测试"
+    },
+    {
+      "name": "生成分析内容",
+      "success": true,
+      "details": "模拟分析内容长度: 442 字符"
+    },
+    {
+      "name": "发布评论",
+      "success": true,
+      "details": "成功在讨论 #60 发布测试评论"
+    },
+    {
+      "name": "验证评论发布",
+      "success": false,
+      "details": "验证异常: 未找到讨论 #60"
+    }
+  ],
+  "overall_success": false
+}
