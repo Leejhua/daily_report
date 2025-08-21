@@ -228,3 +228,6 @@ AttributeError: 'Config' object has no attribute 'api_key'
 2025-08-21 13:49:28 - __main__ - INFO - 目标仓库: main
 2025-08-21 13:49:28 - __main__ - INFO - Discussion分类: 2 - 日结
 2025-08-21 13:49:28 - __main__ - INFO - 💡 如需执行分析，请使用测试脚本手动触发
+2025-08-21 13:59:18 - __main__ - INFO - 接收到信号 2，准备停止服务...
+2025-08-21 13:59:18 - __main__ - INFO - 正在停止服务...
+2025-08-21 13:59:18 - __main__ - INFO - 服务已停止

@@ -58,19 +58,34 @@ class GLMClient:
         """
         self.logger.info("正在进行日报内容分析...")
         
-        system_prompt = """请分析下面的日报内容：
+        system_prompt = """
+【角色】日报审核助手
+【任务】分析日计划和日报，输出两部分内容：
+1. 问题与建议：合并模糊点和修改建议，格式为"问题短语 - 关键动作"
+2. 偏离判断：仅当存在偏离时输出单句核心说明（无偏离则不显示）
 
-找出写得不清晰的地方，直接给点评，像同事读日报时随手批注。
+【输入格式】
+【日计划】
+[粘贴日计划内容]
 
-在点评里顺带给出修改或补充建议。
+【日报】
+[粘贴日报内容]
 
-对照日计划，如果日报里遗漏或没做到，就顺手指出来；如果没有偏离，不要提偏离。
+【输出格式】
+【问题与建议】
+1. [问题短语] - [关键动作]
+2. [问题短语] - [关键动作]
+...
 
-输出风格要自然，像人说话，不要列表化或过度格式化。"""
+【偏离判断】（仅当偏离时）
+[核心偏离说明]
+"""
         
-        user_prompt = f"""日计划：{daily_plan if daily_plan and daily_plan.strip() else '未提供日计划内容'}
+        user_prompt = f"""【日计划】
+{daily_plan if daily_plan and daily_plan.strip() else '未提供日计划内容'}
 
-日报：{daily_summary if daily_summary.strip() else '未提供日报内容'}"""
+【日报】
+{daily_summary if daily_summary.strip() else '未提供日报内容'}"""
         
         try:
             response = await self._call_glm_api(
