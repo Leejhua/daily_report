@@ -275,73 +275,56 @@ class FullTestSuite:
             - 进行代码review和优化
             """
             
-            # 测试偏离度分析
+            # 测试日报分析
             try:
-                print("🔍 测试偏离度分析...")
-                deviation_result = await self.glm_client.analyze_work_deviation(test_summary, test_plan)
-                
-                if isinstance(deviation_result, dict) and 'score' in deviation_result:
-                    score = deviation_result.get('score', 0)
-                    completion_rate = deviation_result.get('completion_rate', 0)
-                    self.log_test("偏离度分析", True, 
-                                f"评分: {score}/10, 完成率: {completion_rate*100:.1f}%")
-                    print(f"   📊 分析摘要: {deviation_result.get('summary', '')}")
-                else:
-                    self.log_test("偏离度分析", False, "返回结果格式不正确")
-                    
-            except Exception as e:
-                self.log_test("偏离度分析", False, f"分析失败: {e}")
-            
-            # 测试清晰度分析
-            try:
-                print("🔍 测试清晰度分析...")
-                clarity_result = await self.glm_client.analyze_content_clarity(test_summary)
-                
-                if isinstance(clarity_result, dict) and 'clarity_score' in clarity_result:
-                    clarity_score = clarity_result.get('clarity_score', 0)
-                    specificity_score = clarity_result.get('specificity_score', 0)
-                    completeness_score = clarity_result.get('completeness_score', 0)
-                    self.log_test("清晰度分析", True, 
-                                f"清晰度: {clarity_score}/10, 具体性: {specificity_score}/10, 完整性: {completeness_score}/10")
-                    print(f"   📝 分析摘要: {clarity_result.get('summary', '')}")
-                else:
-                    self.log_test("清晰度分析", False, "返回结果格式不正确")
-                    
-            except Exception as e:
-                self.log_test("清晰度分析", False, f"分析失败: {e}")
-            
-            # 测试一致性分析
-            try:
-                print("🔍 测试一致性分析...")
-                consistency_result = await self.glm_client.analyze_plan_consistency(test_plan, test_weekly_plan)
-                
-                if isinstance(consistency_result, dict) and 'consistency_score' in consistency_result:
-                    consistency_score = consistency_result.get('consistency_score', 0)
-                    alignment_level = consistency_result.get('alignment_level', 0)
-                    self.log_test("一致性分析", True, 
-                                f"一致性: {consistency_score}/10, 对齐度: {alignment_level}/10")
-                    print(f"   🔄 分析摘要: {consistency_result.get('summary', '')}")
-                else:
-                    self.log_test("一致性分析", False, "返回结果格式不正确")
-                    
-            except Exception as e:
-                self.log_test("一致性分析", False, f"分析失败: {e}")
-            
-            # 测试综合分析报告
-            try:
-                print("🔍 测试综合分析报告...")
-                comprehensive_report = await self.glm_client.generate_comprehensive_analysis(
-                    test_summary, test_plan, test_weekly_plan
+                print("🔍 测试日报分析...")
+                daily_report_result = await self.glm_client.analyze_daily_report_content(
+                    daily_summary=test_summary,
+                    daily_plan=test_plan
                 )
                 
-                if comprehensive_report and len(comprehensive_report) > 100:
-                    self.log_test("综合分析报告", True, f"报告长度: {len(comprehensive_report)} 字符")
-                    print(f"   📋 报告预览: {comprehensive_report[:200]}...")
+                if daily_report_result and len(daily_report_result) > 50:
+                    self.log_test("日报分析", True, f"分析长度: {len(daily_report_result)} 字符")
+                    print(f"   📊 分析预览: {daily_report_result[:100]}...")
                 else:
-                    self.log_test("综合分析报告", False, "报告生成失败或内容过短")
+                    self.log_test("日报分析", False, "分析结果为空或过短")
                     
             except Exception as e:
-                self.log_test("综合分析报告", False, f"报告生成失败: {e}")
+                self.log_test("日报分析", False, f"分析失败: {e}")
+            
+            # 测试日计划分析
+            try:
+                print("🔍 测试日计划分析...")
+                daily_plan_result = await self.glm_client.analyze_daily_plan_content(
+                    daily_plan=test_plan,
+                    weekly_plan=test_weekly_plan
+                )
+                
+                if daily_plan_result and len(daily_plan_result) > 50:
+                    self.log_test("日计划分析", True, f"分析长度: {len(daily_plan_result)} 字符")
+                    print(f"   📝 分析预览: {daily_plan_result[:100]}...")
+                else:
+                    self.log_test("日计划分析", False, "分析结果为空或过短")
+                    
+            except Exception as e:
+                self.log_test("日计划分析", False, f"分析失败: {e}")
+            
+            # 测试内容类型识别
+            try:
+                print("🔍 测试内容类型识别...")
+                github_client = GitHubClient(self.config.github)
+                
+                # 测试不同类型内容的识别
+                report_type = github_client.identify_content_type(test_summary)
+                plan_type = github_client.identify_content_type(test_plan)
+                weekly_type = github_client.identify_content_type(test_weekly_plan)
+                
+                self.log_test("内容类型识别", True, 
+                            f"日报: {report_type}, 日计划: {plan_type}, 周计划: {weekly_type}")
+                print(f"   🔍 识别结果: 日报-{report_type}, 日计划-{plan_type}, 周计划-{weekly_type}")
+                    
+            except Exception as e:
+                self.log_test("内容类型识别", False, f"识别失败: {e}")
             
             return True
             

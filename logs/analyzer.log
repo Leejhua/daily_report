@@ -221,3 +221,10 @@ AttributeError: 'Config' object has no attribute 'api_key'
 2025-08-20 14:31:08 - src.clients.github_client - INFO - 回复评论 DC_kwDOPMm80c4A2BB4 (作者: Leejhua)
 2025-08-20 14:31:09 - src.clients.github_client - INFO - 分析评论发布成功，评论ID: DC_kwDOPMm80c4A2BQu
 2025-08-20 14:31:09 - src.analyzers.daily_analyzer - INFO - 讨论 #64 分析完成，评论发布: 成功
+2025-08-21 13:49:28 - src.utils.logger - INFO - 日志系统初始化完成 - 级别: INFO, 文件: logs/analyzer.log
+2025-08-21 13:49:28 - __main__ - INFO - 正在启动GitHub Discussions自动化分析服务...
+2025-08-21 13:49:28 - __main__ - INFO - ⚠️ 定时功能已禁用，服务以手动模式运行
+2025-08-21 13:49:28 - __main__ - INFO - 目标GitHub组织: LambdaTheory
+2025-08-21 13:49:28 - __main__ - INFO - 目标仓库: main
+2025-08-21 13:49:28 - __main__ - INFO - Discussion分类: 2 - 日结
+2025-08-21 13:49:28 - __main__ - INFO - 💡 如需执行分析，请使用测试脚本手动触发

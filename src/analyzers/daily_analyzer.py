@@ -669,11 +669,25 @@ class DailyAnalyzer:
             weekly_plan = await self.github_client.get_thread_first_post(discussion_number) or ""
             
             # 生成分析报告（但不发布）
-            analysis_report = await self.glm_client.generate_comprehensive_analysis(
-                daily_summary=daily_summary,
-                daily_plan=daily_plan,
-                weekly_plan=weekly_plan
-            )
+            analysis_parts = []
+            
+            if daily_summary:
+                daily_report_analysis = await self.glm_client.analyze_daily_report_content(
+                    daily_summary=daily_summary,
+                    daily_plan=daily_plan
+                )
+                if daily_report_analysis:
+                    analysis_parts.append(daily_report_analysis)
+            
+            if daily_plan:
+                daily_plan_analysis = await self.glm_client.analyze_daily_plan_content(
+                    daily_plan=daily_plan,
+                    weekly_plan=weekly_plan
+                )
+                if daily_plan_analysis:
+                    analysis_parts.append(daily_plan_analysis)
+            
+            analysis_report = "\n\n---\n\n".join(analysis_parts) if analysis_parts else "暂无分析内容"
             
             return {
                 'success': True,
