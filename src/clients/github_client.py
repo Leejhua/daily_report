@@ -421,50 +421,98 @@ class GitHubClient:
             
         content_lower = content.lower()
         
-        # 日报关键词
-        daily_report_keywords = [
+        # 强日报关键词（明确表示日报的词汇）
+        strong_daily_report_keywords = [
             '日报', '日结', '今日完成', '今日工作', '工作总结', 
-            '完成情况', '今天完成', '今天做了', '进度', '遇到问题',
-            '今日进展', '工作内容'
+            '完成情况', '今天完成', '今天做了', '今日进展', '工作内容',
+            '今日总结', '当日工作', '本日完成'
         ]
         
-        # 日计划关键词  
-        daily_plan_keywords = [
-            '日计划', '明日计划', '明天计划', '下一步', '待办',
-            '明日安排', '明天安排', '计划完成', '准备'
+        # 强日计划关键词（明确表示日计划的词汇）
+        strong_daily_plan_keywords = [
+            '日计划', '明日计划', '明天计划', '明日安排', '明天安排',
+            '明日工作', '明天工作', '下一步计划', '明日目标', '明天目标'
+        ]
+        
+        # 弱日报关键词（可能表示日报的词汇）
+        weak_daily_report_keywords = [
+            '进度', '遇到问题', '解决', '处理', '完成', '开发', '测试', 
+            '修复', '问题', '功能', '任务', '会议', '学习', '研究'
+        ]
+        
+        # 弱日计划关键词（可能表示日计划的词汇）
+        weak_daily_plan_keywords = [
+            '下一步', '待办', '准备', '计划', '安排', '目标', '任务',
+            '继续', '开始', '进行', '实现', '完善', '优化'
         ]
         
         # 周计划关键词
         weekly_plan_keywords = [
             '周计划', '本周', '周期计划', '周安排', '周目标',
-            '本周计划', '这周', '周工作'
+            '本周计划', '这周', '周工作', '本周任务', '周期目标'
         ]
         
-        # 检查日报特征
-        daily_report_score = sum(1 for keyword in daily_report_keywords if keyword in content_lower)
+        # 计算强关键词得分
+        strong_daily_report_score = sum(2 for keyword in strong_daily_report_keywords if keyword in content_lower)
+        strong_daily_plan_score = sum(2 for keyword in strong_daily_plan_keywords if keyword in content_lower)
         
-        # 检查日计划特征
-        daily_plan_score = sum(1 for keyword in daily_plan_keywords if keyword in content_lower)
+        # 计算弱关键词得分
+        weak_daily_report_score = sum(1 for keyword in weak_daily_report_keywords if keyword in content_lower)
+        weak_daily_plan_score = sum(1 for keyword in weak_daily_plan_keywords if keyword in content_lower)
         
-        # 检查周计划特征
-        weekly_plan_score = sum(1 for keyword in weekly_plan_keywords if keyword in content_lower)
+        # 计算周计划得分
+        weekly_plan_score = sum(2 for keyword in weekly_plan_keywords if keyword in content_lower)
         
-        # 工作相关内容特征（用于辅助判断日报）
-        work_keywords = ['完成', '开发', '测试', '修复', '问题', '功能', '任务', '会议']
-        work_score = sum(1 for keyword in work_keywords if keyword in content_lower)
+        # 综合得分
+        daily_report_total = strong_daily_report_score + weak_daily_report_score
+        daily_plan_total = strong_daily_plan_score + weak_daily_plan_score
         
-        # 如果内容较长且包含工作相关词汇，可能是日报
-        if len(content) > 50 and work_score >= 2:
-            daily_report_score += 1
+        # 内容长度和结构特征分析
+        content_length = len(content)
+        lines = content.split('\n')
+        line_count = len([line for line in lines if line.strip()])
+        
+        # 日报通常较长，包含详细的工作内容
+        if content_length > 100 and line_count > 3:
+            daily_report_total += 1
             
-        # 根据得分判断类型
-        max_score = max(daily_report_score, daily_plan_score, weekly_plan_score)
+        # 日计划通常较短，条目化
+        if content_length < 200 and ('1.' in content or '2.' in content or '-' in content):
+            daily_plan_total += 1
+            
+        # 时间特征分析
+        time_indicators = {
+            'past': ['完成了', '做了', '处理了', '解决了', '学习了', '参加了'],
+            'future': ['计划', '准备', '将要', '打算', '预计', '安排']
+        }
         
+        past_score = sum(1 for indicator in time_indicators['past'] if indicator in content_lower)
+        future_score = sum(1 for indicator in time_indicators['future'] if indicator in content_lower)
+        
+        # 过去时态倾向于日报
+        if past_score > future_score:
+            daily_report_total += 1
+        # 将来时态倾向于日计划
+        elif future_score > past_score:
+            daily_plan_total += 1
+            
+        # 决策逻辑
+        max_score = max(daily_report_total, daily_plan_total, weekly_plan_score)
+        
+        # 如果有强关键词，优先考虑
+        if strong_daily_report_score > 0 and strong_daily_report_score >= strong_daily_plan_score:
+            return 'daily_report'
+        elif strong_daily_plan_score > 0 and strong_daily_plan_score > strong_daily_report_score:
+            return 'daily_plan'
+        elif weekly_plan_score > 0:
+            return 'weekly_plan'
+            
+        # 如果没有强关键词，根据综合得分判断
         if max_score == 0:
             return 'unknown'
-        elif daily_report_score == max_score:
+        elif daily_report_total == max_score and daily_report_total > 0:
             return 'daily_report'
-        elif daily_plan_score == max_score:
+        elif daily_plan_total == max_score and daily_plan_total > 0:
             return 'daily_plan'
         elif weekly_plan_score == max_score:
             return 'weekly_plan'
