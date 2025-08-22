@@ -92,10 +92,24 @@ async def analyze_date_range(start_date: str, end_date: str = None):
             
             print(f"📄 讨论数: {result['discussions_analyzed']}")
             print(f"💬 评论数: {result['comments_posted']}")
+            print(f"🔄 已有回复: {result.get('already_replied_count', 0)}")
             print(f"✅ 状态: {'成功' if result['success'] else '失败'}")
             
             if result['errors']:
                 print(f"❌ 错误: {result['errors']}")
+                
+            # 显示详细的讨论状态
+            if result.get('discussion_details'):
+                print("\n📋 讨论详情:")
+                for detail in result['discussion_details']:
+                    status_icon = "✅" if detail.get('success') else "❌"
+                    print(f"  {status_icon} #{detail['number']}: {detail['title'][:50]}...")
+                    if detail.get('already_replied'):
+                        print(f"     🔄 已有分析回复，跳过")
+                    elif detail.get('new_comments_posted', 0) > 0:
+                        print(f"     💬 新发布 {detail['new_comments_posted']} 条评论")
+                    if detail.get('error'):
+                        print(f"     ❌ 错误: {detail['error']}")
             
             current_date += timedelta(days=1)
         

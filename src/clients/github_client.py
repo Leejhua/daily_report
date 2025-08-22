@@ -372,18 +372,22 @@ class GitHubClient:
                     '明日安排', '明天安排', '计划完成', '准备'
                 ]
                 
-                # 检查是否是日报
-                if not daily_summary_found and any(keyword in comment_content for keyword in daily_report_keywords):
-                    result['daily_summary'] = comment.body
-                    daily_summary_found = True
-                    self.logger.debug(f"找到日报内容，评论ID: {comment.id}")
-                    continue
+                # 检查日报和日计划关键词匹配情况
+                # 简化识别逻辑：仅根据标题判断内容类型
+                first_line = comment.body.split('\n')[0].lower()
                 
-                # 检查是否是日计划
-                if not daily_plan_found and any(keyword in comment_content for keyword in daily_plan_keywords):
+                # 根据标题识别日计划
+                if '日计划' in first_line and not daily_plan_found:
                     result['daily_plan'] = comment.body
                     daily_plan_found = True
-                    self.logger.debug(f"找到日计划内容，评论ID: {comment.id}")
+                    self.logger.debug(f"根据标题识别为日计划内容，评论ID: {comment.id}")
+                    continue
+                
+                # 根据标题识别日报
+                if ('日报' in first_line or '日结' in first_line) and not daily_summary_found:
+                    result['daily_summary'] = comment.body
+                    daily_summary_found = True
+                    self.logger.debug(f"根据标题识别为日报内容，评论ID: {comment.id}")
                     continue
                 
                 # 如果评论内容较长且包含工作相关词汇，可能是日报
