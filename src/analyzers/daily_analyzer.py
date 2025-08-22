@@ -81,8 +81,10 @@ class DailyAnalyzer:
                 elif isinstance(result, dict):
                     if result.get('success', False):
                         successful_analyses += 1
-                        if result.get('comment_posted', False):
-                            total_comments_posted += 1
+                        # 统计成功发布的评论数
+                        analyses = result.get('analyses', [])
+                        successful_comments = sum(1 for analysis in analyses if analysis.get('success', False))
+                        total_comments_posted += successful_comments
                     else:
                         analysis_summary['errors'].append(result.get('error', '未知错误'))
                         
