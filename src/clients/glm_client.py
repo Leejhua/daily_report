@@ -5,13 +5,15 @@ GLM-4.5模型客户端模块
 
 import logging
 import asyncio
-from typing import Optional
+from typing import Optional, Dict, Any
 from dataclasses import dataclass
+from datetime import datetime
 
 from zhipuai import ZhipuAI
 from zhipuai.core._errors import APIStatusError, APITimeoutError
 
 from src.config import GLMConfig
+from .langfuse_client import langfuse_client
 
 
 @dataclass
@@ -42,8 +44,13 @@ class GLMClient:
         except Exception as e:
             self.logger.error(f"GLM-4.5客户端初始化失败: {e}")
             raise
-            
-
+    
+    def _get_prompt_from_langfuse(self, prompt_name: str, variables: Dict[str, Any]) -> Optional[Dict[str, str]]:
+        """从Langfuse获取提示词"""
+        if not langfuse_client.is_available():
+            return None
+        
+        return langfuse_client.get_prompt(prompt_name, variables)
     
     async def analyze_daily_report_content(self, daily_summary: str, daily_plan: str) -> str:
         """
@@ -58,7 +65,25 @@ class GLMClient:
         """
         self.logger.info("正在进行日报内容分析...")
         
-        system_prompt = """
+        # 准备模板变量
+        variables = {
+            'daily_summary': daily_summary if daily_summary and daily_summary.strip() else '未提供日报内容',
+            'daily_plan': daily_plan if daily_plan and daily_plan.strip() else '未提供日计划内容',
+            'analysis_date': datetime.now().strftime('%Y-%m-%d'),
+            'analysis_time': datetime.now().strftime('%H:%M:%S')
+        }
+        
+        # 尝试从Langfuse获取提示词
+        prompts = self._get_prompt_from_langfuse('daily_report_analysis', variables)
+        
+        if prompts:
+            # 使用Langfuse提示词
+            system_prompt = prompts['system_prompt']
+            user_prompt = prompts['user_prompt']
+            self.logger.info("使用Langfuse提示词进行日报分析")
+        else:
+            # 降级到硬编码提示词
+            system_prompt = """
 【角色】日报审核助手
 【任务】分析日报内容，指出不清晰之处，并判断工作是否偏离当天计划
 
@@ -79,19 +104,20 @@ class GLMClient:
 【偏离判断】（仅在存在明显偏离时输出）
 [分析偏离情况]
 """
-        
-        user_prompt = f"""
+            
+            user_prompt = f"""
 【日计划】
-{daily_plan if daily_plan and daily_plan.strip() else '未提供日计划内容'}
+{variables['daily_plan']}
 
 【日报】
-{daily_summary if daily_summary.strip() else '未提供日报内容'}
+{variables['daily_summary']}
 
 分析指示：
 1. 必须输出【内容问题】部分
 2. 评估是否存在明显偏离：
    - 如果工作基本按计划执行，则只输出【内容问题】部分，不要输出【偏离判断】部分
    - 如果存在明显偏离，则同时输出【内容问题】和【偏离判断】两个部分"""
+            self.logger.info("使用降级提示词进行日报分析")
         
         try:
             response = await self._call_glm_api(
@@ -106,7 +132,7 @@ class GLMClient:
             self.logger.error(f"日报分析失败: {e}")
             return f"## ❌ 日报分析失败\n\n错误信息: {str(e)}"
     
-    async def analyze_daily_plan_content(self, daily_plan: str, weekly_plan: str) -> str:
+    async def analyze_daily_plan_content(self, daily_plan: str, weekly_plan: str = "") -> str:
         """
         分析日计划内容，重点关注计划合理性和与周计划的一致性
         
@@ -119,7 +145,25 @@ class GLMClient:
         """
         self.logger.info("正在进行日计划内容分析...")
         
-        system_prompt = """
+        # 准备模板变量
+        variables = {
+            'daily_plan': daily_plan if daily_plan.strip() else '未提供日计划内容',
+            'weekly_plan': weekly_plan if weekly_plan.strip() else '未提供周计划内容',
+            'analysis_date': datetime.now().strftime('%Y-%m-%d'),
+            'analysis_time': datetime.now().strftime('%H:%M:%S')
+        }
+        
+        # 尝试从Langfuse获取提示词
+        prompts = self._get_prompt_from_langfuse('daily_plan_analysis', variables)
+        
+        if prompts:
+            # 使用Langfuse提示词
+            system_prompt = prompts['system_prompt']
+            user_prompt = prompts['user_prompt']
+            self.logger.info("使用Langfuse提示词进行日计划分析")
+        else:
+            # 降级到硬编码提示词
+            system_prompt = """
 【角色】计划管理助手
 【任务】分析日计划内容，指出目标不明确之处
 
@@ -139,10 +183,10 @@ class GLMClient:
 
 【严格禁令】：绝对不要输出任何关于方向一致性、偏离判断、与周计划关系的内容！分析完目标明确性后立即停止！
 """
-        
-        user_prompt = f"""
+            
+            user_prompt = f"""
 【日计划】
-{daily_plan if daily_plan.strip() else '未提供日计划内容'}
+{variables['daily_plan']}
 
 分析要求：
 1. 只分析【目标明确性】：直接指出每个任务缺乏具体细节的地方
@@ -155,6 +199,7 @@ class GLMClient:
 - [直接指出不明确的具体问题]
 
 注意：分析完目标明确性后立即停止，不要添加任何其他内容！"""
+            self.logger.info("使用降级提示词进行日计划分析")
         
         try:
             response = await self._call_glm_api(

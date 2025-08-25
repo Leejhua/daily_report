@@ -10,6 +10,10 @@ import argparse
 import json
 from pathlib import Path
 from datetime import date, datetime
+from dotenv import load_dotenv
+
+# 加载环境变量
+load_dotenv()
 
 # 添加项目根目录到Python路径
 sys.path.append(str(Path(__file__).parent.parent))
