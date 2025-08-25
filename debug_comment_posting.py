@@ -46,16 +46,16 @@ async def debug_comment_posting():
             print("GLM连接失败，无法继续测试")
             return
         
-        print("\n3. 获取讨论#64的内容...")
+        print("\n3. 获取讨论#62的内容...")
         discussions = await github_client.get_daily_discussions()
         target_discussion = None
         for discussion in discussions:
-            if discussion.number == 64:
+            if discussion.number == 62:
                 target_discussion = discussion
                 break
         
         if not target_discussion:
-            print("未找到讨论#64")
+            print("未找到讨论#62")
             return
         
         print(f"找到讨论: #{target_discussion.number} - {target_discussion.title}")
@@ -69,50 +69,47 @@ async def debug_comment_posting():
         
         print("\n4. 测试生成分析内容...")
         
-        # 测试日报分析
-        if content_data['daily_summary']:
-            print("\n生成日报分析...")
-            daily_report_analysis = await glm_client.analyze_daily_report_content(
-                daily_summary=content_data['daily_summary'],
-                daily_plan=content_data['daily_plan']
-            )
-            print(f"日报分析生成成功: {len(daily_report_analysis)} 字符")
-            print(f"分析内容预览: {daily_report_analysis[:200]}...")
+        # 获取讨论评论
+        print("\n4. 获取讨论评论...")
+        comments = await github_client.get_discussion_comments(target_discussion.number)
+        print(f"找到 {len(comments)} 条评论")
+        
+        # 查找特定的评论ID: DC_kwDOPMm80c4A2IFa
+        target_comment = None
+        for comment in comments:
+            author_name = comment.author.login if hasattr(comment.author, 'login') else comment.author
+            if comment.id == "DC_kwDOPMm80c4A2IFa" and author_name == "goudaren0528":
+                target_comment = comment
+                break
+        
+        if target_comment:
+            print(f"\n🎯 找到目标评论 DC_kwDOPMm80c4A2IFa")
+            author_name = target_comment.author.login if hasattr(target_comment.author, 'login') else target_comment.author
+            print(f"   作者: {author_name}")
+            print(f"   时间: {target_comment.created_at}")
             
-            # 测试发布评论
-            print("\n尝试发布日报分析评论...")
-            comment_success = await github_client.post_analysis_comment(
-                target_discussion.number, 
-                daily_report_analysis
+            # 检查是否已有回复
+            has_target_reply = await github_client.check_already_replied(
+                62, target_comment.id, 'daily_summary'
             )
-            print(f"评论发布结果: {'成功' if comment_success else '失败'}")
+            print(f"   已有分析回复: {has_target_reply}")
             
-            if comment_success:
-                print("\n等待3秒后检查最新评论...")
-                await asyncio.sleep(3)
+            if not has_target_reply:
+                print(f"\n🧪 为目标评论发布日报分析...")
+                test_content = "## 📊 日报分析\n\n【内容问题】\n- 日报中提到'已经实现了简历筛选能力和其他页面'，但没有具体说明实现了哪些功能或页面，缺乏具体细节。\n- 日报中提到'还停留在思考阶段，还没开始梳理文档'，对于预计完成时间'下周一完成'缺乏具体的计划或步骤说明。\n\n【偏离判断】\n- 从日报内容来看，工作进度与计划存在一定程度的偏离。原计划中第二项任务'把翻译工具的界面本地化文本测试后发布'已经完成，但第三项任务'整理团队项目清单和下一周期考核目标'仍在思考阶段，进度较慢。"
                 
-                # 重新获取评论检查
-                comments = await github_client.get_discussion_comments(target_discussion.number)
-                if comments:
-                    latest_comment = max(comments, key=lambda x: x.updated_at)
-                    print(f"最新评论作者: {latest_comment.author}")
-                    print(f"最新评论时间: {latest_comment.updated_at}")
-                    print(f"最新评论长度: {len(latest_comment.body)} 字符")
-                    print(f"最新评论预览: {latest_comment.body[:200]}...")
-                    
-                    # 检查是否是分析评论
-                    is_analysis = any(keyword in latest_comment.body for keyword in [
-                        '## 📊 日报分析', '## 📋 日计划分析', '## 📈 综合分析'
-                    ])
-                    print(f"是否为分析评论: {'是' if is_analysis else '否'}")
+                success = await github_client.post_analysis_comment(
+                    62, test_content, target_comment.id, 'daily_summary'
+                )
+                
+                if success:
+                    print("✅ 目标评论分析回复发布成功！")
                 else:
-                    print("未找到任何评论")
+                    print("❌ 目标评论分析回复发布失败")
             else:
-                print("评论发布失败，检查错误原因...")
-                
-                # 检查API限制
-                rate_limit = await github_client.check_api_rate_limit()
-                print(f"API限制信息: {rate_limit}")
+                print("⚠️  目标评论已有分析回复")
+        else:
+            print("❌ 未找到目标评论 DC_kwDOPMm80c4A2IFa")
         
         # 测试日计划分析
         if content_data['daily_plan']:

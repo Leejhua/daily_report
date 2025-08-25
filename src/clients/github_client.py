@@ -324,16 +324,21 @@ class GitHubClient:
         result = {
             'daily_summary': '',
             'daily_plan': '',
-            'weekly_plan': discussion.body or '',  # 首楼作为周期计划
+            'weekly_plan': '',
             'original_content': discussion.body
         }
+        
+        # 讨论主体默认作为周计划，不进行内容类型识别
+        if discussion.body:
+            result['weekly_plan'] = discussion.body
+            self.logger.debug(f"讨论主体作为周计划内容")
         
         try:
             # 获取讨论的所有评论
             comments = await self.get_discussion_comments(discussion.number)
             
             if not comments:
-                self.logger.debug("讨论没有评论，仅使用首楼内容")
+                self.logger.debug("讨论没有评论，仅使用主体内容")
                 return result
             
             # 按时间排序评论，最新的在前
@@ -347,52 +352,71 @@ class GitHubClient:
                 if daily_summary_found and daily_plan_found:
                     break
                     
-                comment_content = comment.body.lower()
-                
                 # 跳过分析评论（包含分析标记的评论）
                 analysis_markers = [
                     '📋 日报分析', '📋 日计划分析', '## 📋 日报分析', '## 📋 日计划分析',
-                    '日报分析', '日计划分析', '分析结果', '内容表述不清楚', '如何澄清这些不清楚的内容'
+                    '日报分析', '日计划分析', '分析结果', '内容表述不清楚', '如何澄清这些不清楚的内容',
+                    '## 📊', '## ✅', '## ❌', 'AI分析'
                 ]
                 
                 if any(marker in comment.body for marker in analysis_markers):
                     self.logger.debug(f"跳过分析评论，评论ID: {comment.id}")
                     continue
                 
-                # 识别日报关键词
-                daily_report_keywords = [
-                    '日报', '日结', '今日完成', '今日工作', '工作总结', 
-                    '完成情况', '今天完成', '今天做了', '进度', '遇到问题',
-                    '今日进展', '工作内容'
-                ]
+                # 使用内容识别方法判断内容类型
+                content_type = self.identify_content_type(comment.body)
                 
-                # 识别日计划关键词  
-                daily_plan_keywords = [
-                    '日计划', '明日计划', '明天计划', '下一步', '待办',
-                    '明日安排', '明天安排', '计划完成', '准备'
-                ]
-                
-                # 检查是否是日报
-                if not daily_summary_found and any(keyword in comment_content for keyword in daily_report_keywords):
+                # 根据识别结果分配内容
+                if not daily_summary_found and content_type == 'daily_report':
                     result['daily_summary'] = comment.body
                     daily_summary_found = True
-                    self.logger.debug(f"找到日报内容，评论ID: {comment.id}")
+                    self.logger.debug(f"通过内容识别找到日报内容，评论ID: {comment.id}")
                     continue
                 
-                # 检查是否是日计划
-                if not daily_plan_found and any(keyword in comment_content for keyword in daily_plan_keywords):
+                if not daily_plan_found and content_type == 'daily_plan':
                     result['daily_plan'] = comment.body
                     daily_plan_found = True
-                    self.logger.debug(f"找到日计划内容，评论ID: {comment.id}")
+                    self.logger.debug(f"通过内容识别找到日计划内容，评论ID: {comment.id}")
                     continue
                 
-                # 如果评论内容较长且包含工作相关词汇，可能是日报
-                if not daily_summary_found and len(comment.body) > 50:
-                    work_keywords = ['完成', '开发', '测试', '修复', '问题', '功能', '任务', '会议']
-                    if sum(1 for keyword in work_keywords if keyword in comment_content) >= 2:
+                # 如果内容识别不确定，回退到关键词匹配
+                if content_type == 'unknown':
+                    comment_content = comment.body.lower()
+                    
+                    # 识别日报关键词
+                    daily_report_keywords = [
+                        '日报', '日结', '今日完成', '今日工作', '工作总结', 
+                        '完成情况', '今天完成', '今天做了', '进度', '遇到问题',
+                        '今日进展', '工作内容'
+                    ]
+                    
+                    # 识别日计划关键词  
+                    daily_plan_keywords = [
+                        '日计划', '明日计划', '明天计划', '下一步', '待办',
+                        '明日安排', '明天安排', '计划完成', '准备'
+                    ]
+                    
+                    # 检查是否是日报
+                    if not daily_summary_found and any(keyword in comment_content for keyword in daily_report_keywords):
                         result['daily_summary'] = comment.body
                         daily_summary_found = True
-                        self.logger.debug(f"根据内容特征识别为日报，评论ID: {comment.id}")
+                        self.logger.debug(f"通过关键词找到日报内容，评论ID: {comment.id}")
+                        continue
+                    
+                    # 检查是否是日计划
+                    if not daily_plan_found and any(keyword in comment_content for keyword in daily_plan_keywords):
+                        result['daily_plan'] = comment.body
+                        daily_plan_found = True
+                        self.logger.debug(f"通过关键词找到日计划内容，评论ID: {comment.id}")
+                        continue
+                    
+                    # 如果评论内容较长且包含工作相关词汇，可能是日报
+                    if not daily_summary_found and len(comment.body) > 50:
+                        work_keywords = ['完成', '开发', '测试', '修复', '问题', '功能', '任务', '会议']
+                        if sum(1 for keyword in work_keywords if keyword in comment_content) >= 2:
+                            result['daily_summary'] = comment.body
+                            daily_summary_found = True
+                            self.logger.debug(f"根据内容特征识别为日报，评论ID: {comment.id}")
             
             # 记录提取结果
             self.logger.debug(f"内容提取完成 - 周期计划: {len(result['weekly_plan'])} 字符, "
@@ -423,7 +447,7 @@ class GitHubClient:
         
         # 强日报关键词（明确表示日报的词汇）
         strong_daily_report_keywords = [
-            '日报', '日结', '今日完成', '今日工作', '工作总结', 
+            '日结', '今日完成', '今日工作', '工作总结', 
             '完成情况', '今天完成', '今天做了', '今日进展', '工作内容',
             '今日总结', '当日工作', '本日完成'
         ]
@@ -433,6 +457,33 @@ class GitHubClient:
             '日计划', '明日计划', '明天计划', '明日安排', '明天安排',
             '明日工作', '明天工作', '下一步计划', '明日目标', '明天目标'
         ]
+        
+        # 第一优先级：检查markdown标题（评论开头的标题）
+        lines = content.split('\n')
+        first_line = lines[0].strip().lower() if lines else ''
+        
+        # 检查第一行是否为markdown标题格式
+        if first_line.startswith('#'):
+            # 移除markdown标记和空格，获取纯标题文本
+            title_text = first_line.lstrip('#').strip()
+            
+            # 精确匹配标题
+            if title_text == '日报' or title_text == '日结':
+                return 'daily_report'
+            elif title_text == '日计划':
+                return 'daily_plan'
+            elif title_text in ['周计划', '本周计划', '周期计划']:
+                return 'weekly_plan'
+        
+        # 第二优先级：检查内容开头是否包含明确的类型标识
+        content_start = content_lower[:50]  # 检查前50个字符
+        
+        if any(keyword in content_start for keyword in ['日报', '日结', '今日完成', '今日工作', '工作总结']):
+            return 'daily_report'
+        elif any(keyword in content_start for keyword in ['日计划', '明日计划', '明天计划']):
+            return 'daily_plan'
+        elif any(keyword in content_start for keyword in ['周计划', '本周计划', '周期计划']):
+            return 'weekly_plan'
         
         # 弱日报关键词（可能表示日报的词汇）
         weak_daily_report_keywords = [

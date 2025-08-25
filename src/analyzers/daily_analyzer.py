@@ -133,7 +133,14 @@ class DailyAnalyzer:
             daily_plan = content_data.get('daily_plan', '')
             
             if not daily_summary and not daily_plan:
-                result['error'] = '未能提取到有效的日结或计划内容'
+                result.update({
+                    'success': True,
+                    'analyses': [],
+                    'successful_count': 0,
+                    'failed_count': 0,
+                    'note': '没有日结或计划内容，跳过分析'
+                })
+                self.logger.info(f"讨论 #{discussion.number} 没有日结或计划内容，跳过分析")
                 return result
                 
             self.logger.debug(f"提取内容完成 - 日结: {len(daily_summary)} 字符, 计划: {len(daily_plan)} 字符")
@@ -145,82 +152,63 @@ class DailyAnalyzer:
             analysis_results = []
             
             # 如果有日报内容，执行日报分析并发布到当前讨论（日报讨论）
-            if daily_summary:
-                self.logger.debug("执行日报内容分析")
-                try:
-                    daily_report_analysis = await self.glm_client.analyze_daily_report_content(
-                        daily_summary=daily_summary,
-                        daily_plan=daily_plan
-                    )
-                    if daily_report_analysis and not daily_report_analysis.startswith("## ❌"):
-                        # 查找日报评论ID
-                        daily_summary_comment_id = await self._find_content_comment_id(
-                            discussion.number, 'daily_summary'
+            if daily_summary and daily_summary.strip():
+                # 进一步验证是否真的是日报内容
+                content_type = self.github_client.identify_content_type(daily_summary)
+                if content_type == 'daily_report':
+                    self.logger.debug("执行日报内容分析")
+                    try:
+                        daily_report_analysis = await self.glm_client.analyze_daily_report_content(
+                            daily_summary=daily_summary,
+                            daily_plan=daily_plan
                         )
-                        
-                        # 发布日报分析到当前讨论，回复到日报评论楼层
-                        comment_success = await self.github_client.post_analysis_comment(
-                            discussion.number, 
-                            daily_report_analysis,
-                            reply_to_comment_id=daily_summary_comment_id,
-                            content_type='daily_report'
-                        )
-                        analysis_results.append({
-                            'type': '日报分析',
-                            'success': comment_success,
-                            'discussion_number': discussion.number,
-                            'length': len(daily_report_analysis),
-                            'reply_to_comment_id': daily_summary_comment_id
-                        })
-                        if daily_summary_comment_id:
-                            self.logger.info(f"日报分析完成并回复到日报评论楼层 #{discussion.number}: {'成功' if comment_success else '失败'}")
-                        else:
-                            self.logger.info(f"日报分析完成并发布到讨论 #{discussion.number}: {'成功' if comment_success else '失败'}")
-                except Exception as e:
-                    self.logger.error(f"日报分析失败: {e}")
-                    analysis_results.append({
-                        'type': '日报分析',
-                        'success': False,
-                        'error': str(e)
-                    })
-            
-            # 如果有日计划内容，需要找到对应的周计划讨论并发布日计划分析
-            if daily_plan:
-                self.logger.debug("执行日计划内容分析")
-                try:
-                    daily_plan_analysis = await self.glm_client.analyze_daily_plan_content(
-                        daily_plan=daily_plan,
-                        weekly_plan=weekly_plan
-                    )
-                    if daily_plan_analysis and not daily_plan_analysis.startswith("## ❌"):
-                        # 查找包含日计划的讨论（通常是周计划讨论）
-                        plan_discussion_number = await self._find_plan_discussion(daily_plan)
-                        if plan_discussion_number:
-                            # 查找日计划评论ID
-                            daily_plan_comment_id = await self._find_content_comment_id(
-                                plan_discussion_number, 'daily_plan'
+                        if daily_report_analysis and not daily_report_analysis.startswith("## ❌"):
+                            # 查找日报评论ID
+                            daily_summary_comment_id = await self._find_content_comment_id(
+                                discussion.number, 'daily_summary'
                             )
                             
-                            # 发布日计划分析到日计划讨论，回复到日计划评论楼层
+                            # 发布日报分析到当前讨论，回复到日报评论楼层
                             comment_success = await self.github_client.post_analysis_comment(
-                                plan_discussion_number, 
-                                daily_plan_analysis,
-                                reply_to_comment_id=daily_plan_comment_id,
-                                content_type='daily_plan'
+                                discussion.number, 
+                                daily_report_analysis,
+                                reply_to_comment_id=daily_summary_comment_id,
+                                content_type='daily_report'
                             )
                             analysis_results.append({
-                                'type': '日计划分析',
+                                'type': '日报分析',
                                 'success': comment_success,
-                                'discussion_number': plan_discussion_number,
-                                'length': len(daily_plan_analysis),
-                                'reply_to_comment_id': daily_plan_comment_id
+                                'discussion_number': discussion.number,
+                                'length': len(daily_report_analysis),
+                                'reply_to_comment_id': daily_summary_comment_id
                             })
-                            if daily_plan_comment_id:
-                                self.logger.info(f"日计划分析完成并回复到日计划评论楼层 #{plan_discussion_number}: {'成功' if comment_success else '失败'}")
+                            if daily_summary_comment_id:
+                                self.logger.info(f"日报分析完成并回复到日报评论楼层 #{discussion.number}: {'成功' if comment_success else '失败'}")
                             else:
-                                self.logger.info(f"日计划分析完成并发布到讨论 #{plan_discussion_number}: {'成功' if comment_success else '失败'}")
-                        else:
-                            # 如果找不到对应的日计划讨论，在当前讨论中查找日计划评论并回复
+                                self.logger.info(f"日报分析完成并发布到讨论 #{discussion.number}: {'成功' if comment_success else '失败'}")
+                    except Exception as e:
+                        self.logger.error(f"日报分析失败: {e}")
+                        analysis_results.append({
+                            'type': '日报分析',
+                            'success': False,
+                            'error': str(e)
+                        })
+                else:
+                    self.logger.info(f"提取的内容不是日报类型（识别为: {content_type}），跳过日报分析")
+            
+            # 如果有日计划内容，需要找到对应的周计划讨论并发布日计划分析
+            if daily_plan and daily_plan.strip():
+                # 进一步验证是否真的是日计划内容
+                content_type = self.github_client.identify_content_type(daily_plan)
+                if content_type == 'daily_plan':
+                    self.logger.debug("执行日计划内容分析")
+                    try:
+                        daily_plan_analysis = await self.glm_client.analyze_daily_plan_content(
+                            daily_plan=daily_plan,
+                            weekly_plan=weekly_plan
+                        )
+                        if daily_plan_analysis and not daily_plan_analysis.startswith("## ❌"):
+                            # 直接在当前讨论中查找日计划评论并回复
                             daily_plan_comment_id = await self._find_content_comment_id(
                                 discussion.number, 'daily_plan'
                             )
@@ -236,20 +224,21 @@ class DailyAnalyzer:
                                 'success': comment_success,
                                 'discussion_number': discussion.number,
                                 'length': len(daily_plan_analysis),
-                                'reply_to_comment_id': daily_plan_comment_id,
-                                'note': '未找到对应的日计划讨论，发布到当前讨论'
+                                'reply_to_comment_id': daily_plan_comment_id
                             })
                             if daily_plan_comment_id:
-                                self.logger.warning(f"未找到日计划讨论，日计划分析回复到当前讨论的日计划评论楼层 #{discussion.number}")
+                                self.logger.info(f"日计划分析完成并回复到日计划评论楼层 #{discussion.number}: {'成功' if comment_success else '失败'}")
                             else:
-                                self.logger.warning(f"未找到日计划讨论和日计划评论，日计划分析发布到当前讨论 #{discussion.number}")
-                except Exception as e:
-                    self.logger.error(f"日计划分析失败: {e}")
-                    analysis_results.append({
-                        'type': '日计划分析',
-                        'success': False,
-                        'error': str(e)
-                    })
+                                self.logger.info(f"日计划分析完成并发布到讨论 #{discussion.number}: {'成功' if comment_success else '失败'}")
+                    except Exception as e:
+                        self.logger.error(f"日计划分析失败: {e}")
+                        analysis_results.append({
+                            'type': '日计划分析',
+                            'success': False,
+                            'error': str(e)
+                        })
+                else:
+                    self.logger.info(f"提取的内容不是日计划类型（识别为: {content_type}），跳过日计划分析")
             
             # 如果日计划分析失败或没有找到合适的发布位置，记录详细信息
             if daily_plan and not any(r.get('type') == '日计划分析' and r.get('success', False) for r in analysis_results):
@@ -328,8 +317,36 @@ class DailyAnalyzer:
             # 按时间排序评论，最早的在前
             comments.sort(key=lambda x: x.updated_at, reverse=False)
             
-            # 第一步：优先基于评论内容进行精确匹配
+            # 过滤掉分析评论（包含特定标记的评论）
+            content_comments = []
             for comment in comments:
+                comment_body = comment.body
+                # 跳过分析评论
+                if any(marker in comment_body for marker in ['## 📊', '## ✅', '## ❌', '分析结果', 'AI分析']):
+                    continue
+                content_comments.append(comment)
+            
+            if not content_comments:
+                self.logger.warning(f"讨论#{discussion_number}没有内容评论")
+                return None
+            
+            # 第一步：使用内容识别方法进行精确匹配
+            for comment in content_comments:
+                # 使用GitHub客户端的内容识别方法
+                identified_type = self.github_client.identify_content_type(comment.body)
+                
+                # 映射内容类型
+                expected_type = {
+                    'daily_summary': 'daily_report',
+                    'daily_plan': 'daily_plan'
+                }.get(content_type)
+                
+                if identified_type == expected_type:
+                    self.logger.info(f"通过内容识别找到{content_type}评论ID: {comment.id}")
+                    return comment.id
+            
+            # 第二步：基于关键词特征进行匹配
+            for comment in content_comments:
                 comment_body_lower = comment.body.lower()
                 
                 # 日报内容特征检测
@@ -337,7 +354,7 @@ class DailyAnalyzer:
                     daily_report_indicators = [
                         '日报', '日结', '今日完成', '今日工作', '工作总结', 
                         '完成情况', '今天完成', '今天做了', '进度汇报', '遇到问题',
-                        '今日进展', '工作内容', '完成任务'
+                        '今日进展', '工作内容', '完成任务', '今日总结'
                     ]
                     # 检查是否包含日报特征且不包含日计划特征
                     has_report_features = any(indicator in comment_body_lower for indicator in daily_report_indicators)
@@ -352,7 +369,7 @@ class DailyAnalyzer:
                     daily_plan_indicators = [
                         '日计划', '明日计划', '明天计划', '下一步', '待办事项',
                         '明日安排', '明天安排', '计划完成', '准备做', '明日目标',
-                        '明天目标', '下步计划'
+                        '明天目标', '下步计划', '今日计划'
                     ]
                     # 检查是否包含日计划特征且不包含日报特征
                     has_plan_features = any(indicator in comment_body_lower for indicator in daily_plan_indicators)
@@ -362,41 +379,41 @@ class DailyAnalyzer:
                         self.logger.info(f"基于内容特征匹配找到日计划评论ID: {comment.id}")
                         return comment.id
             
-            # 第二步：如果内容匹配失败，基于讨论标题和评论位置判断
+            # 第三步：基于讨论标题和评论位置判断
             title_lower = current_discussion.title.lower()
             
             # 如果标题包含"日报"关键词，通常第一条是日报，第二条是日计划
             if '日报' in title_lower or '日结' in title_lower:
-                if content_type == 'daily_summary' and len(comments) >= 1:
-                    self.logger.info(f"基于标题匹配找到日报评论ID: {comments[0].id}")
-                    return comments[0].id
-                elif content_type == 'daily_plan' and len(comments) >= 2:
-                    self.logger.info(f"基于标题匹配找到日计划评论ID: {comments[1].id}")
-                    return comments[1].id
+                if content_type == 'daily_summary' and len(content_comments) >= 1:
+                    self.logger.info(f"基于标题匹配找到日报评论ID: {content_comments[0].id}")
+                    return content_comments[0].id
+                elif content_type == 'daily_plan' and len(content_comments) >= 2:
+                    self.logger.info(f"基于标题匹配找到日计划评论ID: {content_comments[1].id}")
+                    return content_comments[1].id
                 # 特殊情况：如果只有一条评论且是查找日计划，可能日报还未发布
-                elif content_type == 'daily_plan' and len(comments) == 1:
+                elif content_type == 'daily_plan' and len(content_comments) == 1:
                     # 检查这条评论是否更像日计划
-                    comment_body_lower = comments[0].body.lower()
+                    comment_body_lower = content_comments[0].body.lower()
                     plan_keywords = ['计划', '明日', '明天', '下一步', '待办', '准备']
                     if any(keyword in comment_body_lower for keyword in plan_keywords):
-                        self.logger.info(f"基于内容判断找到日计划评论ID: {comments[0].id}")
-                        return comments[0].id
+                        self.logger.info(f"基于内容判断找到日计划评论ID: {content_comments[0].id}")
+                        return content_comments[0].id
             
             # 如果标题包含"计划"关键词，通常第一条是日计划，第二条是日报
             elif '计划' in title_lower:
-                if content_type == 'daily_plan' and len(comments) >= 1:
-                    self.logger.info(f"基于标题匹配找到日计划评论ID: {comments[0].id}")
-                    return comments[0].id
-                elif content_type == 'daily_summary' and len(comments) >= 2:
-                    self.logger.info(f"基于标题匹配找到日报评论ID: {comments[1].id}")
-                    return comments[1].id
+                if content_type == 'daily_plan' and len(content_comments) >= 1:
+                    self.logger.info(f"基于标题匹配找到日计划评论ID: {content_comments[0].id}")
+                    return content_comments[0].id
+                elif content_type == 'daily_summary' and len(content_comments) >= 2:
+                    self.logger.info(f"基于标题匹配找到日报评论ID: {content_comments[1].id}")
+                    return content_comments[1].id
             
-            # 第三步：默认兜底规则 - 基于时间顺序和内容长度判断
+            # 第四步：默认兜底规则 - 基于时间顺序和内容长度判断
             else:
-                if len(comments) >= 2:
+                if len(content_comments) >= 2:
                     # 如果有两条或更多评论，尝试智能判断
-                    first_comment = comments[0].body.lower()
-                    second_comment = comments[1].body.lower()
+                    first_comment = content_comments[0].body.lower()
+                    second_comment = content_comments[1].body.lower()
                     
                     # 判断第一条评论更像日报还是日计划
                     first_is_plan = any(keyword in first_comment for keyword in ['计划', '明日', '明天', '下一步', '待办'])
@@ -404,32 +421,32 @@ class DailyAnalyzer:
                     
                     if content_type == 'daily_plan':
                         if first_is_plan and not first_is_report:
-                            self.logger.info(f"智能判断找到日计划评论ID: {comments[0].id}")
-                            return comments[0].id
-                        elif len(comments) >= 2:
-                            self.logger.info(f"默认规则找到日计划评论ID: {comments[1].id}")
-                            return comments[1].id
+                            self.logger.info(f"智能判断找到日计划评论ID: {content_comments[0].id}")
+                            return content_comments[0].id
+                        elif len(content_comments) >= 2:
+                            self.logger.info(f"默认规则找到日计划评论ID: {content_comments[1].id}")
+                            return content_comments[1].id
                     elif content_type == 'daily_summary':
                         if first_is_report and not first_is_plan:
-                            self.logger.info(f"智能判断找到日报评论ID: {comments[0].id}")
-                            return comments[0].id
-                        elif len(comments) >= 2:
-                            self.logger.info(f"默认规则找到日报评论ID: {comments[1].id}")
-                            return comments[1].id
+                            self.logger.info(f"智能判断找到日报评论ID: {content_comments[0].id}")
+                            return content_comments[0].id
+                        elif len(content_comments) >= 2:
+                            self.logger.info(f"默认规则找到日报评论ID: {content_comments[1].id}")
+                            return content_comments[1].id
                 
                 # 如果只有一条评论，根据内容判断
-                elif len(comments) == 1:
-                    comment_body_lower = comments[0].body.lower()
+                elif len(content_comments) == 1:
+                    comment_body_lower = content_comments[0].body.lower()
                     if content_type == 'daily_plan':
                         plan_indicators = ['计划', '明日', '明天', '下一步', '待办', '准备', '安排']
                         if any(indicator in comment_body_lower for indicator in plan_indicators):
-                            self.logger.info(f"单条评论内容判断找到日计划评论ID: {comments[0].id}")
-                            return comments[0].id
+                            self.logger.info(f"单条评论内容判断找到日计划评论ID: {content_comments[0].id}")
+                            return content_comments[0].id
                     elif content_type == 'daily_summary':
                         report_indicators = ['完成', '今日', '今天', '总结', '进度', '工作', '任务']
                         if any(indicator in comment_body_lower for indicator in report_indicators):
-                            self.logger.info(f"单条评论内容判断找到日报评论ID: {comments[0].id}")
-                            return comments[0].id
+                            self.logger.info(f"单条评论内容判断找到日报评论ID: {content_comments[0].id}")
+                            return content_comments[0].id
                         
             self.logger.warning(f"在讨论#{discussion_number}中未找到{content_type}类型的评论")
             return None
