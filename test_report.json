@@ -3,120 +3,96 @@
     "success": true,
     "message": "找到.env配置文件",
     "details": {},
-    "timestamp": "2025-08-21T13:57:09.446739"
+    "timestamp": "2025-08-28T10:18:15.456063"
   },
   "配置加载": {
     "success": true,
     "message": "配置文件加载成功",
     "details": {},
-    "timestamp": "2025-08-21T13:57:09.448045"
+    "timestamp": "2025-08-28T10:18:15.462649"
   },
   "环境变量检查": {
     "success": true,
     "message": "所有必需环境变量已配置",
     "details": {},
-    "timestamp": "2025-08-21T13:57:09.448118"
+    "timestamp": "2025-08-28T10:18:15.462728"
   },
   "GitHub连接": {
     "success": true,
     "message": "GitHub API连接成功",
     "details": {},
-    "timestamp": "2025-08-21T13:57:10.260777"
+    "timestamp": "2025-08-28T10:18:16.278519"
   },
   "Discussion分类": {
     "success": true,
-    "message": "找到分类: 2 - 日结",
+    "message": "找到分类: ",
     "details": {},
-    "timestamp": "2025-08-21T13:57:12.676140"
+    "timestamp": "2025-08-28T10:18:19.088867"
   },
   "目标分类检查": {
-    "success": true,
-    "message": "找到目标分类: 2 - 日结",
+    "success": false,
+    "message": "未找到目标分类: 2 - 日结",
     "details": {},
-    "timestamp": "2025-08-21T13:57:12.676268"
+    "timestamp": "2025-08-28T10:18:19.088956"
   },
   "日结讨论获取": {
-    "success": true,
-    "message": "找到 5 个今日相关讨论",
+    "success": false,
+    "message": "未找到今日相关讨论",
     "details": {},
-    "timestamp": "2025-08-21T13:57:14.130775"
+    "timestamp": "2025-08-28T10:18:23.643724"
   },
-  "周期计划提取": {
-    "success": true,
-    "message": "提取长度: 71 字符",
+  "内容解析": {
+    "success": false,
+    "message": "没有可用的测试讨论",
     "details": {},
-    "timestamp": "2025-08-21T13:57:17.660646"
-  },
-  "日报内容提取": {
-    "success": true,
-    "message": "提取长度: 163 字符",
-    "details": {},
-    "timestamp": "2025-08-21T13:57:17.660757"
-  },
-  "日计划提取": {
-    "success": true,
-    "message": "提取长度: 91 字符",
-    "details": {},
-    "timestamp": "2025-08-21T13:57:17.660813"
-  },
-  "讨论#58内容提取": {
-    "success": true,
-    "message": "标题: 小康8.18-8.22...",
-    "details": {},
-    "timestamp": "2025-08-21T13:57:19.743608"
-  },
-  "讨论#60内容提取": {
-    "success": true,
-    "message": "标题: 嘉浩8.18-22日报...",
-    "details": {},
-    "timestamp": "2025-08-21T13:57:21.709628"
+    "timestamp": "2025-08-28T10:18:25.061329"
   },
   "GLM连接": {
     "success": true,
     "message": "GLM API连接成功",
     "details": {},
-    "timestamp": "2025-08-21T13:57:23.849261"
+    "timestamp": "2025-08-28T10:18:26.182163"
   },
   "日报分析": {
     "success": true,
-    "message": "分析长度: 554 字符",
+    "message": "分析长度: 224 字符",
     "details": {},
-    "timestamp": "2025-08-21T13:57:31.051756"
+    "timestamp": "2025-08-28T10:18:29.679529"
   },
   "日计划分析": {
     "success": true,
-    "message": "分析长度: 449 字符",
+    "message": "分析长度: 157 字符",
     "details": {},
-    "timestamp": "2025-08-21T13:57:38.450882"
+    "timestamp": "2025-08-28T10:18:32.211209"
   },
   "内容类型识别": {
     "success": true,
     "message": "日报: daily_report, 日计划: daily_plan, 周计划: weekly_plan",
     "details": {},
-    "timestamp": "2025-08-21T13:57:39.255795"
+    "timestamp": "2025-08-28T10:18:33.075730"
   },
   "整体连接测试": {
     "success": true,
     "message": "GitHub: True, GLM: True",
     "details": {},
-    "timestamp": "2025-08-21T13:57:41.473466"
+    "timestamp": "2025-08-28T10:18:35.595995"
   },
-  "分析预览生成": {
-    "success": true,
-    "message": "报告长度: 1078 字符",
+  "端到端测试": {
+    "success": false,
+    "message": "没有可用的测试讨论",
     "details": {},
-    "timestamp": "2025-08-21T13:58:03.448245"
+    "timestamp": "2025-08-28T10:18:37.185838"
   },
   "调度器配置": {
     "success": true,
     "message": "Cron: 0 18 * * *, 时区: Asia/Shanghai",
     "details": {},
-    "timestamp": "2025-08-21T13:58:05.037619"
+    "timestamp": "2025-08-28T10:18:40.957370"
   },
   "下次执行时间": {
     "success": true,
-    "message": "下次运行: 2025-08-21T18:00:00+08:00",
+    "message": "下次运行: 2025-08-28T18:00:00+08:00",
     "details": {},
-    "timestamp": "2025-08-21T13:58:05.037734"
+    "timestamp": "2025-08-28T10:18:40.957534"
   }
 }

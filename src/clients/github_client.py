@@ -104,9 +104,28 @@ class GitHubClient:
                 if discussion.category.name != self.config.discussion_category:
                     continue
                     
-                # 检查更新时间是否在目标日期
+                # 检查讨论是否与目标日期相关
+                # 1. 检查讨论的更新时间
                 updated_date = discussion.updated_at.date()
-                if updated_date != target_date:
+                is_relevant = updated_date == target_date
+                
+                # 2. 如果讨论更新时间不匹配，检查是否有目标日期的评论
+                if not is_relevant:
+                    try:
+                        # 获取讨论的评论来检查是否有目标日期的活动
+                        comments = await self._get_repo_discussion_comments(discussion.number)
+                        for comment in comments:
+                            comment_date = comment.created_at.date()
+                            if comment_date == target_date:
+                                is_relevant = True
+                                self.logger.debug(f"讨论 #{discussion.number} 在 {target_date} 有评论活动")
+                                break
+                    except Exception as e:
+                        self.logger.debug(f"检查讨论 #{discussion.number} 评论时出错: {e}")
+                        continue
+                
+                # 如果讨论与目标日期不相关，跳过
+                if not is_relevant:
                     continue
                     
                 # 转换为DiscussionData对象
@@ -246,16 +265,20 @@ class GitHubClient:
                     if is_analysis_comment:
                         content_desc = f"{content_type}" if content_type else "分析"
                         self.logger.info(f"讨论 #{discussion_number} 已存在顶级{content_desc}评论，跳过重复发布")
+                        self.logger.debug(f"检测到的现有{content_desc}评论内容: {comment_body[:200]}...")
                         return True
             else:
                 # 检查指定评论的回复中是否存在指定类型的分析评论
                 if reply_to_comment_id in structured_comments['replies']:
-                    for reply in structured_comments['replies'][reply_to_comment_id]:
+                    self.logger.debug(f"评论 {reply_to_comment_id} 有 {len(structured_comments['replies'][reply_to_comment_id])} 个回复")
+                    for i, reply in enumerate(structured_comments['replies'][reply_to_comment_id]):
                         reply_body = reply.body.strip()
+                        self.logger.debug(f"回复 {i+1} 内容预览: {reply_body[:100]}...")
                         is_analysis_comment = any(marker in reply_body for marker in analysis_markers)
                         if is_analysis_comment:
                             content_desc = f"{content_type}" if content_type else "分析"
                             self.logger.info(f"讨论 #{discussion_number} 的评论 {reply_to_comment_id} 已存在{content_desc}回复，跳过重复发布")
+                            self.logger.debug(f"检测到的现有{content_desc}回复内容: {reply_body[:200]}...")
                             return True
                 else:
                     self.logger.debug(f"评论 {reply_to_comment_id} 暂无回复")

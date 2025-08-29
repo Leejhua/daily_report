@@ -20,6 +20,8 @@ sys.path.append(str(Path(__file__).parent.parent))
 
 from src.config import Config
 from src.analyzers.daily_analyzer import DailyAnalyzer
+from src.clients.glm_client import GLMClient
+from src.utils.logger import setup_logging
 
 
 async def analyze_discussion(discussion_number: int, preview_only: bool = False):
@@ -165,80 +167,49 @@ async def batch_analyze_discussions(discussion_numbers: list, preview_only: bool
 
 async def test_analysis_components():
     """测试分析组件"""
-    print("🧪 测试分析组件...")
+    print("\n=== 测试分析组件 ===")
+    
+    # 初始化配置和客户端
+    config = Config()
+    glm_client = GLMClient(config.glm)
+    
+    # 测试数据
+    test_plan = "完成项目文档编写，优化代码性能"
+    test_summary = "今天主要写了一些文档，但是代码优化没有完成"
     
     try:
-        config = Config()
+        # 测试连接
+        print("\n1. 测试GLM API连接...")
+        connection_ok = await glm_client.test_connection()
+        print(f"连接状态: {'✅ 成功' if connection_ok else '❌ 失败'}")
         
-        from src.clients.github_client import GitHubClient
-        from src.clients.glm_client import GLMClient
+        if not connection_ok:
+            print("❌ API连接失败，无法继续测试")
+            return
         
-        github_client = GitHubClient(config.github)
-        glm_client = GLMClient(config.glm)
+        # 测试日报内容分析
+        print("\n2. 测试日报内容分析...")
+        report_result = await glm_client.analyze_daily_report_content(test_summary, test_plan)
+        print(f"日报分析结果: {report_result[:200]}...")
         
-        # 测试数据
-        test_summary = """
-        今天完成了以下工作：
-        1. 完成了用户认证模块的开发和测试
-        2. 修复了登录页面的3个UI bug
-        3. 参加了项目进度评审会议
-        4. 更新了API文档
-        5. 协助新同事解决技术问题
-        """
+        # 测试日计划内容分析
+        print("\n3. 测试日计划内容分析...")
+        plan_result = await glm_client.analyze_daily_plan_content(test_plan)
+        print(f"日计划分析结果: {plan_result[:200]}...")
         
-        test_plan = """
-        今日计划：
-        1. 完成用户认证模块开发
-        2. 修复已知的UI问题
-        3. 参加项目评审会议
-        4. 更新相关文档
-        """
-        
-        test_weekly_plan = """
-        本周计划：
-        - 完成用户认证功能
-        - 优化系统性能
-        - 完善项目文档
-        - 团队协作和知识分享
-        """
-        
-        print("🔍 测试偏离度分析...")
-        deviation_result = await glm_client.analyze_work_deviation(test_summary, test_plan)
-        print(f"📊 偏离度评分: {deviation_result.get('score', 'N/A')}/10")
-        print(f"📈 完成率: {deviation_result.get('completion_rate', 0)*100:.1f}%")
-        
-        print("\n🔍 测试清晰度分析...")
-        clarity_result = await glm_client.analyze_content_clarity(test_summary)
-        print(f"📝 清晰度评分: {clarity_result.get('clarity_score', 'N/A')}/10")
-        print(f"🎯 具体性评分: {clarity_result.get('specificity_score', 'N/A')}/10")
-        print(f"📋 完整性评分: {clarity_result.get('completeness_score', 'N/A')}/10")
-        
-        print("\n🔍 测试一致性分析...")
-        consistency_result = await glm_client.analyze_plan_consistency(test_plan, test_weekly_plan)
-        print(f"🔄 一致性评分: {consistency_result.get('consistency_score', 'N/A')}/10")
-        print(f"🎯 目标对齐度: {consistency_result.get('alignment_level', 'N/A')}/10")
-        
-        print("\n🔍 测试综合分析...")
-        comprehensive_report = await glm_client.generate_comprehensive_analysis(
-            test_summary, test_plan, test_weekly_plan
-        )
-        
-        print(f"📊 综合报告长度: {len(comprehensive_report)} 字符")
-        print(f"\n{'='*60}")
-        print("📋 综合分析报告:")
-        print('='*60)
-        print(comprehensive_report)
-        print('='*60)
-        
-        return True
+        print("\n✅ 所有分析组件测试完成")
         
     except Exception as e:
-        print(f"❌ 组件测试失败: {e}")
-        return False
+        print(f"❌ 测试失败: {e}")
+        import traceback
+        traceback.print_exc()
 
 
 def main():
     """主函数"""
+    # 初始化日志系统
+    setup_logging()
+    
     parser = argparse.ArgumentParser(description="手动分析工具")
     
     subparsers = parser.add_subparsers(dest='command', help='可用命令')
@@ -288,3 +259,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

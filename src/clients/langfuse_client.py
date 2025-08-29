@@ -2,12 +2,16 @@ import os
 from typing import Optional, Dict, Any
 from langfuse import Langfuse
 import logging
+from dotenv import load_dotenv
 
 class SimpleLangfuseClient:
     """简化的Langfuse客户端"""
     
     def __init__(self):
         self.logger = logging.getLogger(__name__)
+        
+        # 确保加载.env文件
+        load_dotenv()
         
         # 从环境变量获取配置
         public_key = os.getenv('LANGFUSE_PUBLIC_KEY')

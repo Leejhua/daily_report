@@ -197,3 +197,4 @@ chmod 600 config/config.yaml
 2. 测试分析预览：`python scripts/test_daily_structure.py preview 讨论编号`
 3. 启动服务：`python src/main.py`
 4. 查看定时任务：服务将按配置的时间自动运行
+

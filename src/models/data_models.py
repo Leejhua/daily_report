@@ -90,6 +90,13 @@ class DeviationAnalysisResult:
     summary: str                    # 总结
     confidence: float = 0.0         # 分析置信度
     
+    # V2.0 新增字段
+    user_id: str = ""               # 用户ID
+    analysis_date: str = ""         # 分析日期 (YYYY-MM-DD)
+    discussion_number: int = 0      # Discussion编号
+    is_deviation: bool = False      # 是否存在偏离
+    raw_analysis_text: str = ""     # 原始分析文本
+    
     def get_grade(self) -> str:
         """获取评级"""
         if self.score <= 2:
@@ -102,6 +109,42 @@ class DeviationAnalysisResult:
             return "需改进"
         else:
             return "较差"
+    
+    def to_dict(self) -> Dict[str, Any]:
+        """转换为字典格式，用于JSON存储"""
+        return {
+            'score': self.score,
+            'completion_rate': self.completion_rate,
+            'deviation_reasons': self.deviation_reasons,
+            'additional_work': self.additional_work,
+            'suggestions': self.suggestions,
+            'summary': self.summary,
+            'confidence': self.confidence,
+            'user_id': self.user_id,
+            'analysis_date': self.analysis_date,
+            'discussion_number': self.discussion_number,
+            'is_deviation': self.is_deviation,
+            'raw_analysis_text': self.raw_analysis_text,
+            'grade': self.get_grade()
+        }
+    
+    @classmethod
+    def from_dict(cls, data: Dict[str, Any]) -> 'DeviationAnalysisResult':
+        """从字典创建实例"""
+        return cls(
+            score=data.get('score', 0.0),
+            completion_rate=data.get('completion_rate', 0.0),
+            deviation_reasons=data.get('deviation_reasons', []),
+            additional_work=data.get('additional_work', []),
+            suggestions=data.get('suggestions', []),
+            summary=data.get('summary', ''),
+            confidence=data.get('confidence', 0.0),
+            user_id=data.get('user_id', ''),
+            analysis_date=data.get('analysis_date', ''),
+            discussion_number=data.get('discussion_number', 0),
+            is_deviation=data.get('is_deviation', False),
+            raw_analysis_text=data.get('raw_analysis_text', '')
+        )
 
 
 @dataclass
@@ -301,6 +344,86 @@ class SystemStatus:
             },
             'uptime_seconds': self.uptime_seconds
         }
+
+
+@dataclass
+class ContinuousDeviationRecord:
+    """连续偏离记录"""
+    user_id: str
+    start_date: str                 # 开始日期 (YYYY-MM-DD)
+    end_date: Optional[str] = None  # 结束日期 (YYYY-MM-DD)
+    deviation_count: int = 0        # 连续偏离次数
+    deviation_dates: List[str] = field(default_factory=list)  # 偏离日期列表
+    is_active: bool = True          # 是否仍在连续偏离中
+    report_generated: bool = False  # 是否已生成汇报
+    created_at: str = field(default_factory=lambda: datetime.now().isoformat())
+    
+    def to_dict(self) -> Dict[str, Any]:
+        """转换为字典格式"""
+        return {
+            'user_id': self.user_id,
+            'start_date': self.start_date,
+            'end_date': self.end_date,
+            'deviation_count': self.deviation_count,
+            'deviation_dates': self.deviation_dates,
+            'is_active': self.is_active,
+            'report_generated': self.report_generated,
+            'created_at': self.created_at
+        }
+    
+    @classmethod
+    def from_dict(cls, data: Dict[str, Any]) -> 'ContinuousDeviationRecord':
+        """从字典创建实例"""
+        return cls(
+            user_id=data.get('user_id', ''),
+            start_date=data.get('start_date', ''),
+            end_date=data.get('end_date'),
+            deviation_count=data.get('deviation_count', 0),
+            deviation_dates=data.get('deviation_dates', []),
+            is_active=data.get('is_active', True),
+            report_generated=data.get('report_generated', False),
+            created_at=data.get('created_at', datetime.now().isoformat())
+        )
+
+
+@dataclass
+class DeviationReport:
+    """偏离汇报"""
+    user_id: str
+    report_type: str                # 汇报类型: 'concise', 'detailed', 'card'
+    title: str                      # 汇报标题
+    content: str                    # 汇报内容
+    deviation_period: str           # 偏离周期描述
+    analysis_results: List[Dict[str, Any]]  # 相关分析结果
+    generated_at: str = field(default_factory=lambda: datetime.now().isoformat())
+    sent_to_feishu: bool = False    # 是否已发送到飞书
+    
+    def to_dict(self) -> Dict[str, Any]:
+        """转换为字典格式"""
+        return {
+            'user_id': self.user_id,
+            'report_type': self.report_type,
+            'title': self.title,
+            'content': self.content,
+            'deviation_period': self.deviation_period,
+            'analysis_results': self.analysis_results,
+            'generated_at': self.generated_at,
+            'sent_to_feishu': self.sent_to_feishu
+        }
+    
+    @classmethod
+    def from_dict(cls, data: Dict[str, Any]) -> 'DeviationReport':
+        """从字典创建实例"""
+        return cls(
+            user_id=data.get('user_id', ''),
+            report_type=data.get('report_type', 'concise'),
+            title=data.get('title', ''),
+            content=data.get('content', ''),
+            deviation_period=data.get('deviation_period', ''),
+            analysis_results=data.get('analysis_results', []),
+            generated_at=data.get('generated_at', datetime.now().isoformat()),
+            sent_to_feishu=data.get('sent_to_feishu', False)
+        )
 
 
 # 工厂函数

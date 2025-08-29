@@ -11,6 +11,9 @@ from typing import List, Dict, Any, Optional
 from src.config import Config
 from src.clients.github_client import GitHubClient, DiscussionData
 from src.clients.glm_client import GLMClient
+from src.clients.enhanced_glm_client import EnhancedGLMClient
+from src.trackers.deviation_tracker import DeviationTracker
+from src.models.data_models import DeviationAnalysisResult
 from src.utils.logger import get_logger
 
 
@@ -24,6 +27,12 @@ class DailyAnalyzer:
         # 初始化客户端
         self.github_client = GitHubClient(config.github)
         self.glm_client = GLMClient(config.glm)
+        self.enhanced_glm_client = EnhancedGLMClient(config.glm)
+        
+        # 初始化数据管理器和偏离跟踪器
+        from ..storage.json_data_manager import JSONDataManager
+        self.data_manager = JSONDataManager(data_dir='data')
+        self.deviation_tracker = DeviationTracker(self.data_manager, {})
         
     async def run_daily_analysis(self, target_date: Optional[date] = None) -> Dict[str, Any]:
         """
@@ -158,10 +167,22 @@ class DailyAnalyzer:
                 if content_type == 'daily_report':
                     self.logger.debug("执行日报内容分析")
                     try:
+                        # 为日报分析找到对应的当天计划，而不是使用最新计划
+                        corresponding_plan, corresponding_plan_comment_id = await self._find_corresponding_daily_plan(
+                            discussion, daily_summary
+                        )
+                        
+                        # 执行传统日报分析
                         daily_report_analysis = await self.glm_client.analyze_daily_report_content(
                             daily_summary=daily_summary,
-                            daily_plan=daily_plan
+                            daily_plan=corresponding_plan
                         )
+                        
+                        # 执行偏离分析
+                        deviation_result = await self._perform_deviation_analysis(
+                            discussion.number, daily_summary, daily_plan, weekly_plan
+                        )
+                        
                         if daily_report_analysis and not daily_report_analysis.startswith("## ❌"):
                             # 查找日报评论ID
                             daily_summary_comment_id = await self._find_content_comment_id(
@@ -180,12 +201,18 @@ class DailyAnalyzer:
                                 'success': comment_success,
                                 'discussion_number': discussion.number,
                                 'length': len(daily_report_analysis),
-                                'reply_to_comment_id': daily_summary_comment_id
+                                'reply_to_comment_id': daily_summary_comment_id,
+                                'deviation_analysis': deviation_result
                             })
                             if daily_summary_comment_id:
                                 self.logger.info(f"日报分析完成并回复到日报评论楼层 #{discussion.number}: {'成功' if comment_success else '失败'}")
                             else:
                                 self.logger.info(f"日报分析完成并发布到讨论 #{discussion.number}: {'成功' if comment_success else '失败'}")
+                                
+                            # 记录偏离分析结果
+                            if deviation_result and deviation_result.get('success'):
+                                deviation_score = deviation_result.get('deviation_score', 'N/A')
+                                self.logger.info(f"偏离分析完成 #{discussion.number}: 偏离度 {deviation_score}")
                     except Exception as e:
                         self.logger.error(f"日报分析失败: {e}")
                         analysis_results.append({
@@ -208,10 +235,15 @@ class DailyAnalyzer:
                             weekly_plan=weekly_plan
                         )
                         if daily_plan_analysis and not daily_plan_analysis.startswith("## ❌"):
-                            # 直接在当前讨论中查找日计划评论并回复
-                            daily_plan_comment_id = await self._find_content_comment_id(
-                                discussion.number, 'daily_plan'
-                            )
+                            # 如果有对应的日计划评论ID，使用它；否则查找最新的日计划评论ID
+                            if 'corresponding_plan_comment_id' in locals() and corresponding_plan_comment_id:
+                                daily_plan_comment_id = corresponding_plan_comment_id
+                                self.logger.info(f"使用对应的日计划评论ID: {daily_plan_comment_id}")
+                            else:
+                                daily_plan_comment_id = await self._find_content_comment_id(
+                                    discussion.number, 'daily_plan'
+                                )
+                                self.logger.info(f"使用最新的日计划评论ID: {daily_plan_comment_id}")
                             
                             comment_success = await self.github_client.post_analysis_comment(
                                 discussion.number, 
@@ -285,7 +317,7 @@ class DailyAnalyzer:
     async def _find_content_comment_id(self, discussion_number: int, content_type: str) -> Optional[str]:
         """
         在讨论中查找特定类型内容的评论ID
-        优先基于评论内容识别，然后基于讨论标题和位置判断
+        使用与extract_daily_content相同的逻辑，确保找到最新的匹配内容
         
         Args:
             discussion_number: 讨论编号
@@ -295,18 +327,6 @@ class DailyAnalyzer:
             Optional[str]: 评论ID，如果未找到则返回None
         """
         try:
-            # 获取讨论信息
-            discussions = await self.github_client.get_daily_discussions()
-            current_discussion = None
-            for disc in discussions:
-                if disc.number == discussion_number:
-                    current_discussion = disc
-                    break
-            
-            if not current_discussion:
-                self.logger.warning(f"未找到讨论#{discussion_number}")
-                return None
-            
             # 获取评论
             comments = await self.github_client.get_discussion_comments(discussion_number)
             
@@ -314,146 +334,133 @@ class DailyAnalyzer:
                 self.logger.warning(f"讨论#{discussion_number}没有评论")
                 return None
             
-            # 按时间排序评论，最早的在前
-            comments.sort(key=lambda x: x.updated_at, reverse=False)
+            # 按时间排序评论，最新的在前（与extract_daily_content保持一致）
+            comments.sort(key=lambda x: x.updated_at, reverse=True)
             
-            # 过滤掉分析评论（包含特定标记的评论）
-            content_comments = []
-            for comment in comments:
-                comment_body = comment.body
-                # 跳过分析评论
-                if any(marker in comment_body for marker in ['## 📊', '## ✅', '## ❌', '分析结果', 'AI分析']):
-                    continue
-                content_comments.append(comment)
+            # 跳过分析评论（与extract_daily_content使用相同的标记）
+            analysis_markers = [
+                '📋 日报分析', '📋 日计划分析', '## 📋 日报分析', '## 📋 日计划分析',
+                '日报分析', '日计划分析', '分析结果', '内容表述不清楚', '如何澄清这些不清楚的内容',
+                '## 📊', '## ✅', '## ❌', 'AI分析'
+            ]
             
-            if not content_comments:
-                self.logger.warning(f"讨论#{discussion_number}没有内容评论")
+            # 映射内容类型（与extract_daily_content保持一致）
+            expected_type = {
+                'daily_summary': 'daily_report',
+                'daily_plan': 'daily_plan'
+            }.get(content_type)
+            
+            if not expected_type:
+                self.logger.warning(f"未知的内容类型: {content_type}")
                 return None
             
-            # 第一步：使用内容识别方法进行精确匹配
-            for comment in content_comments:
-                # 使用GitHub客户端的内容识别方法
+            # 使用与extract_daily_content完全相同的逻辑
+            for comment in comments:
+                # 跳过分析评论
+                if any(marker in comment.body for marker in analysis_markers):
+                    self.logger.debug(f"跳过分析评论，评论ID: {comment.id}")
+                    continue
+                
+                # 使用内容识别方法判断内容类型（与extract_daily_content保持一致）
                 identified_type = self.github_client.identify_content_type(comment.body)
                 
-                # 映射内容类型
-                expected_type = {
-                    'daily_summary': 'daily_report',
-                    'daily_plan': 'daily_plan'
-                }.get(content_type)
-                
+                # 如果找到匹配的内容类型，立即返回（与extract_daily_content保持一致）
                 if identified_type == expected_type:
                     self.logger.info(f"通过内容识别找到{content_type}评论ID: {comment.id}")
                     return comment.id
-            
-            # 第二步：基于关键词特征进行匹配
-            for comment in content_comments:
-                comment_body_lower = comment.body.lower()
                 
-                # 日报内容特征检测
-                if content_type == 'daily_summary':
-                    daily_report_indicators = [
-                        '日报', '日结', '今日完成', '今日工作', '工作总结', 
-                        '完成情况', '今天完成', '今天做了', '进度汇报', '遇到问题',
-                        '今日进展', '工作内容', '完成任务', '今日总结'
-                    ]
-                    # 检查是否包含日报特征且不包含日计划特征
-                    has_report_features = any(indicator in comment_body_lower for indicator in daily_report_indicators)
-                    has_plan_features = any(keyword in comment_body_lower for keyword in ['明日计划', '明天计划', '日计划', '待办', '下一步'])
+                # 如果内容识别不确定，回退到关键词匹配（与extract_daily_content保持一致）
+                if identified_type == 'unknown':
+                    comment_content = comment.body.lower()
                     
-                    if has_report_features and not has_plan_features:
-                        self.logger.info(f"基于内容特征匹配找到日报评论ID: {comment.id}")
-                        return comment.id
-                
-                # 日计划内容特征检测
-                elif content_type == 'daily_plan':
-                    daily_plan_indicators = [
-                        '日计划', '明日计划', '明天计划', '下一步', '待办事项',
-                        '明日安排', '明天安排', '计划完成', '准备做', '明日目标',
-                        '明天目标', '下步计划', '今日计划'
-                    ]
-                    # 检查是否包含日计划特征且不包含日报特征
-                    has_plan_features = any(indicator in comment_body_lower for indicator in daily_plan_indicators)
-                    has_report_features = any(keyword in comment_body_lower for keyword in ['今日完成', '今天完成', '工作总结', '完成情况'])
-                    
-                    if has_plan_features and not has_report_features:
-                        self.logger.info(f"基于内容特征匹配找到日计划评论ID: {comment.id}")
-                        return comment.id
-            
-            # 第三步：基于讨论标题和评论位置判断
-            title_lower = current_discussion.title.lower()
-            
-            # 如果标题包含"日报"关键词，通常第一条是日报，第二条是日计划
-            if '日报' in title_lower or '日结' in title_lower:
-                if content_type == 'daily_summary' and len(content_comments) >= 1:
-                    self.logger.info(f"基于标题匹配找到日报评论ID: {content_comments[0].id}")
-                    return content_comments[0].id
-                elif content_type == 'daily_plan' and len(content_comments) >= 2:
-                    self.logger.info(f"基于标题匹配找到日计划评论ID: {content_comments[1].id}")
-                    return content_comments[1].id
-                # 特殊情况：如果只有一条评论且是查找日计划，可能日报还未发布
-                elif content_type == 'daily_plan' and len(content_comments) == 1:
-                    # 检查这条评论是否更像日计划
-                    comment_body_lower = content_comments[0].body.lower()
-                    plan_keywords = ['计划', '明日', '明天', '下一步', '待办', '准备']
-                    if any(keyword in comment_body_lower for keyword in plan_keywords):
-                        self.logger.info(f"基于内容判断找到日计划评论ID: {content_comments[0].id}")
-                        return content_comments[0].id
-            
-            # 如果标题包含"计划"关键词，通常第一条是日计划，第二条是日报
-            elif '计划' in title_lower:
-                if content_type == 'daily_plan' and len(content_comments) >= 1:
-                    self.logger.info(f"基于标题匹配找到日计划评论ID: {content_comments[0].id}")
-                    return content_comments[0].id
-                elif content_type == 'daily_summary' and len(content_comments) >= 2:
-                    self.logger.info(f"基于标题匹配找到日报评论ID: {content_comments[1].id}")
-                    return content_comments[1].id
-            
-            # 第四步：默认兜底规则 - 基于时间顺序和内容长度判断
-            else:
-                if len(content_comments) >= 2:
-                    # 如果有两条或更多评论，尝试智能判断
-                    first_comment = content_comments[0].body.lower()
-                    second_comment = content_comments[1].body.lower()
-                    
-                    # 判断第一条评论更像日报还是日计划
-                    first_is_plan = any(keyword in first_comment for keyword in ['计划', '明日', '明天', '下一步', '待办'])
-                    first_is_report = any(keyword in first_comment for keyword in ['完成', '今日', '今天', '总结', '进度'])
-                    
-                    if content_type == 'daily_plan':
-                        if first_is_plan and not first_is_report:
-                            self.logger.info(f"智能判断找到日计划评论ID: {content_comments[0].id}")
-                            return content_comments[0].id
-                        elif len(content_comments) >= 2:
-                            self.logger.info(f"默认规则找到日计划评论ID: {content_comments[1].id}")
-                            return content_comments[1].id
-                    elif content_type == 'daily_summary':
-                        if first_is_report and not first_is_plan:
-                            self.logger.info(f"智能判断找到日报评论ID: {content_comments[0].id}")
-                            return content_comments[0].id
-                        elif len(content_comments) >= 2:
-                            self.logger.info(f"默认规则找到日报评论ID: {content_comments[1].id}")
-                            return content_comments[1].id
-                
-                # 如果只有一条评论，根据内容判断
-                elif len(content_comments) == 1:
-                    comment_body_lower = content_comments[0].body.lower()
-                    if content_type == 'daily_plan':
-                        plan_indicators = ['计划', '明日', '明天', '下一步', '待办', '准备', '安排']
-                        if any(indicator in comment_body_lower for indicator in plan_indicators):
-                            self.logger.info(f"单条评论内容判断找到日计划评论ID: {content_comments[0].id}")
-                            return content_comments[0].id
-                    elif content_type == 'daily_summary':
-                        report_indicators = ['完成', '今日', '今天', '总结', '进度', '工作', '任务']
-                        if any(indicator in comment_body_lower for indicator in report_indicators):
-                            self.logger.info(f"单条评论内容判断找到日报评论ID: {content_comments[0].id}")
-                            return content_comments[0].id
+                    if content_type == 'daily_summary':
+                        # 识别日报关键词（与extract_daily_content保持一致）
+                        daily_report_keywords = [
+                            '日报', '日结', '今日完成', '今日工作', '工作总结', 
+                            '完成情况', '今天完成', '今天做了', '进度', '遇到问题',
+                            '今日进展', '工作内容'
+                        ]
                         
+                        if any(keyword in comment_content for keyword in daily_report_keywords):
+                            self.logger.info(f"通过关键词找到日报评论ID: {comment.id}")
+                            return comment.id
+                    
+                    elif content_type == 'daily_plan':
+                        # 识别日计划关键词（与extract_daily_content保持一致）
+                        daily_plan_keywords = [
+                            '日计划', '明日计划', '明天计划', '下一步', '待办',
+                            '明日安排', '明天安排', '计划完成', '准备'
+                        ]
+                        
+                        if any(keyword in comment_content for keyword in daily_plan_keywords):
+                            self.logger.info(f"通过关键词找到日计划评论ID: {comment.id}")
+                            return comment.id
+                    
+                    # 如果是日报且评论内容较长且包含工作相关词汇（与extract_daily_content保持一致）
+                    if content_type == 'daily_summary' and len(comment.body) > 50:
+                        work_keywords = ['完成', '开发', '测试', '修复', '问题', '功能', '任务', '会议']
+                        if sum(1 for keyword in work_keywords if keyword in comment_content) >= 2:
+                            self.logger.info(f"根据内容特征识别为日报评论ID: {comment.id}")
+                            return comment.id
+            
             self.logger.warning(f"在讨论#{discussion_number}中未找到{content_type}类型的评论")
             return None
+                    
+
             
         except Exception as e:
             self.logger.error(f"查找评论ID时出错: {e}")
             return None
+    
+    async def _find_corresponding_daily_plan(self, discussion: 'DiscussionData', daily_summary: str) -> tuple[str, Optional[str]]:
+        """
+        为日报分析找到对应的当天计划内容和评论ID
+        优先使用最新的日计划评论，确保与extract_daily_content方法的逻辑一致
+        
+        Args:
+            discussion: 讨论数据
+            daily_summary: 日报内容
+            
+        Returns:
+            tuple[str, Optional[str]]: (对应的日计划内容, 评论ID)，如果找不到则返回('', None)
+        """
+        try:
+            # 直接使用extract_daily_content获取最新的日计划内容和ID
+            content_data = await self.github_client.extract_daily_content(discussion)
+            daily_plan = content_data.get('daily_plan', '')
+            
+            if daily_plan:
+                # 获取最新的日计划评论ID
+                daily_plan_comment_id = await self._find_content_comment_id(discussion.number, 'daily_plan')
+                if daily_plan_comment_id:
+                    self.logger.info(f"找到最新的日计划，评论ID: {daily_plan_comment_id}")
+                    return daily_plan, daily_plan_comment_id
+            
+            self.logger.warning("未找到日计划内容")
+            return '', None
+            
+
+            
+        except Exception as e:
+            self.logger.error(f"查找对应日计划时出错: {e}")
+            return '', None
+    
+    async def _find_latest_daily_plan(self, discussion: 'DiscussionData') -> str:
+        """
+        查找最新的日计划内容作为备选
+        
+        Args:
+            discussion: 讨论数据
+            
+        Returns:
+            str: 最新的日计划内容，如果找不到则返回空字符串
+        """
+        try:
+            content_data = await self.github_client.extract_daily_content(discussion)
+            return content_data.get('daily_plan', '')
+        except Exception as e:
+            self.logger.error(f"查找最新日计划时出错: {e}")
+            return ''
     
     async def _find_plan_discussion(self, daily_plan: str) -> Optional[int]:
         """
@@ -575,6 +582,139 @@ class DailyAnalyzer:
         
         # 如果相似度超过30%，认为是相似内容
         return similarity > 0.3
+    
+    async def _perform_deviation_analysis(self, discussion_number: int, daily_summary: str, 
+                                        daily_plan: str, weekly_plan: str) -> Dict[str, Any]:
+        """
+        执行偏离分析
+        
+        Args:
+            discussion_number: 讨论编号
+            daily_summary: 日报内容
+            daily_plan: 日计划内容
+            weekly_plan: 周计划内容
+            
+        Returns:
+            Dict[str, Any]: 偏离分析结果
+        """
+        try:
+            self.logger.debug(f"开始执行偏离分析 #{discussion_number}")
+            
+            # 获取用户ID（从讨论作者获取）
+            discussions = await self.github_client.get_daily_discussions()
+            user_id = None
+            for disc in discussions:
+                if disc.number == discussion_number:
+                    user_id = disc.author
+                    break
+            
+            if not user_id:
+                self.logger.warning(f"无法获取讨论 #{discussion_number} 的作者信息")
+                return {'success': False, 'error': '无法获取用户信息'}
+            
+            # 使用增强版GLM客户端进行偏离分析
+            deviation_analysis_result = await self.enhanced_glm_client.analyze_deviation_with_structured_output(
+                daily_summary=daily_summary,
+                daily_plan=daily_plan,
+                user_id=user_id,
+                weekly_plan=weekly_plan,
+                discussion_number=discussion_number
+            )
+            
+            if not deviation_analysis_result:
+                self.logger.warning(f"偏离分析返回空结果 #{discussion_number}")
+                return {'success': False, 'error': '偏离分析返回空结果'}
+            
+            # 从structured_data中创建DeviationAnalysisResult对象
+            if hasattr(deviation_analysis_result, 'structured_data') and deviation_analysis_result.structured_data:
+                from ..models.data_models import DeviationAnalysisResult
+                
+                # 创建DeviationAnalysisResult对象用于记录
+                deviation_result_obj = DeviationAnalysisResult(
+                    user_id=user_id,
+                    analysis_date=date.today().strftime('%Y-%m-%d'),
+                    discussion_number=discussion_number,
+                    score=deviation_analysis_result.structured_data.get('score', 0.0),
+                    completion_rate=deviation_analysis_result.structured_data.get('completion_rate', 0.0),
+                    deviation_reasons=deviation_analysis_result.structured_data.get('deviation_reasons', []),
+                    additional_work=deviation_analysis_result.structured_data.get('additional_work', []),
+                    suggestions=deviation_analysis_result.structured_data.get('suggestions', []),
+                    summary=deviation_analysis_result.structured_data.get('summary', ''),
+                    confidence=deviation_analysis_result.structured_data.get('confidence', 0.0),
+                    is_deviation=deviation_analysis_result.structured_data.get('is_deviation', False)
+                )
+                
+                # 记录分析结果到偏离跟踪器
+                self.deviation_tracker.record_analysis_result(deviation_result_obj)
+            
+            # 检查连续偏离
+            continuous_deviation = self.deviation_tracker.check_continuous_deviation(
+                user_id, date.today().strftime('%Y-%m-%d')
+            )
+            
+            # 从structured_data中获取偏离分析数据
+            structured_data = deviation_analysis_result.structured_data if hasattr(deviation_analysis_result, 'structured_data') else {}
+            
+            result = {
+                'success': True,
+                'user_id': user_id,
+                'deviation_score': structured_data.get('score', 0.0),
+                'completion_rate': structured_data.get('completion_rate', 0.0),
+                'is_deviation': structured_data.get('is_deviation', False),
+                'deviation_reasons': structured_data.get('deviation_reasons', []),
+                'continuous_deviation': continuous_deviation
+            }
+            
+            # 如果存在连续偏离，记录预警
+            if continuous_deviation and continuous_deviation.get('has_continuous_deviation', False):
+                self.deviation_tracker.record_continuous_deviation_alert(
+                    user_id, date.today().strftime('%Y-%m-%d'), continuous_deviation
+                )
+                self.logger.warning(f"用户 {user_id} 存在连续偏离: {continuous_deviation.get('consecutive_days', 0)} 天")
+            
+            return result
+            
+        except Exception as e:
+            self.logger.error(f"偏离分析失败 #{discussion_number}: {e}", exc_info=True)
+            return {
+                'success': False,
+                'error': str(e)
+            }
+    
+    async def get_deviation_summary(self, user_id: Optional[str] = None, days: int = 7) -> Dict[str, Any]:
+        """
+        获取偏离分析摘要
+        
+        Args:
+            user_id: 用户ID，如果为None则获取所有用户
+            days: 查询天数
+            
+        Returns:
+            Dict[str, Any]: 偏离摘要
+        """
+        try:
+            if user_id:
+                # 获取特定用户的偏离摘要
+                user_summary = self.deviation_tracker.get_user_deviation_summary(user_id, days)
+                return {
+                    'success': True,
+                    'user_id': user_id,
+                    'summary': user_summary
+                }
+            else:
+                # 获取所有存在连续偏离的用户
+                continuous_deviation_users = self.deviation_tracker.get_users_with_continuous_deviation()
+                return {
+                    'success': True,
+                    'continuous_deviation_users': continuous_deviation_users
+                }
+                
+        except Exception as e:
+            self.logger.error(f"获取偏离摘要失败: {e}", exc_info=True)
+            return {
+                'success': False,
+                'error': str(e)
+            }
         
     async def analyze_specific_discussion(self, discussion_number: int) -> Dict[str, Any]:
         """

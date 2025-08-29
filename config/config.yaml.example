@@ -53,7 +53,93 @@ performance:
   cache_enabled: true              # 启用缓存
   cache_ttl: 3600                  # 缓存过期时间(秒)
 
-# 通知配置(可选)
+# V2.0 数据存储配置
+storage:
+  type: "json"                     # 存储类型：json
+  base_dir: "data"                 # 数据存储目录
+  file_name: "analysis_data.json"  # 数据文件名
+  backup_enabled: true             # 启用备份
+  backup_count: 5                  # 备份文件数量
+  auto_cleanup_days: 30            # 自动清理天数
+  file_lock_timeout: 10            # 文件锁超时时间(秒)
+  memory_cache_enabled: true       # 启用内存缓存
+  memory_cache_ttl: 300           # 内存缓存过期时间(秒)
+
+# V2.0 偏离检测配置
+deviation_tracking:
+  enabled: true                    # 启用偏离检测
+  continuous_threshold: 3          # 连续偏离阈值(天)
+  check_interval_minutes: 60       # 检查间隔(分钟)
+  deviation_threshold: 0.3         # 偏离度阈值
+  track_recent_days: 7            # 跟踪最近天数
+  auto_alert_enabled: true         # 启用自动预警
+  
+  # 偏离类型权重配置
+  weights:
+    high_deviation: 1.0            # 高偏离权重
+    medium_deviation: 0.7          # 中偏离权重
+    low_deviation: 0.4             # 低偏离权重
+
+# V2.0 智能汇报配置
+report:
+  enabled: true                    # 启用汇报生成
+  default_format: "detailed"       # 默认格式：simple/detailed/card
+  include_suggestions: true        # 包含改进建议
+  include_trends: true             # 包含趋势分析
+  include_statistics: true         # 包含统计信息
+  max_recent_days: 7              # 最大分析天数
+  
+  # GLM增强配置
+  glm_enhancement:
+    enabled: true                  # 启用GLM增强
+    suggestion_prompt: "基于以下偏离分析数据，请提供3-5条具体的改进建议"
+    trend_analysis_prompt: "分析以下数据的趋势变化，提供趋势总结"
+    max_tokens: 1000              # 最大生成token数
+
+# V2.0 飞书群组通知配置
+feishu:
+  enabled: false                  # 启用飞书通知
+  
+  # 飞书开放平台API配置（推荐）
+  api:
+    enabled: true                # 启用API模式
+    app_id: ""                   # 飞书应用ID
+    app_secret: ""               # 飞书应用密钥
+    base_url: "https://open.feishu.cn"  # API基础URL
+    default_chat_id: ""          # 默认群聊ID
+    timeout: 30                  # API请求超时时间(秒)
+    max_retries: 3               # 最大重试次数
+    retry_delay: 1.0             # 重试延迟(秒)
+  
+  # 飞书Webhook配置（备选方案）
+  webhook:
+    enabled: false               # 启用Webhook模式
+    url: ""                      # 飞书机器人Webhook URL
+  
+  # 通用配置
+  mapping_file: "feishu_mapping.json"  # 用户映射文件
+  message_type: "rich_text"        # 消息类型：text/rich_text/card
+  
+  # 通知规则配置
+  notification_hours: [9, 14, 18] # 通知时间(小时)
+  weekend_notifications: false    # 周末通知
+  duplicate_prevention_hours: 4   # 防重复通知时间(小时)
+  max_users_per_message: 10      # 每条消息最大用户数
+  
+  # 消息模板配置
+  templates:
+    simple:
+      title: "📊 工作偏离预警"
+      format: "text"
+    detailed:
+      title: "📊 详细工作偏离分析报告"
+      format: "rich_text"
+    card:
+      title: "📊 工作偏离预警卡片"
+      format: "card"
+      color_theme: "orange"
+
+# 通知配置(兼容旧版本)
 notifications:
   enabled: false                   # 启用通知
   webhook_url: ""                  # Webhook URL

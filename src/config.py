@@ -83,6 +83,36 @@ class PerformanceConfig:
 
 
 @dataclass
+class FeishuApiConfig:
+    """飞书API配置"""
+    enabled: bool = True
+    app_id: str = ""
+    app_secret: str = ""
+    base_url: str = "https://open.feishu.cn"
+    default_chat_id: str = ""
+    timeout: int = 30
+    max_retries: int = 3
+    retry_delay: float = 1.0
+
+
+@dataclass
+class FeishuWebhookConfig:
+    """飞书Webhook配置"""
+    enabled: bool = False
+    url: str = ""
+
+
+@dataclass
+class FeishuConfig:
+    """飞书配置"""
+    enabled: bool = False
+    api: FeishuApiConfig = field(default_factory=FeishuApiConfig)
+    webhook: FeishuWebhookConfig = field(default_factory=FeishuWebhookConfig)
+    mapping_file: str = "feishu_mapping.json"
+    message_type: str = "rich_text"
+
+
+@dataclass
 class NotificationConfig:
     """通知配置"""
     enabled: bool = False
@@ -191,6 +221,31 @@ class Config:
             request_pool_size=performance_config.get('request_pool_size', 10),
             cache_enabled=performance_config.get('cache_enabled', True),
             cache_ttl=performance_config.get('cache_ttl', 3600)
+        )
+        
+        # 飞书配置
+        feishu_config = self._config_data.get('feishu', {})
+        feishu_api_config = feishu_config.get('api', {})
+        feishu_webhook_config = feishu_config.get('webhook', {})
+        
+        self.feishu = FeishuConfig(
+            enabled=self._get_bool_env_or_config('FEISHU_ENABLED', feishu_config.get('enabled', False)),
+            api=FeishuApiConfig(
+                enabled=feishu_api_config.get('enabled', True),
+                app_id=self._get_env_or_config('FEISHU_APP_ID', feishu_api_config.get('app_id', '')),
+                app_secret=self._get_env_or_config('FEISHU_APP_SECRET', feishu_api_config.get('app_secret', '')),
+                base_url=feishu_api_config.get('base_url', 'https://open.feishu.cn'),
+                default_chat_id=self._get_env_or_config('FEISHU_DEFAULT_CHAT_ID', feishu_api_config.get('default_chat_id', '')),
+                timeout=feishu_api_config.get('timeout', 30),
+                max_retries=feishu_api_config.get('max_retries', 3),
+                retry_delay=feishu_api_config.get('retry_delay', 1.0)
+            ),
+            webhook=FeishuWebhookConfig(
+                enabled=feishu_webhook_config.get('enabled', False),
+                url=self._get_env_or_config('FEISHU_WEBHOOK_URL', feishu_webhook_config.get('url', ''))
+            ),
+            mapping_file=feishu_config.get('mapping_file', 'feishu_mapping.json'),
+            message_type=feishu_config.get('message_type', 'rich_text')
         )
         
         # 通知配置

@@ -1,0 +1,583 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>偏离检测测试报告</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 300;
+        }
+        .header .subtitle {
+            margin-top: 10px;
+            opacity: 0.9;
+            font-size: 1.1em;
+        }
+        .content {
+            padding: 30px;
+        }
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .summary-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border-left: 4px solid #667eea;
+        }
+        .summary-card h3 {
+            margin: 0 0 10px 0;
+            color: #666;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .summary-card .value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #333;
+        }
+        .success { border-left-color: #28a745; }
+        .warning { border-left-color: #ffc107; }
+        .danger { border-left-color: #dc3545; }
+        .info { border-left-color: #17a2b8; }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        .section h2 {
+            color: #333;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .chart-container {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .test-results {
+            overflow-x: auto;
+        }
+        .test-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .test-table th,
+        .test-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .test-table th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+            color: #555;
+        }
+        .test-table tr:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .status-badge {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .status-pass {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .status-fail {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        
+        .recommendations {
+            background: #e7f3ff;
+            border: 1px solid #b3d9ff;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .recommendations h3 {
+            color: #0066cc;
+            margin-top: 0;
+        }
+        .recommendations ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .recommendations li {
+            margin-bottom: 8px;
+        }
+        
+        .footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            border-top: 1px solid #ddd;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background-color: #e9ecef;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #28a745, #20c997);
+            transition: width 0.3s ease;
+        }
+        
+        .error-details {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 4px;
+            padding: 10px;
+            margin-top: 5px;
+            font-size: 0.9em;
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>偏离检测测试报告</h1>
+            <div class="subtitle">2025-08-28 11:56:31</div>
+        </div>
+        
+        <div class="content">
+            <!-- 汇总信息 -->
+            <div class="section">
+                <h2>测试汇总</h2>
+                <div class="summary-grid">
+                    <div class="summary-card info">
+                        <h3>总测试数</h3>
+                        <div class="value">14</div>
+                    </div>
+                    <div class="summary-card success">
+                        <h3>通过测试</h3>
+                        <div class="value">10</div>
+                    </div>
+                    <div class="summary-card danger">
+                        <h3>失败测试</h3>
+                        <div class="value">4</div>
+                    </div>
+                    <div class="summary-card warning">
+                        <h3>成功率</h3>
+                        <div class="value">71.4%</div>
+                    </div>
+                    <div class="summary-card info">
+                        <h3>执行时间</h3>
+                        <div class="value">0.01s</div>
+                    </div>
+                </div>
+                
+                <div class="chart-container">
+                    <h3>成功率进度</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 71.42857142857143%"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 场景统计 -->
+            <div class="section">
+                <h2>场景测试统计</h2>
+                <div class="test-results">
+                    <table class="test-table">
+                        <thead>
+                            <tr>
+                                <th>场景</th>
+                                <th>总数</th>
+                                <th>通过</th>
+                                <th>失败</th>
+                                <th>成功率</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <tr>
+                                <td>excellent</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>100.0%</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>good</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>100.0%</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>moderate</td>
+                                <td>2</td>
+                                <td>2</td>
+                                <td>0</td>
+                                <td>100.0%</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>significant</td>
+                                <td>2</td>
+                                <td>2</td>
+                                <td>0</td>
+                                <td>100.0%</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>severe</td>
+                                <td>2</td>
+                                <td>2</td>
+                                <td>0</td>
+                                <td>100.0%</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>mixed</td>
+                                <td>6</td>
+                                <td>2</td>
+                                <td>4</td>
+                                <td>33.3%</td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- 测试类型分析 -->
+            <div class="section">
+                <h2>测试类型分析</h2>
+                <div class="test-results">
+                    <table class="test-table">
+                        <thead>
+                            <tr>
+                                <th>测试类型</th>
+                                <th>总数</th>
+                                <th>通过</th>
+                                <th>失败</th>
+                                <th>成功率</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <tr>
+                                <td>single_result</td>
+                                <td>5</td>
+                                <td>5</td>
+                                <td>0</td>
+                                <td>100.0%</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>continuous_deviation</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>0</td>
+                                <td>100.0%</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>pattern_change</td>
+                                <td>3</td>
+                                <td>1</td>
+                                <td>2</td>
+                                <td>33.3%</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>mixed_scenario</td>
+                                <td>3</td>
+                                <td>1</td>
+                                <td>2</td>
+                                <td>33.3%</td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- 详细测试结果 -->
+            <div class="section">
+                <h2>详细测试结果</h2>
+                <div class="test-results">
+                    <table class="test-table">
+                        <thead>
+                            <tr>
+                                <th>测试名称</th>
+                                <th>类型</th>
+                                <th>场景</th>
+                                <th>用户ID</th>
+                                <th>状态</th>
+                                <th>执行时间</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <tr>
+                                <td>优秀表现测试</td>
+                                <td>single_result</td>
+                                <td>excellent</td>
+                                <td>test_user_excellent</td>
+                                <td>
+                                    <span class="status-badge status-pass">
+                                        通过
+                                    </span>
+                                    
+                                </td>
+                                <td>0.000s</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>良好表现测试</td>
+                                <td>single_result</td>
+                                <td>good</td>
+                                <td>test_user_good</td>
+                                <td>
+                                    <span class="status-badge status-pass">
+                                        通过
+                                    </span>
+                                    
+                                </td>
+                                <td>0.000s</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>中等偏离测试</td>
+                                <td>single_result</td>
+                                <td>moderate</td>
+                                <td>test_user_moderate</td>
+                                <td>
+                                    <span class="status-badge status-pass">
+                                        通过
+                                    </span>
+                                    
+                                </td>
+                                <td>0.000s</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>显著偏离测试</td>
+                                <td>single_result</td>
+                                <td>significant</td>
+                                <td>test_user_significant</td>
+                                <td>
+                                    <span class="status-badge status-pass">
+                                        通过
+                                    </span>
+                                    
+                                </td>
+                                <td>0.000s</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>严重偏离测试</td>
+                                <td>single_result</td>
+                                <td>severe</td>
+                                <td>test_user_severe</td>
+                                <td>
+                                    <span class="status-badge status-pass">
+                                        通过
+                                    </span>
+                                    
+                                </td>
+                                <td>0.000s</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>连续2天中等偏离</td>
+                                <td>continuous_deviation</td>
+                                <td>moderate</td>
+                                <td>test_user_continuous_2</td>
+                                <td>
+                                    <span class="status-badge status-pass">
+                                        通过
+                                    </span>
+                                    
+                                </td>
+                                <td>0.000s</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>连续3天显著偏离</td>
+                                <td>continuous_deviation</td>
+                                <td>significant</td>
+                                <td>test_user_continuous_3</td>
+                                <td>
+                                    <span class="status-badge status-pass">
+                                        通过
+                                    </span>
+                                    
+                                </td>
+                                <td>0.000s</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>连续5天严重偏离</td>
+                                <td>continuous_deviation</td>
+                                <td>severe</td>
+                                <td>test_user_continuous_5</td>
+                                <td>
+                                    <span class="status-badge status-pass">
+                                        通过
+                                    </span>
+                                    
+                                </td>
+                                <td>0.001s</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>从优秀到严重偏离</td>
+                                <td>pattern_change</td>
+                                <td>mixed</td>
+                                <td>test_user_pattern_1</td>
+                                <td>
+                                    <span class="status-badge status-fail">
+                                        失败
+                                    </span>
+                                    
+                                </td>
+                                <td>0.000s</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>从严重偏离到优秀</td>
+                                <td>pattern_change</td>
+                                <td>mixed</td>
+                                <td>test_user_pattern_2</td>
+                                <td>
+                                    <span class="status-badge status-fail">
+                                        失败
+                                    </span>
+                                    
+                                </td>
+                                <td>0.000s</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>稳定的良好表现</td>
+                                <td>pattern_change</td>
+                                <td>mixed</td>
+                                <td>test_user_pattern_3</td>
+                                <td>
+                                    <span class="status-badge status-pass">
+                                        通过
+                                    </span>
+                                    
+                                </td>
+                                <td>0.000s</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>多用户混合场景_user_mixed_1</td>
+                                <td>mixed_scenario</td>
+                                <td>mixed</td>
+                                <td>user_mixed_1</td>
+                                <td>
+                                    <span class="status-badge status-pass">
+                                        通过
+                                    </span>
+                                    
+                                </td>
+                                <td>0.000s</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>多用户混合场景_user_mixed_2</td>
+                                <td>mixed_scenario</td>
+                                <td>mixed</td>
+                                <td>user_mixed_2</td>
+                                <td>
+                                    <span class="status-badge status-fail">
+                                        失败
+                                    </span>
+                                    
+                                </td>
+                                <td>0.000s</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>多用户混合场景_user_mixed_3</td>
+                                <td>mixed_scenario</td>
+                                <td>mixed</td>
+                                <td>user_mixed_3</td>
+                                <td>
+                                    <span class="status-badge status-fail">
+                                        失败
+                                    </span>
+                                    
+                                </td>
+                                <td>0.001s</td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- 改进建议 -->
+            <div class="section">
+                <div class="recommendations">
+                    <h3>改进建议</h3>
+                    <ul>
+                        
+                        <li>测试成功率较低，建议检查偏离检测算法的阈值设置</li>
+                        
+                        <li>以下场景测试成功率较低: mixed，建议重点关注</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>报告生成时间: 2025-08-28 11:56:31 | 配置文件: 默认配置</p>
+        </div>
+    </div>
+</body>
+</html>
+        

@@ -76,7 +76,7 @@ class GLMClient:
         # 尝试从Langfuse获取提示词
         prompts = self._get_prompt_from_langfuse('daily_report_analysis', variables)
         
-        if prompts:
+        if prompts and prompts.get('user_prompt') and prompts['user_prompt'].strip():
             # 使用Langfuse提示词
             system_prompt = prompts['system_prompt']
             user_prompt = prompts['user_prompt']
@@ -156,7 +156,7 @@ class GLMClient:
         # 尝试从Langfuse获取提示词
         prompts = self._get_prompt_from_langfuse('daily_plan_analysis', variables)
         
-        if prompts:
+        if prompts and prompts.get('user_prompt') and prompts['user_prompt'].strip():
             # 使用Langfuse提示词
             system_prompt = prompts['system_prompt']
             user_prompt = prompts['user_prompt']
@@ -244,6 +244,25 @@ class GLMClient:
         """
         if temperature is None:
             temperature = self.config.temperature
+        
+        # 添加详细的提示词使用日志
+        self.logger.info(f"🔍 GLM API调用详情:")
+        self.logger.info(f"📝 System Prompt长度: {len(system_prompt)}")
+        self.logger.info(f"📝 User Prompt长度: {len(user_prompt)}")
+        self.logger.info(f"📄 System Prompt预览: {system_prompt[:100]}...")
+        self.logger.info(f"📄 User Prompt预览: {user_prompt[:100]}...")
+        
+        # 处理Langfuse返回的空system_prompt情况
+        # 如果system_prompt为空或只包含空白字符，使用默认的system_prompt
+        if not system_prompt or not system_prompt.strip():
+            system_prompt = "你是一个专业的工作分析助手，请根据用户的要求进行分析。"
+            self.logger.info("📝 使用默认System Prompt（Langfuse提示词中system_prompt为空）")
+        else:
+            self.logger.info("✅ 使用自定义System Prompt")
+        
+        # 确保user_prompt不为空
+        if not user_prompt or not user_prompt.strip():
+            raise ValueError("user_prompt不能为空")
             
         try:
             response = self.client.chat.completions.create(
