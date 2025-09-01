@@ -11873,3 +11873,405 @@ AttributeError: 'DailyAnalyzer' object has no attribute 'extract_daily_content'
 2025-08-29 17:49:44 - src.analyzers.daily_analyzer - INFO - 开始执行 2025-08-29 的日结分析任务
 2025-08-29 17:49:44 - src.clients.github_client - INFO - 正在获取 2025-08-29 的日结讨论...
 2025-08-29 17:49:46 - src.clients.github_client - INFO - 总共获取到 70 个讨论
+2025-08-29 18:35:53 - src.utils.logger - INFO - 日志系统初始化完成 - 级别: INFO, 文件: logs/analyzer.log
+2025-08-29 18:36:56 - src.utils.logger - INFO - 日志系统初始化完成 - 级别: INFO, 文件: logs/analyzer.log
+2025-08-29 18:37:48 - src.utils.logger - INFO - 日志系统初始化完成 - 级别: INFO, 文件: logs/analyzer.log
+2025-08-29 18:44:01 - src.utils.logger - INFO - 日志系统初始化完成 - 级别: INFO, 文件: logs/analyzer.log
+2025-08-29 18:44:01 - __main__ - INFO - 🚀 启动通知调度器测试
+2025-08-29 18:44:01 - __main__ - INFO - ✅ 配置加载成功
+2025-08-29 18:44:01 - src.clients.enhanced_feishu_client - INFO - 成功获取tenant_access_token
+2025-08-29 18:44:01 - src.clients.enhanced_feishu_client - INFO - 飞书API连接测试成功
+2025-08-29 18:44:01 - src.schedulers.notification_scheduler - INFO - 飞书API客户端初始化成功
+2025-08-29 18:44:01 - __main__ - INFO - ✅ 通知调度器创建成功
+2025-08-29 18:44:01 - __main__ - INFO - 飞书配置启用状态: True
+2025-08-29 18:44:01 - __main__ - INFO - 管理层通知启用状态: True
+2025-08-29 18:44:01 - __main__ - INFO - 偏离检测启用状态: True
+2025-08-29 18:44:01 - __main__ - INFO - 🔄 启动通知调度器...
+2025-08-29 18:44:01 - src.schedulers.notification_scheduler - INFO - 通知调度器已启动，检查间隔: 3600秒
+2025-08-29 18:44:01 - __main__ - INFO - ⏳ 调度器运行中，等待30秒观察状态...
+2025-08-29 18:44:01 - src.schedulers.notification_scheduler - INFO - 未发现连续偏离情况
+2025-08-29 18:44:31 - __main__ - INFO - 🔍 手动触发偏离检查...
+2025-08-29 18:44:31 - src.schedulers.notification_scheduler - INFO - 手动触发偏离检查: 所有用户
+2025-08-29 18:44:31 - src.schedulers.notification_scheduler - INFO - 未发现连续偏离情况
+2025-08-29 18:44:31 - __main__ - INFO - 检查结果: {'timestamp': '2025-08-29T18:44:31.958180', 'checked_users': [], 'notifications_sent': [], 'errors': []}
+2025-08-29 18:44:31 - __main__ - INFO - 通知统计: {'total_notifications': 0, 'recent_notifications': 0, 'user_stats': {}, 'scheduler_running': True, 'last_cleanup': None, 'config': {'check_interval_minutes': 60, 'notification_hours': [9, 14, 18], 'weekend_notifications': False, 'duplicate_prevention_hours': 4}}
+2025-08-29 18:44:31 - __main__ - INFO - ⏳ 继续运行60秒...
+2025-08-29 18:45:31 - __main__ - INFO - 🛑 停止通知调度器...
+2025-08-29 18:45:36 - src.schedulers.notification_scheduler - INFO - 通知调度器已停止
+2025-08-29 18:45:36 - __main__ - INFO - ✅ 测试完成
+2025-09-01 11:49:31 - src.utils.logger - INFO - 日志系统初始化完成 - 级别: INFO, 文件: logs/analyzer.log
+2025-09-01 11:49:31 - __main__ - INFO - 测试增强版飞书客户端...
+2025-09-01 11:49:31 - __main__ - ERROR - 增强版飞书客户端测试错误: EnhancedFeishuClient.__init__() missing 1 required positional argument: 'config'
+2025-09-01 11:49:31 - __main__ - INFO - 开始测试通知发送功能...
+2025-09-01 11:49:31 - __main__ - ERROR - 测试过程中发生错误: NotificationScheduler.__init__() missing 1 required positional argument: 'config'
+2025-09-01 11:50:55 - src.utils.logger - INFO - 日志系统初始化完成 - 级别: INFO, 文件: logs/analyzer.log
+2025-09-01 11:50:55 - __main__ - INFO - 测试增强版飞书客户端...
+2025-09-01 11:50:55 - __main__ - ERROR - 增强版飞书客户端测试错误: 'Config' object has no attribute 'timeout'
+2025-09-01 11:50:55 - __main__ - INFO - 开始测试通知发送功能...
+2025-09-01 11:50:55 - __main__ - ERROR - 测试过程中发生错误: 'Config' object has no attribute 'get'
+2025-09-01 11:53:06 - src.utils.logger - INFO - 日志系统初始化完成 - 级别: INFO, 文件: logs/analyzer.log
+2025-09-01 11:53:06 - __main__ - INFO - 测试增强版飞书客户端...
+2025-09-01 11:53:06 - __main__ - INFO - 尝试发送消息到用户: ou_f5b08b34bd2703e5c901bacf71709c77
+2025-09-01 11:53:06 - src.clients.enhanced_feishu_client - INFO - 成功获取tenant_access_token
+2025-09-01 11:53:06 - src.clients.enhanced_feishu_client - ERROR - HTTP错误 400: {'code': 99992402, 'msg': 'field validation failed', 'error': {'log_id': '20250901115305AD870CCFF50346F1CF68', 'troubleshooter': '排查建议查看(Troubleshooting suggestions): https://open.feishu.cn/search?from=openapi&log_id=20250901115305AD870CCFF50346F1CF68&code=99992402&method_id=6936075528891154460', 'field_violations': [{'field': 'receive_id_type', 'description': 'receive_id_type is required'}]}}
+2025-09-01 11:53:06 - src.clients.enhanced_feishu_client - WARNING - API请求失败 (尝试 1/3): HTTP 400: field validation failed
+2025-09-01 11:53:07 - src.clients.enhanced_feishu_client - ERROR - HTTP错误 400: {'code': 99992402, 'msg': 'field validation failed', 'error': {'log_id': '20250901115306C3693BFB6DFA6337CFD6', 'troubleshooter': '排查建议查看(Troubleshooting suggestions): https://open.feishu.cn/search?from=openapi&log_id=20250901115306C3693BFB6DFA6337CFD6&code=99992402&method_id=6936075528891154460', 'field_violations': [{'description': 'receive_id_type is required', 'field': 'receive_id_type'}]}}
+2025-09-01 11:53:07 - src.clients.enhanced_feishu_client - WARNING - API请求失败 (尝试 2/3): HTTP 400: field validation failed
+2025-09-01 11:53:09 - src.clients.enhanced_feishu_client - ERROR - HTTP错误 400: {'code': 99992402, 'msg': 'field validation failed', 'error': {'log_id': '20250901115308AD870CCFF50346F1D196', 'troubleshooter': '排查建议查看(Troubleshooting suggestions): https://open.feishu.cn/search?from=openapi&log_id=20250901115308AD870CCFF50346F1D196&code=99992402&method_id=6936075528891154460', 'field_violations': [{'field': 'receive_id_type', 'description': 'receive_id_type is required'}]}}
+2025-09-01 11:53:09 - src.clients.enhanced_feishu_client - WARNING - API请求失败 (尝试 3/3): HTTP 400: field validation failed
+2025-09-01 11:53:09 - src.clients.enhanced_feishu_client - ERROR - 发送用户消息失败: HTTP 400: field validation failed
+2025-09-01 11:53:09 - __main__ - ERROR - ❌ 增强版飞书客户端测试失败！
+2025-09-01 11:53:09 - __main__ - INFO - 开始测试通知发送功能...
+2025-09-01 11:53:10 - src.clients.enhanced_feishu_client - INFO - 成功获取tenant_access_token
+2025-09-01 11:53:10 - src.clients.enhanced_feishu_client - INFO - 飞书API连接测试成功
+2025-09-01 11:53:10 - src.schedulers.notification_scheduler - INFO - 飞书API客户端初始化成功
+2025-09-01 11:53:10 - __main__ - INFO - 模拟偏离数据: {'user': 'XK-UI', 'consecutive_days': 3, 'avg_score': 2.5, 'type': '高风险偏离', 'details': {'recent_scores': [2.0, 2.5, 3.0], 'trend': '上升', 'risk_level': 'high'}}
+2025-09-01 11:53:10 - __main__ - INFO - 准备发送测试通知...
+2025-09-01 11:53:10 - src.schedulers.notification_scheduler - WARNING - enhanced_feishu_client未配置，无法发送个人通知
+2025-09-01 11:53:10 - src.clients.enhanced_feishu_client - INFO - FeishuClientWrapper不支持管理层通知，请使用原有FeishuClient
+2025-09-01 11:53:10 - src.schedulers.notification_scheduler - INFO - 管理层通知发送成功: XK-UI
+2025-09-01 11:53:10 - __main__ - ERROR - ❌ 通知发送失败！
+2025-09-01 11:54:28 - src.utils.logger - INFO - 日志系统初始化完成 - 级别: INFO, 文件: logs/analyzer.log
+2025-09-01 11:54:28 - __main__ - INFO - 测试增强版飞书客户端...
+2025-09-01 11:54:28 - __main__ - INFO - 尝试发送消息到用户: ou_f5b08b34bd2703e5c901bacf71709c77
+2025-09-01 11:54:28 - src.clients.enhanced_feishu_client - INFO - 成功获取tenant_access_token
+2025-09-01 11:54:29 - src.clients.enhanced_feishu_client - ERROR - HTTP错误 400: {'code': 99992351, 'msg': 'The request you send is not a valid {open_id} or not exists, and the example value is {ou_da5****************dfe}. Invalid ids: [ou_f5b08b34bd2703e5c901bacf71709c77] . Please see field_violations for details and refer to API documentation to correct accordingly and resubmit', 'error': {'message': 'Refer to the documentation to fix the error: https://open.feishu.cn/document/uAjLw4CM/ugTN1YjL4UTN24CO1UjN/trouble-shooting/how-to-obtain-openid', 'log_id': '20250901115427C0EF24625192E741B8A8', 'troubleshooter': '排查建议查看(Troubleshooting suggestions): https://open.feishu.cn/search?from=openapi&log_id=20250901115427C0EF24625192E741B8A8&code=99992351&method_id=6936075528891154460', 'field_violations': [{'field': 'receive_id', 'value': 'ou_f5b08b34bd2703e5c901bacf71709c77', 'description': 'id not exist'}]}}
+2025-09-01 11:54:29 - src.clients.enhanced_feishu_client - ERROR - 发送用户消息失败: HTTP 400: The request you send is not a valid {open_id} or not exists, and the example value is {ou_da5****************dfe}. Invalid ids: [ou_f5b08b34bd2703e5c901bacf71709c77] . Please see field_violations for details and refer to API documentation to correct accordingly and resubmit
+2025-09-01 11:54:29 - __main__ - ERROR - ❌ 增强版飞书客户端测试失败！
+2025-09-01 11:54:29 - __main__ - INFO - 开始测试通知发送功能...
+2025-09-01 11:54:29 - src.clients.enhanced_feishu_client - INFO - 成功获取tenant_access_token
+2025-09-01 11:54:29 - src.clients.enhanced_feishu_client - INFO - 飞书API连接测试成功
+2025-09-01 11:54:29 - src.schedulers.notification_scheduler - INFO - 飞书API客户端初始化成功
+2025-09-01 11:54:29 - __main__ - INFO - 模拟偏离数据: {'user': 'XK-UI', 'consecutive_days': 3, 'avg_score': 2.5, 'type': '高风险偏离', 'details': {'recent_scores': [2.0, 2.5, 3.0], 'trend': '上升', 'risk_level': 'high'}}
+2025-09-01 11:54:29 - __main__ - INFO - 准备发送测试通知...
+2025-09-01 11:54:29 - src.schedulers.notification_scheduler - WARNING - enhanced_feishu_client未配置，无法发送个人通知
+2025-09-01 11:54:29 - src.clients.enhanced_feishu_client - INFO - FeishuClientWrapper不支持管理层通知，请使用原有FeishuClient
+2025-09-01 11:54:29 - src.schedulers.notification_scheduler - INFO - 管理层通知发送成功: XK-UI
+2025-09-01 11:54:29 - __main__ - ERROR - ❌ 通知发送失败！
+2025-09-01 11:55:24 - src.utils.logger - INFO - 日志系统初始化完成 - 级别: INFO, 文件: logs/analyzer.log
+2025-09-01 11:55:24 - __main__ - INFO - 测试增强版飞书客户端...
+2025-09-01 11:55:24 - __main__ - INFO - 尝试发送消息到用户: ou_f5b08b34bd2703e5c901bacf71709c77
+2025-09-01 11:55:25 - src.clients.enhanced_feishu_client - INFO - 成功获取tenant_access_token
+2025-09-01 11:55:25 - src.clients.enhanced_feishu_client - ERROR - HTTP错误 400: {'code': 99992351, 'msg': 'The request you send is not a valid {open_id} or not exists, and the example value is {ou_da5****************dfe}. Invalid ids: [ou_f5b08b34bd2703e5c901bacf71709c77] . Please see field_violations for details and refer to API documentation to correct accordingly and resubmit', 'error': {'message': 'Refer to the documentation to fix the error: https://open.feishu.cn/document/uAjLw4CM/ugTN1YjL4UTN24CO1UjN/trouble-shooting/how-to-obtain-openid', 'log_id': '202509011155241D68FD476DF6216FD5E6', 'troubleshooter': '排查建议查看(Troubleshooting suggestions): https://open.feishu.cn/search?from=openapi&log_id=202509011155241D68FD476DF6216FD5E6&code=99992351&method_id=6936075528891154460', 'field_violations': [{'field': 'receive_id', 'value': 'ou_f5b08b34bd2703e5c901bacf71709c77', 'description': 'id not exist'}]}}
+2025-09-01 11:55:25 - src.clients.enhanced_feishu_client - ERROR - 发送用户消息失败: HTTP 400: The request you send is not a valid {open_id} or not exists, and the example value is {ou_da5****************dfe}. Invalid ids: [ou_f5b08b34bd2703e5c901bacf71709c77] . Please see field_violations for details and refer to API documentation to correct accordingly and resubmit
+2025-09-01 11:55:25 - __main__ - ERROR - ❌ 增强版飞书客户端测试失败！
+2025-09-01 11:55:25 - __main__ - INFO - 开始测试通知发送功能...
+2025-09-01 11:55:25 - src.clients.enhanced_feishu_client - INFO - 成功获取tenant_access_token
+2025-09-01 11:55:25 - src.clients.enhanced_feishu_client - INFO - 飞书API连接测试成功
+2025-09-01 11:55:25 - src.schedulers.notification_scheduler - INFO - 飞书API客户端初始化成功
+2025-09-01 11:55:25 - __main__ - INFO - 模拟偏离数据: {'user': 'XK-UI', 'consecutive_days': 3, 'avg_score': 2.5, 'type': '高风险偏离', 'details': {'recent_scores': [2.0, 2.5, 3.0], 'trend': '上升', 'risk_level': 'high'}}
+2025-09-01 11:55:25 - __main__ - INFO - 准备发送测试通知...
+2025-09-01 11:55:26 - src.clients.enhanced_feishu_client - INFO - 成功发送消息到用户 ou_e19b2c4da6d4495bc3cda17503e48c3f
+2025-09-01 11:55:26 - src.schedulers.notification_scheduler - INFO - 飞书个人通知发送成功: XK-UI (ou_e19b2c4da6d4495bc3cda17503e48c3f)
+2025-09-01 11:55:26 - src.clients.enhanced_feishu_client - INFO - FeishuClientWrapper不支持管理层通知，请使用原有FeishuClient
+2025-09-01 11:55:26 - src.schedulers.notification_scheduler - INFO - 管理层通知发送成功: XK-UI
+2025-09-01 11:55:26 - __main__ - INFO - ✅ 通知发送成功！
+2025-09-01 12:00:46 - src.utils.logger - INFO - 日志系统初始化完成 - 级别: INFO, 文件: logs/analyzer.log
+2025-09-01 12:00:46 - __main__ - INFO - 开始测试管理层通知功能...
+2025-09-01 12:00:46 - __main__ - ERROR - ❌ 管理层通知测试失败: 'Config' object has no attribute 'get'
+2025-09-01 12:00:48 - __main__ - INFO - 开始测试向Leejhua发送个人通知...
+2025-09-01 12:00:48 - __main__ - ERROR - ❌ 个人通知测试失败: 'Config' object has no attribute 'get'
+2025-09-01 12:01:37 - src.utils.logger - INFO - 日志系统初始化完成 - 级别: INFO, 文件: logs/analyzer.log
+2025-09-01 12:01:37 - __main__ - INFO - 开始测试管理层通知功能...
+2025-09-01 12:01:37 - src.clients.enhanced_feishu_client - INFO - 成功获取tenant_access_token
+2025-09-01 12:01:37 - src.clients.enhanced_feishu_client - INFO - 飞书API连接测试成功
+2025-09-01 12:01:37 - src.schedulers.notification_scheduler - INFO - 飞书API客户端初始化成功
+2025-09-01 12:01:37 - __main__ - INFO - 创建模拟偏离数据: TestUser - 严重偏离
+2025-09-01 12:01:37 - __main__ - INFO - 偏离值: 85.5, 阈值: 50.0
+2025-09-01 12:01:37 - __main__ - INFO - 发送管理层通知...
+2025-09-01 12:01:37 - __main__ - ERROR - ❌ 管理层通知测试失败: 'NotificationScheduler' object has no attribute 'send_management_notification'
+2025-09-01 12:01:39 - __main__ - INFO - 开始测试向Leejhua发送个人通知...
+2025-09-01 12:01:39 - src.clients.enhanced_feishu_client - INFO - 成功获取tenant_access_token
+2025-09-01 12:01:39 - src.clients.enhanced_feishu_client - INFO - 飞书API连接测试成功
+2025-09-01 12:01:39 - src.schedulers.notification_scheduler - INFO - 飞书API客户端初始化成功
+2025-09-01 12:01:39 - __main__ - INFO - 创建针对Leejhua的偏离数据: Leejhua - 轻微偏离
+2025-09-01 12:01:39 - __main__ - INFO - 发送个人通知给Leejhua...
+2025-09-01 12:01:39 - __main__ - ERROR - ❌ 个人通知测试失败: 'NotificationScheduler' object has no attribute 'send_personal_notification'
+2025-09-01 12:02:36 - src.utils.logger - INFO - 日志系统初始化完成 - 级别: INFO, 文件: logs/analyzer.log
+2025-09-01 12:02:36 - __main__ - INFO - 开始测试管理层通知功能...
+2025-09-01 12:02:37 - src.clients.enhanced_feishu_client - INFO - 成功获取tenant_access_token
+2025-09-01 12:02:37 - src.clients.enhanced_feishu_client - INFO - 飞书API连接测试成功
+2025-09-01 12:02:37 - src.schedulers.notification_scheduler - INFO - 飞书API客户端初始化成功
+2025-09-01 12:02:37 - __main__ - INFO - 创建模拟偏离数据: TestUser - 严重偏离
+2025-09-01 12:02:37 - __main__ - INFO - 偏离值: 85.5, 阈值: 50.0
+2025-09-01 12:02:37 - __main__ - INFO - 触发通知检查...
+2025-09-01 12:02:37 - src.schedulers.notification_scheduler - INFO - 手动触发偏离检查: TestUser
+2025-09-01 12:02:37 - __main__ - WARNING - ⚠️ 管理层通知未发送: {'user': 'TestUser', 'error': "'coroutine' object has no attribute 'get'"}
+2025-09-01 12:02:39 - __main__ - INFO - 开始测试向Leejhua发送个人通知...
+2025-09-01 12:02:39 - src.clients.enhanced_feishu_client - INFO - 成功获取tenant_access_token
+2025-09-01 12:02:39 - src.clients.enhanced_feishu_client - INFO - 飞书API连接测试成功
+2025-09-01 12:02:39 - src.schedulers.notification_scheduler - INFO - 飞书API客户端初始化成功
+2025-09-01 12:02:39 - __main__ - INFO - 创建针对Leejhua的偏离数据: Leejhua - 轻微偏离
+2025-09-01 12:02:39 - __main__ - INFO - 发送个人通知给Leejhua...
+2025-09-01 12:02:39 - src.schedulers.notification_scheduler - INFO - 手动触发偏离检查: Leejhua
+2025-09-01 12:02:39 - __main__ - WARNING - ⚠️ 个人通知未发送: {'user': 'Leejhua', 'error': "'coroutine' object has no attribute 'get'"}
+2025-09-01 12:05:08 - src.utils.logger - INFO - 日志系统初始化完成 - 级别: INFO, 文件: logs/analyzer.log
+2025-09-01 12:05:08 - __main__ - ERROR - ❌ 管理层通知测试失败: 'AnalysisConfig' object has no attribute 'continuous_threshold'
+2025-09-01 12:05:10 - __main__ - ERROR - ❌ 个人通知测试失败: 'AnalysisConfig' object has no attribute 'continuous_threshold'
+2025-09-01 12:05:55 - src.utils.logger - INFO - 日志系统初始化完成 - 级别: INFO, 文件: logs/analyzer.log
+2025-09-01 12:05:55 - src.clients.enhanced_feishu_client - INFO - 成功获取tenant_access_token
+2025-09-01 12:05:55 - src.clients.enhanced_feishu_client - INFO - 飞书API连接测试成功
+2025-09-01 12:05:55 - src.schedulers.notification_scheduler - INFO - 飞书API客户端初始化成功
+2025-09-01 12:05:55 - __main__ - INFO - 通知调度器初始化成功
+2025-09-01 12:05:55 - __main__ - INFO - 创建模拟偏离数据: TestUser - 严重偏离
+2025-09-01 12:05:55 - __main__ - INFO - 偏离值: 85.5, 阈值: 50.0
+2025-09-01 12:05:55 - __main__ - INFO - 生成偏离汇报...
+2025-09-01 12:05:55 - src.generators.report_generator - ERROR - 生成汇报失败: 'str' object has no attribute 'get'
+2025-09-01 12:05:55 - __main__ - WARNING - ⚠️ 汇报生成失败或飞书客户端未配置: {'success': False, 'content': '', 'error': "'str' object has no attribute 'get'"}
+2025-09-01 12:05:58 - src.clients.enhanced_feishu_client - INFO - 成功获取tenant_access_token
+2025-09-01 12:05:58 - src.clients.enhanced_feishu_client - INFO - 飞书API连接测试成功
+2025-09-01 12:05:58 - src.schedulers.notification_scheduler - INFO - 飞书API客户端初始化成功
+2025-09-01 12:05:58 - __main__ - INFO - 通知调度器初始化成功
+2025-09-01 12:05:58 - __main__ - INFO - 创建针对Leejhua的偏离数据: Leejhua - 轻微偏离
+2025-09-01 12:05:58 - __main__ - INFO - 生成偏离汇报...
+2025-09-01 12:05:58 - src.generators.report_generator - ERROR - 生成汇报失败: 'str' object has no attribute 'get'
+2025-09-01 12:05:58 - __main__ - WARNING - ⚠️ 汇报生成失败或飞书客户端未配置: {'success': False, 'content': '', 'error': "'str' object has no attribute 'get'"}
+2025-09-01 12:07:06 - src.utils.logger - INFO - 日志系统初始化完成 - 级别: INFO, 文件: logs/analyzer.log
+2025-09-01 12:07:07 - src.clients.enhanced_feishu_client - INFO - 成功获取tenant_access_token
+2025-09-01 12:07:07 - src.clients.enhanced_feishu_client - INFO - 飞书API连接测试成功
+2025-09-01 12:07:07 - src.schedulers.notification_scheduler - INFO - 飞书API客户端初始化成功
+2025-09-01 12:07:07 - __main__ - INFO - 通知调度器初始化成功
+2025-09-01 12:07:07 - __main__ - ERROR - ❌ 管理层通知测试失败: name 'timedelta' is not defined
+2025-09-01 12:07:09 - src.clients.enhanced_feishu_client - INFO - 成功获取tenant_access_token
+2025-09-01 12:07:09 - src.clients.enhanced_feishu_client - INFO - 飞书API连接测试成功
+2025-09-01 12:07:09 - src.schedulers.notification_scheduler - INFO - 飞书API客户端初始化成功
+2025-09-01 12:07:09 - __main__ - INFO - 通知调度器初始化成功
+2025-09-01 12:07:09 - __main__ - INFO - 创建针对Leejhua的偏离数据: Leejhua - 轻微偏离
+2025-09-01 12:07:09 - __main__ - INFO - 生成偏离汇报...
+2025-09-01 12:07:09 - __main__ - INFO - 发送个人通知给Leejhua...
+2025-09-01 12:07:09 - src.clients.enhanced_feishu_client - INFO - 成功发送消息到用户 ou_c9cf0adee8b20877a1bb793df7a364bb
+2025-09-01 12:07:09 - src.schedulers.notification_scheduler - INFO - 飞书个人通知发送成功: Leejhua (ou_c9cf0adee8b20877a1bb793df7a364bb)
+2025-09-01 12:07:09 - src.clients.enhanced_feishu_client - INFO - FeishuClientWrapper不支持管理层通知，请使用原有FeishuClient
+2025-09-01 12:07:09 - src.schedulers.notification_scheduler - INFO - 管理层通知发送成功: Leejhua
+2025-09-01 12:07:09 - __main__ - INFO - ✅ 个人通知发送成功
+2025-09-01 12:07:28 - src.utils.logger - INFO - 日志系统初始化完成 - 级别: INFO, 文件: logs/analyzer.log
+2025-09-01 12:07:29 - src.clients.enhanced_feishu_client - INFO - 成功获取tenant_access_token
+2025-09-01 12:07:29 - src.clients.enhanced_feishu_client - INFO - 飞书API连接测试成功
+2025-09-01 12:07:29 - src.schedulers.notification_scheduler - INFO - 飞书API客户端初始化成功
+2025-09-01 12:07:29 - __main__ - INFO - 通知调度器初始化成功
+2025-09-01 12:07:29 - __main__ - INFO - 创建模拟偏离数据: TestUser - 严重偏离
+2025-09-01 12:07:29 - __main__ - INFO - 偏离值: 85.5, 阈值: 50.0
+2025-09-01 12:07:29 - __main__ - INFO - 生成偏离汇报...
+2025-09-01 12:07:29 - __main__ - INFO - 发送管理层通知...
+2025-09-01 12:07:29 - src.schedulers.notification_scheduler - WARNING - 未找到用户 TestUser 的飞书映射，跳过个人通知
+2025-09-01 12:07:29 - __main__ - WARNING - ⚠️ 管理层通知发送失败
+2025-09-01 12:07:31 - src.clients.enhanced_feishu_client - INFO - 成功获取tenant_access_token
+2025-09-01 12:07:31 - src.clients.enhanced_feishu_client - INFO - 飞书API连接测试成功
+2025-09-01 12:07:31 - src.schedulers.notification_scheduler - INFO - 飞书API客户端初始化成功
+2025-09-01 12:07:31 - __main__ - INFO - 通知调度器初始化成功
+2025-09-01 12:07:31 - __main__ - INFO - 创建针对Leejhua的偏离数据: Leejhua - 轻微偏离
+2025-09-01 12:07:31 - __main__ - INFO - 生成偏离汇报...
+2025-09-01 12:07:31 - __main__ - INFO - 发送个人通知给Leejhua...
+2025-09-01 12:07:32 - src.clients.enhanced_feishu_client - INFO - 成功发送消息到用户 ou_c9cf0adee8b20877a1bb793df7a364bb
+2025-09-01 12:07:32 - src.schedulers.notification_scheduler - INFO - 飞书个人通知发送成功: Leejhua (ou_c9cf0adee8b20877a1bb793df7a364bb)
+2025-09-01 12:07:32 - src.clients.enhanced_feishu_client - INFO - FeishuClientWrapper不支持管理层通知，请使用原有FeishuClient
+2025-09-01 12:07:32 - src.schedulers.notification_scheduler - INFO - 管理层通知发送成功: Leejhua
+2025-09-01 12:07:32 - __main__ - INFO - ✅ 个人通知发送成功
+2025-09-01 12:08:12 - src.utils.logger - INFO - 日志系统初始化完成 - 级别: INFO, 文件: logs/analyzer.log
+2025-09-01 12:08:12 - src.clients.enhanced_feishu_client - INFO - 成功获取tenant_access_token
+2025-09-01 12:08:12 - src.clients.enhanced_feishu_client - INFO - 飞书API连接测试成功
+2025-09-01 12:08:12 - src.schedulers.notification_scheduler - INFO - 飞书API客户端初始化成功
+2025-09-01 12:08:12 - __main__ - INFO - 通知调度器初始化成功
+2025-09-01 12:08:12 - __main__ - INFO - 创建模拟偏离数据: Leejhua - 严重偏离
+2025-09-01 12:08:12 - __main__ - INFO - 偏离值: 85.5, 阈值: 50.0
+2025-09-01 12:08:12 - __main__ - INFO - 生成偏离汇报...
+2025-09-01 12:08:12 - __main__ - INFO - 发送管理层通知...
+2025-09-01 12:08:12 - src.schedulers.notification_scheduler - WARNING - 未找到用户 TestUser 的飞书映射，跳过个人通知
+2025-09-01 12:08:12 - __main__ - WARNING - ⚠️ 管理层通知发送失败
+2025-09-01 12:08:15 - src.clients.enhanced_feishu_client - INFO - 成功获取tenant_access_token
+2025-09-01 12:08:15 - src.clients.enhanced_feishu_client - INFO - 飞书API连接测试成功
+2025-09-01 12:08:15 - src.schedulers.notification_scheduler - INFO - 飞书API客户端初始化成功
+2025-09-01 12:08:15 - __main__ - INFO - 通知调度器初始化成功
+2025-09-01 12:08:15 - __main__ - INFO - 创建针对Leejhua的偏离数据: Leejhua - 轻微偏离
+2025-09-01 12:08:15 - __main__ - INFO - 生成偏离汇报...
+2025-09-01 12:08:15 - __main__ - INFO - 发送个人通知给Leejhua...
+2025-09-01 12:08:15 - src.clients.enhanced_feishu_client - INFO - 成功发送消息到用户 ou_c9cf0adee8b20877a1bb793df7a364bb
+2025-09-01 12:08:15 - src.schedulers.notification_scheduler - INFO - 飞书个人通知发送成功: Leejhua (ou_c9cf0adee8b20877a1bb793df7a364bb)
+2025-09-01 12:08:15 - src.clients.enhanced_feishu_client - INFO - FeishuClientWrapper不支持管理层通知，请使用原有FeishuClient
+2025-09-01 12:08:15 - src.schedulers.notification_scheduler - INFO - 管理层通知发送成功: Leejhua
+2025-09-01 12:08:15 - __main__ - INFO - ✅ 个人通知发送成功
+2025-09-01 12:09:20 - src.utils.logger - INFO - 日志系统初始化完成 - 级别: INFO, 文件: logs/analyzer.log
+2025-09-01 12:09:20 - src.clients.enhanced_feishu_client - INFO - 成功获取tenant_access_token
+2025-09-01 12:09:20 - src.clients.enhanced_feishu_client - INFO - 飞书API连接测试成功
+2025-09-01 12:09:20 - src.schedulers.notification_scheduler - INFO - 飞书API客户端初始化成功
+2025-09-01 12:09:20 - __main__ - INFO - 通知调度器初始化成功
+2025-09-01 12:09:20 - __main__ - INFO - 创建模拟偏离数据: Leejhua - 严重偏离
+2025-09-01 12:09:20 - __main__ - INFO - 偏离值: 85.5, 阈值: 50.0
+2025-09-01 12:09:20 - __main__ - INFO - 生成偏离汇报...
+2025-09-01 12:09:20 - __main__ - ERROR - ❌ 管理层通知测试失败: slice(None, 100, None)
+2025-09-01 12:09:22 - src.clients.enhanced_feishu_client - INFO - 成功获取tenant_access_token
+2025-09-01 12:09:22 - src.clients.enhanced_feishu_client - INFO - 飞书API连接测试成功
+2025-09-01 12:09:22 - src.schedulers.notification_scheduler - INFO - 飞书API客户端初始化成功
+2025-09-01 12:09:22 - __main__ - INFO - 通知调度器初始化成功
+2025-09-01 12:09:22 - __main__ - INFO - 创建针对Leejhua的偏离数据: Leejhua - 轻微偏离
+2025-09-01 12:09:22 - __main__ - INFO - 生成偏离汇报...
+2025-09-01 12:09:22 - __main__ - INFO - 发送个人通知给Leejhua...
+2025-09-01 12:09:23 - src.clients.enhanced_feishu_client - INFO - 成功发送消息到用户 ou_c9cf0adee8b20877a1bb793df7a364bb
+2025-09-01 12:09:23 - src.schedulers.notification_scheduler - INFO - 飞书个人通知发送成功: Leejhua (ou_c9cf0adee8b20877a1bb793df7a364bb)
+2025-09-01 12:09:23 - src.clients.enhanced_feishu_client - INFO - FeishuClientWrapper不支持管理层通知，请使用原有FeishuClient
+2025-09-01 12:09:23 - src.schedulers.notification_scheduler - INFO - 管理层通知发送成功: Leejhua
+2025-09-01 12:09:23 - __main__ - INFO - ✅ 个人通知发送成功
+2025-09-01 12:09:40 - src.utils.logger - INFO - 日志系统初始化完成 - 级别: INFO, 文件: logs/analyzer.log
+2025-09-01 12:09:40 - src.clients.enhanced_feishu_client - INFO - 成功获取tenant_access_token
+2025-09-01 12:09:40 - src.clients.enhanced_feishu_client - INFO - 飞书API连接测试成功
+2025-09-01 12:09:40 - src.schedulers.notification_scheduler - INFO - 飞书API客户端初始化成功
+2025-09-01 12:09:40 - __main__ - INFO - 通知调度器初始化成功
+2025-09-01 12:09:40 - __main__ - INFO - 创建模拟偏离数据: Leejhua - 严重偏离
+2025-09-01 12:09:40 - __main__ - INFO - 偏离值: 85.5, 阈值: 50.0
+2025-09-01 12:09:40 - __main__ - INFO - 生成偏离汇报...
+2025-09-01 12:09:40 - __main__ - INFO - 汇报生成结果: {'success': True, 'content': '🚨 **工作执行偏离详细报告**\n\n**相关人员**：@Leejhua\n**报告时间**：2025-09-01 12:09:40\n*...
+2025-09-01 12:09:40 - __main__ - INFO - 发送管理层通知...
+2025-09-01 12:09:40 - src.schedulers.notification_scheduler - ERROR - 格式化个人消息时发生错误: 'dict' object has no attribute 'split'
+2025-09-01 12:09:40 - src.clients.enhanced_feishu_client - INFO - 成功发送消息到用户 ou_c9cf0adee8b20877a1bb793df7a364bb
+2025-09-01 12:09:40 - src.schedulers.notification_scheduler - INFO - 飞书个人通知发送成功: Leejhua (ou_c9cf0adee8b20877a1bb793df7a364bb)
+2025-09-01 12:09:40 - src.clients.enhanced_feishu_client - INFO - FeishuClientWrapper不支持管理层通知，请使用原有FeishuClient
+2025-09-01 12:09:40 - src.schedulers.notification_scheduler - INFO - 管理层通知发送成功: Leejhua
+2025-09-01 12:09:40 - __main__ - INFO - ✅ 管理层通知发送成功
+2025-09-01 12:09:43 - src.clients.enhanced_feishu_client - INFO - 成功获取tenant_access_token
+2025-09-01 12:09:43 - src.clients.enhanced_feishu_client - INFO - 飞书API连接测试成功
+2025-09-01 12:09:43 - src.schedulers.notification_scheduler - INFO - 飞书API客户端初始化成功
+2025-09-01 12:09:43 - __main__ - INFO - 通知调度器初始化成功
+2025-09-01 12:09:43 - __main__ - INFO - 创建针对Leejhua的偏离数据: Leejhua - 轻微偏离
+2025-09-01 12:09:43 - __main__ - INFO - 生成偏离汇报...
+2025-09-01 12:09:43 - __main__ - INFO - 发送个人通知给Leejhua...
+2025-09-01 12:09:43 - src.clients.enhanced_feishu_client - INFO - 成功发送消息到用户 ou_c9cf0adee8b20877a1bb793df7a364bb
+2025-09-01 12:09:43 - src.schedulers.notification_scheduler - INFO - 飞书个人通知发送成功: Leejhua (ou_c9cf0adee8b20877a1bb793df7a364bb)
+2025-09-01 12:09:43 - src.clients.enhanced_feishu_client - INFO - FeishuClientWrapper不支持管理层通知，请使用原有FeishuClient
+2025-09-01 12:09:43 - src.schedulers.notification_scheduler - INFO - 管理层通知发送成功: Leejhua
+2025-09-01 12:09:43 - __main__ - INFO - ✅ 个人通知发送成功
+2025-09-01 12:19:44 - src.utils.logger - INFO - 日志系统初始化完成 - 级别: INFO, 文件: logs/analyzer.log
+2025-09-01 12:19:44 - src.clients.enhanced_feishu_client - INFO - 成功获取tenant_access_token
+2025-09-01 12:19:44 - src.clients.enhanced_feishu_client - INFO - 飞书API连接测试成功
+2025-09-01 12:19:44 - src.schedulers.notification_scheduler - INFO - 飞书API客户端初始化成功
+2025-09-01 12:19:44 - __main__ - INFO - 通知调度器初始化成功
+2025-09-01 12:19:44 - __main__ - INFO - 创建模拟偏离数据: Leejhua - 严重偏离
+2025-09-01 12:19:44 - __main__ - INFO - 偏离值: 85.5, 阈值: 50.0
+2025-09-01 12:19:44 - __main__ - INFO - 生成偏离汇报...
+2025-09-01 12:19:44 - __main__ - INFO - 汇报生成结果: {'success': True, 'content': '🚨 **工作执行偏离详细报告**\n\n**相关人员**：@Leejhua\n**报告时间**：2025-09-01 12:19:44\n*...
+2025-09-01 12:19:44 - __main__ - INFO - 发送管理层通知...
+2025-09-01 12:19:45 - src.clients.enhanced_feishu_client - INFO - 成功发送消息到用户 ou_c9cf0adee8b20877a1bb793df7a364bb
+2025-09-01 12:19:45 - src.schedulers.notification_scheduler - INFO - 飞书个人通知发送成功: Leejhua (ou_c9cf0adee8b20877a1bb793df7a364bb)
+2025-09-01 12:19:45 - src.clients.enhanced_feishu_client - INFO - FeishuClientWrapper不支持管理层通知，请使用原有FeishuClient
+2025-09-01 12:19:45 - src.schedulers.notification_scheduler - INFO - 管理层通知发送成功: Leejhua
+2025-09-01 12:19:45 - __main__ - INFO - ✅ 管理层通知发送成功
+2025-09-01 12:19:47 - src.clients.enhanced_feishu_client - INFO - 成功获取tenant_access_token
+2025-09-01 12:19:47 - src.clients.enhanced_feishu_client - INFO - 飞书API连接测试成功
+2025-09-01 12:19:47 - src.schedulers.notification_scheduler - INFO - 飞书API客户端初始化成功
+2025-09-01 12:19:47 - __main__ - INFO - 通知调度器初始化成功
+2025-09-01 12:19:47 - __main__ - INFO - 创建针对Leejhua的偏离数据: Leejhua - 轻微偏离
+2025-09-01 12:19:47 - __main__ - INFO - 生成偏离汇报...
+2025-09-01 12:19:47 - __main__ - INFO - 发送个人通知给Leejhua...
+2025-09-01 12:19:48 - src.clients.enhanced_feishu_client - INFO - 成功发送消息到用户 ou_c9cf0adee8b20877a1bb793df7a364bb
+2025-09-01 12:19:48 - src.schedulers.notification_scheduler - INFO - 飞书个人通知发送成功: Leejhua (ou_c9cf0adee8b20877a1bb793df7a364bb)
+2025-09-01 12:19:48 - src.clients.enhanced_feishu_client - INFO - FeishuClientWrapper不支持管理层通知，请使用原有FeishuClient
+2025-09-01 12:19:48 - src.schedulers.notification_scheduler - INFO - 管理层通知发送成功: Leejhua
+2025-09-01 12:19:48 - __main__ - INFO - ✅ 个人通知发送成功
+2025-09-01 12:21:41 - src.utils.logger - INFO - 日志系统初始化完成 - 级别: INFO, 文件: logs/analyzer.log
+2025-09-01 12:21:41 - src.clients.enhanced_feishu_client - INFO - 成功获取tenant_access_token
+2025-09-01 12:21:41 - src.clients.enhanced_feishu_client - INFO - 飞书API连接测试成功
+2025-09-01 12:21:41 - src.schedulers.notification_scheduler - INFO - 飞书API客户端初始化成功
+2025-09-01 12:21:41 - __main__ - INFO - 通知调度器初始化成功
+2025-09-01 12:21:41 - __main__ - INFO - 创建模拟偏离数据: Leejhua - 严重偏离
+2025-09-01 12:21:41 - __main__ - INFO - 偏离值: 85.5, 阈值: 50.0
+2025-09-01 12:21:41 - __main__ - INFO - 生成偏离汇报...
+2025-09-01 12:21:41 - __main__ - INFO - 汇报生成结果: {'success': True, 'content': '🚨 **工作执行偏离详细报告**\n\n**相关人员**：@Leejhua\n**报告时间**：2025-09-01 12:21:41\n*...
+2025-09-01 12:21:41 - __main__ - INFO - 发送管理层通知...
+2025-09-01 12:21:42 - src.clients.enhanced_feishu_client - INFO - 成功发送消息到用户 ou_c9cf0adee8b20877a1bb793df7a364bb
+2025-09-01 12:21:42 - src.schedulers.notification_scheduler - INFO - 飞书个人通知发送成功: Leejhua (ou_c9cf0adee8b20877a1bb793df7a364bb)
+2025-09-01 12:21:42 - src.clients.enhanced_feishu_client - INFO - FeishuClientWrapper不支持管理层通知，请使用原有FeishuClient
+2025-09-01 12:21:42 - src.schedulers.notification_scheduler - INFO - 管理层通知发送成功: Leejhua
+2025-09-01 12:21:42 - __main__ - INFO - ✅ 管理层通知发送成功
+2025-09-01 12:21:44 - src.clients.enhanced_feishu_client - INFO - 成功获取tenant_access_token
+2025-09-01 12:21:44 - src.clients.enhanced_feishu_client - INFO - 飞书API连接测试成功
+2025-09-01 12:21:44 - src.schedulers.notification_scheduler - INFO - 飞书API客户端初始化成功
+2025-09-01 12:21:44 - __main__ - INFO - 通知调度器初始化成功
+2025-09-01 12:21:44 - __main__ - INFO - 创建针对Leejhua的偏离数据: Leejhua - 轻微偏离
+2025-09-01 12:21:44 - __main__ - INFO - 生成偏离汇报...
+2025-09-01 12:21:44 - __main__ - INFO - 发送个人通知给Leejhua...
+2025-09-01 12:21:45 - src.clients.enhanced_feishu_client - INFO - 成功发送消息到用户 ou_c9cf0adee8b20877a1bb793df7a364bb
+2025-09-01 12:21:45 - src.schedulers.notification_scheduler - INFO - 飞书个人通知发送成功: Leejhua (ou_c9cf0adee8b20877a1bb793df7a364bb)
+2025-09-01 12:21:45 - src.clients.enhanced_feishu_client - INFO - FeishuClientWrapper不支持管理层通知，请使用原有FeishuClient
+2025-09-01 12:21:45 - src.schedulers.notification_scheduler - INFO - 管理层通知发送成功: Leejhua
+2025-09-01 12:21:45 - __main__ - INFO - ✅ 个人通知发送成功
+2025-09-01 12:22:23 - src.utils.logger - INFO - 日志系统初始化完成 - 级别: INFO, 文件: logs/analyzer.log
+2025-09-01 12:22:24 - src.clients.enhanced_feishu_client - INFO - 成功获取tenant_access_token
+2025-09-01 12:22:24 - src.clients.enhanced_feishu_client - INFO - 飞书API连接测试成功
+2025-09-01 12:22:24 - src.schedulers.notification_scheduler - INFO - 飞书API客户端初始化成功
+2025-09-01 12:22:24 - __main__ - INFO - 通知调度器初始化成功
+2025-09-01 12:22:24 - __main__ - INFO - 创建模拟偏离数据: Leejhua - 严重偏离
+2025-09-01 12:22:24 - __main__ - INFO - 偏离值: 85.5, 阈值: 50.0
+2025-09-01 12:22:24 - __main__ - INFO - 生成偏离汇报...
+2025-09-01 12:22:24 - __main__ - INFO - 汇报生成结果: {'success': True, 'content': '🚨 **工作执行偏离详细报告**\n\n**相关人员**：@Leejhua\n**报告时间**：2025-09-01 12:22:24\n*...
+2025-09-01 12:22:24 - __main__ - INFO - 发送管理层通知...
+2025-09-01 12:22:24 - src.clients.enhanced_feishu_client - INFO - 成功发送消息到用户 ou_c9cf0adee8b20877a1bb793df7a364bb
+2025-09-01 12:22:24 - src.schedulers.notification_scheduler - INFO - 飞书个人通知发送成功: Leejhua (ou_c9cf0adee8b20877a1bb793df7a364bb)
+2025-09-01 12:22:24 - src.clients.enhanced_feishu_client - INFO - FeishuClientWrapper不支持管理层通知，请使用原有FeishuClient
+2025-09-01 12:22:24 - src.schedulers.notification_scheduler - INFO - 管理层通知发送成功: Leejhua
+2025-09-01 12:22:24 - __main__ - INFO - ✅ 管理层通知发送成功
+2025-09-01 12:22:27 - src.clients.enhanced_feishu_client - INFO - 成功获取tenant_access_token
+2025-09-01 12:22:27 - src.clients.enhanced_feishu_client - INFO - 飞书API连接测试成功
+2025-09-01 12:22:27 - src.schedulers.notification_scheduler - INFO - 飞书API客户端初始化成功
+2025-09-01 12:22:27 - __main__ - INFO - 通知调度器初始化成功
+2025-09-01 12:22:27 - __main__ - INFO - 创建针对Leejhua的偏离数据: Leejhua - 轻微偏离
+2025-09-01 12:22:27 - __main__ - INFO - 生成偏离汇报...
+2025-09-01 12:22:27 - __main__ - ERROR - ❌ 个人通知测试失败: NotificationScheduler._format_personal_message() missing 1 required positional argument: 'deviation'
+2025-09-01 12:22:52 - src.utils.logger - INFO - 日志系统初始化完成 - 级别: INFO, 文件: logs/analyzer.log
+2025-09-01 12:22:53 - src.clients.enhanced_feishu_client - INFO - 成功获取tenant_access_token
+2025-09-01 12:22:53 - src.clients.enhanced_feishu_client - INFO - 飞书API连接测试成功
+2025-09-01 12:22:53 - src.schedulers.notification_scheduler - INFO - 飞书API客户端初始化成功
+2025-09-01 12:22:53 - __main__ - INFO - 通知调度器初始化成功
+2025-09-01 12:22:53 - __main__ - INFO - 创建模拟偏离数据: Leejhua - 严重偏离
+2025-09-01 12:22:53 - __main__ - INFO - 偏离值: 85.5, 阈值: 50.0
+2025-09-01 12:22:53 - __main__ - INFO - 生成偏离汇报...
+2025-09-01 12:22:53 - __main__ - INFO - 汇报生成结果: {'success': True, 'content': '🚨 **工作执行偏离详细报告**\n\n**相关人员**：@Leejhua\n**报告时间**：2025-09-01 12:22:53\n*...
+2025-09-01 12:22:53 - __main__ - INFO - 发送管理层通知...
+2025-09-01 12:22:53 - src.clients.enhanced_feishu_client - INFO - 成功发送消息到用户 ou_c9cf0adee8b20877a1bb793df7a364bb
+2025-09-01 12:22:53 - src.schedulers.notification_scheduler - INFO - 飞书个人通知发送成功: Leejhua (ou_c9cf0adee8b20877a1bb793df7a364bb)
+2025-09-01 12:22:53 - src.clients.enhanced_feishu_client - INFO - FeishuClientWrapper不支持管理层通知，请使用原有FeishuClient
+2025-09-01 12:22:53 - src.schedulers.notification_scheduler - INFO - 管理层通知发送成功: Leejhua
+2025-09-01 12:22:53 - __main__ - INFO - ✅ 管理层通知发送成功
+2025-09-01 12:22:56 - src.clients.enhanced_feishu_client - INFO - 成功获取tenant_access_token
+2025-09-01 12:22:56 - src.clients.enhanced_feishu_client - INFO - 飞书API连接测试成功
+2025-09-01 12:22:56 - src.schedulers.notification_scheduler - INFO - 飞书API客户端初始化成功
+2025-09-01 12:22:56 - __main__ - INFO - 通知调度器初始化成功
+2025-09-01 12:22:56 - __main__ - INFO - 创建针对Leejhua的偏离数据: Leejhua - 轻微偏离
+2025-09-01 12:22:56 - __main__ - INFO - 生成偏离汇报...
+2025-09-01 12:22:56 - __main__ - INFO - 发送个人通知给Leejhua...
+2025-09-01 12:22:56 - src.clients.enhanced_feishu_client - INFO - 成功发送消息到用户 ou_c9cf0adee8b20877a1bb793df7a364bb
+2025-09-01 12:22:56 - src.schedulers.notification_scheduler - INFO - 飞书个人通知发送成功: Leejhua (ou_c9cf0adee8b20877a1bb793df7a364bb)
+2025-09-01 12:22:56 - src.clients.enhanced_feishu_client - INFO - FeishuClientWrapper不支持管理层通知，请使用原有FeishuClient
+2025-09-01 12:22:56 - src.schedulers.notification_scheduler - INFO - 管理层通知发送成功: Leejhua
+2025-09-01 12:22:56 - __main__ - INFO - ✅ 个人通知发送成功
+2025-09-01 12:25:52 - src.utils.logger - INFO - 日志系统初始化完成 - 级别: INFO, 文件: logs/analyzer.log
+2025-09-01 12:25:53 - src.clients.enhanced_feishu_client - INFO - 成功获取tenant_access_token
+2025-09-01 12:25:53 - src.clients.enhanced_feishu_client - INFO - 飞书API连接测试成功
+2025-09-01 12:25:53 - src.schedulers.notification_scheduler - INFO - 飞书API客户端初始化成功
+2025-09-01 12:25:53 - __main__ - INFO - 通知调度器初始化成功
+2025-09-01 12:25:53 - __main__ - INFO - 创建模拟偏离数据: Leejhua - 严重偏离
+2025-09-01 12:25:53 - __main__ - INFO - 偏离值: 85.5, 阈值: 50.0
+2025-09-01 12:25:53 - __main__ - INFO - 生成偏离汇报...
+2025-09-01 12:25:53 - __main__ - INFO - 汇报生成结果: {'success': True, 'content': '🚨 **工作执行偏离详细报告**\n\n**相关人员**：@Leejhua\n**报告时间**：2025-09-01 12:25:53\n*...
+2025-09-01 12:25:53 - __main__ - INFO - 发送管理层通知...
+2025-09-01 12:25:53 - src.clients.enhanced_feishu_client - INFO - 成功发送消息到用户 ou_c9cf0adee8b20877a1bb793df7a364bb
+2025-09-01 12:25:53 - src.schedulers.notification_scheduler - INFO - 飞书个人通知发送成功: Leejhua (ou_c9cf0adee8b20877a1bb793df7a364bb)
+2025-09-01 12:25:54 - src.clients.enhanced_feishu_client - INFO - 成功发送消息到用户 ou_e19b2c4da6d4495bc3cda17503e48c3f
+2025-09-01 12:25:54 - src.clients.enhanced_feishu_client - INFO - 管理层通知发送成功: ou_e19b2c4da6d4495bc3cda17503e48c3f
+2025-09-01 12:25:54 - src.clients.enhanced_feishu_client - INFO - 成功发送消息到用户 ou_c9cf0adee8b20877a1bb793df7a364bb
+2025-09-01 12:25:54 - src.clients.enhanced_feishu_client - INFO - 管理层通知发送成功: ou_c9cf0adee8b20877a1bb793df7a364bb
+2025-09-01 12:25:54 - src.schedulers.notification_scheduler - INFO - 管理层通知发送成功: Leejhua
+2025-09-01 12:25:54 - __main__ - INFO - ✅ 管理层通知发送成功
+2025-09-01 12:25:56 - src.clients.enhanced_feishu_client - INFO - 成功获取tenant_access_token
+2025-09-01 12:25:56 - src.clients.enhanced_feishu_client - INFO - 飞书API连接测试成功
+2025-09-01 12:25:56 - src.schedulers.notification_scheduler - INFO - 飞书API客户端初始化成功
+2025-09-01 12:25:56 - __main__ - INFO - 通知调度器初始化成功
+2025-09-01 12:25:56 - __main__ - INFO - 创建针对Leejhua的偏离数据: Leejhua - 轻微偏离
+2025-09-01 12:25:56 - __main__ - INFO - 生成偏离汇报...
+2025-09-01 12:25:56 - __main__ - INFO - 发送个人通知给Leejhua...
+2025-09-01 12:25:57 - src.clients.enhanced_feishu_client - INFO - 成功发送消息到用户 ou_c9cf0adee8b20877a1bb793df7a364bb
+2025-09-01 12:25:57 - src.schedulers.notification_scheduler - INFO - 飞书个人通知发送成功: Leejhua (ou_c9cf0adee8b20877a1bb793df7a364bb)
+2025-09-01 12:25:57 - src.clients.enhanced_feishu_client - INFO - 成功发送消息到用户 ou_e19b2c4da6d4495bc3cda17503e48c3f
+2025-09-01 12:25:57 - src.clients.enhanced_feishu_client - INFO - 管理层通知发送成功: ou_e19b2c4da6d4495bc3cda17503e48c3f
+2025-09-01 12:25:58 - src.clients.enhanced_feishu_client - INFO - 成功发送消息到用户 ou_c9cf0adee8b20877a1bb793df7a364bb
+2025-09-01 12:25:58 - src.clients.enhanced_feishu_client - INFO - 管理层通知发送成功: ou_c9cf0adee8b20877a1bb793df7a364bb
+2025-09-01 12:25:58 - src.schedulers.notification_scheduler - INFO - 管理层通知发送成功: Leejhua
+2025-09-01 12:25:58 - __main__ - INFO - ✅ 个人通知发送成功

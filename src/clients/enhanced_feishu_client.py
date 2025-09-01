@@ -165,12 +165,29 @@ class EnhancedFeishuClient:
             endpoint = "/open-apis/im/v1/messages"
             data = {
                 "receive_id": user_id,
-                "receive_id_type": id_type,  # user_id, open_id, union_id
                 "msg_type": msg_type,
                 "content": json.dumps(content, ensure_ascii=False)
             }
             
-            result = self._make_api_request("POST", endpoint, data)
+            # 使用查询参数传递receive_id_type
+            url = f"{self.config.base_url}{endpoint}?receive_id_type={id_type}"
+            token = self._get_tenant_access_token()
+            headers = {
+                "Authorization": f"Bearer {token}",
+                "Content-Type": "application/json"
+            }
+            
+            response = self.session.post(url, headers=headers, json=data)
+            result = response.json()
+            
+            if response.status_code != 200:
+                self.logger.error(f"HTTP错误 {response.status_code}: {result}")
+                raise Exception(f"HTTP {response.status_code}: {result.get('msg', result)}")
+            
+            if result.get("code") != 0:
+                self.logger.error(f"API错误码 {result.get('code')}: {result.get('msg')}")
+                raise Exception(f"API请求失败 (错误码: {result.get('code')}): {result.get('msg')}")
+            
             self.logger.info(f"成功发送消息到用户 {user_id}")
             return True
             
@@ -359,3 +376,52 @@ class FeishuClientWrapper:
             results[user] = success
             
         return results
+    
+    def send_management_notification(self, message_content: str) -> bool:
+        """发送管理层通知 - 兼容原有接口"""
+        try:
+            # 读取管理层通知配置
+            import yaml
+            import os
+            
+            config_path = os.path.join(os.getcwd(), 'config', 'config.yaml')
+            if not os.path.exists(config_path):
+                self.logger.warning("配置文件不存在，跳过管理层通知")
+                return True
+                
+            with open(config_path, 'r', encoding='utf-8') as f:
+                config = yaml.safe_load(f)
+            
+            management_config = config.get('management_notification', {})
+            if not management_config.get('enabled', False):
+                self.logger.info("管理层通知未启用")
+                return True
+                
+            user_ids = management_config.get('user_ids', [])
+            if not user_ids:
+                self.logger.warning("未配置管理层用户ID")
+                return True
+            
+            # 发送通知给所有管理层用户
+            success_count = 0
+            for user_id in user_ids:
+                try:
+                    success = self.client.send_text_message(
+                        receive_id=user_id,
+                        text=message_content,
+                        receive_id_type='open_id'
+                    )
+                    if success:
+                        success_count += 1
+                        self.logger.info(f"管理层通知发送成功: {user_id}")
+                    else:
+                        self.logger.error(f"管理层通知发送失败: {user_id}")
+                except Exception as e:
+                    self.logger.error(f"发送管理层通知给 {user_id} 时发生错误: {e}")
+            
+            # 至少有一个成功就认为整体成功
+            return success_count > 0
+            
+        except Exception as e:
+            self.logger.error(f"管理层通知发送失败: {e}")
+            return False

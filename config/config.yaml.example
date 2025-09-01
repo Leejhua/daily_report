@@ -111,6 +111,12 @@ feishu:
     max_retries: 3               # 最大重试次数
     retry_delay: 1.0             # 重试延迟(秒)
   
+  # 管理层通知配置
+  management_users:
+    enabled: false               # 启用管理层通知
+    user_ids: []                 # 管理层用户飞书ID列表，例如: ["ou_xxx", "ou_yyy"]
+    notification_type: "private" # 通知类型：private(私聊)
+  
   # 飞书Webhook配置（备选方案）
   webhook:
     enabled: false               # 启用Webhook模式

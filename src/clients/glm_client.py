@@ -287,7 +287,196 @@ class GLMClient:
         except Exception as e:
             self.logger.error(f"GLM API调用失败: {e}")
             raise
+    
+    def _call_glm_api_sync(self, system_prompt: str, user_prompt: str, temperature: Optional[float] = None) -> str:
+        """
+        同步调用GLM API
+        
+        Args:
+            system_prompt: 系统提示词
+            user_prompt: 用户提示词
+            temperature: 温度参数
             
+        Returns:
+            str: API响应内容
+        """
+        if temperature is None:
+            temperature = self.config.temperature
+        
+        # 添加详细的提示词使用日志
+        self.logger.info(f"🔍 GLM API同步调用详情:")
+        self.logger.info(f"📝 System Prompt长度: {len(system_prompt)}")
+        self.logger.info(f"📝 User Prompt长度: {len(user_prompt)}")
+        self.logger.info(f"📄 System Prompt预览: {system_prompt[:100]}...")
+        self.logger.info(f"📄 User Prompt预览: {user_prompt[:100]}...")
+        
+        # 处理Langfuse返回的空system_prompt情况
+        if not system_prompt or not system_prompt.strip():
+            system_prompt = "你是一个专业的工作分析助手，请根据用户的要求进行分析。"
+            self.logger.info("📝 使用默认System Prompt（Langfuse提示词中system_prompt为空）")
+        else:
+            self.logger.info("✅ 使用自定义System Prompt")
+        
+        # 确保user_prompt不为空
+        if not user_prompt or not user_prompt.strip():
+            raise ValueError("user_prompt不能为空")
+            
+        try:
+            response = self.client.chat.completions.create(
+                model=self.config.model,
+                messages=[
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": user_prompt}
+                ],
+                temperature=temperature,
+                max_tokens=self.config.max_tokens,
+                top_p=self.config.top_p
+            )
+            
+            return response.choices[0].message.content
+            
+        except APITimeoutError as e:
+            self.logger.error(f"GLM API同步调用超时: {e}")
+            raise
+        except APIStatusError as e:
+            self.logger.error(f"GLM API同步调用错误: {e}")
+            raise
+        except Exception as e:
+            self.logger.error(f"GLM API同步调用失败: {e}")
+            raise
+            
+    async def generate_deviation_report(self, user_data: Dict[str, Any], deviation_data: Dict[str, Any], report_type: str = "personal") -> str:
+        """
+        使用LLM生成偏离报告
+        
+        Args:
+            user_data: 用户基本信息
+            deviation_data: 偏离分析数据
+            report_type: 报告类型 ("personal" 或 "management")
+            
+        Returns:
+            str: 生成的报告内容
+        """
+        self.logger.info(f"正在生成{report_type}类型的偏离报告...")
+        
+        # 准备模板变量
+        variables = {
+            'user_name': user_data.get('name', '用户'),
+            'user_id': user_data.get('user_id', ''),
+            'consecutive_days': deviation_data.get('consecutive_days', 0),
+            'avg_score': deviation_data.get('avg_score', 0.0),
+            'deviation_dates': ', '.join(deviation_data.get('deviation_dates', [])),
+            'deviation_scores': ', '.join(map(str, deviation_data.get('deviation_scores', []))),
+            'report_type': report_type,
+            'generation_date': datetime.now().strftime('%Y-%m-%d'),
+            'generation_time': datetime.now().strftime('%H:%M:%S')
+        }
+        
+        # 尝试从Langfuse获取提示词
+        prompt_name = f'deviation_report_{report_type}'
+        prompts = self._get_prompt_from_langfuse(prompt_name, variables)
+        
+        if prompts and prompts.get('user_prompt') and prompts['user_prompt'].strip():
+            # 使用Langfuse提示词
+            system_prompt = prompts['system_prompt']
+            user_prompt = prompts['user_prompt']
+            self.logger.info(f"使用Langfuse提示词生成{report_type}报告")
+        else:
+            # 降级到硬编码提示词
+            if report_type == "personal":
+                system_prompt = """
+【角色】贴心的工作助手
+【任务】为用户生成个性化的偏离提醒报告，语气亲切温暖
+
+【报告要求】
+1. 语气亲切友好，像朋友般关怀
+2. 针对具体偏离情况给出个性化建议
+3. 鼓励用户改进，避免批评语气
+4. 提供实用的改进方法
+
+【输出格式】
+📊 **个人工作提醒**
+
+🔍 **偏离情况**
+[描述具体的偏离情况]
+
+💡 **改进建议**
+[提供3-4条具体的改进建议]
+
+🎯 **下一步行动**
+[建议具体的行动计划]
+
+💪 **鼓励话语**
+[给出正面鼓励]
+"""
+                
+                user_prompt = f"""
+【用户信息】
+姓名：{variables['user_name']}
+连续偏离天数：{variables['consecutive_days']}天
+平均偏离分数：{variables['avg_score']:.1f}分
+偏离日期：{variables['deviation_dates']}
+偏离分数：{variables['deviation_scores']}
+
+请为这位用户生成一份个性化的偏离提醒报告，语气要亲切温暖，重点关注如何帮助用户改进工作状态。
+"""
+            else:  # management
+                system_prompt = """
+【角色】专业的管理分析师
+【任务】为管理层生成简洁专业的团队偏离分析报告
+
+【报告要求】
+1. 语言简洁专业，突出关键信息
+2. 提供数据驱动的分析结果
+3. 给出明确的管理建议
+4. 重点关注团队效率和风险控制
+
+【输出格式】
+📈 **团队状态分析**
+
+⚠️ **关键指标**
+[列出重要的偏离指标]
+
+📊 **影响评估**
+[分析对团队的潜在影响]
+
+🎯 **管理建议**
+[提供2-3条管理层行动建议]
+
+⏰ **建议时间线**
+[建议处理的优先级和时间安排]
+"""
+                
+                user_prompt = f"""
+【团队成员偏离情况】
+成员：{variables['user_name']} (ID: {variables['user_id']})
+连续偏离：{variables['consecutive_days']}天
+平均分数：{variables['avg_score']:.1f}分
+偏离时间：{variables['deviation_dates']}
+分数详情：{variables['deviation_scores']}
+
+请为管理层生成一份简洁专业的团队偏离分析报告，重点关注风险评估和管理建议。
+"""
+            
+            self.logger.info(f"使用降级提示词生成{report_type}报告")
+        
+        try:
+            response = await self._call_glm_api(
+                system_prompt=system_prompt,
+                user_prompt=user_prompt,
+                temperature=0.7 if report_type == "personal" else 0.3
+            )
+            
+            return response
+            
+        except Exception as e:
+            self.logger.error(f"{report_type}报告生成失败: {e}")
+            # 返回简单的错误报告
+            if report_type == "personal":
+                return f"## 📊 个人工作提醒\n\n抱歉，报告生成遇到问题。请联系技术支持。\n\n错误信息: {str(e)}"
+            else:
+                return f"## 📈 团队状态分析\n\n报告生成失败，请检查系统配置。\n\n错误信息: {str(e)}"
+    
     async def test_connection(self) -> bool:
         """
         测试GLM API连接

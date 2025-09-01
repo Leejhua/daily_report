@@ -13,17 +13,61 @@ class FeishuClient:
     负责发送偏离预警通知到飞书群组，支持富文本消息和卡片消息格式。
     """
     
-    def __init__(self, config: Dict[str, Any]):
+    def __init__(self, config):
         """初始化飞书客户端
         
         Args:
-            config: 飞书配置，包含webhook_url、mapping_file等
+            config: 飞书配置，可以是字典或FeishuConfig对象
         """
         self.config = config
-        self.webhook_url = config.get('webhook_url', '')
-        self.mapping_file = config.get('mapping_file', 'feishu_mapping.json')
-        self.timeout = config.get('timeout', 30)
-        self.retry_count = config.get('retry_count', 3)
+        
+        # 处理不同类型的配置对象
+        if hasattr(config, 'api'):
+            # FeishuConfig对象
+            self.webhook_url = getattr(config.webhook, 'url', '') if hasattr(config, 'webhook') else ''
+            self.mapping_file = getattr(config, 'mapping_file', 'feishu_mapping.json')
+            self.timeout = getattr(config.api, 'timeout', 30) if hasattr(config, 'api') else 30
+            self.retry_count = getattr(config.api, 'max_retries', 3) if hasattr(config, 'api') else 3
+            
+            # 飞书开放平台API配置
+            self.app_id = getattr(config.api, 'app_id', '') if hasattr(config, 'api') else ''
+            self.app_secret = getattr(config.api, 'app_secret', '') if hasattr(config, 'api') else ''
+            self.api_base_url = getattr(config.api, 'base_url', 'https://open.feishu.cn') if hasattr(config, 'api') else 'https://open.feishu.cn'
+            self.api_timeout = getattr(config.api, 'timeout', 30) if hasattr(config, 'api') else 30
+            self.api_max_retries = getattr(config.api, 'max_retries', 3) if hasattr(config, 'api') else 3
+            self.api_retry_delay = getattr(config.api, 'retry_delay', 1.0) if hasattr(config, 'api') else 1.0
+            
+            # 默认聊天ID
+            self.default_chat_id = getattr(config.api, 'default_chat_id', '') if hasattr(config, 'api') else ''
+            
+            # 管理层通知配置 - 从全局配置获取
+            self.management_enabled = False
+            self.management_user_ids = []
+        else:
+            # 字典配置
+            self.webhook_url = config.get('webhook_url', '')
+            self.mapping_file = config.get('mapping_file', 'feishu_mapping.json')
+            self.timeout = config.get('timeout', 30)
+            self.retry_count = config.get('retry_count', 3)
+            
+            # 飞书开放平台API配置
+            api_config = config.get('api', {})
+            self.app_id = api_config.get('app_id', '')
+            self.app_secret = api_config.get('app_secret', '')
+            self.api_base_url = api_config.get('base_url', 'https://open.feishu.cn')
+            self.api_timeout = api_config.get('timeout', 30)
+            self.api_max_retries = api_config.get('max_retries', 3)
+            self.api_retry_delay = api_config.get('retry_delay', 1.0)
+            self.default_chat_id = api_config.get('default_chat_id', '')
+            
+            # 管理层通知配置
+            management_config = config.get('management_users', {})
+            self.management_enabled = management_config.get('enabled', False)
+            self.management_user_ids = management_config.get('user_ids', [])
+        
+        # 访问令牌缓存
+        self._access_token = None
+        self._token_expires_at = None
         
         # 加载用户映射配置
         self.user_mapping = self._load_user_mapping()
@@ -35,7 +79,13 @@ class FeishuClient:
             用户映射配置字典
         """
         try:
+            # 如果是相对路径，转换为绝对路径
             mapping_path = Path(self.mapping_file)
+            if not mapping_path.is_absolute():
+                # 使用项目根目录作为基准
+                project_root = Path(__file__).parent.parent.parent
+                mapping_path = project_root / self.mapping_file
+            
             if mapping_path.exists():
                 with open(mapping_path, 'r', encoding='utf-8') as f:
                     return json.load(f)
@@ -55,7 +105,7 @@ class FeishuClient:
         Returns:
             飞书用户ID，如果未找到则返回None
         """
-        user_mappings = self.user_mapping.get('user_mappings', {})
+        user_mappings = self.user_mapping.get('user_mapping', {})
         return user_mappings.get(github_username)
     
     def _build_simple_message(self, report_content: str, users: List[str]) -> Dict[str, Any]:
@@ -392,3 +442,143 @@ class FeishuClient:
             'webhook_configured': bool(self.webhook_url),
             'mapping_file_exists': Path(self.mapping_file).exists()
         }
+    
+    def _get_access_token(self) -> Optional[str]:
+        """获取飞书开放平台访问令牌
+        
+        Returns:
+            访问令牌，获取失败返回None
+        """
+        if not self.app_id or not self.app_secret:
+            logger.error("飞书应用ID或密钥未配置")
+            return None
+        
+        # 检查缓存的令牌是否有效
+        if (self._access_token and self._token_expires_at and 
+            datetime.now().timestamp() < self._token_expires_at):
+            return self._access_token
+        
+        try:
+            url = f"{self.api_base_url}/open-apis/auth/v3/tenant_access_token/internal"
+            payload = {
+                "app_id": self.app_id,
+                "app_secret": self.app_secret
+            }
+            
+            response = requests.post(
+                url,
+                json=payload,
+                timeout=self.api_timeout,
+                headers={'Content-Type': 'application/json'}
+            )
+            
+            if response.status_code == 200:
+                result = response.json()
+                if result.get('code') == 0:
+                    self._access_token = result.get('tenant_access_token')
+                    # 设置过期时间（提前5分钟刷新）
+                    expires_in = result.get('expire', 7200) - 300
+                    self._token_expires_at = datetime.now().timestamp() + expires_in
+                    logger.info("飞书访问令牌获取成功")
+                    return self._access_token
+                else:
+                    logger.error(f"获取飞书访问令牌失败: {result}")
+            else:
+                logger.error(f"飞书API请求失败: {response.status_code} - {response.text}")
+                
+        except Exception as e:
+            logger.error(f"获取飞书访问令牌异常: {e}")
+        
+        return None
+    
+    def _send_private_message(self, user_id: str, message_content: str) -> bool:
+        """发送私聊消息给指定用户
+        
+        Args:
+            user_id: 飞书用户ID
+            message_content: 消息内容
+            
+        Returns:
+            发送是否成功
+        """
+        access_token = self._get_access_token()
+        if not access_token:
+            return False
+        
+        try:
+            url = f"{self.api_base_url}/open-apis/im/v1/messages?receive_id_type=open_id"
+            headers = {
+                'Authorization': f'Bearer {access_token}',
+                'Content-Type': 'application/json'
+            }
+            
+            # 构建消息体
+            payload = {
+                "receive_id": user_id,
+                "msg_type": "text",
+                "content": json.dumps({
+                    "text": f"📊 管理层通知\n\n{message_content}"
+                }, ensure_ascii=False)
+            }
+            
+            for attempt in range(self.api_max_retries):
+                try:
+                    response = requests.post(
+                        url,
+                        json=payload,
+                        headers=headers,
+                        timeout=self.api_timeout
+                    )
+                    
+                    if response.status_code == 200:
+                        result = response.json()
+                        if result.get('code') == 0:
+                            logger.info(f"私聊消息发送成功: {user_id}")
+                            return True
+                        else:
+                            logger.error(f"飞书私聊API返回错误: {result}")
+                    else:
+                        logger.error(f"飞书私聊请求失败: {response.status_code} - {response.text}")
+                    
+                except requests.exceptions.Timeout:
+                    logger.warning(f"飞书私聊发送超时，第{attempt + 1}次重试")
+                except requests.exceptions.RequestException as e:
+                    logger.error(f"飞书私聊发送异常: {e}")
+                
+                if attempt < self.api_max_retries - 1:
+                    import time
+                    time.sleep(self.api_retry_delay * (attempt + 1))
+            
+            logger.error(f"飞书私聊发送失败，已重试{self.api_max_retries}次: {user_id}")
+            return False
+            
+        except Exception as e:
+            logger.error(f"发送飞书私聊消息时发生未知错误: {e}")
+            return False
+    
+    def send_management_notification(self, report_content: str) -> bool:
+        """发送管理层通知
+        
+        Args:
+            report_content: 汇报内容
+            
+        Returns:
+            发送是否成功（至少一个管理层用户收到消息）
+        """
+        if not self.management_enabled or not self.management_user_ids:
+            logger.info("管理层通知未启用或未配置管理层用户")
+            return True  # 未配置时视为成功
+        
+        success_count = 0
+        total_count = len(self.management_user_ids)
+        
+        for user_id in self.management_user_ids:
+            if self._send_private_message(user_id, report_content):
+                success_count += 1
+        
+        if success_count > 0:
+            logger.info(f"管理层通知发送完成: {success_count}/{total_count} 成功")
+            return True
+        else:
+            logger.error("所有管理层通知发送失败")
+            return False

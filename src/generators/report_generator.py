@@ -201,31 +201,24 @@ class ReportGenerator:
         Returns:
             简洁型汇报内容
         """
-        reasons_text = "\n  - ".join(data.deviation_reasons) if data.deviation_reasons else "暂无明确原因"
-        suggestions_text = "\n".join(data.suggestions) if data.suggestions else "暂无具体建议"
+        reasons_text = "\n• ".join(data.deviation_reasons[:3]) if data.deviation_reasons else "暂无明确原因"
+        suggestions_text = "\n• ".join(data.suggestions[:3]) if data.suggestions else "暂无具体建议"
         
-        return f"""# 📊 工作状态预警汇报
+        return f"""📊 **工作状态预警通知**
 
-**预警时间**：{data.timestamp}
-**预警类型**：连续偏离检测
 **相关人员**：@{data.user_name}
+**预警时间**：{data.timestamp}
+**影响程度**：{data.impact_level}
 
-## 📈 偏离趋势分析
-- **连续偏离天数**：{data.continuous_days}天
-- **平均偏离度**：{data.avg_deviation_score:.1f}/10
-- **影响程度**：{data.impact_level}
-- **主要偏离原因**：
-  - {reasons_text}
+**核心问题**：
+• {reasons_text}
 
-## 💡 改进建议
-{suggestions_text}
+**改进建议**：
+• {suggestions_text}
 
-## 📊 关键指标
-- 平均完成率：{data.avg_completion_rate*100:.1f}%
-- 趋势分析：{data.trend_analysis}
+**关键数据**：连续{data.continuous_days}天偏离，平均完成率{data.avg_completion_rate*100:.0f}%
 
----
-*本报告由 GitHub Discussions 自动化分析服务生成*"""
+{data.trend_analysis}，请及时关注并采取改进措施。"""
     
     def _generate_detailed_report(self, data: ReportData) -> str:
         """
@@ -237,76 +230,33 @@ class ReportGenerator:
         Returns:
             详细型汇报内容
         """
-        # 生成偏离情况表格
-        table_rows = []
-        for i, analysis in enumerate(data.analyses):
-            date = analysis.get('analysis_date', f'第{i+1}天')
-            score = analysis.get('deviation_score', 0)
-            completion = analysis.get('completion_rate', 0) * 100
-            reasons = ', '.join(analysis.get('deviation_reasons', [])[:2])  # 只显示前2个原因
-            if not reasons:
-                reasons = '无明确原因'
-            
-            table_rows.append(f"| {date} | {score:.1f} | {completion:.1f}% | {reasons} |")
+        # 生成核心问题列表
+        core_issues = "\n• ".join(data.deviation_reasons[:3]) if data.deviation_reasons else "工作执行与计划存在偏差"
         
-        deviation_table = "\n".join(table_rows)
+        # 生成改进建议
+        suggestions_list = "\n• ".join(data.suggestions[:4]) if data.suggestions else "建议重新评估工作计划和优先级"
         
-        # 生成原因分析
-        reasons_analysis = self._generate_reasons_analysis(data.deviation_reasons)
-        
-        # 生成建议
-        short_term_suggestions = "\n".join([f"- {s}" for s in data.suggestions[:3]])
-        long_term_suggestions = "\n".join([f"- {s}" for s in data.suggestions[3:]])
-        
-        if not short_term_suggestions:
-            short_term_suggestions = "- 建议加强日常工作计划的制定和执行"
-        if not long_term_suggestions:
-            long_term_suggestions = "- 建议建立更完善的工作流程和监控机制"
-        
-        return f"""# 🚨 工作执行偏离预警报告
+        return f"""🚨 **工作执行偏离详细报告**
 
-## 基本信息
-- **报告生成时间**：{data.timestamp}
-- **分析周期**：最近{data.continuous_days}个工作日
-- **预警级别**：{data.impact_level}
-- **相关人员**：@{data.user_name}
+**相关人员**：@{data.user_name}
+**报告时间**：{data.timestamp}
+**预警级别**：{data.impact_level}
+**分析周期**：最近{data.continuous_days}个工作日
 
-## 偏离情况统计
-| 日期 | 偏离度评分 | 完成率 | 主要偏离原因 |
-|------|------------|--------|-------------|
-{deviation_table}
+**偏离情况概述**：
+连续{data.continuous_days}天出现工作偏离，平均完成率{data.avg_completion_rate*100:.0f}%，{data.trend_analysis}。
 
-## 趋势分析
-### 📊 偏离度变化趋势
-{data.trend_analysis}
+**核心问题**：
+• {core_issues}
 
-### 🎯 完成率统计
-- 平均完成率：{data.avg_completion_rate*100:.1f}%
-- 最低完成率：{data.min_deviation_score*10:.1f}%
-- 完成率趋势：{'持续偏低' if data.avg_completion_rate < 0.7 else '基本正常'}
+**改进建议**：
+• {suggestions_list}
 
-## 深度分析
-### 🔍 偏离原因分析
-{reasons_analysis}
+**风险提示**：
+连续偏离表明存在系统性问题，建议管理层重点关注并制定针对性改进措施。如不及时处理，可能影响整体项目进度和团队效率。
 
-### ⚡ 影响因素识别
-连续{data.continuous_days}天的偏离表明存在系统性问题，需要从根本上分析和解决。
-
-## 改进建议
-### 🎯 短期改进措施
-{short_term_suggestions}
-
-### 📈 长期优化方向
-{long_term_suggestions}
-
-## 统计摘要
-- **总分析天数**：{data.continuous_days}天
-- **平均偏离度**：{data.avg_deviation_score:.1f}/10
-- **最高偏离度**：{data.max_deviation_score:.1f}/10
-- **最低偏离度**：{data.min_deviation_score:.1f}/10
-
----
-*本报告由 GitHub Discussions 自动化分析服务生成*"""
+**后续跟进**：
+建议在3个工作日内制定改进计划，并在一周内开始实施相关措施。"""
     
     def _generate_card_report(self, data: ReportData) -> str:
         """
@@ -326,32 +276,24 @@ class ReportGenerator:
         if not quick_suggestions:
             quick_suggestions = "• 重新评估工作计划和优先级"
         
-        return f"""# 📋 工作状态监控卡片
+        return f"""📋 **工作状态监控提醒**
 
-> 🚨 **检测到连续工作偏离情况**
+🚨 检测到连续工作偏离情况
 
-## 📊 关键指标
-```
-偏离天数: {data.continuous_days}天
-平均偏离度: {data.avg_deviation_score:.1f}/10
-影响程度: {data.impact_level}
-完成率: {data.avg_completion_rate*100:.1f}%
-```
+**关键信息**：
+偏离天数：{data.continuous_days}天 | 影响程度：{data.impact_level} | 完成率：{data.avg_completion_rate*100:.0f}%
 
-## 🎯 核心问题
+**核心问题**：
 {core_issues}
 
-## 💡 快速建议
+**快速建议**：
 {quick_suggestions}
 
-## 👤 需要关注
-@{data.user_name}
+**需要关注**：@{data.user_name}
 
-## 📈 趋势
-{data.trend_analysis}
+**趋势分析**：{data.trend_analysis}
 
----
-📅 {data.timestamp} | 🤖 自动生成"""
+{data.timestamp}"""
     
     def _generate_reasons_analysis(self, reasons: List[str]) -> str:
         """
@@ -396,6 +338,126 @@ class ReportGenerator:
                 reports[user_name] = f"汇报生成失败: {str(e)}"
         
         return reports
+    
+    def generate_llm_report(self, user_name: str, analyses: List[Dict[str, Any]], 
+                                 report_type: str = "personal") -> Dict[str, Any]:
+        """
+        使用LLM动态生成个性化报告内容
+        
+        Args:
+            user_name: 用户名
+            analyses: 分析结果列表
+            report_type: 报告类型 (personal/management)
+        
+        Returns:
+            包含success和content字段的字典
+        """
+        try:
+            if not analyses:
+                self.logger.warning(f"用户 {user_name} 没有分析数据，无法生成LLM报告")
+                return {"success": False, "content": "", "error": "没有分析数据"}
+            
+            if not self.glm_client:
+                self.logger.warning("GLM客户端未配置，降级到传统报告生成")
+                report_data = self._aggregate_analysis_data(user_name, analyses)
+                traditional_content = self._generate_detailed_report(report_data)
+                return {"success": True, "content": traditional_content, "format_type": "traditional"}
+            
+            # 聚合分析数据
+            report_data = self._aggregate_analysis_data(user_name, analyses)
+            
+            # 构建LLM提示词
+            system_prompt, user_prompt = self._build_llm_prompts(report_data, report_type)
+            
+            # 调用LLM生成报告
+            llm_content = self.glm_client._call_glm_api_sync(
+                system_prompt=system_prompt,
+                user_prompt=user_prompt,
+                temperature=0.7
+            )
+            
+            self.logger.info(f"成功使用LLM生成用户 {user_name} 的{report_type}报告")
+            return {"success": True, "content": llm_content, "format_type": "llm_generated"}
+            
+        except Exception as e:
+            self.logger.error(f"LLM报告生成失败: {e}，降级到传统报告")
+            # 降级到传统报告生成
+            report_data = self._aggregate_analysis_data(user_name, analyses)
+            traditional_content = self._generate_detailed_report(report_data)
+            return {"success": True, "content": traditional_content, "format_type": "traditional"}
+    
+    def _build_llm_prompts(self, report_data: ReportData, report_type: str) -> tuple[str, str]:
+        """
+        构建LLM提示词
+        
+        Args:
+            report_data: 汇报数据
+            report_type: 报告类型 (personal/management)
+        
+        Returns:
+            (system_prompt, user_prompt) 元组
+        """
+        if report_type == "management":
+            system_prompt = """
+你是一位高效的管理层助理，专门为管理者提供简洁的团队状态摘要。
+
+核心要求：
+1. 内容必须控制在150字以内
+2. 聚焦管理决策：风险等级、影响范围、需要的管理行动
+3. 使用管理层语言：数据驱动、结果导向、行动明确
+4. 格式简洁：关键信息+风险评估+管理建议
+
+禁止：
+- 详细的技术细节或个人情感描述
+- 超过150字的内容
+- 重复或冗余信息
+"""
+            
+            user_prompt = f"""
+团队成员：{report_data.user_name}
+偏离状况：连续{report_data.continuous_days}天，完成率{report_data.avg_completion_rate*100:.0f}%
+影响等级：{report_data.impact_level}
+主要原因：{', '.join(report_data.deviation_reasons[:2])}
+
+请生成150字以内的管理层通知，包含：
+1. 风险评估（1句话）
+2. 业务影响（1句话）
+3. 管理行动建议（1-2句话）
+
+格式要求：简洁、数据化、行动导向。
+"""
+        else:  # personal
+            system_prompt = """
+你是一位温暖的工作效率顾问，帮助个人改善工作状态。
+
+核心要求：
+1. 内容必须控制在200字以内
+2. 语调温暖鼓励，避免批评或指责
+3. 提供2-3个具体可行的改进建议
+4. 关注个人成长和能力提升
+
+禁止：
+- 超过200字的内容
+- 过于详细的分析或重复信息
+- 消极或批评性语言
+"""
+            
+            user_prompt = f"""
+{report_data.user_name}，你好！
+
+最近状况：连续{report_data.continuous_days}天工作偏离，完成率{report_data.avg_completion_rate*100:.0f}%
+主要困难：{', '.join(report_data.deviation_reasons[:2])}
+趋势：{report_data.trend_analysis}
+
+请生成200字以内的个人改进建议，包含：
+1. 理解和鼓励（1句话）
+2. 2-3个具体改进方法
+3. 积极的结尾鼓励
+
+语调要温暖、具体、可操作。
+"""
+        
+        return system_prompt, user_prompt
     
     async def enhance_report_with_ai(self, basic_report: str, user_name: str) -> str:
         """

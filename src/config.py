@@ -50,6 +50,7 @@ class AnalysisConfig:
     enable_deviation_analysis: bool = True
     enable_clarity_analysis: bool = True
     enable_consistency_analysis: bool = True
+    continuous_threshold: int = 3
     thresholds: AnalysisThresholds = field(default_factory=AnalysisThresholds)
 
 
@@ -110,6 +111,14 @@ class FeishuConfig:
     webhook: FeishuWebhookConfig = field(default_factory=FeishuWebhookConfig)
     mapping_file: str = "feishu_mapping.json"
     message_type: str = "rich_text"
+
+
+@dataclass
+class ManagementNotificationConfig:
+    """管理层通知配置"""
+    enabled: bool = False
+    user_ids: list = field(default_factory=list)
+    notification_type: str = "private_chat"  # private_chat 或 group_chat
 
 
 @dataclass
@@ -186,6 +195,7 @@ class Config:
             enable_deviation_analysis=self._get_bool_env_or_config('ENABLE_DEVIATION_ANALYSIS', analysis_config.get('enable_deviation_analysis', True)),
             enable_clarity_analysis=self._get_bool_env_or_config('ENABLE_CLARITY_ANALYSIS', analysis_config.get('enable_clarity_analysis', True)),
             enable_consistency_analysis=self._get_bool_env_or_config('ENABLE_CONSISTENCY_ANALYSIS', analysis_config.get('enable_consistency_analysis', True)),
+            continuous_threshold=int(self._get_env_or_config('CONTINUOUS_THRESHOLD', analysis_config.get('continuous_threshold', 3))),
             thresholds=AnalysisThresholds(
                 deviation_warning=thresholds_config.get('deviation_warning', 0.3),
                 deviation_critical=thresholds_config.get('deviation_critical', 0.5),
@@ -246,6 +256,14 @@ class Config:
             ),
             mapping_file=feishu_config.get('mapping_file', 'feishu_mapping.json'),
             message_type=feishu_config.get('message_type', 'rich_text')
+        )
+        
+        # 管理层通知配置
+        management_config = self._config_data.get('management_notification', {})
+        self.management_notification = ManagementNotificationConfig(
+            enabled=management_config.get('enabled', False),
+            user_ids=management_config.get('user_ids', []),
+            notification_type=management_config.get('notification_type', 'private_chat')
         )
         
         # 通知配置

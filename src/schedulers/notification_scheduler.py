@@ -21,11 +21,12 @@ class NotificationScheduler:
     整合偏离检测和通知发送，支持定时检查和即时通知，防重复通知机制。
     """
     
-    def __init__(self, config: Dict[str, Any]):
+    def __init__(self, config: Dict[str, Any], use_llm_reports: bool = True):
         """初始化通知调度器
         
         Args:
             config: 配置字典，包含偏离检测、汇报生成和飞书通知配置
+            use_llm_reports: 是否使用LLM生成报告
         """
         self.config = config
         self.deviation_config = config.get('deviation_tracking', {})
@@ -57,6 +58,7 @@ class NotificationScheduler:
         self.notification_hours = self.feishu_config.get('notification_hours', [9, 14, 18])
         self.weekend_notifications = self.feishu_config.get('weekend_notifications', False)
         self.duplicate_prevention_hours = self.feishu_config.get('duplicate_prevention_hours', 4)
+        self.use_llm_reports = use_llm_reports
     
     def _initialize_feishu_client(self):
         """初始化飞书客户端
@@ -265,10 +267,22 @@ class NotificationScheduler:
                         logger.info(f"当前时间不适合发送通知: {datetime.now().hour}")
                         continue
                     
-                    # 生成汇报
-                    report_result = self.report_generator.generate_deviation_report(
-                        user, deviation, format_type='detailed'
-                    )
+                    # 生成汇报 - 优先使用LLM生成
+                    if self.use_llm_reports:
+                        try:
+                            report_result = self.report_generator.generate_llm_report(
+                                user, deviation, report_type='personal'
+                            )
+                            logger.info(f"使用LLM生成报告: {user}")
+                        except Exception as e:
+                            logger.warning(f"LLM报告生成失败，降级使用传统模板: {user} - {e}")
+                            report_result = self.report_generator.generate_deviation_report(
+                                user, deviation, format_type='detailed'
+                            )
+                    else:
+                        report_result = self.report_generator.generate_deviation_report(
+                            user, deviation, format_type='detailed'
+                        )
                     
                     if not report_result.get('success'):
                         error_msg = f"生成汇报失败: {user} - {report_result.get('error', 'Unknown error')}"
@@ -311,6 +325,93 @@ class NotificationScheduler:
         
         return result
     
+    def _format_personal_message(self, report_content: str, user: str, deviation: Dict[str, Any]) -> str:
+        """格式化适合个人私聊的消息内容
+        
+        Args:
+            report_content: 原始报告内容（可能是LLM生成的）
+            user: 用户名
+            deviation: 偏离信息
+            
+        Returns:
+            格式化后的个人消息
+        """
+        # 如果report_content已经是LLM生成的个性化内容，直接使用
+        if report_content and len(report_content.strip()) > 100:  # 假设LLM生成的内容较长
+            return report_content
+        try:
+            # 提取关键信息
+            consecutive_days = deviation.get('consecutive_days', 0)
+            has_deviation = deviation.get('has_continuous_deviation', True)
+            
+            if not has_deviation:
+                return f"Hi {user}，今天的工作状态很好，继续保持！💪"
+            
+            # 构建亲切的个人消息（传统模板）
+            message_lines = [
+                f"Hi {user}，",
+                f"最近几天的工作似乎有些偏离计划，我想和你聊聊。😊",
+                "",
+                "🤔 我注意到的情况：",
+                "看起来你的工作进度和原定计划有些差距，这很正常，每个人都会遇到这种情况。",
+                "",
+                "💡 一些小建议：",
+                "• 不妨重新看看你的任务清单，哪些是真正紧急重要的？",
+                "• 如果遇到了什么困难或阻碍，别憋着，找同事或领导聊聊",
+                "• 适当调整一下工作节奏，有时候慢一点反而能走得更稳",
+                "• 记得给自己留点喘息的空间，别把自己逼得太紧",
+                "",
+                "🌟 记住：",
+                "每个人都有状态起伏的时候，关键是及时调整。你一直都很努力，相信你能很快找回节奏！",
+                "",
+                "有什么需要帮助的，随时找我聊！加油！💪"
+            ]
+            
+            return '\n'.join(message_lines)
+            
+        except Exception as e:
+            logger.error(f"格式化个人消息时发生错误: {e}")
+            # 如果格式化失败，返回简化版本
+            return f"Hi {user}，工作状态需要关注，有什么困难记得及时沟通哦！😊"
+    
+    def _format_management_message(self, user: str, deviation: Dict[str, Any]) -> str:
+        """
+        格式化管理层通知消息
+        
+        Args:
+            user: 用户名
+            deviation: 偏离信息
+            
+        Returns:
+            格式化后的管理层消息内容
+        """
+        try:
+            consecutive_days = deviation.get('consecutive_days', 0)
+            
+            # 构建简洁的管理层消息
+            message_lines = [
+                f"📋 团队状态提醒",
+                "",
+                f"团队成员 {user} 近期工作进度出现偏离，已持续{consecutive_days}天。",
+                "",
+                "🎯 管理建议：",
+                "• 安排一对一沟通，了解具体困难和阻碍",
+                "• 评估当前任务分配是否合理，必要时进行调整",
+                "• 考虑提供额外的资源支持或技术指导",
+                "• 关注团队成员的工作负荷和心理状态",
+                "",
+                "💡 关注要点：",
+                "持续的工作偏离可能影响项目进度和团队士气，建议及时介入并提供必要支持。",
+                "",
+                "建议在2个工作日内与该成员进行深度沟通。"
+            ]
+            
+            return "\n".join(message_lines)
+            
+        except Exception as e:
+            logger.error(f"格式化管理层消息失败: {e}")
+            return f"团队成员 {user} 工作状态需要关注，建议及时沟通了解情况。"
+    
     def _send_feishu_notification(self, user: str, report_result: Dict[str, Any], 
                                  deviation: Dict[str, Any]) -> bool:
         """发送飞书通知
@@ -327,23 +428,79 @@ class NotificationScheduler:
             report_content = report_result.get('content', '')
             report_data = report_result.get('data', {})
             
-            # 确定消息类型
-            message_type = self.feishu_config.get('message_type', 'rich_text')
+            # 加载用户映射配置
+            user_mapping = {}
+            try:
+                import json
+                with open('feishu_mapping.json', 'r', encoding='utf-8') as f:
+                    mapping_config = json.load(f)
+                    user_mapping = mapping_config.get('user_mapping', {})
+            except Exception as e:
+                logger.warning(f"加载用户映射配置失败: {e}")
             
-            # 发送通知
-            success = self.feishu_client.send_deviation_alert(
-                report_content=report_content,
-                users=[user],
-                message_type=message_type,
-                report_data=report_data
-            )
+            # 获取用户的飞书ID
+            feishu_user_id = user_mapping.get(user)
+            if not feishu_user_id:
+                logger.warning(f"未找到用户 {user} 的飞书映射，跳过个人通知")
+                return False
             
-            if success:
-                logger.info(f"飞书通知发送成功: {user}")
+            # 使用enhanced_feishu_client发送个人私聊通知
+            personal_success = False
+            if hasattr(self.feishu_client, 'client'):
+                try:
+                    # 格式化适合个人私聊的消息内容
+                    personal_message = self._format_personal_message(report_content, user, deviation)
+                    
+                    # 发送个人消息
+                    personal_success = self.feishu_client.client.send_text_message(
+                        receive_id=feishu_user_id,
+                        text=personal_message,
+                        receive_id_type='open_id'
+                    )
+                    
+                    if personal_success:
+                        logger.info(f"飞书个人通知发送成功: {user} ({feishu_user_id})")
+                    else:
+                        logger.error(f"飞书个人通知发送失败: {user} ({feishu_user_id})")
+                        
+                except Exception as e:
+                    logger.error(f"发送个人通知时发生错误: {e}")
+                    personal_success = False
             else:
-                logger.error(f"飞书通知发送失败: {user}")
+                logger.warning("enhanced_feishu_client未配置，无法发送个人通知")
             
-            return success
+            # 发送管理层通知
+            management_success = True  # 默认为成功，如果未配置管理层通知
+            if hasattr(self.feishu_client, 'send_management_notification'):
+                try:
+                    # 生成管理层通知内容 - 优先使用LLM
+                    if self.use_llm_reports:
+                        try:
+                            mgmt_report = self.report_generator.generate_llm_report(
+                                user, deviation, report_type='management'
+                            )
+                            if mgmt_report.get('success'):
+                                management_message = mgmt_report.get('content', '')
+                                logger.info(f"使用LLM生成管理层报告: {user}")
+                            else:
+                                management_message = self._format_management_message(user, deviation)
+                        except Exception as e:
+                            logger.warning(f"LLM管理层报告生成失败，使用传统模板: {user} - {e}")
+                            management_message = self._format_management_message(user, deviation)
+                    else:
+                        management_message = self._format_management_message(user, deviation)
+                    
+                    management_success = self.feishu_client.send_management_notification(management_message)
+                    if management_success:
+                        logger.info(f"管理层通知发送成功: {user}")
+                    else:
+                        logger.warning(f"管理层通知发送失败: {user}")
+                except Exception as e:
+                    logger.error(f"发送管理层通知时发生错误: {e}")
+                    management_success = False
+            
+            # 个人通知成功就认为整体成功
+            return personal_success
             
         except Exception as e:
             logger.error(f"发送飞书通知时发生错误: {e}")
@@ -402,10 +559,22 @@ class NotificationScheduler:
             try:
                 deviation = self.deviation_tracker.check_continuous_deviation(user, None)
                 if deviation:
-                    # 生成汇报并发送通知
-                    report_result = self.report_generator.generate_deviation_report(
-                        user, deviation, format_type='detailed'
-                    )
+                    # 生成汇报并发送通知 - 优先使用LLM
+                    if self.use_llm_reports:
+                        try:
+                            report_result = self.report_generator.generate_llm_report(
+                                user, deviation, report_type='personal'
+                            )
+                            logger.info(f"手动检查使用LLM生成报告: {user}")
+                        except Exception as e:
+                            logger.warning(f"手动检查LLM报告生成失败，降级使用传统模板: {user} - {e}")
+                            report_result = self.report_generator.generate_deviation_report(
+                                user, deviation, format_type='detailed'
+                            )
+                    else:
+                        report_result = self.report_generator.generate_deviation_report(
+                            user, deviation, format_type='detailed'
+                        )
                     
                     if report_result.get('success') and self.feishu_client:
                         success = self._send_feishu_notification(user, report_result, deviation)
