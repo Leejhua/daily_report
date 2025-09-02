@@ -495,7 +495,7 @@ class FeishuClient:
         """发送私聊消息给指定用户
         
         Args:
-            user_id: 飞书用户ID
+            user_id: GitHub用户名或飞书用户ID
             message_content: 消息内容
             
         Returns:
@@ -504,6 +504,17 @@ class FeishuClient:
         access_token = self._get_access_token()
         if not access_token:
             return False
+        
+        # 获取飞书用户ID
+        # 如果user_id以"ou_"开头，说明已经是飞书用户ID，直接使用
+        if user_id.startswith('ou_'):
+            feishu_user_id = user_id
+        else:
+            # 否则通过映射查找
+            feishu_user_id = self._get_feishu_user_id(user_id)
+            if not feishu_user_id:
+                logger.error(f"未找到用户 {user_id} 的飞书ID映射")
+                return False
         
         try:
             url = f"{self.api_base_url}/open-apis/im/v1/messages?receive_id_type=open_id"
@@ -514,10 +525,10 @@ class FeishuClient:
             
             # 构建消息体
             payload = {
-                "receive_id": user_id,
+                "receive_id": feishu_user_id,
                 "msg_type": "text",
                 "content": json.dumps({
-                    "text": f"📊 管理层通知\n\n{message_content}"
+                    "text": f"📊 个人报告\n\n{message_content}"
                 }, ensure_ascii=False)
             }
             

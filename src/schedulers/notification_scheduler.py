@@ -326,45 +326,58 @@ class NotificationScheduler:
         return result
     
     def _format_personal_message(self, report_content: str, user: str, deviation: Dict[str, Any]) -> str:
-        """格式化适合个人私聊的消息内容
+        """
+        格式化适合个人私聊的消息内容
         
         Args:
-            report_content: 原始报告内容（可能是LLM生成的）
+            report_content: 原始报告内容（可能是LLM生成的或JSON格式）
             user: 用户名
             deviation: 偏离信息
             
         Returns:
             格式化后的个人消息
         """
-        # 如果report_content已经是LLM生成的个性化内容，直接使用
-        if report_content and len(report_content.strip()) > 100:  # 假设LLM生成的内容较长
-            return report_content
+        # 检查是否是JSON格式的数据，如果是则解析并使用模板格式化
+        try:
+            import json
+            # 尝试解析JSON
+            if report_content.strip().startswith('{') and report_content.strip().endswith('}'):
+                json.loads(report_content)  # 验证是否为有效JSON
+                # 如果是JSON，使用下面的模板格式化
+                pass
+            elif report_content and len(report_content.strip()) > 100 and not report_content.strip().startswith('{'):
+                # 如果是LLM生成的个性化内容且不是JSON，直接使用
+                return report_content
+        except (json.JSONDecodeError, AttributeError):
+            # 如果不是JSON且内容较长，可能是LLM生成的内容
+            if report_content and len(report_content.strip()) > 100:
+                return report_content
         try:
             # 提取关键信息
             consecutive_days = deviation.get('consecutive_days', 0)
             has_deviation = deviation.get('has_continuous_deviation', True)
             
             if not has_deviation:
-                return f"Hi {user}，今天的工作状态很好，继续保持！💪"
+                return f"嘿 {user}，今天状态不错呀！继续保持这个节奏 💪"
             
-            # 构建亲切的个人消息（传统模板）
+            # 构建更有人味的个人消息
             message_lines = [
-                f"Hi {user}，",
-                f"最近几天的工作似乎有些偏离计划，我想和你聊聊。😊",
+                f"嘿 {user}，",
+                f"最近{consecutive_days}天工作好像有点偏离轨道了，咱们聊聊？😊",
                 "",
-                "🤔 我注意到的情况：",
-                "看起来你的工作进度和原定计划有些差距，这很正常，每个人都会遇到这种情况。",
+                "我发现了什么：",
+                "工作进度跟计划有点不太一样，不过别担心，这种事儿谁都会遇到。",
                 "",
-                "💡 一些小建议：",
-                "• 不妨重新看看你的任务清单，哪些是真正紧急重要的？",
-                "• 如果遇到了什么困难或阻碍，别憋着，找同事或领导聊聊",
-                "• 适当调整一下工作节奏，有时候慢一点反而能走得更稳",
-                "• 记得给自己留点喘息的空间，别把自己逼得太紧",
+                "几个小想法：",
+                "• 要不重新整理下任务，看看哪些真的急",
+                "• 遇到卡壳的地方就找人聊聊，别一个人硬扛",
+                "• 节奏可以调调，有时候慢点反而更稳",
+                "• 别给自己太大压力，适当放松一下",
                 "",
-                "🌟 记住：",
-                "每个人都有状态起伏的时候，关键是及时调整。你一直都很努力，相信你能很快找回节奏！",
+                "说真的：",
+                "状态有起伏很正常，关键是调整过来就行。你平时挺努力的，相信很快就能找回感觉！",
                 "",
-                "有什么需要帮助的，随时找我聊！加油！💪"
+                "有啥需要帮忙的就说话，咱们一起想办法！加油 🚀"
             ]
             
             return '\n'.join(message_lines)
@@ -372,7 +385,7 @@ class NotificationScheduler:
         except Exception as e:
             logger.error(f"格式化个人消息时发生错误: {e}")
             # 如果格式化失败，返回简化版本
-            return f"Hi {user}，工作状态需要关注，有什么困难记得及时沟通哦！😊"
+            return f"嘿 {user}，工作状态需要关注下，有困难记得说话哦！😊"
     
     def _format_management_message(self, user: str, deviation: Dict[str, Any]) -> str:
         """
@@ -388,29 +401,27 @@ class NotificationScheduler:
         try:
             consecutive_days = deviation.get('consecutive_days', 0)
             
-            # 构建简洁的管理层消息
+            # 构建简洁专业的管理层消息
             message_lines = [
-                f"📋 团队状态提醒",
+                f"⚠️ 团队状态预警",
                 "",
-                f"团队成员 {user} 近期工作进度出现偏离，已持续{consecutive_days}天。",
+                f"成员：{user}",
+                f"状态：工作偏离已持续 {consecutive_days} 天",
                 "",
-                "🎯 管理建议：",
-                "• 安排一对一沟通，了解具体困难和阻碍",
-                "• 评估当前任务分配是否合理，必要时进行调整",
-                "• 考虑提供额外的资源支持或技术指导",
-                "• 关注团队成员的工作负荷和心理状态",
+                "建议行动：",
+                "• 48小时内安排一对一沟通",
+                "• 评估任务分配合理性",
+                "• 识别资源或技能缺口",
+                "• 必要时调整项目计划",
                 "",
-                "💡 关注要点：",
-                "持续的工作偏离可能影响项目进度和团队士气，建议及时介入并提供必要支持。",
-                "",
-                "建议在2个工作日内与该成员进行深度沟通。"
+                "风险提示：持续偏离可能影响项目交付和团队效率"
             ]
             
             return "\n".join(message_lines)
             
         except Exception as e:
             logger.error(f"格式化管理层消息失败: {e}")
-            return f"团队成员 {user} 工作状态需要关注，建议及时沟通了解情况。"
+            return f"成员 {user} 工作状态异常，建议立即关注。"
     
     def _send_feishu_notification(self, user: str, report_result: Dict[str, Any], 
                                  deviation: Dict[str, Any]) -> bool:

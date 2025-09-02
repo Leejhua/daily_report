@@ -314,6 +314,97 @@ class ReportGenerator:
         
         return "\n".join(analysis_parts)
     
+    def _generate_personal_report(self, data: ReportData) -> str:
+        """
+        生成个人类型报告
+        
+        Args:
+            data: 汇报数据
+        
+        Returns:
+            个人报告内容
+        """
+        # 生成核心问题列表
+        core_issues = "\n• ".join(data.deviation_reasons[:3]) if data.deviation_reasons else "工作执行与计划存在偏差"
+        
+        # 生成改进建议
+        suggestions_list = "\n• ".join(data.suggestions[:4]) if data.suggestions else "建议重新评估工作计划和优先级"
+        
+        return f"""🚨 **工作执行偏离详细报告**
+
+**相关人员**：@{data.user_name}
+**报告时间**：{data.timestamp}
+**预警级别**：{data.impact_level}
+**分析周期**：最近{data.continuous_days}个工作日
+
+**偏离情况概述**：
+连续{data.continuous_days}天出现工作偏离，平均完成率{data.avg_completion_rate*100:.0f}%，{data.trend_analysis}。
+
+**核心问题**：
+• {core_issues}
+
+**改进建议**：
+• {suggestions_list}
+
+**风险提示**：
+连续偏离表明存在系统性问题，建议管理层重点关注并制定针对性改进措施。如不及时处理，可能影响整体项目进度和团队效率。
+
+**后续跟进**：
+建议在3个工作日内制定改进计划，并在一周内开始实施相关措施。"""
+    
+    def _generate_management_report(self, data: ReportData) -> str:
+        """
+        生成管理层类型报告
+        
+        Args:
+            data: 汇报数据
+        
+        Returns:
+            管理层报告内容
+        """
+        # 生成核心问题列表（更简洁）
+        core_issues = "\n• ".join(data.deviation_reasons[:2]) if data.deviation_reasons else "团队成员工作执行偏离"
+        
+        # 生成管理建议（更关注资源配置和团队管理）
+        management_suggestions = []
+        if data.suggestions:
+            for suggestion in data.suggestions[:3]:
+                if "会议" in suggestion:
+                    management_suggestions.append("优化会议安排，减少不必要的会议冲突")
+                elif "出差" in suggestion:
+                    management_suggestions.append("完善出差支持流程，提供必要的远程工作工具")
+                elif "事故" in suggestion:
+                    management_suggestions.append("建立应急响应机制，减少突发事件对正常工作的影响")
+                else:
+                    management_suggestions.append(suggestion)
+        
+        if not management_suggestions:
+            management_suggestions = ["重新评估团队资源配置", "优化工作流程和任务分配"]
+        
+        suggestions_text = "\n• ".join(management_suggestions[:3])
+        
+        return f"""📊 **团队工作状态管理报告**
+
+**团队成员**：@{data.user_name}
+**报告时间**：{data.timestamp}
+**风险等级**：{data.impact_level}
+**监控周期**：{data.continuous_days}个工作日
+
+**状态概览**：
+团队成员连续{data.continuous_days}天工作偏离，平均完成率{data.avg_completion_rate*100:.0f}%，{data.trend_analysis}。
+
+**主要影响因素**：
+• {core_issues}
+
+**管理建议**：
+• {suggestions_text}
+
+**资源需求评估**：
+当前偏离情况可能需要额外的管理支持和资源调配。建议评估团队工作负荷分配，必要时进行任务重新分配或增加支持资源。
+
+**管理行动**：
+建议管理层在2个工作日内与相关人员沟通，了解具体困难并提供必要支持。同时评估是否需要调整项目时间线或资源配置。"""
+    
     async def generate_batch_reports(self, users_data: Dict[str, List[Dict[str, Any]]], 
                                    format_type: str = "detailed") -> Dict[str, str]:
         """
@@ -360,7 +451,10 @@ class ReportGenerator:
             if not self.glm_client:
                 self.logger.warning("GLM客户端未配置，降级到传统报告生成")
                 report_data = self._aggregate_analysis_data(user_name, analyses)
-                traditional_content = self._generate_detailed_report(report_data)
+                if report_type == "management":
+                    traditional_content = self._generate_management_report(report_data)
+                else:
+                    traditional_content = self._generate_personal_report(report_data)
                 return {"success": True, "content": traditional_content, "format_type": "traditional"}
             
             # 聚合分析数据
@@ -383,7 +477,10 @@ class ReportGenerator:
             self.logger.error(f"LLM报告生成失败: {e}，降级到传统报告")
             # 降级到传统报告生成
             report_data = self._aggregate_analysis_data(user_name, analyses)
-            traditional_content = self._generate_detailed_report(report_data)
+            if report_type == "management":
+                traditional_content = self._generate_management_report(report_data)
+            else:
+                traditional_content = self._generate_personal_report(report_data)
             return {"success": True, "content": traditional_content, "format_type": "traditional"}
     
     def _build_llm_prompts(self, report_data: ReportData, report_type: str) -> tuple[str, str]:
