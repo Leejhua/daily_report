@@ -16,7 +16,17 @@ class FeishuNotificationSender:
     def __init__(self, config):
         self.config = config
         self.notification_scheduler = NotificationScheduler(config)
-        self.report_generator = ReportGenerator(config)
+        
+        # 创建正确的Config实例以确保GLM配置可用
+        from src.config import Config
+        try:
+            # 创建包含环境变量配置的Config实例
+            full_config = Config()
+            self.report_generator = ReportGenerator(full_config)
+            print(f"✅ ReportGenerator初始化成功，GLM客户端状态: {'已配置' if self.report_generator.glm_client else '未配置'}")
+        except Exception as e:
+            print(f"⚠️ 创建完整Config实例失败，使用YAML配置: {e}")
+            self.report_generator = ReportGenerator(config)
         
         # 构建飞书客户端配置
         feishu_config = {

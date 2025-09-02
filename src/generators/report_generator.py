@@ -43,8 +43,20 @@ class ReportGenerator:
     
     def __init__(self, config: Config):
         self.config = config
-        self.glm_client = GLMClient(config.glm) if hasattr(config, 'glm') else None
-        self.logger = get_logger(__name__)
+        # 只有当GLM配置存在且API密钥已配置时才初始化GLMClient
+        if hasattr(config, 'glm') and config.glm.api_key and config.glm.api_key.strip():
+            try:
+                self.glm_client = GLMClient(config.glm)
+                self.logger = get_logger(__name__)
+                self.logger.info("GLM客户端初始化成功")
+            except Exception as e:
+                self.glm_client = None
+                self.logger = get_logger(__name__)
+                self.logger.warning(f"GLM客户端初始化失败: {e}，将使用传统报告生成")
+        else:
+            self.glm_client = None
+            self.logger = get_logger(__name__)
+            self.logger.info("GLM API密钥未配置，将使用传统报告生成")
     
     async def generate_deviation_report(self, user_name: str, analyses: List[Dict[str, Any]], 
                                       format_type: str = "detailed") -> Dict[str, Any]:
