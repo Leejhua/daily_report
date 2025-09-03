@@ -106,7 +106,17 @@ class FeishuClient:
             飞书用户ID，如果未找到则返回None
         """
         user_mappings = self.user_mapping.get('user_mapping', {})
-        return user_mappings.get(github_username)
+        
+        # 首先尝试精确匹配
+        if github_username in user_mappings:
+            return user_mappings[github_username]
+        
+        # 如果精确匹配失败，尝试大小写不敏感匹配
+        for mapped_username, feishu_id in user_mappings.items():
+            if mapped_username.lower() == github_username.lower():
+                return feishu_id
+        
+        return None
     
     def _build_simple_message(self, report_content: str, users: List[str]) -> Dict[str, Any]:
         """构建简单文本消息
