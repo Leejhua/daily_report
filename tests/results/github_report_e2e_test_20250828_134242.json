@@ -1,0 +1,71 @@
+{
+  "test_start_time": "2025-08-28T13:42:33.609439",
+  "test_end_time": null,
+  "total_tests": 5,
+  "passed_tests": 1,
+  "failed_tests": 4,
+  "test_details": [
+    {
+      "test_name": "连接测试",
+      "success": true,
+      "result_data": {
+        "github_connected": true,
+        "glm_connected": true
+      },
+      "timestamp": "2025-08-28T13:42:34.407053"
+    },
+    {
+      "test_name": "GitHub数据获取测试",
+      "success": false,
+      "error": "未找到讨论 #57",
+      "timestamp": "2025-08-28T13:42:42.586366"
+    },
+    {
+      "test_name": "GLM分析测试",
+      "success": false,
+      "error": "缺少GitHub数据，跳过GLM分析测试",
+      "timestamp": "2025-08-28T13:42:42.586685"
+    },
+    {
+      "test_name": "偏离分析测试",
+      "success": false,
+      "error": "缺少GitHub数据，跳过偏离分析测试",
+      "timestamp": "2025-08-28T13:42:42.587002"
+    },
+    {
+      "test_name": "端到端流程测试",
+      "success": false,
+      "error": "缺少讨论编号，无法进行端到端测试",
+      "timestamp": "2025-08-28T13:42:42.587284"
+    }
+  ],
+  "github_data": {},
+  "glm_analyses": [],
+  "deviation_analyses": [],
+  "errors": [
+    {
+      "type": "test_failure",
+      "test_name": "GitHub数据获取测试",
+      "message": "未找到讨论 #57",
+      "timestamp": "2025-08-28T13:42:42.586373"
+    },
+    {
+      "type": "test_failure",
+      "test_name": "GLM分析测试",
+      "message": "缺少GitHub数据，跳过GLM分析测试",
+      "timestamp": "2025-08-28T13:42:42.586688"
+    },
+    {
+      "type": "test_failure",
+      "test_name": "偏离分析测试",
+      "message": "缺少GitHub数据，跳过偏离分析测试",
+      "timestamp": "2025-08-28T13:42:42.587005"
+    },
+    {
+      "type": "test_failure",
+      "test_name": "端到端流程测试",
+      "message": "缺少讨论编号，无法进行端到端测试",
+      "timestamp": "2025-08-28T13:42:42.587287"
+    }
+  ]
+}

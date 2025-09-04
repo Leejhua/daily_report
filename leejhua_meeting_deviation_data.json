@@ -1,0 +1,164 @@
+{
+  "user": {
+    "github_username": "Leejhua",
+    "feishu_user_id": "ou_97612fd21e14ad5a1208ae1125a4e7c4",
+    "name": "李嘉华"
+  },
+  "analysis_period": {
+    "start_date": "2024-01-15",
+    "end_date": "2024-01-19",
+    "total_days": 5
+  },
+  "meeting_deviation_data": [
+    {
+      "date": "2024-01-15",
+      "planned_work_hours": 8,
+      "actual_work_hours": 5.5,
+      "meeting_hours": 3.5,
+      "deviation_hours": 2.5,
+      "meetings": [
+        {
+          "title": "项目需求评审会议",
+          "duration": 2,
+          "type": "project_review",
+          "impact": "high"
+        },
+        {
+          "title": "技术架构讨论",
+          "duration": 1.5,
+          "type": "technical_discussion",
+          "impact": "medium"
+        }
+      ],
+      "affected_tasks": [
+        "用户界面开发",
+        "API接口实现"
+      ]
+    },
+    {
+      "date": "2024-01-16",
+      "planned_work_hours": 8,
+      "actual_work_hours": 4.5,
+      "meeting_hours": 4,
+      "deviation_hours": 3.5,
+      "meetings": [
+        {
+          "title": "客户需求沟通会",
+          "duration": 2.5,
+          "type": "client_communication",
+          "impact": "high"
+        },
+        {
+          "title": "团队周例会",
+          "duration": 1,
+          "type": "team_meeting",
+          "impact": "low"
+        },
+        {
+          "title": "代码评审会议",
+          "duration": 0.5,
+          "type": "code_review",
+          "impact": "medium"
+        }
+      ],
+      "affected_tasks": [
+        "数据库设计",
+        "前端组件开发",
+        "单元测试编写"
+      ]
+    },
+    {
+      "date": "2024-01-17",
+      "planned_work_hours": 8,
+      "actual_work_hours": 5,
+      "meeting_hours": 3.5,
+      "deviation_hours": 3,
+      "meetings": [
+        {
+          "title": "产品功能讨论会",
+          "duration": 2,
+          "type": "product_discussion",
+          "impact": "high"
+        },
+        {
+          "title": "技术难点攻关会议",
+          "duration": 1.5,
+          "type": "technical_discussion",
+          "impact": "high"
+        }
+      ],
+      "affected_tasks": [
+        "核心算法实现",
+        "性能优化"
+      ]
+    },
+    {
+      "date": "2024-01-18",
+      "planned_work_hours": 8,
+      "actual_work_hours": 6,
+      "meeting_hours": 2.5,
+      "deviation_hours": 2,
+      "meetings": [
+        {
+          "title": "项目进度汇报",
+          "duration": 1.5,
+          "type": "progress_report",
+          "impact": "medium"
+        },
+        {
+          "title": "跨部门协调会议",
+          "duration": 1,
+          "type": "cross_department",
+          "impact": "medium"
+        }
+      ],
+      "affected_tasks": [
+        "集成测试",
+        "文档编写"
+      ]
+    },
+    {
+      "date": "2024-01-19",
+      "planned_work_hours": 8,
+      "actual_work_hours": 4,
+      "meeting_hours": 4.5,
+      "deviation_hours": 4,
+      "meetings": [
+        {
+          "title": "项目总结会议",
+          "duration": 2,
+          "type": "project_summary",
+          "impact": "high"
+        },
+        {
+          "title": "下周工作规划会",
+          "duration": 1.5,
+          "type": "planning",
+          "impact": "medium"
+        },
+        {
+          "title": "技术分享会",
+          "duration": 1,
+          "type": "knowledge_sharing",
+          "impact": "low"
+        }
+      ],
+      "affected_tasks": [
+        "代码重构",
+        "部署准备",
+        "用户手册编写"
+      ]
+    }
+  ],
+  "summary": {
+    "total_planned_hours": 40,
+    "total_actual_work_hours": 25,
+    "total_meeting_hours": 18,
+    "total_deviation_hours": 15,
+    "deviation_percentage": 37.5,
+    "consecutive_deviation_days": 5,
+    "average_daily_deviation": 3,
+    "most_impactful_meeting_type": "project_review",
+    "productivity_impact": "severe"
+  }
+}

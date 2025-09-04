@@ -1,0 +1,14 @@
+{
+  "timestamp": "2025-08-29T18:37:48.171673",
+  "config_status": "success",
+  "data_storage_status": "failed",
+  "deviation_tracker_status": "failed",
+  "notification_scheduler_status": "failed",
+  "feishu_client_status": "unknown",
+  "data_summary": {},
+  "errors": [
+    "数据存储检查失败: 'Config' object has no attribute 'storage'",
+    "偏离检测器检查失败: cannot access local variable 'data_manager' where it is not associated with a value",
+    "通知调度器检查失败: 'FeishuConfig' object has no attribute 'get'"
+  ]
+}

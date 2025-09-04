@@ -1,0 +1,242 @@
+{
+  "test_summary": {
+    "total_tests": 3,
+    "total_time": "55.38s",
+    "glm_success_rate": "100.00%",
+    "feishu_success_rate": "0.00%",
+    "avg_glm_analysis_time": "18.46s",
+    "avg_score_accuracy": "100.00%",
+    "test_timestamp": "2025-08-28T12:08:21.563513"
+  },
+  "detailed_results": [
+    {
+      "scenario": "unknown",
+      "user_id": "test_user_001",
+      "total_time": "18.57s",
+      "glm_analysis_time": "18.57s",
+      "glm_success": true,
+      "feishu_success": false,
+      "expected_score": 6.5,
+      "actual_score": 6.5,
+      "score_accuracy": "100.00%",
+      "deviation_detected": true
+    },
+    {
+      "scenario": "unknown",
+      "user_id": "test_user_001",
+      "total_time": "19.86s",
+      "glm_analysis_time": "19.86s",
+      "glm_success": true,
+      "feishu_success": false,
+      "expected_score": 6.4,
+      "actual_score": 6.4,
+      "score_accuracy": "100.00%",
+      "deviation_detected": true
+    },
+    {
+      "scenario": "unknown",
+      "user_id": "test_user_001",
+      "total_time": "16.96s",
+      "glm_analysis_time": "16.96s",
+      "glm_success": true,
+      "feishu_success": false,
+      "expected_score": 7.2,
+      "actual_score": 7.2,
+      "score_accuracy": "100.00%",
+      "deviation_detected": true
+    }
+  ],
+  "raw_results": [
+    {
+      "test_case": {
+        "score": 6.5,
+        "completion_rate": 0.55,
+        "deviation_reasons": [
+          "外部依赖延迟"
+        ],
+        "additional_work": [
+          "学习了新的技术栈",
+          "处理了大量技术债务"
+        ],
+        "suggestions": [
+          "加强项目风险管理",
+          "需要重新评估项目范围",
+          "考虑寻求技术支持"
+        ],
+        "summary": "偏离程度较大，需要关注。偏离评分: 6.5, 完成率: 55%",
+        "confidence": 0.89,
+        "user_id": "test_user_001",
+        "analysis_date": "2025-08-26",
+        "discussion_number": 2000,
+        "is_deviation": true,
+        "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 6.5/10\n**完成率**: 55.0%\n**评级**: 需改进\n\n### 分析详情\n偏离程度较大，需要关注\n\n### 偏离原因\n- 外部依赖延迟\n\n### 额外工作\n- 学习了新的技术栈\n- 处理了大量技术债务\n\n### 改进建议\n- 加强项目风险管理\n- 需要重新评估项目范围\n- 考虑寻求技术支持\n",
+        "grade": "需改进"
+      },
+      "total_time": 18.567920207977295,
+      "glm_result": {
+        "success": true,
+        "analysis_time": 18.567116260528564,
+        "deviation_score": 6.5,
+        "completion_rate": 0.5,
+        "is_deviation": true,
+        "text_analysis": "【文本分析报告】\n\n【报告日期】2025-08-28\n\n【报告对象】test_user_001\n\n【一、工作完成情况评估】\n\n根据日报提供的信息，test_user_001的偏离评分为6.5，表明实际工作与计划存在一定程度的偏差。以下是对其工作完成情况的详细评估。\n\n【二、计划执行偏离度分析】\n\n1. 实际工作与计划的匹配程度：\n   - 计划内容：完成项目开发任务，包括代码编写、测试和文档更新。\n   - 实际完成情况：日报中未具体说明实际完成的工作内容，仅提及偏离评分。\n\n2. 偏离的具体表现和程度：\n   - 由于日报未提供具体工作内容，无法直接评估偏离的具体表现和程度。但根据偏离评分6.5，可以推断实际完成的工作与计划存在较大偏差。\n\n【三、额外工作识别】\n\n- 日报中未提及额外工作，因此无法判断额外工作的合理性。\n\n【四、问题原因分析】\n\n由于缺乏具体工作内容的描述，以下原因分析基于偏离评分进行推测：\n\n1. 资源分配不均：可能存在其他紧急任务或优先级更高的工作，导致项目开发任务资源分配不足。\n2. 技术难题：在代码编写、测试或文档更新过程中遇到难以解决的问题，影响了工作进度。\n3. 人员能力：test_user_001可能缺乏完成项目开发任务所需的专业技能或经验。\n4. 时间管理：可能存在时间管理不当，导致任务执行效率低下。\n\n【五、改进建议】\n\n1. 明确工作内容：建议在日报中详细记录每日工作内容，以便更准确地评估工作完成情况。\n2. 资源优化：合理分配资源，确保项目开发任务得到足够的关注和支持。\n3. 技术支持：为test_user_001提供必要的技术支持，帮助其解决技术难题。\n4. 培训与提升：针对test_user_001的技能短板，提供相应的培训与提升机会。\n5. 时间管理：加强时间管理，提高工作效率，确保项目按计划推进。\n\n总结：本次分析基于有限的日报信息，对test_user_001的工作偏离情况进行了初步评估。为提高工作效率和项目质量，建议采取上述改进措施，并持续关注test_user_001的工作进展。",
+        "structured_data": {
+          "deviation_reasons": [
+            "资源分配不均",
+            "技术难题",
+            "人员能力",
+            "时间管理"
+          ],
+          "additional_work": [],
+          "suggestions": [
+            "明确工作内容",
+            "资源优化",
+            "技术支持",
+            "培训与提升",
+            "时间管理"
+          ]
+        },
+        "confidence": 0.7,
+        "api_calls": 2
+      },
+      "feishu_result": {
+        "success": false,
+        "reason": "feishu_not_configured"
+      },
+      "validation": {
+        "expected_score": 6.5,
+        "actual_score": 6.5,
+        "score_accuracy": 1.0,
+        "glm_success": true,
+        "feishu_success": false
+      },
+      "timestamp": "2025-08-28T12:07:44.747101"
+    },
+    {
+      "test_case": {
+        "score": 6.4,
+        "completion_rate": 0.63,
+        "deviation_reasons": [],
+        "additional_work": [
+          "协调了多个团队的工作",
+          "学习了新的技术栈",
+          "重新实现了核心功能"
+        ],
+        "suggestions": [
+          "加强项目风险管理"
+        ],
+        "summary": "偏离程度较大，需要关注。偏离评分: 6.4, 完成率: 63%",
+        "confidence": 0.87,
+        "user_id": "test_user_001",
+        "analysis_date": "2025-08-27",
+        "discussion_number": 2001,
+        "is_deviation": true,
+        "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 6.4/10\n**完成率**: 63.0%\n**评级**: 需改进\n\n### 分析详情\n偏离程度较大，需要关注\n\n### 偏离原因\n无明显偏离\n\n### 额外工作\n- 协调了多个团队的工作\n- 学习了新的技术栈\n- 重新实现了核心功能\n\n### 改进建议\n- 加强项目风险管理\n",
+        "grade": "需改进"
+      },
+      "total_time": 19.85672354698181,
+      "glm_result": {
+        "success": true,
+        "analysis_time": 19.856010675430298,
+        "deviation_score": 6.4,
+        "completion_rate": 0.0,
+        "is_deviation": true,
+        "text_analysis": "【文本分析报告】\n\n**分析日期：2025-08-28**\n\n**一、实际工作与计划的匹配程度**\n\n根据日报内容，用户test_user_001的日计划是完成项目开发任务，包括代码编写、测试和文档更新。然而，日报中的偏离评分达到了6.4，表明实际工作与计划存在较大偏差。\n\n**二、偏离的具体表现和程度**\n\n1. **代码编写**：日报中未明确提及代码编写的具体进展，无法判断是否按计划完成。\n2. **测试**：同样，日报中没有提及测试工作的具体执行情况。\n3. **文档更新**：日报中未提及文档更新的进展。\n\n由于缺乏具体细节，无法准确量化偏离程度，但根据偏离评分6.4，可以推断实际完成的工作与计划相比有显著不足。\n\n**三、偏离的可能原因**\n\n1. **资源分配**：可能存在资源分配不合理，导致项目开发任务无法按计划推进。\n2. **优先级调整**：项目优先级可能发生了变化，导致原计划中的任务被推迟或取消。\n3. **技能或知识不足**：团队成员可能缺乏必要的技能或知识，导致工作进度缓慢。\n4. **外部干扰**：如技术难题、设备故障等外部因素可能影响了工作进度。\n5. **沟通不畅**：团队成员之间或与项目管理者之间的沟通可能存在障碍。\n\n**四、额外工作的合理性**\n\n日报中未提及额外工作，因此无法对此进行评估。但通常情况下，如果额外工作与项目目标相关，且有助于提升项目质量或效率，则其合理性较高。\n\n**五、具体的改进建议**\n\n1. **明确工作目标**：确保每个团队成员都清楚了解项目目标和任务要求。\n2. **优化资源分配**：根据项目进展和团队成员的能力，合理分配资源。\n3. **加强沟通**：建立有效的沟通机制，确保信息及时传递，减少误解和延误。\n4. **技能提升**：为团队成员提供必要的培训，提升其技能水平。\n5. **定期回顾**：定期回顾项目进度，及时调整计划，确保项目按预期推进。\n6. **记录详细工作日志**：鼓励团队成员记录详细的工作日志，以便于后续分析和改进。\n\n总结：本次分析表明，用户test_user_001在2025-08-28的工作中存在较大偏离。建议采取上述改进措施，以提升工作效率和项目质量。",
+        "structured_data": {
+          "deviation_reasons": [
+            "资源分配不合理",
+            "项目优先级调整",
+            "技能或知识不足",
+            "外部干扰",
+            "沟通不畅"
+          ],
+          "additional_work": [],
+          "suggestions": [
+            "明确工作目标",
+            "优化资源分配",
+            "加强沟通",
+            "技能提升",
+            "定期回顾",
+            "记录详细工作日志"
+          ]
+        },
+        "confidence": 0.9,
+        "api_calls": 2
+      },
+      "feishu_result": {
+        "success": false,
+        "reason": "feishu_not_configured"
+      },
+      "validation": {
+        "expected_score": 6.4,
+        "actual_score": 6.4,
+        "score_accuracy": 1.0,
+        "glm_success": true,
+        "feishu_success": false
+      },
+      "timestamp": "2025-08-28T12:08:04.604342"
+    },
+    {
+      "test_case": {
+        "score": 7.2,
+        "completion_rate": 0.68,
+        "deviation_reasons": [],
+        "additional_work": [
+          "处理了大量技术债务"
+        ],
+        "suggestions": [
+          "需要重新评估项目范围",
+          "建议增加技术预研时间",
+          "考虑寻求技术支持"
+        ],
+        "summary": "偏离程度较大，需要关注。偏离评分: 7.2, 完成率: 68%",
+        "confidence": 0.8,
+        "user_id": "test_user_001",
+        "analysis_date": "2025-08-28",
+        "discussion_number": 2002,
+        "is_deviation": true,
+        "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 7.2/10\n**完成率**: 68.0%\n**评级**: 需改进\n\n### 分析详情\n偏离程度较大，需要关注\n\n### 偏离原因\n无明显偏离\n\n### 额外工作\n- 处理了大量技术债务\n\n### 改进建议\n- 需要重新评估项目范围\n- 建议增加技术预研时间\n- 考虑寻求技术支持\n",
+        "grade": "需改进"
+      },
+      "total_time": 16.958242654800415,
+      "glm_result": {
+        "success": true,
+        "analysis_time": 16.957207918167114,
+        "deviation_score": 7.2,
+        "completion_rate": 0.6,
+        "is_deviation": true,
+        "text_analysis": "【文本分析报告】\n\n【报告日期】2025-08-28\n\n【分析对象】用户test_user_001\n\n【分析内容】日报与日计划偏离情况分析\n\n一、实际工作与计划的匹配程度\n\n根据日报内容，用户test_user_001在当日的工作计划中包括完成项目开发任务，具体涉及代码编写、测试和文档更新。然而，日报中并未详细列出具体完成的工作内容，仅提供了偏离评分7.2。此评分可能基于工作完成度、效率或质量等因素的综合评估。\n\n二、偏离的具体表现和程度\n\n1. 偏离表现：由于日报缺乏具体工作细节，无法明确指出偏离的具体表现。但根据偏离评分7.2，可以推测实际工作与计划存在一定程度的偏差。\n\n2. 偏离程度：偏离评分7.2表明偏离程度较高，可能涉及工作进度、质量或效率等多个方面。\n\n三、偏离的可能原因\n\n1. 资源分配：可能存在资源分配不合理，导致部分工作未能按计划完成。\n\n2. 技术难题：在代码编写或测试过程中，可能遇到了难以解决的问题，影响了工作进度。\n\n3. 优先级调整：项目优先级可能发生变化，导致原计划中的工作被推迟或调整。\n\n4. 个人因素：如个人健康、家庭原因等，可能影响了工作状态和效率。\n\n四、额外工作的合理性\n\n由于日报中未提及额外工作，无法对此进行评估。建议在今后的日报中详细记录额外工作内容，以便分析其合理性和必要性。\n\n五、具体的改进建议\n\n1. 明确工作计划：在制定日计划时，应充分考虑资源、时间和技术等因素，确保计划的合理性和可行性。\n\n2. 加强沟通与协作：在项目开发过程中，加强团队成员之间的沟通与协作，共同解决技术难题。\n\n3. 定期回顾与调整：定期回顾工作进度，根据实际情况调整计划，确保项目按期完成。\n\n4. 关注个人因素：关注团队成员的个人状况，提供必要的支持和帮助，确保工作状态。\n\n5. 完善日报内容：在日报中详细记录工作内容、完成情况、遇到的问题及解决方案，以便进行有效分析。\n\n总结：本次分析表明，用户test_user_001在当日的工作中存在一定程度的偏离。为提高工作效率和质量，建议采取上述改进措施，确保项目顺利推进。",
+        "structured_data": {
+          "deviation_reasons": [
+            "资源分配不合理",
+            "技术难题",
+            "优先级调整",
+            "个人因素"
+          ],
+          "additional_work": [],
+          "suggestions": [
+            "明确工作计划",
+            "加强沟通与协作",
+            "定期回顾与调整",
+            "关注个人因素",
+            "完善日报内容"
+          ]
+        },
+        "confidence": 0.9,
+        "api_calls": 2
+      },
+      "feishu_result": {
+        "success": false,
+        "reason": "feishu_not_configured"
+      },
+      "validation": {
+        "expected_score": 7.2,
+        "actual_score": 7.2,
+        "score_accuracy": 1.0,
+        "glm_success": true,
+        "feishu_success": false
+      },
+      "timestamp": "2025-08-28T12:08:21.563050"
+    }
+  ]
+}

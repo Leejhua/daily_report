@@ -1,0 +1,133 @@
+{
+  "test_start_time": "2025-09-01T11:08:55.411001",
+  "config_info": {
+    "continuous_threshold": 3,
+    "feishu_enabled": true,
+    "default_chat_id": "oc_e74828672bc4de4f473b33d8c8746030"
+  },
+  "deviation_test": {
+    "user_id": "test_user_continuous",
+    "test_start_time": "2025-09-01T11:08:55.411014",
+    "steps": [
+      "清理历史数据（模拟）",
+      "生成2条正常数据",
+      "生成3条偏离数据",
+      "检查连续偏离状态",
+      "执行通知检查",
+      "获取用户偏离摘要"
+    ],
+    "alerts_generated": [
+      {
+        "type": "continuous_deviation",
+        "severity": "high",
+        "message": "用户 test_user_continuous 连续 3 天出现偏离",
+        "data": {
+          "deviation_dates": [
+            "2025-08-30",
+            "2025-08-31",
+            "2025-09-01"
+          ],
+          "scores": [
+            7.5,
+            8.0,
+            8.5
+          ],
+          "completion_rates": [
+            0.3,
+            0.25,
+            0.19999999999999998
+          ]
+        },
+        "created_at": "2025-09-01T11:08:55.458326"
+      }
+    ],
+    "continuous_deviation_detected": true,
+    "notification_sent": false,
+    "errors": [],
+    "continuous_check_result": {
+      "has_continuous_deviation": true,
+      "consecutive_days": 3,
+      "deviation_dates": [
+        "2025-09-01",
+        "2025-08-31",
+        "2025-08-30"
+      ],
+      "deviation_scores": [
+        7.5,
+        8.0,
+        8.5
+      ],
+      "avg_score": 8.0
+    },
+    "notification_result": {
+      "timestamp": "2025-09-01T11:08:55.468063",
+      "checked_users": [
+        "test_user_continuous"
+      ],
+      "notifications_sent": [],
+      "errors": []
+    },
+    "user_summary": {
+      "user_id": "test_user_continuous",
+      "has_continuous_deviation": true,
+      "recent_results_count": 5,
+      "recent_deviation_count": 3,
+      "recent_average_score": 6.04,
+      "recent_alerts_count": 4,
+      "statistics": {
+        "user_id": "test_user_continuous",
+        "total_analyses": 5,
+        "deviation_count": 3,
+        "deviation_rate": 0.6,
+        "recent_scores": [
+          7.5,
+          8.0,
+          8.5,
+          3.0,
+          3.2
+        ],
+        "average_score": 6.04
+      },
+      "recent_alerts": [
+        {
+          "type": "high_score",
+          "severity": "high",
+          "message": "用户 test_user_continuous 偏离分数过高: 7.5",
+          "created_at": "2025-09-01T11:08:55.445326"
+        },
+        {
+          "type": "high_score",
+          "severity": "high",
+          "message": "用户 test_user_continuous 偏离分数过高: 8.0",
+          "created_at": "2025-09-01T11:08:55.454373"
+        },
+        {
+          "type": "continuous_deviation",
+          "severity": "high",
+          "message": "用户 test_user_continuous 连续 3 天出现偏离",
+          "created_at": "2025-09-01T11:08:55.458326"
+        },
+        {
+          "type": "high_score",
+          "severity": "high",
+          "message": "用户 test_user_continuous 偏离分数过高: 8.5",
+          "created_at": "2025-09-01T11:08:55.458516"
+        }
+      ]
+    },
+    "test_end_time": "2025-09-01T11:08:55.470590"
+  },
+  "notification_test": {
+    "user_id": "XK-UI",
+    "test_start_time": "2025-09-01T11:08:55.470598",
+    "feishu_config_loaded": true,
+    "user_mapping_found": false,
+    "message_sent": false,
+    "errors": [
+      "未找到用户 XK-UI 的飞书映射"
+    ],
+    "test_end_time": "2025-09-01T11:08:55.470718"
+  },
+  "overall_success": false,
+  "test_end_time": "2025-09-01T11:08:55.470725"
+}

@@ -1,0 +1,36 @@
+{
+  "collection_time": "2025-09-01T15:40:46.938958",
+  "app_id": "cli_a827dad5d2e7900b",
+  "total_chats": 1,
+  "chats": [
+    {
+      "chat_id": "oc_e74828672bc4de4f473b33d8c8746030",
+      "chat_name": "测试",
+      "chat_type": null,
+      "description": "",
+      "member_count": 2,
+      "members": [
+        {
+          "member_id": "ou_e19b2c4da6d4495bc3cda17503e48c3f",
+          "member_id_type": "open_id",
+          "name": "廖小康",
+          "tenant_key": "1bc8eedbbb6a575f"
+        },
+        {
+          "member_id": "ou_c9cf0adee8b20877a1bb793df7a364bb",
+          "member_id_type": "open_id",
+          "name": "李嘉华",
+          "tenant_key": "1bc8eedbbb6a575f"
+        }
+      ]
+    }
+  ],
+  "all_unique_members": [
+    "ou_c9cf0adee8b20877a1bb793df7a364bb",
+    "ou_e19b2c4da6d4495bc3cda17503e48c3f"
+  ],
+  "summary": {
+    "total_members": 2,
+    "unique_members": 2
+  }
+}

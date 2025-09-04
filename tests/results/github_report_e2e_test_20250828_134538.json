@@ -1,0 +1,106 @@
+{
+  "test_start_time": "2025-08-28T13:44:53.009236",
+  "test_end_time": null,
+  "total_tests": 5,
+  "passed_tests": 4,
+  "failed_tests": 1,
+  "test_details": [
+    {
+      "test_name": "连接测试",
+      "success": true,
+      "result_data": {
+        "github_connected": true,
+        "glm_connected": true
+      },
+      "timestamp": "2025-08-28T13:44:54.229738"
+    },
+    {
+      "test_name": "GitHub数据获取测试",
+      "success": true,
+      "result_data": {
+        "discussion_number": 57,
+        "discussion_title": "军伟8.18-22日报",
+        "discussion_author": "organ1cc",
+        "discussion_url": "https://github.com/orgs/LambdaTheory/discussions/57",
+        "daily_summary": "# 8.27日结\r\n今日工作\r\n1、seo内容内容储备已完成\r\n2、脚本新增批量生成功能，生成速度较慢，储备的内容今晚生成好了明天再发出去\r\n明日计划\r\n1、找新外链和发社媒\r\n2、研究一下脚本提速",
+        "daily_plan": "# 8.28日计划\r\n1、发完昨天生成好的json\r\n2、找新的外链和发社媒\r\n3、修复脚本返回空文本和提速问题",
+        "weekly_plan": "本周计划：\r\n1、赶完seo和外链发布的进度\r\n2、发布italianbrainrot站的博客内容，目前以角色维基为主\r\n3、日报补充运营数据",
+        "comments_count": 12,
+        "content_extraction_success": true,
+        "is_mock_data": false
+      },
+      "timestamp": "2025-08-28T13:44:59.699340"
+    },
+    {
+      "test_name": "GLM分析测试",
+      "success": true,
+      "result_data": {
+        "total_analyses": 2,
+        "successful_analyses": 2,
+        "average_analysis_time": 4.2080845,
+        "total_output_length": 448
+      },
+      "timestamp": "2025-08-28T13:45:08.116298"
+    },
+    {
+      "test_name": "偏离分析测试",
+      "success": false,
+      "error": "'DualConversationResult' object has no attribute 'deviation_score'",
+      "timestamp": "2025-08-28T13:45:26.392809"
+    },
+    {
+      "test_name": "端到端流程测试",
+      "success": true,
+      "result_data": {
+        "discussion_number": 57,
+        "discussion_title": "军伟8.18-22日报",
+        "daily_summary_length": 99,
+        "daily_plan_length": 56,
+        "weekly_plan_length": 0,
+        "analysis_report_length": 443,
+        "total_processing_time_seconds": 11.648913,
+        "success": true
+      },
+      "timestamp": "2025-08-28T13:45:38.042231"
+    }
+  ],
+  "github_data": {
+    "discussion_number": 57,
+    "discussion_title": "军伟8.18-22日报",
+    "discussion_author": "organ1cc",
+    "discussion_url": "https://github.com/orgs/LambdaTheory/discussions/57",
+    "daily_summary": "# 8.27日结\r\n今日工作\r\n1、seo内容内容储备已完成\r\n2、脚本新增批量生成功能，生成速度较慢，储备的内容今晚生成好了明天再发出去\r\n明日计划\r\n1、找新外链和发社媒\r\n2、研究一下脚本提速",
+    "daily_plan": "# 8.28日计划\r\n1、发完昨天生成好的json\r\n2、找新的外链和发社媒\r\n3、修复脚本返回空文本和提速问题",
+    "weekly_plan": "本周计划：\r\n1、赶完seo和外链发布的进度\r\n2、发布italianbrainrot站的博客内容，目前以角色维基为主\r\n3、日报补充运营数据",
+    "comments_count": 12,
+    "content_extraction_success": true,
+    "is_mock_data": false
+  },
+  "glm_analyses": [
+    {
+      "type": "daily_report",
+      "input_length": 99,
+      "output_length": 318,
+      "analysis_time_seconds": 5.531037,
+      "success": true,
+      "content_preview": "## 📊 日报分析\n\n【内容问题】\n- 日报中提到“seo内容内容储备已完成”，但未明确说明具体完成了哪些内容，缺乏具体细节。\n- 日报中提到“脚本新增批量生成功能，生成速度较慢”，但没有提供具体的速度对比数据或改进措施。\n- 日报中提到“储备的内容今晚生成好了明天再发出去”，但没有说明具体是哪些内容，以及为何选择在明天发送。\n\n【偏离判断】\n- 实际工作与计划存在明显偏离。原计划中包含“发完昨天..."
+    },
+    {
+      "type": "daily_plan",
+      "input_length": 56,
+      "output_length": 130,
+      "analysis_time_seconds": 2.885132,
+      "success": true,
+      "content_preview": "## 📋 日计划分析\n\n【目标明确性】\n- [缺乏具体说明“昨天生成好的json”的内容和数量]\n- [未明确“新的外链”的具体数量和质量要求]\n- [未具体说明“社媒”是指哪些社交媒体平台]\n- [未明确“修复脚本返回空文本和提速问题”的具体脚本和问题范围]"
+    }
+  ],
+  "deviation_analyses": [],
+  "errors": [
+    {
+      "type": "test_failure",
+      "test_name": "偏离分析测试",
+      "message": "'DualConversationResult' object has no attribute 'deviation_score'",
+      "timestamp": "2025-08-28T13:45:26.392812"
+    }
+  ]
+}

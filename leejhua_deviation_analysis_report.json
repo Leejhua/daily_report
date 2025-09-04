@@ -1,0 +1,140 @@
+{
+  "user_info": {
+    "github_username": "Leejhua",
+    "feishu_user_id": "ou_97612fd21e14ad5a1208ae1125a4e7c4",
+    "name": "李嘉华"
+  },
+  "analysis_summary": {
+    "analysis_period": {
+      "start_date": "2024-01-15",
+      "end_date": "2024-01-19",
+      "total_days": 5
+    },
+    "total_deviation_hours": 15,
+    "deviation_percentage": 37.5,
+    "productivity_impact": "severe"
+  },
+  "trend_analysis": {
+    "daily_rates": [
+      {
+        "date": "2024-01-15",
+        "deviation_rate": 31.25,
+        "deviation_hours": 2.5
+      },
+      {
+        "date": "2024-01-16",
+        "deviation_rate": 43.75,
+        "deviation_hours": 3.5
+      },
+      {
+        "date": "2024-01-17",
+        "deviation_rate": 37.5,
+        "deviation_hours": 3
+      },
+      {
+        "date": "2024-01-18",
+        "deviation_rate": 25.0,
+        "deviation_hours": 2
+      },
+      {
+        "date": "2024-01-19",
+        "deviation_rate": 50.0,
+        "deviation_hours": 4
+      }
+    ],
+    "max_consecutive_deviation_days": 5,
+    "average_deviation_rate": 37.5
+  },
+  "meeting_analysis": {
+    "meeting_type_breakdown": {
+      "project_review": {
+        "total_hours": 2,
+        "count": 1,
+        "high_impact_count": 1
+      },
+      "technical_discussion": {
+        "total_hours": 3.0,
+        "count": 2,
+        "high_impact_count": 1
+      },
+      "client_communication": {
+        "total_hours": 2.5,
+        "count": 1,
+        "high_impact_count": 1
+      },
+      "team_meeting": {
+        "total_hours": 1,
+        "count": 1,
+        "high_impact_count": 0
+      },
+      "code_review": {
+        "total_hours": 0.5,
+        "count": 1,
+        "high_impact_count": 0
+      },
+      "product_discussion": {
+        "total_hours": 2,
+        "count": 1,
+        "high_impact_count": 1
+      },
+      "progress_report": {
+        "total_hours": 1.5,
+        "count": 1,
+        "high_impact_count": 0
+      },
+      "cross_department": {
+        "total_hours": 1,
+        "count": 1,
+        "high_impact_count": 0
+      },
+      "project_summary": {
+        "total_hours": 2,
+        "count": 1,
+        "high_impact_count": 1
+      },
+      "planning": {
+        "total_hours": 1.5,
+        "count": 1,
+        "high_impact_count": 0
+      },
+      "knowledge_sharing": {
+        "total_hours": 1,
+        "count": 1,
+        "high_impact_count": 0
+      }
+    },
+    "total_meeting_hours": 18.0,
+    "most_time_consuming_type": "technical_discussion",
+    "most_time_consuming_hours": 3.0
+  },
+  "task_analysis": {
+    "total_affected_tasks": 12,
+    "task_frequency": {
+      "用户界面开发": 1,
+      "API接口实现": 1,
+      "数据库设计": 1,
+      "前端组件开发": 1,
+      "单元测试编写": 1,
+      "核心算法实现": 1,
+      "性能优化": 1,
+      "集成测试": 1,
+      "文档编写": 1,
+      "代码重构": 1,
+      "部署准备": 1,
+      "用户手册编写": 1
+    },
+    "most_affected_task": "用户界面开发",
+    "most_affected_frequency": 1
+  },
+  "recommendations": [
+    "建议重新评估会议必要性，当前平均偏离率过高（37.5%）",
+    "连续5天出现显著偏离，建议调整会议安排策略",
+    "'technical_discussion'类型会议耗时最多，建议优化此类会议效率",
+    "'用户界面开发'任务受影响最频繁，建议为此类任务预留更多缓冲时间",
+    "建议实施会议时间管控，设置单次会议最大时长限制",
+    "考虑将部分会议改为异步沟通方式",
+    "建议每日预留至少2小时不被打断的专注工作时间"
+  ],
+  "severity_level": "high",
+  "generated_at": "2025-09-01T17:10:26.156723"
+}

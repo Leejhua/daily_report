@@ -1,0 +1,12 @@
+{
+  "chat_mapping": {
+    "default": "",
+    "groups": {
+      "通知": "oc_231b5aa498b6984843781eed6aac8a2f"
+    }
+  },
+  "user_mapping": {
+    "github_username1": "feishu_user_id1",
+    "github_username2": "feishu_user_id2"
+  }
+}

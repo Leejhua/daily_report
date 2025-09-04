@@ -1,0 +1,51 @@
+{
+  "test_summary": {
+    "total_tests": 8,
+    "passed_tests": 8,
+    "failed_tests": 0,
+    "success_rate": 100.0,
+    "test_time": "2025-08-28T10:40:51.591406"
+  },
+  "detailed_results": {
+    "数据文件初始化": {
+      "success": true,
+      "message": "数据文件初始化成功",
+      "timestamp": "2025-08-28T10:40:50.996928"
+    },
+    "保存分析结果": {
+      "success": true,
+      "message": "分析结果保存成功",
+      "timestamp": "2025-08-28T10:40:50.999039"
+    },
+    "获取用户最近结果": {
+      "success": true,
+      "message": "获取到1条记录",
+      "timestamp": "2025-08-28T10:40:50.999907"
+    },
+    "连续偏离检查": {
+      "success": true,
+      "message": "连续偏离状态: False",
+      "timestamp": "2025-08-28T10:40:51.000125"
+    },
+    "记录分析结果": {
+      "success": true,
+      "message": "分析结果记录成功",
+      "timestamp": "2025-08-28T10:40:51.004322"
+    },
+    "预警检测功能": {
+      "success": true,
+      "message": "检测到 0 个预警",
+      "timestamp": "2025-08-28T10:40:51.004417"
+    },
+    "GLM连接测试": {
+      "success": true,
+      "message": "GLM API连接状态",
+      "timestamp": "2025-08-28T10:40:51.589952"
+    },
+    "偏离分析功能": {
+      "success": true,
+      "message": "偏离分析功能初始化成功",
+      "timestamp": "2025-08-28T10:40:51.590121"
+    }
+  }
+}

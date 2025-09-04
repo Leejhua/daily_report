@@ -1,0 +1,194 @@
+{
+  "test_start_time": "2025-09-01T11:21:30.141610",
+  "config_info": {
+    "continuous_threshold": 3,
+    "feishu_enabled": true,
+    "default_chat_id": "oc_e74828672bc4de4f473b33d8c8746030"
+  },
+  "deviation_test": {
+    "user_id": "XK-UI",
+    "test_start_time": "2025-09-01T11:21:30.141629",
+    "steps": [
+      "清理历史数据（模拟）",
+      "生成2条正常数据",
+      "生成3条偏离数据",
+      "检查连续偏离状态",
+      "执行通知检查",
+      "获取用户偏离摘要"
+    ],
+    "alerts_generated": [
+      {
+        "type": "continuous_deviation",
+        "severity": "high",
+        "message": "用户 XK-UI 连续 3 天出现偏离",
+        "data": {
+          "deviation_dates": [
+            "2025-08-30",
+            "2025-08-31",
+            "2025-09-01"
+          ],
+          "scores": [
+            7.5,
+            8.0,
+            8.5
+          ],
+          "completion_rates": [
+            0.3,
+            0.25,
+            0.19999999999999998
+          ]
+        },
+        "created_at": "2025-09-01T11:21:30.192505"
+      },
+      {
+        "type": "continuous_deviation",
+        "severity": "high",
+        "message": "用户 XK-UI 连续 3 天出现偏离",
+        "data": {
+          "deviation_dates": [
+            "2025-08-30",
+            "2025-08-31",
+            "2025-09-01"
+          ],
+          "scores": [
+            7.5,
+            8.0,
+            8.5
+          ],
+          "completion_rates": [
+            0.3,
+            0.25,
+            0.19999999999999998
+          ]
+        },
+        "created_at": "2025-09-01T11:21:30.219467"
+      },
+      {
+        "type": "continuous_deviation",
+        "severity": "high",
+        "message": "用户 XK-UI 连续 3 天出现偏离",
+        "data": {
+          "deviation_dates": [
+            "2025-08-30",
+            "2025-08-31",
+            "2025-09-01"
+          ],
+          "scores": [
+            7.5,
+            8.0,
+            8.5
+          ],
+          "completion_rates": [
+            0.3,
+            0.25,
+            0.19999999999999998
+          ]
+        },
+        "created_at": "2025-09-01T11:21:30.242039"
+      }
+    ],
+    "continuous_deviation_detected": true,
+    "notification_sent": false,
+    "errors": [],
+    "continuous_check_result": {
+      "has_continuous_deviation": true,
+      "consecutive_days": 3,
+      "deviation_dates": [
+        "2025-09-01",
+        "2025-08-31",
+        "2025-08-30"
+      ],
+      "deviation_scores": [
+        7.5,
+        8.0,
+        8.5
+      ],
+      "avg_score": 8.0
+    },
+    "notification_result": {
+      "timestamp": "2025-09-01T11:21:30.251307",
+      "checked_users": [
+        "XK-UI",
+        "test_user_continuous"
+      ],
+      "notifications_sent": [],
+      "errors": []
+    },
+    "user_summary": {
+      "user_id": "XK-UI",
+      "has_continuous_deviation": true,
+      "recent_results_count": 5,
+      "recent_deviation_count": 3,
+      "recent_average_score": 6.04,
+      "recent_alerts_count": 8,
+      "statistics": {
+        "user_id": "XK-UI",
+        "total_analyses": 5,
+        "deviation_count": 3,
+        "deviation_rate": 0.6,
+        "recent_scores": [
+          7.5,
+          8.0,
+          8.5,
+          3.0,
+          3.2
+        ],
+        "average_score": 6.04
+      },
+      "recent_alerts": [
+        {
+          "type": "high_score",
+          "severity": "high",
+          "message": "用户 XK-UI 偏离分数过高: 7.5",
+          "created_at": "2025-09-01T11:21:30.192693"
+        },
+        {
+          "type": "continuous_deviation",
+          "severity": "high",
+          "message": "用户 XK-UI 连续 3 天出现偏离",
+          "created_at": "2025-09-01T11:21:30.219467"
+        },
+        {
+          "type": "high_score",
+          "severity": "high",
+          "message": "用户 XK-UI 偏离分数过高: 8.0",
+          "created_at": "2025-09-01T11:21:30.219672"
+        },
+        {
+          "type": "continuous_deviation",
+          "severity": "high",
+          "message": "用户 XK-UI 连续 3 天出现偏离",
+          "created_at": "2025-09-01T11:21:30.242039"
+        },
+        {
+          "type": "high_score",
+          "severity": "high",
+          "message": "用户 XK-UI 偏离分数过高: 8.5",
+          "created_at": "2025-09-01T11:21:30.242248"
+        }
+      ]
+    },
+    "test_end_time": "2025-09-01T11:21:30.255504"
+  },
+  "notification_test": {
+    "user_id": "XK-UI",
+    "test_start_time": "2025-09-01T11:21:30.255521",
+    "feishu_config_loaded": true,
+    "user_mapping_found": true,
+    "message_sent": true,
+    "errors": [],
+    "test_end_time": "2025-09-01T11:21:31.276977"
+  },
+  "report_generation_test": {
+    "user_id": "XK-UI",
+    "test_start_time": "2025-09-01T11:21:31.278871",
+    "report_generated": false,
+    "report_sent": false,
+    "report_content": "",
+    "errors": [
+      "没有找到用户的偏离分析数据"
+    ]
+  },
+  "overall_success": false,
+  "test_end_time": "2025-09-01T11:21:31.279864"
+}

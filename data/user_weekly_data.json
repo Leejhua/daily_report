@@ -1,0 +1,123 @@
+{
+  "2025-W36": {
+    "XK-UI": {
+      "user_id": "XK-UI",
+      "week_id": "2025-W36",
+      "total_reports": 2,
+      "deviation_count": 2,
+      "avg_score": 6.75,
+      "daily_summaries": [],
+      "daily_plans": [],
+      "weekly_plans": [],
+      "work_completion_rate": 0.35,
+      "key_achievements": [],
+      "identified_issues": [
+        "第1天模拟偏离",
+        "任务复杂度预估不足",
+        "资源分配不合理",
+        "任务完成度低",
+        "沟通不畅",
+        "工作内容与计划不符"
+      ]
+    },
+    "test_user_continuous": {
+      "user_id": "test_user_continuous",
+      "week_id": "2025-W36",
+      "total_reports": 1,
+      "deviation_count": 1,
+      "avg_score": 7.5,
+      "daily_summaries": [],
+      "daily_plans": [],
+      "weekly_plans": [],
+      "work_completion_rate": 0.5,
+      "key_achievements": [],
+      "identified_issues": [
+        "任务完成度低",
+        "第1天模拟偏离",
+        "工作内容与计划不符"
+      ]
+    },
+    "organ1cc": {
+      "user_id": "organ1cc",
+      "week_id": "2025-W36",
+      "total_reports": 1,
+      "deviation_count": 1,
+      "avg_score": 7.0,
+      "daily_summaries": [],
+      "daily_plans": [],
+      "weekly_plans": [],
+      "work_completion_rate": 0.4,
+      "key_achievements": [],
+      "identified_issues": [
+        "记忆库和流程功能的开发比预期复杂",
+        "项目进度调整，重点放在记忆库和流程功能"
+      ]
+    },
+    "Leejhua": {
+      "user_id": "Leejhua",
+      "week_id": "2025-W36",
+      "total_reports": 1,
+      "deviation_count": 1,
+      "avg_score": 6.0,
+      "daily_summaries": [],
+      "daily_plans": [],
+      "weekly_plans": [],
+      "work_completion_rate": 0.2,
+      "key_achievements": [],
+      "identified_issues": [
+        "优先级调整",
+        "资源分配问题",
+        "预期不足"
+      ]
+    },
+    "goudaren0528": {
+      "user_id": "goudaren0528",
+      "week_id": "2025-W36",
+      "total_reports": 1,
+      "deviation_count": 1,
+      "avg_score": 7.0,
+      "daily_summaries": [],
+      "daily_plans": [],
+      "weekly_plans": [],
+      "work_completion_rate": 0.4,
+      "key_achievements": [],
+      "identified_issues": [
+        "项目启动时间延迟或需求变更",
+        "项目进度调整或资源分配问题"
+      ]
+    },
+    "ohuuovo": {
+      "user_id": "ohuuovo",
+      "week_id": "2025-W36",
+      "total_reports": 1,
+      "deviation_count": 1,
+      "avg_score": 7.0,
+      "daily_summaries": [],
+      "daily_plans": [],
+      "weekly_plans": [],
+      "work_completion_rate": 0.4,
+      "key_achievements": [],
+      "identified_issues": [
+        "可能存在突发任务",
+        "缺乏详细的日计划"
+      ]
+    },
+    "tjh19971228": {
+      "user_id": "tjh19971228",
+      "week_id": "2025-W36",
+      "total_reports": 1,
+      "deviation_count": 1,
+      "avg_score": 7.0,
+      "daily_summaries": [],
+      "daily_plans": [],
+      "weekly_plans": [],
+      "work_completion_rate": 0.4,
+      "key_achievements": [],
+      "identified_issues": [
+        "资源分配问题",
+        "任务难度评估不足",
+        "任务优先级调整"
+      ]
+    }
+  }
+}

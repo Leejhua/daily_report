@@ -1,0 +1,105 @@
+{
+  "user_id": "leejhua",
+  "analysis_results": [
+    {
+      "score": 7.5,
+      "completion_rate": 0.3,
+      "deviation_reasons": [
+        "参加了3小时的产品需求评审会议，占用了大部分开发时间",
+        "临时被拉入紧急技术讨论会，打断了原定的编码计划",
+        "下午的跨部门协调会议延长至2小时，影响了任务进度"
+      ],
+      "additional_work": [
+        "协助产品团队梳理技术可行性",
+        "为其他团队提供技术咨询",
+        "参与架构设计讨论"
+      ],
+      "suggestions": [
+        "建议合并相似主题的会议，提高会议效率",
+        "可以考虑异步沟通替代部分实时会议",
+        "预留专门的开发时间块，避免会议冲突"
+      ],
+      "summary": "今日因多个会议安排导致开发时间严重不足，原计划的功能开发仅完成30%，主要时间被产品评审和技术讨论占用。",
+      "confidence": 0.85,
+      "user_id": "leejhua",
+      "analysis_date": "2025-01-17",
+      "discussion_number": 1001,
+      "is_deviation": true,
+      "raw_analysis_text": "分析显示用户leejhua在2025-01-17的工作中出现明显偏离，主要原因是会议安排过多。",
+      "grade": "需改进"
+    },
+    {
+      "score": 8.2,
+      "completion_rate": 0.25,
+      "deviation_reasons": [
+        "上午2小时的季度规划会议，讨论下季度技术路线",
+        "中午临时加入的客户需求沟通会，持续1.5小时",
+        "下午的团队建设活动和复盘会议，占用3小时",
+        "晚上还有一个技术分享会议"
+      ],
+      "additional_work": [
+        "为客户提供技术方案建议",
+        "参与团队文化建设讨论",
+        "准备技术分享材料"
+      ],
+      "suggestions": [
+        "建议将非紧急会议安排在开发任务较轻的时段",
+        "可以提前准备会议材料，缩短会议时长",
+        "考虑将部分会议改为书面沟通"
+      ],
+      "summary": "今日会议密度极高，从上午到晚上几乎被各种会议占满，实际开发时间不足2小时，任务完成率仅25%。",
+      "confidence": 0.9,
+      "user_id": "leejhua",
+      "analysis_date": "2025-01-18",
+      "discussion_number": 1002,
+      "is_deviation": true,
+      "raw_analysis_text": "分析显示用户leejhua在2025-01-18的工作中出现严重偏离，会议安排过于密集。",
+      "grade": "较差"
+    },
+    {
+      "score": 7.8,
+      "completion_rate": 0.35,
+      "deviation_reasons": [
+        "参加了2小时的项目进度汇报会议",
+        "临时参与了1.5小时的技术难题讨论会",
+        "下午的部门月度总结会议，持续2.5小时",
+        "会议间隙被频繁打断，难以集中精力开发"
+      ],
+      "additional_work": [
+        "协助解决其他项目的技术难题",
+        "整理和汇报项目进度数据",
+        "参与部门工作总结和规划"
+      ],
+      "suggestions": [
+        "建议设置专门的开发时间，期间不安排会议",
+        "可以将技术讨论集中在固定时间段",
+        "提高会议议程的针对性，减少无关讨论"
+      ],
+      "summary": "连续第三天受到会议影响，虽然比前两天稍好，但仍然只完成了35%的开发任务，会议频率需要优化。",
+      "confidence": 0.88,
+      "user_id": "leejhua",
+      "analysis_date": "2025-01-19",
+      "discussion_number": 1003,
+      "is_deviation": true,
+      "raw_analysis_text": "分析显示用户leejhua在2025-01-19的工作中继续出现偏离，连续三天受会议影响。",
+      "grade": "需改进"
+    }
+  ],
+  "continuous_deviation_record": {
+    "user_id": "leejhua",
+    "start_date": "2025-01-17",
+    "end_date": "2025-01-19",
+    "deviation_count": 3,
+    "deviation_dates": ["2025-01-17", "2025-01-18", "2025-01-19"],
+    "is_active": true,
+    "report_generated": false,
+    "created_at": "2025-01-19T18:00:00"
+  },
+  "metadata": {
+    "created_at": "2025-01-19T18:00:00",
+    "description": "leejhua连续3天因会议导致工作偏离的模拟数据",
+    "total_deviation_days": 3,
+    "average_score": 7.83,
+    "average_completion_rate": 0.3
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "collection_time": "2025-09-01T15:40:10.381452",
+  "app_id": "cli_a827dad5d2e7900b",
+  "total_chats": 1,
+  "chats": [
+    {
+      "chat_id": "oc_e74828672bc4de4f473b33d8c8746030",
+      "chat_name": "测试",
+      "chat_type": null,
+      "description": "",
+      "member_count": 0,
+      "members": []
+    }
+  ],
+  "all_unique_members": [],
+  "summary": {
+    "total_members": 0,
+    "unique_members": 0
+  }
+}

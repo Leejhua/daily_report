@@ -1,0 +1,133 @@
+{
+  "test_start_time": "2025-08-28T13:46:33.481550",
+  "test_end_time": null,
+  "total_tests": 5,
+  "passed_tests": 5,
+  "failed_tests": 0,
+  "test_details": [
+    {
+      "test_name": "连接测试",
+      "success": true,
+      "result_data": {
+        "github_connected": true,
+        "glm_connected": true
+      },
+      "timestamp": "2025-08-28T13:46:34.384050"
+    },
+    {
+      "test_name": "GitHub数据获取测试",
+      "success": true,
+      "result_data": {
+        "discussion_number": 57,
+        "discussion_title": "军伟8.18-22日报",
+        "discussion_author": "organ1cc",
+        "discussion_url": "https://github.com/orgs/LambdaTheory/discussions/57",
+        "daily_summary": "# 8.27日结\r\n今日工作\r\n1、seo内容内容储备已完成\r\n2、脚本新增批量生成功能，生成速度较慢，储备的内容今晚生成好了明天再发出去\r\n明日计划\r\n1、找新外链和发社媒\r\n2、研究一下脚本提速",
+        "daily_plan": "# 8.28日计划\r\n1、发完昨天生成好的json\r\n2、找新的外链和发社媒\r\n3、修复脚本返回空文本和提速问题",
+        "weekly_plan": "本周计划：\r\n1、赶完seo和外链发布的进度\r\n2、发布italianbrainrot站的博客内容，目前以角色维基为主\r\n3、日报补充运营数据",
+        "comments_count": 12,
+        "content_extraction_success": true,
+        "is_mock_data": false
+      },
+      "timestamp": "2025-08-28T13:46:43.162879"
+    },
+    {
+      "test_name": "GLM分析测试",
+      "success": true,
+      "result_data": {
+        "total_analyses": 2,
+        "successful_analyses": 2,
+        "average_analysis_time": 4.4795045,
+        "total_output_length": 450
+      },
+      "timestamp": "2025-08-28T13:46:52.122384"
+    },
+    {
+      "test_name": "偏离分析测试",
+      "success": true,
+      "result_data": {
+        "deviation_score": 5.0,
+        "completion_rate": 0.5,
+        "is_deviation": false,
+        "analysis_time_seconds": 18.065382,
+        "confidence": 0.8
+      },
+      "timestamp": "2025-08-28T13:47:10.188242"
+    },
+    {
+      "test_name": "端到端流程测试",
+      "success": true,
+      "result_data": {
+        "discussion_number": 57,
+        "discussion_title": "军伟8.18-22日报",
+        "daily_summary_length": 99,
+        "daily_plan_length": 56,
+        "weekly_plan_length": 0,
+        "analysis_report_length": 382,
+        "total_processing_time_seconds": 10.208988,
+        "success": true
+      },
+      "timestamp": "2025-08-28T13:47:20.397722"
+    }
+  ],
+  "github_data": {
+    "discussion_number": 57,
+    "discussion_title": "军伟8.18-22日报",
+    "discussion_author": "organ1cc",
+    "discussion_url": "https://github.com/orgs/LambdaTheory/discussions/57",
+    "daily_summary": "# 8.27日结\r\n今日工作\r\n1、seo内容内容储备已完成\r\n2、脚本新增批量生成功能，生成速度较慢，储备的内容今晚生成好了明天再发出去\r\n明日计划\r\n1、找新外链和发社媒\r\n2、研究一下脚本提速",
+    "daily_plan": "# 8.28日计划\r\n1、发完昨天生成好的json\r\n2、找新的外链和发社媒\r\n3、修复脚本返回空文本和提速问题",
+    "weekly_plan": "本周计划：\r\n1、赶完seo和外链发布的进度\r\n2、发布italianbrainrot站的博客内容，目前以角色维基为主\r\n3、日报补充运营数据",
+    "comments_count": 12,
+    "content_extraction_success": true,
+    "is_mock_data": false
+  },
+  "glm_analyses": [
+    {
+      "type": "daily_report",
+      "input_length": 99,
+      "output_length": 345,
+      "analysis_time_seconds": 6.574166,
+      "success": true,
+      "content_preview": "## 📊 日报分析\n\n【内容问题】\n- 日报中提到“seo内容内容储备已完成”，但未具体说明储备的内容是什么，缺乏具体细节。\n- 日报中提到“脚本新增批量生成功能，生成速度较慢”，但未说明具体生成速度慢了多少，缺乏量化数据。\n- 日报中提到“储备的内容今晚生成好了明天再发出去”，但未明确指出是哪部分内容，以及为何选择明天发送。\n\n【偏离判断】\n- 今日计划中的第一项是“发完昨天生成好的json”，..."
+    },
+    {
+      "type": "daily_plan",
+      "input_length": 56,
+      "output_length": 105,
+      "analysis_time_seconds": 2.384843,
+      "success": true,
+      "content_preview": "## 📋 日计划分析\n\n【目标明确性】\n- [缺乏具体说明哪些json需要发送]\n- [未明确指出需要寻找哪些类型的外链以及发布到哪些社媒平台]\n- [未具体说明脚本返回空文本的具体情况以及需要提速的具体部分]"
+    }
+  ],
+  "deviation_analyses": [
+    {
+      "user_id": "organ1cc",
+      "discussion_number": 57,
+      "analysis_date": "2025-08-28",
+      "analysis_time_seconds": 18.065382,
+      "deviation_score": 5.0,
+      "completion_rate": 0.5,
+      "is_deviation": false,
+      "deviation_reasons": [
+        "脚本生成速度慢",
+        "任务优先级调整"
+      ],
+      "improvement_suggestions": [
+        "优化脚本性能",
+        "建立任务优先级体系",
+        "加强进度跟踪与汇报",
+        "合理分配资源",
+        "制定应急预案"
+      ],
+      "additional_work": [
+        "seo内容储备已完成",
+        "脚本新增批量生成功能"
+      ],
+      "analysis_summary": "实际工作与计划存在一定程度的偏离，但额外工作合理。",
+      "text_analysis": "【分析报告】\n\n【用户ID】organ1cc\n【分析日期】2025-08-28\n\n【一、实际工作与计划的匹配程度】\n\n根据日报内容，我们可以看到实际工作与原定计划存在一定的偏离。\n\n【二、偏离的具体表现和程度】\n\n1. **发完昨天生成好的json**：原计划中第一项任务未完成，日报中提到“脚本新增批量生成功能，生成速度较慢，储备的内容今晚生成好了明天再发出去”，说明原计划中的第一项任务因生成速度问题未能按计划完成。\n\n2. **找新的外链和发社媒**：原计划中的第二项任务在日报中提到“找新外链和发社媒”，表明这一任务已纳入实际工作，但未提及具体完成情况。\n\n3. **修复脚本返回空文本和提速问题**：原计划中的第三项任务在日报中提到“研究一下脚本提速”，说明该任务已开始执行，但具体是否完成修复未提及。\n\n【三、偏离的可能原因】\n\n1. **脚本生成速度慢**：可能是由于脚本算法复杂度较高或资源分配不足导致，影响了原计划的执行。\n\n2. **任务优先级调整**：可能由于其他紧急或更重要的任务介入，导致原计划中的任务被推迟。\n\n【四、额外工作的合理性】\n\n日报中提到的“seo内容内容储备已完成”和“脚本新增批量生成功能”是额外的工作内容。这些工作的合理性如下：\n\n1. **seo内容储备**：这是长期的工作内容，对SEO优化有积极作用，因此是合理的。\n\n2. **脚本新增批量生成功能**：虽然增加了工作量，但提高了工作效率，长远来看是有益的。\n\n【五、具体的改进建议】\n\n1. **优化脚本性能**：针对脚本生成速度慢的问题，建议进行代码优化或资源调整，以提高生成效率。\n\n2. **任务优先级管理**：建立明确的任务优先级体系，确保关键任务能够按计划完成。\n\n3. **进度跟踪与汇报**：加强工作进度的跟踪和汇报，确保团队成员对任务完成情况有清晰的认识。\n\n4. **资源分配**：合理分配资源，确保关键任务有足够的资源支持。\n\n5. **应急预案**：针对可能出现的意外情况，制定应急预案，以减少对计划执行的影响。\n\n总结：本次分析显示，用户organ1cc的实际工作与原定计划存在一定程度的偏离，但额外工作的合理性较高。建议通过优化脚本性能、加强任务管理、合理分配资源等措施，提高工作效率，确保计划执行的有效性。",
+      "success": true
+    }
+  ],
+  "errors": []
+}

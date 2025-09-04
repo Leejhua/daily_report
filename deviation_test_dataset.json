@@ -1,0 +1,2284 @@
+{
+  "metadata": {
+    "generated_at": "2025-08-28T17:57:27.691456",
+    "generator_version": "1.0",
+    "description": "偏离检测功能测试数据集"
+  },
+  "scenarios": {
+    "excellent": {
+      "name": "优秀完成",
+      "description": "完全按计划执行，质量优秀",
+      "expected_score_range": [
+        0.0,
+        2.0
+      ],
+      "expected_completion_rate_range": [
+        0.95,
+        1.0
+      ],
+      "expected_is_deviation": false
+    },
+    "good": {
+      "name": "良好完成",
+      "description": "基本按计划执行，有小幅调整",
+      "expected_score_range": [
+        2.1,
+        4.0
+      ],
+      "expected_completion_rate_range": [
+        0.85,
+        0.94
+      ],
+      "expected_is_deviation": false
+    },
+    "moderate": {
+      "name": "中等偏离",
+      "description": "有明显偏离但在可接受范围内",
+      "expected_score_range": [
+        4.1,
+        6.0
+      ],
+      "expected_completion_rate_range": [
+        0.7,
+        0.84
+      ],
+      "expected_is_deviation": true
+    },
+    "significant": {
+      "name": "显著偏离",
+      "description": "偏离程度较大，需要关注",
+      "expected_score_range": [
+        6.1,
+        8.0
+      ],
+      "expected_completion_rate_range": [
+        0.5,
+        0.69
+      ],
+      "expected_is_deviation": true
+    },
+    "severe": {
+      "name": "严重偏离",
+      "description": "严重偏离计划，需要紧急干预",
+      "expected_score_range": [
+        8.1,
+        10.0
+      ],
+      "expected_completion_rate_range": [
+        0.2,
+        0.49
+      ],
+      "expected_is_deviation": true
+    }
+  },
+  "test_cases": {
+    "single_results": [
+      {
+        "scenario_type": "excellent",
+        "result": {
+          "score": 0.4,
+          "completion_rate": 1.0,
+          "deviation_reasons": [],
+          "additional_work": [
+            "优化了代码性能",
+            "完善了文档说明",
+            "添加了额外的测试用例"
+          ],
+          "suggestions": [
+            "继续保持当前的工作节奏"
+          ],
+          "summary": "完全按计划执行，质量优秀。偏离评分: 0.4, 完成率: 100%",
+          "confidence": 0.76,
+          "user_id": "user001",
+          "analysis_date": "2025-08-28",
+          "discussion_number": 9645,
+          "is_deviation": false,
+          "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 0.4/10\n**完成率**: 100.0%\n**评级**: 优秀\n\n### 分析详情\n完全按计划执行，质量优秀\n\n### 偏离原因\n无明显偏离\n\n### 额外工作\n- 优化了代码性能\n- 完善了文档说明\n- 添加了额外的测试用例\n\n### 改进建议\n- 继续保持当前的工作节奏\n",
+          "grade": "优秀"
+        }
+      },
+      {
+        "scenario_type": "excellent",
+        "result": {
+          "score": 1.2,
+          "completion_rate": 0.98,
+          "deviation_reasons": [],
+          "additional_work": [
+            "完善了文档说明",
+            "优化了代码性能",
+            "添加了额外的测试用例"
+          ],
+          "suggestions": [
+            "继续保持当前的工作节奏"
+          ],
+          "summary": "完全按计划执行，质量优秀。偏离评分: 1.2, 完成率: 98%",
+          "confidence": 0.73,
+          "user_id": "user002",
+          "analysis_date": "2025-08-28",
+          "discussion_number": 5964,
+          "is_deviation": false,
+          "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 1.2/10\n**完成率**: 98.0%\n**评级**: 优秀\n\n### 分析详情\n完全按计划执行，质量优秀\n\n### 偏离原因\n无明显偏离\n\n### 额外工作\n- 完善了文档说明\n- 优化了代码性能\n- 添加了额外的测试用例\n\n### 改进建议\n- 继续保持当前的工作节奏\n",
+          "grade": "优秀"
+        }
+      },
+      {
+        "scenario_type": "good",
+        "result": {
+          "score": 2.9,
+          "completion_rate": 0.89,
+          "deviation_reasons": [
+            "时间安排略有偏差"
+          ],
+          "additional_work": [
+            "处理了一些意外的技术问题"
+          ],
+          "suggestions": [
+            "建议提前识别潜在风险"
+          ],
+          "summary": "基本按计划执行，有小幅调整。偏离评分: 2.9, 完成率: 89%",
+          "confidence": 0.86,
+          "user_id": "user001",
+          "analysis_date": "2025-08-28",
+          "discussion_number": 5211,
+          "is_deviation": false,
+          "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 2.9/10\n**完成率**: 89.0%\n**评级**: 良好\n\n### 分析详情\n基本按计划执行，有小幅调整\n\n### 偏离原因\n- 时间安排略有偏差\n\n### 额外工作\n- 处理了一些意外的技术问题\n\n### 改进建议\n- 建议提前识别潜在风险\n",
+          "grade": "良好"
+        }
+      },
+      {
+        "scenario_type": "good",
+        "result": {
+          "score": 3.6,
+          "completion_rate": 0.85,
+          "deviation_reasons": [
+            "部分功能实现方式有调整",
+            "时间安排略有偏差"
+          ],
+          "additional_work": [
+            "处理了一些意外的技术问题"
+          ],
+          "suggestions": [
+            "可以优化时间规划"
+          ],
+          "summary": "基本按计划执行，有小幅调整。偏离评分: 3.6, 完成率: 85%",
+          "confidence": 0.71,
+          "user_id": "user002",
+          "analysis_date": "2025-08-28",
+          "discussion_number": 4658,
+          "is_deviation": false,
+          "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 3.6/10\n**完成率**: 85.0%\n**评级**: 良好\n\n### 分析详情\n基本按计划执行，有小幅调整\n\n### 偏离原因\n- 部分功能实现方式有调整\n- 时间安排略有偏差\n\n### 额外工作\n- 处理了一些意外的技术问题\n\n### 改进建议\n- 可以优化时间规划\n",
+          "grade": "良好"
+        }
+      },
+      {
+        "scenario_type": "moderate",
+        "result": {
+          "score": 5.1,
+          "completion_rate": 0.75,
+          "deviation_reasons": [
+            "需求理解有偏差",
+            "时间估算不准确",
+            "技术方案选择不当"
+          ],
+          "additional_work": [
+            "修复了多个bug",
+            "调整了架构设计"
+          ],
+          "suggestions": [
+            "提高技术方案评估能力",
+            "建议加强需求澄清"
+          ],
+          "summary": "有明显偏离但在可接受范围内。偏离评分: 5.1, 完成率: 75%",
+          "confidence": 0.77,
+          "user_id": "user001",
+          "analysis_date": "2025-08-28",
+          "discussion_number": 2783,
+          "is_deviation": true,
+          "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 5.1/10\n**完成率**: 75.0%\n**评级**: 一般\n\n### 分析详情\n有明显偏离但在可接受范围内\n\n### 偏离原因\n- 需求理解有偏差\n- 时间估算不准确\n- 技术方案选择不当\n\n### 额外工作\n- 修复了多个bug\n- 调整了架构设计\n\n### 改进建议\n- 提高技术方案评估能力\n- 建议加强需求澄清\n",
+          "grade": "一般"
+        }
+      },
+      {
+        "scenario_type": "moderate",
+        "result": {
+          "score": 5.7,
+          "completion_rate": 0.76,
+          "deviation_reasons": [
+            "需求理解有偏差",
+            "时间估算不准确",
+            "技术方案选择不当"
+          ],
+          "additional_work": [
+            "修复了多个bug",
+            "调整了架构设计"
+          ],
+          "suggestions": [
+            "改进时间估算方法",
+            "提高技术方案评估能力",
+            "建议加强需求澄清"
+          ],
+          "summary": "有明显偏离但在可接受范围内。偏离评分: 5.7, 完成率: 76%",
+          "confidence": 0.94,
+          "user_id": "user002",
+          "analysis_date": "2025-08-28",
+          "discussion_number": 4790,
+          "is_deviation": true,
+          "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 5.7/10\n**完成率**: 76.0%\n**评级**: 一般\n\n### 分析详情\n有明显偏离但在可接受范围内\n\n### 偏离原因\n- 需求理解有偏差\n- 时间估算不准确\n- 技术方案选择不当\n\n### 额外工作\n- 修复了多个bug\n- 调整了架构设计\n\n### 改进建议\n- 改进时间估算方法\n- 提高技术方案评估能力\n- 建议加强需求澄清\n",
+          "grade": "一般"
+        }
+      },
+      {
+        "scenario_type": "significant",
+        "result": {
+          "score": 7.9,
+          "completion_rate": 0.58,
+          "deviation_reasons": [
+            "技术难度超出预期",
+            "资源配置不足"
+          ],
+          "additional_work": [
+            "重新实现了核心功能"
+          ],
+          "suggestions": [
+            "建议增加技术预研时间"
+          ],
+          "summary": "偏离程度较大，需要关注。偏离评分: 7.9, 完成率: 58%",
+          "confidence": 0.77,
+          "user_id": "user001",
+          "analysis_date": "2025-08-28",
+          "discussion_number": 7529,
+          "is_deviation": true,
+          "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 7.9/10\n**完成率**: 58.0%\n**评级**: 需改进\n\n### 分析详情\n偏离程度较大，需要关注\n\n### 偏离原因\n- 技术难度超出预期\n- 资源配置不足\n\n### 额外工作\n- 重新实现了核心功能\n\n### 改进建议\n- 建议增加技术预研时间\n",
+          "grade": "需改进"
+        }
+      },
+      {
+        "scenario_type": "significant",
+        "result": {
+          "score": 7.7,
+          "completion_rate": 0.68,
+          "deviation_reasons": [
+            "资源配置不足"
+          ],
+          "additional_work": [
+            "协调了多个团队的工作",
+            "处理了大量技术债务"
+          ],
+          "suggestions": [
+            "需要重新评估项目范围"
+          ],
+          "summary": "偏离程度较大，需要关注。偏离评分: 7.7, 完成率: 68%",
+          "confidence": 0.83,
+          "user_id": "user002",
+          "analysis_date": "2025-08-28",
+          "discussion_number": 6325,
+          "is_deviation": true,
+          "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 7.7/10\n**完成率**: 68.0%\n**评级**: 需改进\n\n### 分析详情\n偏离程度较大，需要关注\n\n### 偏离原因\n- 资源配置不足\n\n### 额外工作\n- 协调了多个团队的工作\n- 处理了大量技术债务\n\n### 改进建议\n- 需要重新评估项目范围\n",
+          "grade": "需改进"
+        }
+      },
+      {
+        "scenario_type": "severe",
+        "result": {
+          "score": 9.8,
+          "completion_rate": 0.37,
+          "deviation_reasons": [],
+          "additional_work": [
+            "重新制定了项目计划",
+            "进行了大量的需求调研",
+            "完全重写了核心模块"
+          ],
+          "suggestions": [
+            "建议寻求外部专业咨询",
+            "需要高级管理层介入"
+          ],
+          "summary": "严重偏离计划，需要紧急干预。偏离评分: 9.8, 完成率: 37%",
+          "confidence": 0.81,
+          "user_id": "user001",
+          "analysis_date": "2025-08-28",
+          "discussion_number": 7412,
+          "is_deviation": true,
+          "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 9.8/10\n**完成率**: 37.0%\n**评级**: 较差\n\n### 分析详情\n严重偏离计划，需要紧急干预\n\n### 偏离原因\n无明显偏离\n\n### 额外工作\n- 重新制定了项目计划\n- 进行了大量的需求调研\n- 完全重写了核心模块\n\n### 改进建议\n- 建议寻求外部专业咨询\n- 需要高级管理层介入\n",
+          "grade": "较差"
+        }
+      },
+      {
+        "scenario_type": "severe",
+        "result": {
+          "score": 9.8,
+          "completion_rate": 0.26,
+          "deviation_reasons": [
+            "外部环境发生重大变化",
+            "技术方案完全错误"
+          ],
+          "additional_work": [
+            "进行了大量的需求调研",
+            "重新搭建了开发环境",
+            "完全重写了核心模块"
+          ],
+          "suggestions": [
+            "考虑重新分配资源",
+            "建议暂停当前工作进行复盘",
+            "需要高级管理层介入"
+          ],
+          "summary": "严重偏离计划，需要紧急干预。偏离评分: 9.8, 完成率: 26%",
+          "confidence": 0.94,
+          "user_id": "user002",
+          "analysis_date": "2025-08-28",
+          "discussion_number": 5412,
+          "is_deviation": true,
+          "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 9.8/10\n**完成率**: 26.0%\n**评级**: 较差\n\n### 分析详情\n严重偏离计划，需要紧急干预\n\n### 偏离原因\n- 外部环境发生重大变化\n- 技术方案完全错误\n\n### 额外工作\n- 进行了大量的需求调研\n- 重新搭建了开发环境\n- 完全重写了核心模块\n\n### 改进建议\n- 考虑重新分配资源\n- 建议暂停当前工作进行复盘\n- 需要高级管理层介入\n",
+          "grade": "较差"
+        }
+      }
+    ],
+    "continuous_deviation": [
+      {
+        "severity": "moderate",
+        "results": [
+          {
+            "score": 4.3,
+            "completion_rate": 0.79,
+            "deviation_reasons": [],
+            "additional_work": [
+              "调整了架构设计",
+              "重新设计了部分功能"
+            ],
+            "suggestions": [
+              "提高技术方案评估能力",
+              "改进时间估算方法"
+            ],
+            "summary": "有明显偏离但在可接受范围内。偏离评分: 4.3, 完成率: 79%",
+            "confidence": 0.75,
+            "user_id": "user_continuous",
+            "analysis_date": "2025-08-26",
+            "discussion_number": 2000,
+            "is_deviation": true,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 4.3/10\n**完成率**: 79.0%\n**评级**: 一般\n\n### 分析详情\n有明显偏离但在可接受范围内\n\n### 偏离原因\n无明显偏离\n\n### 额外工作\n- 调整了架构设计\n- 重新设计了部分功能\n\n### 改进建议\n- 提高技术方案评估能力\n- 改进时间估算方法\n",
+            "grade": "一般"
+          },
+          {
+            "score": 5.6,
+            "completion_rate": 0.78,
+            "deviation_reasons": [
+              "时间估算不准确",
+              "技术方案选择不当",
+              "需求理解有偏差"
+            ],
+            "additional_work": [
+              "重新设计了部分功能"
+            ],
+            "suggestions": [
+              "提高技术方案评估能力"
+            ],
+            "summary": "有明显偏离但在可接受范围内。偏离评分: 5.6, 完成率: 78%",
+            "confidence": 0.79,
+            "user_id": "user_continuous",
+            "analysis_date": "2025-08-27",
+            "discussion_number": 2001,
+            "is_deviation": true,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 5.6/10\n**完成率**: 78.0%\n**评级**: 一般\n\n### 分析详情\n有明显偏离但在可接受范围内\n\n### 偏离原因\n- 时间估算不准确\n- 技术方案选择不当\n- 需求理解有偏差\n\n### 额外工作\n- 重新设计了部分功能\n\n### 改进建议\n- 提高技术方案评估能力\n",
+            "grade": "一般"
+          },
+          {
+            "score": 5.7,
+            "completion_rate": 0.77,
+            "deviation_reasons": [
+              "需求理解有偏差"
+            ],
+            "additional_work": [
+              "重新设计了部分功能",
+              "修复了多个bug"
+            ],
+            "suggestions": [
+              "建议加强需求澄清",
+              "提高技术方案评估能力"
+            ],
+            "summary": "有明显偏离但在可接受范围内。偏离评分: 5.7, 完成率: 77%",
+            "confidence": 0.75,
+            "user_id": "user_continuous",
+            "analysis_date": "2025-08-28",
+            "discussion_number": 2002,
+            "is_deviation": true,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 5.7/10\n**完成率**: 77.0%\n**评级**: 一般\n\n### 分析详情\n有明显偏离但在可接受范围内\n\n### 偏离原因\n- 需求理解有偏差\n\n### 额外工作\n- 重新设计了部分功能\n- 修复了多个bug\n\n### 改进建议\n- 建议加强需求澄清\n- 提高技术方案评估能力\n",
+            "grade": "一般"
+          }
+        ]
+      },
+      {
+        "severity": "significant",
+        "results": [
+          {
+            "score": 7.3,
+            "completion_rate": 0.55,
+            "deviation_reasons": [],
+            "additional_work": [
+              "学习了新的技术栈"
+            ],
+            "suggestions": [
+              "加强项目风险管理",
+              "考虑寻求技术支持",
+              "需要重新评估项目范围"
+            ],
+            "summary": "偏离程度较大，需要关注。偏离评分: 7.3, 完成率: 55%",
+            "confidence": 0.81,
+            "user_id": "user_continuous",
+            "analysis_date": "2025-08-26",
+            "discussion_number": 2000,
+            "is_deviation": true,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 7.3/10\n**完成率**: 55.0%\n**评级**: 需改进\n\n### 分析详情\n偏离程度较大，需要关注\n\n### 偏离原因\n无明显偏离\n\n### 额外工作\n- 学习了新的技术栈\n\n### 改进建议\n- 加强项目风险管理\n- 考虑寻求技术支持\n- 需要重新评估项目范围\n",
+            "grade": "需改进"
+          },
+          {
+            "score": 7.2,
+            "completion_rate": 0.6,
+            "deviation_reasons": [
+              "技术难度超出预期",
+              "外部依赖延迟"
+            ],
+            "additional_work": [
+              "处理了大量技术债务",
+              "重新实现了核心功能"
+            ],
+            "suggestions": [
+              "加强项目风险管理",
+              "建议增加技术预研时间"
+            ],
+            "summary": "偏离程度较大，需要关注。偏离评分: 7.2, 完成率: 60%",
+            "confidence": 0.77,
+            "user_id": "user_continuous",
+            "analysis_date": "2025-08-27",
+            "discussion_number": 2001,
+            "is_deviation": true,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 7.2/10\n**完成率**: 60.0%\n**评级**: 需改进\n\n### 分析详情\n偏离程度较大，需要关注\n\n### 偏离原因\n- 技术难度超出预期\n- 外部依赖延迟\n\n### 额外工作\n- 处理了大量技术债务\n- 重新实现了核心功能\n\n### 改进建议\n- 加强项目风险管理\n- 建议增加技术预研时间\n",
+            "grade": "需改进"
+          },
+          {
+            "score": 7.1,
+            "completion_rate": 0.55,
+            "deviation_reasons": [
+              "需求变更频繁",
+              "外部依赖延迟"
+            ],
+            "additional_work": [
+              "学习了新的技术栈",
+              "协调了多个团队的工作",
+              "处理了大量技术债务"
+            ],
+            "suggestions": [
+              "加强项目风险管理",
+              "考虑寻求技术支持"
+            ],
+            "summary": "偏离程度较大，需要关注。偏离评分: 7.1, 完成率: 55%",
+            "confidence": 0.78,
+            "user_id": "user_continuous",
+            "analysis_date": "2025-08-28",
+            "discussion_number": 2002,
+            "is_deviation": true,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 7.1/10\n**完成率**: 55.0%\n**评级**: 需改进\n\n### 分析详情\n偏离程度较大，需要关注\n\n### 偏离原因\n- 需求变更频繁\n- 外部依赖延迟\n\n### 额外工作\n- 学习了新的技术栈\n- 协调了多个团队的工作\n- 处理了大量技术债务\n\n### 改进建议\n- 加强项目风险管理\n- 考虑寻求技术支持\n",
+            "grade": "需改进"
+          }
+        ]
+      },
+      {
+        "severity": "severe",
+        "results": [
+          {
+            "score": 9.5,
+            "completion_rate": 0.26,
+            "deviation_reasons": [
+              "团队沟通严重不足",
+              "外部环境发生重大变化",
+              "项目目标不明确"
+            ],
+            "additional_work": [
+              "重新制定了项目计划",
+              "完全重写了核心模块"
+            ],
+            "suggestions": [
+              "建议暂停当前工作进行复盘"
+            ],
+            "summary": "严重偏离计划，需要紧急干预。偏离评分: 9.5, 完成率: 26%",
+            "confidence": 0.93,
+            "user_id": "user_continuous",
+            "analysis_date": "2025-08-26",
+            "discussion_number": 2000,
+            "is_deviation": true,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 9.5/10\n**完成率**: 26.0%\n**评级**: 较差\n\n### 分析详情\n严重偏离计划，需要紧急干预\n\n### 偏离原因\n- 团队沟通严重不足\n- 外部环境发生重大变化\n- 项目目标不明确\n\n### 额外工作\n- 重新制定了项目计划\n- 完全重写了核心模块\n\n### 改进建议\n- 建议暂停当前工作进行复盘\n",
+            "grade": "较差"
+          },
+          {
+            "score": 9.7,
+            "completion_rate": 0.23,
+            "deviation_reasons": [
+              "外部环境发生重大变化"
+            ],
+            "additional_work": [
+              "重新搭建了开发环境"
+            ],
+            "suggestions": [
+              "建议暂停当前工作进行复盘",
+              "立即重新评估项目可行性"
+            ],
+            "summary": "严重偏离计划，需要紧急干预。偏离评分: 9.7, 完成率: 23%",
+            "confidence": 0.85,
+            "user_id": "user_continuous",
+            "analysis_date": "2025-08-27",
+            "discussion_number": 2001,
+            "is_deviation": true,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 9.7/10\n**完成率**: 23.0%\n**评级**: 较差\n\n### 分析详情\n严重偏离计划，需要紧急干预\n\n### 偏离原因\n- 外部环境发生重大变化\n\n### 额外工作\n- 重新搭建了开发环境\n\n### 改进建议\n- 建议暂停当前工作进行复盘\n- 立即重新评估项目可行性\n",
+            "grade": "较差"
+          },
+          {
+            "score": 9.5,
+            "completion_rate": 0.46,
+            "deviation_reasons": [
+              "团队沟通严重不足",
+              "项目目标不明确"
+            ],
+            "additional_work": [
+              "进行了大量的需求调研",
+              "重新制定了项目计划"
+            ],
+            "suggestions": [
+              "立即重新评估项目可行性",
+              "考虑重新分配资源"
+            ],
+            "summary": "严重偏离计划，需要紧急干预。偏离评分: 9.5, 完成率: 46%",
+            "confidence": 0.76,
+            "user_id": "user_continuous",
+            "analysis_date": "2025-08-28",
+            "discussion_number": 2002,
+            "is_deviation": true,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 9.5/10\n**完成率**: 46.0%\n**评级**: 较差\n\n### 分析详情\n严重偏离计划，需要紧急干预\n\n### 偏离原因\n- 团队沟通严重不足\n- 项目目标不明确\n\n### 额外工作\n- 进行了大量的需求调研\n- 重新制定了项目计划\n\n### 改进建议\n- 立即重新评估项目可行性\n- 考虑重新分配资源\n",
+            "grade": "较差"
+          }
+        ]
+      }
+    ],
+    "pattern_change": [
+      {
+        "score": 3.4,
+        "completion_rate": 0.92,
+        "deviation_reasons": [],
+        "additional_work": [
+          "增加了错误处理逻辑"
+        ],
+        "suggestions": [
+          "可以优化时间规划",
+          "建议提前识别潜在风险"
+        ],
+        "summary": "基本按计划执行，有小幅调整。偏离评分: 3.4, 完成率: 92%",
+        "confidence": 0.77,
+        "user_id": "user_pattern_change",
+        "analysis_date": "2025-08-22",
+        "discussion_number": 3000,
+        "is_deviation": false,
+        "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 3.4/10\n**完成率**: 92.0%\n**评级**: 良好\n\n### 分析详情\n基本按计划执行，有小幅调整\n\n### 偏离原因\n无明显偏离\n\n### 额外工作\n- 增加了错误处理逻辑\n\n### 改进建议\n- 可以优化时间规划\n- 建议提前识别潜在风险\n",
+        "grade": "良好"
+      },
+      {
+        "score": 3.3,
+        "completion_rate": 0.88,
+        "deviation_reasons": [],
+        "additional_work": [
+          "处理了一些意外的技术问题"
+        ],
+        "suggestions": [
+          "建议提前识别潜在风险"
+        ],
+        "summary": "基本按计划执行，有小幅调整。偏离评分: 3.3, 完成率: 88%",
+        "confidence": 0.82,
+        "user_id": "user_pattern_change",
+        "analysis_date": "2025-08-23",
+        "discussion_number": 3001,
+        "is_deviation": false,
+        "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 3.3/10\n**完成率**: 88.0%\n**评级**: 良好\n\n### 分析详情\n基本按计划执行，有小幅调整\n\n### 偏离原因\n无明显偏离\n\n### 额外工作\n- 处理了一些意外的技术问题\n\n### 改进建议\n- 建议提前识别潜在风险\n",
+        "grade": "良好"
+      },
+      {
+        "score": 3.9,
+        "completion_rate": 0.9,
+        "deviation_reasons": [
+          "部分功能实现方式有调整"
+        ],
+        "additional_work": [
+          "增加了错误处理逻辑",
+          "处理了一些意外的技术问题"
+        ],
+        "suggestions": [
+          "可以优化时间规划",
+          "建议提前识别潜在风险"
+        ],
+        "summary": "基本按计划执行，有小幅调整。偏离评分: 3.9, 完成率: 90%",
+        "confidence": 0.86,
+        "user_id": "user_pattern_change",
+        "analysis_date": "2025-08-24",
+        "discussion_number": 3002,
+        "is_deviation": false,
+        "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 3.9/10\n**完成率**: 90.0%\n**评级**: 良好\n\n### 分析详情\n基本按计划执行，有小幅调整\n\n### 偏离原因\n- 部分功能实现方式有调整\n\n### 额外工作\n- 增加了错误处理逻辑\n- 处理了一些意外的技术问题\n\n### 改进建议\n- 可以优化时间规划\n- 建议提前识别潜在风险\n",
+        "grade": "良好"
+      },
+      {
+        "score": 2.1,
+        "completion_rate": 0.91,
+        "deviation_reasons": [
+          "部分功能实现方式有调整",
+          "时间安排略有偏差"
+        ],
+        "additional_work": [
+          "处理了一些意外的技术问题"
+        ],
+        "suggestions": [
+          "建议提前识别潜在风险"
+        ],
+        "summary": "基本按计划执行，有小幅调整。偏离评分: 2.1, 完成率: 91%",
+        "confidence": 0.77,
+        "user_id": "user_pattern_change",
+        "analysis_date": "2025-08-25",
+        "discussion_number": 3003,
+        "is_deviation": false,
+        "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 2.1/10\n**完成率**: 91.0%\n**评级**: 良好\n\n### 分析详情\n基本按计划执行，有小幅调整\n\n### 偏离原因\n- 部分功能实现方式有调整\n- 时间安排略有偏差\n\n### 额外工作\n- 处理了一些意外的技术问题\n\n### 改进建议\n- 建议提前识别潜在风险\n",
+        "grade": "良好"
+      },
+      {
+        "score": 7.3,
+        "completion_rate": 0.66,
+        "deviation_reasons": [
+          "技术难度超出预期",
+          "外部依赖延迟",
+          "需求变更频繁"
+        ],
+        "additional_work": [
+          "重新实现了核心功能"
+        ],
+        "suggestions": [
+          "需要重新评估项目范围"
+        ],
+        "summary": "偏离程度较大，需要关注。偏离评分: 7.3, 完成率: 66%",
+        "confidence": 0.74,
+        "user_id": "user_pattern_change",
+        "analysis_date": "2025-08-26",
+        "discussion_number": 3004,
+        "is_deviation": true,
+        "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 7.3/10\n**完成率**: 66.0%\n**评级**: 需改进\n\n### 分析详情\n偏离程度较大，需要关注\n\n### 偏离原因\n- 技术难度超出预期\n- 外部依赖延迟\n- 需求变更频繁\n\n### 额外工作\n- 重新实现了核心功能\n\n### 改进建议\n- 需要重新评估项目范围\n",
+        "grade": "需改进"
+      },
+      {
+        "score": 6.3,
+        "completion_rate": 0.52,
+        "deviation_reasons": [],
+        "additional_work": [
+          "处理了大量技术债务"
+        ],
+        "suggestions": [
+          "需要重新评估项目范围",
+          "加强项目风险管理"
+        ],
+        "summary": "偏离程度较大，需要关注。偏离评分: 6.3, 完成率: 52%",
+        "confidence": 0.93,
+        "user_id": "user_pattern_change",
+        "analysis_date": "2025-08-27",
+        "discussion_number": 3005,
+        "is_deviation": true,
+        "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 6.3/10\n**完成率**: 52.0%\n**评级**: 需改进\n\n### 分析详情\n偏离程度较大，需要关注\n\n### 偏离原因\n无明显偏离\n\n### 额外工作\n- 处理了大量技术债务\n\n### 改进建议\n- 需要重新评估项目范围\n- 加强项目风险管理\n",
+        "grade": "需改进"
+      },
+      {
+        "score": 6.7,
+        "completion_rate": 0.56,
+        "deviation_reasons": [
+          "技术难度超出预期",
+          "外部依赖延迟",
+          "需求变更频繁"
+        ],
+        "additional_work": [
+          "学习了新的技术栈",
+          "处理了大量技术债务",
+          "协调了多个团队的工作"
+        ],
+        "suggestions": [
+          "考虑寻求技术支持",
+          "加强项目风险管理"
+        ],
+        "summary": "偏离程度较大，需要关注。偏离评分: 6.7, 完成率: 56%",
+        "confidence": 0.73,
+        "user_id": "user_pattern_change",
+        "analysis_date": "2025-08-28",
+        "discussion_number": 3006,
+        "is_deviation": true,
+        "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 6.7/10\n**完成率**: 56.0%\n**评级**: 需改进\n\n### 分析详情\n偏离程度较大，需要关注\n\n### 偏离原因\n- 技术难度超出预期\n- 外部依赖延迟\n- 需求变更频繁\n\n### 额外工作\n- 学习了新的技术栈\n- 处理了大量技术债务\n- 协调了多个团队的工作\n\n### 改进建议\n- 考虑寻求技术支持\n- 加强项目风险管理\n",
+        "grade": "需改进"
+      }
+    ],
+    "user_timelines": [
+      {
+        "user_id": "user001",
+        "timeline": [
+          {
+            "score": 3.2,
+            "completion_rate": 0.86,
+            "deviation_reasons": [
+              "时间安排略有偏差"
+            ],
+            "additional_work": [
+              "增加了错误处理逻辑"
+            ],
+            "suggestions": [
+              "可以优化时间规划",
+              "建议提前识别潜在风险"
+            ],
+            "summary": "基本按计划执行，有小幅调整。偏离评分: 3.2, 完成率: 86%",
+            "confidence": 0.9,
+            "user_id": "user001",
+            "analysis_date": "2025-08-15",
+            "discussion_number": 1000,
+            "is_deviation": false,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 3.2/10\n**完成率**: 86.0%\n**评级**: 良好\n\n### 分析详情\n基本按计划执行，有小幅调整\n\n### 偏离原因\n- 时间安排略有偏差\n\n### 额外工作\n- 增加了错误处理逻辑\n\n### 改进建议\n- 可以优化时间规划\n- 建议提前识别潜在风险\n",
+            "grade": "良好"
+          },
+          {
+            "score": 0.8,
+            "completion_rate": 0.98,
+            "deviation_reasons": [],
+            "additional_work": [
+              "优化了代码性能",
+              "完善了文档说明"
+            ],
+            "suggestions": [
+              "可以考虑分享经验给团队"
+            ],
+            "summary": "完全按计划执行，质量优秀。偏离评分: 0.8, 完成率: 98%",
+            "confidence": 0.93,
+            "user_id": "user001",
+            "analysis_date": "2025-08-16",
+            "discussion_number": 1001,
+            "is_deviation": false,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 0.8/10\n**完成率**: 98.0%\n**评级**: 优秀\n\n### 分析详情\n完全按计划执行，质量优秀\n\n### 偏离原因\n无明显偏离\n\n### 额外工作\n- 优化了代码性能\n- 完善了文档说明\n\n### 改进建议\n- 可以考虑分享经验给团队\n",
+            "grade": "优秀"
+          },
+          {
+            "score": 5.0,
+            "completion_rate": 0.77,
+            "deviation_reasons": [
+              "技术方案选择不当",
+              "时间估算不准确",
+              "需求理解有偏差"
+            ],
+            "additional_work": [
+              "修复了多个bug"
+            ],
+            "suggestions": [
+              "提高技术方案评估能力",
+              "建议加强需求澄清",
+              "改进时间估算方法"
+            ],
+            "summary": "有明显偏离但在可接受范围内。偏离评分: 5.0, 完成率: 77%",
+            "confidence": 0.71,
+            "user_id": "user001",
+            "analysis_date": "2025-08-17",
+            "discussion_number": 1002,
+            "is_deviation": true,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 5.0/10\n**完成率**: 77.0%\n**评级**: 一般\n\n### 分析详情\n有明显偏离但在可接受范围内\n\n### 偏离原因\n- 技术方案选择不当\n- 时间估算不准确\n- 需求理解有偏差\n\n### 额外工作\n- 修复了多个bug\n\n### 改进建议\n- 提高技术方案评估能力\n- 建议加强需求澄清\n- 改进时间估算方法\n",
+            "grade": "一般"
+          },
+          {
+            "score": 3.5,
+            "completion_rate": 0.92,
+            "deviation_reasons": [
+              "时间安排略有偏差",
+              "部分功能实现方式有调整"
+            ],
+            "additional_work": [
+              "增加了错误处理逻辑",
+              "处理了一些意外的技术问题"
+            ],
+            "suggestions": [
+              "可以优化时间规划",
+              "建议提前识别潜在风险"
+            ],
+            "summary": "基本按计划执行，有小幅调整。偏离评分: 3.5, 完成率: 92%",
+            "confidence": 0.86,
+            "user_id": "user001",
+            "analysis_date": "2025-08-18",
+            "discussion_number": 1003,
+            "is_deviation": false,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 3.5/10\n**完成率**: 92.0%\n**评级**: 良好\n\n### 分析详情\n基本按计划执行，有小幅调整\n\n### 偏离原因\n- 时间安排略有偏差\n- 部分功能实现方式有调整\n\n### 额外工作\n- 增加了错误处理逻辑\n- 处理了一些意外的技术问题\n\n### 改进建议\n- 可以优化时间规划\n- 建议提前识别潜在风险\n",
+            "grade": "良好"
+          },
+          {
+            "score": 0.4,
+            "completion_rate": 0.97,
+            "deviation_reasons": [],
+            "additional_work": [
+              "完善了文档说明",
+              "添加了额外的测试用例",
+              "优化了代码性能"
+            ],
+            "suggestions": [
+              "继续保持当前的工作节奏"
+            ],
+            "summary": "完全按计划执行，质量优秀。偏离评分: 0.4, 完成率: 97%",
+            "confidence": 0.74,
+            "user_id": "user001",
+            "analysis_date": "2025-08-19",
+            "discussion_number": 1004,
+            "is_deviation": false,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 0.4/10\n**完成率**: 97.0%\n**评级**: 优秀\n\n### 分析详情\n完全按计划执行，质量优秀\n\n### 偏离原因\n无明显偏离\n\n### 额外工作\n- 完善了文档说明\n- 添加了额外的测试用例\n- 优化了代码性能\n\n### 改进建议\n- 继续保持当前的工作节奏\n",
+            "grade": "优秀"
+          },
+          {
+            "score": 0.8,
+            "completion_rate": 0.95,
+            "deviation_reasons": [],
+            "additional_work": [
+              "添加了额外的测试用例"
+            ],
+            "suggestions": [
+              "继续保持当前的工作节奏"
+            ],
+            "summary": "完全按计划执行，质量优秀。偏离评分: 0.8, 完成率: 95%",
+            "confidence": 0.84,
+            "user_id": "user001",
+            "analysis_date": "2025-08-20",
+            "discussion_number": 1005,
+            "is_deviation": false,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 0.8/10\n**完成率**: 95.0%\n**评级**: 优秀\n\n### 分析详情\n完全按计划执行，质量优秀\n\n### 偏离原因\n无明显偏离\n\n### 额外工作\n- 添加了额外的测试用例\n\n### 改进建议\n- 继续保持当前的工作节奏\n",
+            "grade": "优秀"
+          },
+          {
+            "score": 2.7,
+            "completion_rate": 0.91,
+            "deviation_reasons": [
+              "时间安排略有偏差",
+              "部分功能实现方式有调整"
+            ],
+            "additional_work": [
+              "处理了一些意外的技术问题",
+              "增加了错误处理逻辑"
+            ],
+            "suggestions": [
+              "建议提前识别潜在风险"
+            ],
+            "summary": "基本按计划执行，有小幅调整。偏离评分: 2.7, 完成率: 91%",
+            "confidence": 0.94,
+            "user_id": "user001",
+            "analysis_date": "2025-08-21",
+            "discussion_number": 1006,
+            "is_deviation": false,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 2.7/10\n**完成率**: 91.0%\n**评级**: 良好\n\n### 分析详情\n基本按计划执行，有小幅调整\n\n### 偏离原因\n- 时间安排略有偏差\n- 部分功能实现方式有调整\n\n### 额外工作\n- 处理了一些意外的技术问题\n- 增加了错误处理逻辑\n\n### 改进建议\n- 建议提前识别潜在风险\n",
+            "grade": "良好"
+          },
+          {
+            "score": 8.1,
+            "completion_rate": 0.42,
+            "deviation_reasons": [
+              "项目目标不明确",
+              "关键资源缺失",
+              "技术方案完全错误"
+            ],
+            "additional_work": [
+              "重新搭建了开发环境"
+            ],
+            "suggestions": [
+              "需要高级管理层介入",
+              "建议寻求外部专业咨询",
+              "考虑重新分配资源"
+            ],
+            "summary": "严重偏离计划，需要紧急干预。偏离评分: 8.1, 完成率: 42%",
+            "confidence": 0.91,
+            "user_id": "user001",
+            "analysis_date": "2025-08-22",
+            "discussion_number": 1007,
+            "is_deviation": true,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 8.1/10\n**完成率**: 42.0%\n**评级**: 较差\n\n### 分析详情\n严重偏离计划，需要紧急干预\n\n### 偏离原因\n- 项目目标不明确\n- 关键资源缺失\n- 技术方案完全错误\n\n### 额外工作\n- 重新搭建了开发环境\n\n### 改进建议\n- 需要高级管理层介入\n- 建议寻求外部专业咨询\n- 考虑重新分配资源\n",
+            "grade": "较差"
+          },
+          {
+            "score": 6.3,
+            "completion_rate": 0.61,
+            "deviation_reasons": [
+              "需求变更频繁",
+              "资源配置不足",
+              "技术难度超出预期"
+            ],
+            "additional_work": [
+              "重新实现了核心功能",
+              "学习了新的技术栈"
+            ],
+            "suggestions": [
+              "建议增加技术预研时间",
+              "考虑寻求技术支持",
+              "需要重新评估项目范围"
+            ],
+            "summary": "偏离程度较大，需要关注。偏离评分: 6.3, 完成率: 61%",
+            "confidence": 0.92,
+            "user_id": "user001",
+            "analysis_date": "2025-08-23",
+            "discussion_number": 1008,
+            "is_deviation": true,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 6.3/10\n**完成率**: 61.0%\n**评级**: 需改进\n\n### 分析详情\n偏离程度较大，需要关注\n\n### 偏离原因\n- 需求变更频繁\n- 资源配置不足\n- 技术难度超出预期\n\n### 额外工作\n- 重新实现了核心功能\n- 学习了新的技术栈\n\n### 改进建议\n- 建议增加技术预研时间\n- 考虑寻求技术支持\n- 需要重新评估项目范围\n",
+            "grade": "需改进"
+          },
+          {
+            "score": 2.6,
+            "completion_rate": 0.89,
+            "deviation_reasons": [],
+            "additional_work": [
+              "增加了错误处理逻辑"
+            ],
+            "suggestions": [
+              "建议提前识别潜在风险"
+            ],
+            "summary": "基本按计划执行，有小幅调整。偏离评分: 2.6, 完成率: 89%",
+            "confidence": 0.88,
+            "user_id": "user001",
+            "analysis_date": "2025-08-24",
+            "discussion_number": 1009,
+            "is_deviation": false,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 2.6/10\n**完成率**: 89.0%\n**评级**: 良好\n\n### 分析详情\n基本按计划执行，有小幅调整\n\n### 偏离原因\n无明显偏离\n\n### 额外工作\n- 增加了错误处理逻辑\n\n### 改进建议\n- 建议提前识别潜在风险\n",
+            "grade": "良好"
+          },
+          {
+            "score": 5.6,
+            "completion_rate": 0.81,
+            "deviation_reasons": [],
+            "additional_work": [
+              "调整了架构设计"
+            ],
+            "suggestions": [
+              "改进时间估算方法"
+            ],
+            "summary": "有明显偏离但在可接受范围内。偏离评分: 5.6, 完成率: 81%",
+            "confidence": 0.74,
+            "user_id": "user001",
+            "analysis_date": "2025-08-25",
+            "discussion_number": 1010,
+            "is_deviation": true,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 5.6/10\n**完成率**: 81.0%\n**评级**: 一般\n\n### 分析详情\n有明显偏离但在可接受范围内\n\n### 偏离原因\n无明显偏离\n\n### 额外工作\n- 调整了架构设计\n\n### 改进建议\n- 改进时间估算方法\n",
+            "grade": "一般"
+          },
+          {
+            "score": 3.6,
+            "completion_rate": 0.87,
+            "deviation_reasons": [],
+            "additional_work": [
+              "处理了一些意外的技术问题"
+            ],
+            "suggestions": [
+              "可以优化时间规划",
+              "建议提前识别潜在风险"
+            ],
+            "summary": "基本按计划执行，有小幅调整。偏离评分: 3.6, 完成率: 87%",
+            "confidence": 0.85,
+            "user_id": "user001",
+            "analysis_date": "2025-08-26",
+            "discussion_number": 1011,
+            "is_deviation": false,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 3.6/10\n**完成率**: 87.0%\n**评级**: 良好\n\n### 分析详情\n基本按计划执行，有小幅调整\n\n### 偏离原因\n无明显偏离\n\n### 额外工作\n- 处理了一些意外的技术问题\n\n### 改进建议\n- 可以优化时间规划\n- 建议提前识别潜在风险\n",
+            "grade": "良好"
+          },
+          {
+            "score": 9.9,
+            "completion_rate": 0.43,
+            "deviation_reasons": [
+              "项目目标不明确",
+              "团队沟通严重不足"
+            ],
+            "additional_work": [
+              "处理了紧急的生产问题",
+              "重新制定了项目计划"
+            ],
+            "suggestions": [
+              "需要高级管理层介入",
+              "建议寻求外部专业咨询"
+            ],
+            "summary": "严重偏离计划，需要紧急干预。偏离评分: 9.9, 完成率: 43%",
+            "confidence": 0.88,
+            "user_id": "user001",
+            "analysis_date": "2025-08-27",
+            "discussion_number": 1012,
+            "is_deviation": true,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 9.9/10\n**完成率**: 43.0%\n**评级**: 较差\n\n### 分析详情\n严重偏离计划，需要紧急干预\n\n### 偏离原因\n- 项目目标不明确\n- 团队沟通严重不足\n\n### 额外工作\n- 处理了紧急的生产问题\n- 重新制定了项目计划\n\n### 改进建议\n- 需要高级管理层介入\n- 建议寻求外部专业咨询\n",
+            "grade": "较差"
+          },
+          {
+            "score": 3.1,
+            "completion_rate": 0.87,
+            "deviation_reasons": [],
+            "additional_work": [
+              "处理了一些意外的技术问题",
+              "增加了错误处理逻辑"
+            ],
+            "suggestions": [
+              "建议提前识别潜在风险",
+              "可以优化时间规划"
+            ],
+            "summary": "基本按计划执行，有小幅调整。偏离评分: 3.1, 完成率: 87%",
+            "confidence": 0.73,
+            "user_id": "user001",
+            "analysis_date": "2025-08-28",
+            "discussion_number": 1013,
+            "is_deviation": false,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 3.1/10\n**完成率**: 87.0%\n**评级**: 良好\n\n### 分析详情\n基本按计划执行，有小幅调整\n\n### 偏离原因\n无明显偏离\n\n### 额外工作\n- 处理了一些意外的技术问题\n- 增加了错误处理逻辑\n\n### 改进建议\n- 建议提前识别潜在风险\n- 可以优化时间规划\n",
+            "grade": "良好"
+          }
+        ]
+      },
+      {
+        "user_id": "user002",
+        "timeline": [
+          {
+            "score": 8.3,
+            "completion_rate": 0.27,
+            "deviation_reasons": [
+              "外部环境发生重大变化",
+              "技术方案完全错误",
+              "项目目标不明确"
+            ],
+            "additional_work": [
+              "处理了紧急的生产问题",
+              "进行了大量的需求调研"
+            ],
+            "suggestions": [
+              "需要高级管理层介入"
+            ],
+            "summary": "严重偏离计划，需要紧急干预。偏离评分: 8.3, 完成率: 27%",
+            "confidence": 0.85,
+            "user_id": "user002",
+            "analysis_date": "2025-08-15",
+            "discussion_number": 1000,
+            "is_deviation": true,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 8.3/10\n**完成率**: 27.0%\n**评级**: 较差\n\n### 分析详情\n严重偏离计划，需要紧急干预\n\n### 偏离原因\n- 外部环境发生重大变化\n- 技术方案完全错误\n- 项目目标不明确\n\n### 额外工作\n- 处理了紧急的生产问题\n- 进行了大量的需求调研\n\n### 改进建议\n- 需要高级管理层介入\n",
+            "grade": "较差"
+          },
+          {
+            "score": 3.7,
+            "completion_rate": 0.93,
+            "deviation_reasons": [],
+            "additional_work": [
+              "处理了一些意外的技术问题"
+            ],
+            "suggestions": [
+              "可以优化时间规划",
+              "建议提前识别潜在风险"
+            ],
+            "summary": "基本按计划执行，有小幅调整。偏离评分: 3.7, 完成率: 93%",
+            "confidence": 0.86,
+            "user_id": "user002",
+            "analysis_date": "2025-08-16",
+            "discussion_number": 1001,
+            "is_deviation": false,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 3.7/10\n**完成率**: 93.0%\n**评级**: 良好\n\n### 分析详情\n基本按计划执行，有小幅调整\n\n### 偏离原因\n无明显偏离\n\n### 额外工作\n- 处理了一些意外的技术问题\n\n### 改进建议\n- 可以优化时间规划\n- 建议提前识别潜在风险\n",
+            "grade": "良好"
+          },
+          {
+            "score": 1.2,
+            "completion_rate": 0.98,
+            "deviation_reasons": [],
+            "additional_work": [
+              "优化了代码性能",
+              "添加了额外的测试用例"
+            ],
+            "suggestions": [
+              "可以考虑分享经验给团队"
+            ],
+            "summary": "完全按计划执行，质量优秀。偏离评分: 1.2, 完成率: 98%",
+            "confidence": 0.85,
+            "user_id": "user002",
+            "analysis_date": "2025-08-17",
+            "discussion_number": 1002,
+            "is_deviation": false,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 1.2/10\n**完成率**: 98.0%\n**评级**: 优秀\n\n### 分析详情\n完全按计划执行，质量优秀\n\n### 偏离原因\n无明显偏离\n\n### 额外工作\n- 优化了代码性能\n- 添加了额外的测试用例\n\n### 改进建议\n- 可以考虑分享经验给团队\n",
+            "grade": "优秀"
+          },
+          {
+            "score": 2.1,
+            "completion_rate": 0.89,
+            "deviation_reasons": [],
+            "additional_work": [
+              "处理了一些意外的技术问题",
+              "增加了错误处理逻辑"
+            ],
+            "suggestions": [
+              "建议提前识别潜在风险",
+              "可以优化时间规划"
+            ],
+            "summary": "基本按计划执行，有小幅调整。偏离评分: 2.1, 完成率: 89%",
+            "confidence": 0.78,
+            "user_id": "user002",
+            "analysis_date": "2025-08-18",
+            "discussion_number": 1003,
+            "is_deviation": false,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 2.1/10\n**完成率**: 89.0%\n**评级**: 良好\n\n### 分析详情\n基本按计划执行，有小幅调整\n\n### 偏离原因\n无明显偏离\n\n### 额外工作\n- 处理了一些意外的技术问题\n- 增加了错误处理逻辑\n\n### 改进建议\n- 建议提前识别潜在风险\n- 可以优化时间规划\n",
+            "grade": "良好"
+          },
+          {
+            "score": 3.4,
+            "completion_rate": 0.88,
+            "deviation_reasons": [
+              "部分功能实现方式有调整",
+              "时间安排略有偏差"
+            ],
+            "additional_work": [
+              "增加了错误处理逻辑",
+              "处理了一些意外的技术问题"
+            ],
+            "suggestions": [
+              "建议提前识别潜在风险",
+              "可以优化时间规划"
+            ],
+            "summary": "基本按计划执行，有小幅调整。偏离评分: 3.4, 完成率: 88%",
+            "confidence": 0.82,
+            "user_id": "user002",
+            "analysis_date": "2025-08-19",
+            "discussion_number": 1004,
+            "is_deviation": false,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 3.4/10\n**完成率**: 88.0%\n**评级**: 良好\n\n### 分析详情\n基本按计划执行，有小幅调整\n\n### 偏离原因\n- 部分功能实现方式有调整\n- 时间安排略有偏差\n\n### 额外工作\n- 增加了错误处理逻辑\n- 处理了一些意外的技术问题\n\n### 改进建议\n- 建议提前识别潜在风险\n- 可以优化时间规划\n",
+            "grade": "良好"
+          },
+          {
+            "score": 1.3,
+            "completion_rate": 0.97,
+            "deviation_reasons": [],
+            "additional_work": [
+              "添加了额外的测试用例",
+              "完善了文档说明",
+              "优化了代码性能"
+            ],
+            "suggestions": [
+              "可以考虑分享经验给团队"
+            ],
+            "summary": "完全按计划执行，质量优秀。偏离评分: 1.3, 完成率: 97%",
+            "confidence": 0.9,
+            "user_id": "user002",
+            "analysis_date": "2025-08-20",
+            "discussion_number": 1005,
+            "is_deviation": false,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 1.3/10\n**完成率**: 97.0%\n**评级**: 优秀\n\n### 分析详情\n完全按计划执行，质量优秀\n\n### 偏离原因\n无明显偏离\n\n### 额外工作\n- 添加了额外的测试用例\n- 完善了文档说明\n- 优化了代码性能\n\n### 改进建议\n- 可以考虑分享经验给团队\n",
+            "grade": "优秀"
+          },
+          {
+            "score": 4.5,
+            "completion_rate": 0.81,
+            "deviation_reasons": [],
+            "additional_work": [
+              "修复了多个bug",
+              "重新设计了部分功能",
+              "调整了架构设计"
+            ],
+            "suggestions": [
+              "改进时间估算方法"
+            ],
+            "summary": "有明显偏离但在可接受范围内。偏离评分: 4.5, 完成率: 81%",
+            "confidence": 0.91,
+            "user_id": "user002",
+            "analysis_date": "2025-08-21",
+            "discussion_number": 1006,
+            "is_deviation": true,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 4.5/10\n**完成率**: 81.0%\n**评级**: 一般\n\n### 分析详情\n有明显偏离但在可接受范围内\n\n### 偏离原因\n无明显偏离\n\n### 额外工作\n- 修复了多个bug\n- 重新设计了部分功能\n- 调整了架构设计\n\n### 改进建议\n- 改进时间估算方法\n",
+            "grade": "一般"
+          },
+          {
+            "score": 3.1,
+            "completion_rate": 0.87,
+            "deviation_reasons": [
+              "时间安排略有偏差",
+              "部分功能实现方式有调整"
+            ],
+            "additional_work": [
+              "处理了一些意外的技术问题",
+              "增加了错误处理逻辑"
+            ],
+            "suggestions": [
+              "可以优化时间规划"
+            ],
+            "summary": "基本按计划执行，有小幅调整。偏离评分: 3.1, 完成率: 87%",
+            "confidence": 0.86,
+            "user_id": "user002",
+            "analysis_date": "2025-08-22",
+            "discussion_number": 1007,
+            "is_deviation": false,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 3.1/10\n**完成率**: 87.0%\n**评级**: 良好\n\n### 分析详情\n基本按计划执行，有小幅调整\n\n### 偏离原因\n- 时间安排略有偏差\n- 部分功能实现方式有调整\n\n### 额外工作\n- 处理了一些意外的技术问题\n- 增加了错误处理逻辑\n\n### 改进建议\n- 可以优化时间规划\n",
+            "grade": "良好"
+          },
+          {
+            "score": 2.0,
+            "completion_rate": 0.96,
+            "deviation_reasons": [],
+            "additional_work": [
+              "优化了代码性能",
+              "添加了额外的测试用例",
+              "完善了文档说明"
+            ],
+            "suggestions": [
+              "继续保持当前的工作节奏",
+              "可以考虑分享经验给团队"
+            ],
+            "summary": "完全按计划执行，质量优秀。偏离评分: 2.0, 完成率: 96%",
+            "confidence": 0.76,
+            "user_id": "user002",
+            "analysis_date": "2025-08-23",
+            "discussion_number": 1008,
+            "is_deviation": false,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 2.0/10\n**完成率**: 96.0%\n**评级**: 优秀\n\n### 分析详情\n完全按计划执行，质量优秀\n\n### 偏离原因\n无明显偏离\n\n### 额外工作\n- 优化了代码性能\n- 添加了额外的测试用例\n- 完善了文档说明\n\n### 改进建议\n- 继续保持当前的工作节奏\n- 可以考虑分享经验给团队\n",
+            "grade": "优秀"
+          },
+          {
+            "score": 5.8,
+            "completion_rate": 0.74,
+            "deviation_reasons": [
+              "时间估算不准确",
+              "需求理解有偏差"
+            ],
+            "additional_work": [
+              "调整了架构设计",
+              "修复了多个bug"
+            ],
+            "suggestions": [
+              "提高技术方案评估能力"
+            ],
+            "summary": "有明显偏离但在可接受范围内。偏离评分: 5.8, 完成率: 74%",
+            "confidence": 0.84,
+            "user_id": "user002",
+            "analysis_date": "2025-08-24",
+            "discussion_number": 1009,
+            "is_deviation": true,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 5.8/10\n**完成率**: 74.0%\n**评级**: 一般\n\n### 分析详情\n有明显偏离但在可接受范围内\n\n### 偏离原因\n- 时间估算不准确\n- 需求理解有偏差\n\n### 额外工作\n- 调整了架构设计\n- 修复了多个bug\n\n### 改进建议\n- 提高技术方案评估能力\n",
+            "grade": "一般"
+          },
+          {
+            "score": 5.3,
+            "completion_rate": 0.81,
+            "deviation_reasons": [
+              "技术方案选择不当",
+              "时间估算不准确",
+              "需求理解有偏差"
+            ],
+            "additional_work": [
+              "修复了多个bug",
+              "重新设计了部分功能"
+            ],
+            "suggestions": [
+              "提高技术方案评估能力"
+            ],
+            "summary": "有明显偏离但在可接受范围内。偏离评分: 5.3, 完成率: 81%",
+            "confidence": 0.81,
+            "user_id": "user002",
+            "analysis_date": "2025-08-25",
+            "discussion_number": 1010,
+            "is_deviation": true,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 5.3/10\n**完成率**: 81.0%\n**评级**: 一般\n\n### 分析详情\n有明显偏离但在可接受范围内\n\n### 偏离原因\n- 技术方案选择不当\n- 时间估算不准确\n- 需求理解有偏差\n\n### 额外工作\n- 修复了多个bug\n- 重新设计了部分功能\n\n### 改进建议\n- 提高技术方案评估能力\n",
+            "grade": "一般"
+          },
+          {
+            "score": 2.5,
+            "completion_rate": 0.92,
+            "deviation_reasons": [
+              "部分功能实现方式有调整",
+              "时间安排略有偏差"
+            ],
+            "additional_work": [
+              "处理了一些意外的技术问题",
+              "增加了错误处理逻辑"
+            ],
+            "suggestions": [
+              "建议提前识别潜在风险"
+            ],
+            "summary": "基本按计划执行，有小幅调整。偏离评分: 2.5, 完成率: 92%",
+            "confidence": 0.88,
+            "user_id": "user002",
+            "analysis_date": "2025-08-26",
+            "discussion_number": 1011,
+            "is_deviation": false,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 2.5/10\n**完成率**: 92.0%\n**评级**: 良好\n\n### 分析详情\n基本按计划执行，有小幅调整\n\n### 偏离原因\n- 部分功能实现方式有调整\n- 时间安排略有偏差\n\n### 额外工作\n- 处理了一些意外的技术问题\n- 增加了错误处理逻辑\n\n### 改进建议\n- 建议提前识别潜在风险\n",
+            "grade": "良好"
+          },
+          {
+            "score": 0.7,
+            "completion_rate": 0.98,
+            "deviation_reasons": [],
+            "additional_work": [
+              "优化了代码性能",
+              "添加了额外的测试用例"
+            ],
+            "suggestions": [
+              "可以考虑分享经验给团队",
+              "继续保持当前的工作节奏"
+            ],
+            "summary": "完全按计划执行，质量优秀。偏离评分: 0.7, 完成率: 98%",
+            "confidence": 0.75,
+            "user_id": "user002",
+            "analysis_date": "2025-08-27",
+            "discussion_number": 1012,
+            "is_deviation": false,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 0.7/10\n**完成率**: 98.0%\n**评级**: 优秀\n\n### 分析详情\n完全按计划执行，质量优秀\n\n### 偏离原因\n无明显偏离\n\n### 额外工作\n- 优化了代码性能\n- 添加了额外的测试用例\n\n### 改进建议\n- 可以考虑分享经验给团队\n- 继续保持当前的工作节奏\n",
+            "grade": "优秀"
+          },
+          {
+            "score": 2.9,
+            "completion_rate": 0.86,
+            "deviation_reasons": [],
+            "additional_work": [
+              "处理了一些意外的技术问题",
+              "增加了错误处理逻辑"
+            ],
+            "suggestions": [
+              "建议提前识别潜在风险",
+              "可以优化时间规划"
+            ],
+            "summary": "基本按计划执行，有小幅调整。偏离评分: 2.9, 完成率: 86%",
+            "confidence": 0.71,
+            "user_id": "user002",
+            "analysis_date": "2025-08-28",
+            "discussion_number": 1013,
+            "is_deviation": false,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 2.9/10\n**完成率**: 86.0%\n**评级**: 良好\n\n### 分析详情\n基本按计划执行，有小幅调整\n\n### 偏离原因\n无明显偏离\n\n### 额外工作\n- 处理了一些意外的技术问题\n- 增加了错误处理逻辑\n\n### 改进建议\n- 建议提前识别潜在风险\n- 可以优化时间规划\n",
+            "grade": "良好"
+          }
+        ]
+      },
+      {
+        "user_id": "user003",
+        "timeline": [
+          {
+            "score": 2.8,
+            "completion_rate": 0.93,
+            "deviation_reasons": [
+              "部分功能实现方式有调整"
+            ],
+            "additional_work": [
+              "增加了错误处理逻辑",
+              "处理了一些意外的技术问题"
+            ],
+            "suggestions": [
+              "可以优化时间规划",
+              "建议提前识别潜在风险"
+            ],
+            "summary": "基本按计划执行，有小幅调整。偏离评分: 2.8, 完成率: 93%",
+            "confidence": 0.91,
+            "user_id": "user003",
+            "analysis_date": "2025-08-15",
+            "discussion_number": 1000,
+            "is_deviation": false,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 2.8/10\n**完成率**: 93.0%\n**评级**: 良好\n\n### 分析详情\n基本按计划执行，有小幅调整\n\n### 偏离原因\n- 部分功能实现方式有调整\n\n### 额外工作\n- 增加了错误处理逻辑\n- 处理了一些意外的技术问题\n\n### 改进建议\n- 可以优化时间规划\n- 建议提前识别潜在风险\n",
+            "grade": "良好"
+          },
+          {
+            "score": 1.4,
+            "completion_rate": 0.97,
+            "deviation_reasons": [],
+            "additional_work": [
+              "完善了文档说明",
+              "优化了代码性能",
+              "添加了额外的测试用例"
+            ],
+            "suggestions": [
+              "继续保持当前的工作节奏"
+            ],
+            "summary": "完全按计划执行，质量优秀。偏离评分: 1.4, 完成率: 97%",
+            "confidence": 0.73,
+            "user_id": "user003",
+            "analysis_date": "2025-08-16",
+            "discussion_number": 1001,
+            "is_deviation": false,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 1.4/10\n**完成率**: 97.0%\n**评级**: 优秀\n\n### 分析详情\n完全按计划执行，质量优秀\n\n### 偏离原因\n无明显偏离\n\n### 额外工作\n- 完善了文档说明\n- 优化了代码性能\n- 添加了额外的测试用例\n\n### 改进建议\n- 继续保持当前的工作节奏\n",
+            "grade": "优秀"
+          },
+          {
+            "score": 7.9,
+            "completion_rate": 0.57,
+            "deviation_reasons": [
+              "资源配置不足",
+              "外部依赖延迟"
+            ],
+            "additional_work": [
+              "学习了新的技术栈",
+              "协调了多个团队的工作"
+            ],
+            "suggestions": [
+              "考虑寻求技术支持",
+              "加强项目风险管理"
+            ],
+            "summary": "偏离程度较大，需要关注。偏离评分: 7.9, 完成率: 57%",
+            "confidence": 0.75,
+            "user_id": "user003",
+            "analysis_date": "2025-08-17",
+            "discussion_number": 1002,
+            "is_deviation": true,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 7.9/10\n**完成率**: 57.0%\n**评级**: 需改进\n\n### 分析详情\n偏离程度较大，需要关注\n\n### 偏离原因\n- 资源配置不足\n- 外部依赖延迟\n\n### 额外工作\n- 学习了新的技术栈\n- 协调了多个团队的工作\n\n### 改进建议\n- 考虑寻求技术支持\n- 加强项目风险管理\n",
+            "grade": "需改进"
+          },
+          {
+            "score": 0.6,
+            "completion_rate": 0.96,
+            "deviation_reasons": [],
+            "additional_work": [
+              "完善了文档说明",
+              "添加了额外的测试用例"
+            ],
+            "suggestions": [
+              "可以考虑分享经验给团队"
+            ],
+            "summary": "完全按计划执行，质量优秀。偏离评分: 0.6, 完成率: 96%",
+            "confidence": 0.73,
+            "user_id": "user003",
+            "analysis_date": "2025-08-18",
+            "discussion_number": 1003,
+            "is_deviation": false,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 0.6/10\n**完成率**: 96.0%\n**评级**: 优秀\n\n### 分析详情\n完全按计划执行，质量优秀\n\n### 偏离原因\n无明显偏离\n\n### 额外工作\n- 完善了文档说明\n- 添加了额外的测试用例\n\n### 改进建议\n- 可以考虑分享经验给团队\n",
+            "grade": "优秀"
+          },
+          {
+            "score": 1.8,
+            "completion_rate": 0.98,
+            "deviation_reasons": [],
+            "additional_work": [
+              "优化了代码性能"
+            ],
+            "suggestions": [
+              "继续保持当前的工作节奏"
+            ],
+            "summary": "完全按计划执行，质量优秀。偏离评分: 1.8, 完成率: 98%",
+            "confidence": 0.84,
+            "user_id": "user003",
+            "analysis_date": "2025-08-19",
+            "discussion_number": 1004,
+            "is_deviation": false,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 1.8/10\n**完成率**: 98.0%\n**评级**: 优秀\n\n### 分析详情\n完全按计划执行，质量优秀\n\n### 偏离原因\n无明显偏离\n\n### 额外工作\n- 优化了代码性能\n\n### 改进建议\n- 继续保持当前的工作节奏\n",
+            "grade": "优秀"
+          },
+          {
+            "score": 7.3,
+            "completion_rate": 0.63,
+            "deviation_reasons": [
+              "技术难度超出预期",
+              "资源配置不足"
+            ],
+            "additional_work": [
+              "处理了大量技术债务"
+            ],
+            "suggestions": [
+              "需要重新评估项目范围",
+              "考虑寻求技术支持",
+              "加强项目风险管理"
+            ],
+            "summary": "偏离程度较大，需要关注。偏离评分: 7.3, 完成率: 63%",
+            "confidence": 0.88,
+            "user_id": "user003",
+            "analysis_date": "2025-08-20",
+            "discussion_number": 1005,
+            "is_deviation": true,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 7.3/10\n**完成率**: 63.0%\n**评级**: 需改进\n\n### 分析详情\n偏离程度较大，需要关注\n\n### 偏离原因\n- 技术难度超出预期\n- 资源配置不足\n\n### 额外工作\n- 处理了大量技术债务\n\n### 改进建议\n- 需要重新评估项目范围\n- 考虑寻求技术支持\n- 加强项目风险管理\n",
+            "grade": "需改进"
+          },
+          {
+            "score": 7.9,
+            "completion_rate": 0.64,
+            "deviation_reasons": [
+              "需求变更频繁"
+            ],
+            "additional_work": [
+              "学习了新的技术栈",
+              "处理了大量技术债务"
+            ],
+            "suggestions": [
+              "需要重新评估项目范围"
+            ],
+            "summary": "偏离程度较大，需要关注。偏离评分: 7.9, 完成率: 64%",
+            "confidence": 0.75,
+            "user_id": "user003",
+            "analysis_date": "2025-08-21",
+            "discussion_number": 1006,
+            "is_deviation": true,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 7.9/10\n**完成率**: 64.0%\n**评级**: 需改进\n\n### 分析详情\n偏离程度较大，需要关注\n\n### 偏离原因\n- 需求变更频繁\n\n### 额外工作\n- 学习了新的技术栈\n- 处理了大量技术债务\n\n### 改进建议\n- 需要重新评估项目范围\n",
+            "grade": "需改进"
+          },
+          {
+            "score": 5.8,
+            "completion_rate": 0.76,
+            "deviation_reasons": [
+              "技术方案选择不当",
+              "需求理解有偏差",
+              "时间估算不准确"
+            ],
+            "additional_work": [
+              "修复了多个bug"
+            ],
+            "suggestions": [
+              "建议加强需求澄清",
+              "改进时间估算方法"
+            ],
+            "summary": "有明显偏离但在可接受范围内。偏离评分: 5.8, 完成率: 76%",
+            "confidence": 0.9,
+            "user_id": "user003",
+            "analysis_date": "2025-08-22",
+            "discussion_number": 1007,
+            "is_deviation": true,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 5.8/10\n**完成率**: 76.0%\n**评级**: 一般\n\n### 分析详情\n有明显偏离但在可接受范围内\n\n### 偏离原因\n- 技术方案选择不当\n- 需求理解有偏差\n- 时间估算不准确\n\n### 额外工作\n- 修复了多个bug\n\n### 改进建议\n- 建议加强需求澄清\n- 改进时间估算方法\n",
+            "grade": "一般"
+          },
+          {
+            "score": 2.5,
+            "completion_rate": 0.88,
+            "deviation_reasons": [
+              "时间安排略有偏差"
+            ],
+            "additional_work": [
+              "处理了一些意外的技术问题",
+              "增加了错误处理逻辑"
+            ],
+            "suggestions": [
+              "可以优化时间规划",
+              "建议提前识别潜在风险"
+            ],
+            "summary": "基本按计划执行，有小幅调整。偏离评分: 2.5, 完成率: 88%",
+            "confidence": 0.9,
+            "user_id": "user003",
+            "analysis_date": "2025-08-23",
+            "discussion_number": 1008,
+            "is_deviation": false,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 2.5/10\n**完成率**: 88.0%\n**评级**: 良好\n\n### 分析详情\n基本按计划执行，有小幅调整\n\n### 偏离原因\n- 时间安排略有偏差\n\n### 额外工作\n- 处理了一些意外的技术问题\n- 增加了错误处理逻辑\n\n### 改进建议\n- 可以优化时间规划\n- 建议提前识别潜在风险\n",
+            "grade": "良好"
+          },
+          {
+            "score": 9.4,
+            "completion_rate": 0.26,
+            "deviation_reasons": [
+              "项目目标不明确",
+              "外部环境发生重大变化"
+            ],
+            "additional_work": [
+              "处理了紧急的生产问题"
+            ],
+            "suggestions": [
+              "建议暂停当前工作进行复盘",
+              "需要高级管理层介入",
+              "立即重新评估项目可行性"
+            ],
+            "summary": "严重偏离计划，需要紧急干预。偏离评分: 9.4, 完成率: 26%",
+            "confidence": 0.88,
+            "user_id": "user003",
+            "analysis_date": "2025-08-24",
+            "discussion_number": 1009,
+            "is_deviation": true,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 9.4/10\n**完成率**: 26.0%\n**评级**: 较差\n\n### 分析详情\n严重偏离计划，需要紧急干预\n\n### 偏离原因\n- 项目目标不明确\n- 外部环境发生重大变化\n\n### 额外工作\n- 处理了紧急的生产问题\n\n### 改进建议\n- 建议暂停当前工作进行复盘\n- 需要高级管理层介入\n- 立即重新评估项目可行性\n",
+            "grade": "较差"
+          },
+          {
+            "score": 5.7,
+            "completion_rate": 0.79,
+            "deviation_reasons": [],
+            "additional_work": [
+              "调整了架构设计",
+              "重新设计了部分功能",
+              "修复了多个bug"
+            ],
+            "suggestions": [
+              "建议加强需求澄清",
+              "改进时间估算方法",
+              "提高技术方案评估能力"
+            ],
+            "summary": "有明显偏离但在可接受范围内。偏离评分: 5.7, 完成率: 79%",
+            "confidence": 0.79,
+            "user_id": "user003",
+            "analysis_date": "2025-08-25",
+            "discussion_number": 1010,
+            "is_deviation": true,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 5.7/10\n**完成率**: 79.0%\n**评级**: 一般\n\n### 分析详情\n有明显偏离但在可接受范围内\n\n### 偏离原因\n无明显偏离\n\n### 额外工作\n- 调整了架构设计\n- 重新设计了部分功能\n- 修复了多个bug\n\n### 改进建议\n- 建议加强需求澄清\n- 改进时间估算方法\n- 提高技术方案评估能力\n",
+            "grade": "一般"
+          },
+          {
+            "score": 3.6,
+            "completion_rate": 0.87,
+            "deviation_reasons": [
+              "部分功能实现方式有调整",
+              "时间安排略有偏差"
+            ],
+            "additional_work": [
+              "处理了一些意外的技术问题"
+            ],
+            "suggestions": [
+              "可以优化时间规划"
+            ],
+            "summary": "基本按计划执行，有小幅调整。偏离评分: 3.6, 完成率: 87%",
+            "confidence": 0.9,
+            "user_id": "user003",
+            "analysis_date": "2025-08-26",
+            "discussion_number": 1011,
+            "is_deviation": false,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 3.6/10\n**完成率**: 87.0%\n**评级**: 良好\n\n### 分析详情\n基本按计划执行，有小幅调整\n\n### 偏离原因\n- 部分功能实现方式有调整\n- 时间安排略有偏差\n\n### 额外工作\n- 处理了一些意外的技术问题\n\n### 改进建议\n- 可以优化时间规划\n",
+            "grade": "良好"
+          },
+          {
+            "score": 3.2,
+            "completion_rate": 0.93,
+            "deviation_reasons": [
+              "时间安排略有偏差"
+            ],
+            "additional_work": [
+              "处理了一些意外的技术问题"
+            ],
+            "suggestions": [
+              "建议提前识别潜在风险"
+            ],
+            "summary": "基本按计划执行，有小幅调整。偏离评分: 3.2, 完成率: 93%",
+            "confidence": 0.9,
+            "user_id": "user003",
+            "analysis_date": "2025-08-27",
+            "discussion_number": 1012,
+            "is_deviation": false,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 3.2/10\n**完成率**: 93.0%\n**评级**: 良好\n\n### 分析详情\n基本按计划执行，有小幅调整\n\n### 偏离原因\n- 时间安排略有偏差\n\n### 额外工作\n- 处理了一些意外的技术问题\n\n### 改进建议\n- 建议提前识别潜在风险\n",
+            "grade": "良好"
+          },
+          {
+            "score": 5.3,
+            "completion_rate": 0.77,
+            "deviation_reasons": [
+              "需求理解有偏差",
+              "技术方案选择不当",
+              "时间估算不准确"
+            ],
+            "additional_work": [
+              "调整了架构设计",
+              "修复了多个bug",
+              "重新设计了部分功能"
+            ],
+            "suggestions": [
+              "建议加强需求澄清",
+              "改进时间估算方法"
+            ],
+            "summary": "有明显偏离但在可接受范围内。偏离评分: 5.3, 完成率: 77%",
+            "confidence": 0.9,
+            "user_id": "user003",
+            "analysis_date": "2025-08-28",
+            "discussion_number": 1013,
+            "is_deviation": true,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 5.3/10\n**完成率**: 77.0%\n**评级**: 一般\n\n### 分析详情\n有明显偏离但在可接受范围内\n\n### 偏离原因\n- 需求理解有偏差\n- 技术方案选择不当\n- 时间估算不准确\n\n### 额外工作\n- 调整了架构设计\n- 修复了多个bug\n- 重新设计了部分功能\n\n### 改进建议\n- 建议加强需求澄清\n- 改进时间估算方法\n",
+            "grade": "一般"
+          }
+        ]
+      },
+      {
+        "user_id": "user004",
+        "timeline": [
+          {
+            "score": 2.7,
+            "completion_rate": 0.92,
+            "deviation_reasons": [],
+            "additional_work": [
+              "处理了一些意外的技术问题",
+              "增加了错误处理逻辑"
+            ],
+            "suggestions": [
+              "建议提前识别潜在风险"
+            ],
+            "summary": "基本按计划执行，有小幅调整。偏离评分: 2.7, 完成率: 92%",
+            "confidence": 0.92,
+            "user_id": "user004",
+            "analysis_date": "2025-08-15",
+            "discussion_number": 1000,
+            "is_deviation": false,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 2.7/10\n**完成率**: 92.0%\n**评级**: 良好\n\n### 分析详情\n基本按计划执行，有小幅调整\n\n### 偏离原因\n无明显偏离\n\n### 额外工作\n- 处理了一些意外的技术问题\n- 增加了错误处理逻辑\n\n### 改进建议\n- 建议提前识别潜在风险\n",
+            "grade": "良好"
+          },
+          {
+            "score": 2.6,
+            "completion_rate": 0.9,
+            "deviation_reasons": [
+              "时间安排略有偏差"
+            ],
+            "additional_work": [
+              "增加了错误处理逻辑"
+            ],
+            "suggestions": [
+              "可以优化时间规划"
+            ],
+            "summary": "基本按计划执行，有小幅调整。偏离评分: 2.6, 完成率: 90%",
+            "confidence": 0.74,
+            "user_id": "user004",
+            "analysis_date": "2025-08-16",
+            "discussion_number": 1001,
+            "is_deviation": false,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 2.6/10\n**完成率**: 90.0%\n**评级**: 良好\n\n### 分析详情\n基本按计划执行，有小幅调整\n\n### 偏离原因\n- 时间安排略有偏差\n\n### 额外工作\n- 增加了错误处理逻辑\n\n### 改进建议\n- 可以优化时间规划\n",
+            "grade": "良好"
+          },
+          {
+            "score": 1.7,
+            "completion_rate": 0.96,
+            "deviation_reasons": [],
+            "additional_work": [
+              "优化了代码性能",
+              "完善了文档说明",
+              "添加了额外的测试用例"
+            ],
+            "suggestions": [
+              "继续保持当前的工作节奏"
+            ],
+            "summary": "完全按计划执行，质量优秀。偏离评分: 1.7, 完成率: 96%",
+            "confidence": 0.74,
+            "user_id": "user004",
+            "analysis_date": "2025-08-17",
+            "discussion_number": 1002,
+            "is_deviation": false,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 1.7/10\n**完成率**: 96.0%\n**评级**: 优秀\n\n### 分析详情\n完全按计划执行，质量优秀\n\n### 偏离原因\n无明显偏离\n\n### 额外工作\n- 优化了代码性能\n- 完善了文档说明\n- 添加了额外的测试用例\n\n### 改进建议\n- 继续保持当前的工作节奏\n",
+            "grade": "优秀"
+          },
+          {
+            "score": 3.4,
+            "completion_rate": 0.87,
+            "deviation_reasons": [
+              "时间安排略有偏差"
+            ],
+            "additional_work": [
+              "增加了错误处理逻辑",
+              "处理了一些意外的技术问题"
+            ],
+            "suggestions": [
+              "建议提前识别潜在风险",
+              "可以优化时间规划"
+            ],
+            "summary": "基本按计划执行，有小幅调整。偏离评分: 3.4, 完成率: 87%",
+            "confidence": 0.79,
+            "user_id": "user004",
+            "analysis_date": "2025-08-18",
+            "discussion_number": 1003,
+            "is_deviation": false,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 3.4/10\n**完成率**: 87.0%\n**评级**: 良好\n\n### 分析详情\n基本按计划执行，有小幅调整\n\n### 偏离原因\n- 时间安排略有偏差\n\n### 额外工作\n- 增加了错误处理逻辑\n- 处理了一些意外的技术问题\n\n### 改进建议\n- 建议提前识别潜在风险\n- 可以优化时间规划\n",
+            "grade": "良好"
+          },
+          {
+            "score": 3.2,
+            "completion_rate": 0.93,
+            "deviation_reasons": [],
+            "additional_work": [
+              "增加了错误处理逻辑",
+              "处理了一些意外的技术问题"
+            ],
+            "suggestions": [
+              "可以优化时间规划"
+            ],
+            "summary": "基本按计划执行，有小幅调整。偏离评分: 3.2, 完成率: 93%",
+            "confidence": 0.85,
+            "user_id": "user004",
+            "analysis_date": "2025-08-19",
+            "discussion_number": 1004,
+            "is_deviation": false,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 3.2/10\n**完成率**: 93.0%\n**评级**: 良好\n\n### 分析详情\n基本按计划执行，有小幅调整\n\n### 偏离原因\n无明显偏离\n\n### 额外工作\n- 增加了错误处理逻辑\n- 处理了一些意外的技术问题\n\n### 改进建议\n- 可以优化时间规划\n",
+            "grade": "良好"
+          },
+          {
+            "score": 1.5,
+            "completion_rate": 0.98,
+            "deviation_reasons": [],
+            "additional_work": [
+              "优化了代码性能"
+            ],
+            "suggestions": [
+              "可以考虑分享经验给团队"
+            ],
+            "summary": "完全按计划执行，质量优秀。偏离评分: 1.5, 完成率: 98%",
+            "confidence": 0.84,
+            "user_id": "user004",
+            "analysis_date": "2025-08-20",
+            "discussion_number": 1005,
+            "is_deviation": false,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 1.5/10\n**完成率**: 98.0%\n**评级**: 优秀\n\n### 分析详情\n完全按计划执行，质量优秀\n\n### 偏离原因\n无明显偏离\n\n### 额外工作\n- 优化了代码性能\n\n### 改进建议\n- 可以考虑分享经验给团队\n",
+            "grade": "优秀"
+          },
+          {
+            "score": 7.1,
+            "completion_rate": 0.5,
+            "deviation_reasons": [
+              "技术难度超出预期",
+              "资源配置不足"
+            ],
+            "additional_work": [
+              "学习了新的技术栈",
+              "协调了多个团队的工作"
+            ],
+            "suggestions": [
+              "需要重新评估项目范围",
+              "考虑寻求技术支持"
+            ],
+            "summary": "偏离程度较大，需要关注。偏离评分: 7.1, 完成率: 50%",
+            "confidence": 0.77,
+            "user_id": "user004",
+            "analysis_date": "2025-08-21",
+            "discussion_number": 1006,
+            "is_deviation": true,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 7.1/10\n**完成率**: 50.0%\n**评级**: 需改进\n\n### 分析详情\n偏离程度较大，需要关注\n\n### 偏离原因\n- 技术难度超出预期\n- 资源配置不足\n\n### 额外工作\n- 学习了新的技术栈\n- 协调了多个团队的工作\n\n### 改进建议\n- 需要重新评估项目范围\n- 考虑寻求技术支持\n",
+            "grade": "需改进"
+          },
+          {
+            "score": 4.8,
+            "completion_rate": 0.71,
+            "deviation_reasons": [
+              "技术方案选择不当",
+              "时间估算不准确",
+              "需求理解有偏差"
+            ],
+            "additional_work": [
+              "调整了架构设计"
+            ],
+            "suggestions": [
+              "提高技术方案评估能力"
+            ],
+            "summary": "有明显偏离但在可接受范围内。偏离评分: 4.8, 完成率: 71%",
+            "confidence": 0.88,
+            "user_id": "user004",
+            "analysis_date": "2025-08-22",
+            "discussion_number": 1007,
+            "is_deviation": true,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 4.8/10\n**完成率**: 71.0%\n**评级**: 一般\n\n### 分析详情\n有明显偏离但在可接受范围内\n\n### 偏离原因\n- 技术方案选择不当\n- 时间估算不准确\n- 需求理解有偏差\n\n### 额外工作\n- 调整了架构设计\n\n### 改进建议\n- 提高技术方案评估能力\n",
+            "grade": "一般"
+          },
+          {
+            "score": 5.0,
+            "completion_rate": 0.76,
+            "deviation_reasons": [
+              "技术方案选择不当"
+            ],
+            "additional_work": [
+              "重新设计了部分功能",
+              "调整了架构设计"
+            ],
+            "suggestions": [
+              "建议加强需求澄清",
+              "提高技术方案评估能力"
+            ],
+            "summary": "有明显偏离但在可接受范围内。偏离评分: 5.0, 完成率: 76%",
+            "confidence": 0.94,
+            "user_id": "user004",
+            "analysis_date": "2025-08-23",
+            "discussion_number": 1008,
+            "is_deviation": true,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 5.0/10\n**完成率**: 76.0%\n**评级**: 一般\n\n### 分析详情\n有明显偏离但在可接受范围内\n\n### 偏离原因\n- 技术方案选择不当\n\n### 额外工作\n- 重新设计了部分功能\n- 调整了架构设计\n\n### 改进建议\n- 建议加强需求澄清\n- 提高技术方案评估能力\n",
+            "grade": "一般"
+          },
+          {
+            "score": 3.5,
+            "completion_rate": 0.89,
+            "deviation_reasons": [
+              "部分功能实现方式有调整",
+              "时间安排略有偏差"
+            ],
+            "additional_work": [
+              "增加了错误处理逻辑",
+              "处理了一些意外的技术问题"
+            ],
+            "suggestions": [
+              "建议提前识别潜在风险"
+            ],
+            "summary": "基本按计划执行，有小幅调整。偏离评分: 3.5, 完成率: 89%",
+            "confidence": 0.85,
+            "user_id": "user004",
+            "analysis_date": "2025-08-24",
+            "discussion_number": 1009,
+            "is_deviation": false,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 3.5/10\n**完成率**: 89.0%\n**评级**: 良好\n\n### 分析详情\n基本按计划执行，有小幅调整\n\n### 偏离原因\n- 部分功能实现方式有调整\n- 时间安排略有偏差\n\n### 额外工作\n- 增加了错误处理逻辑\n- 处理了一些意外的技术问题\n\n### 改进建议\n- 建议提前识别潜在风险\n",
+            "grade": "良好"
+          },
+          {
+            "score": 5.7,
+            "completion_rate": 0.75,
+            "deviation_reasons": [
+              "需求理解有偏差",
+              "时间估算不准确"
+            ],
+            "additional_work": [
+              "调整了架构设计",
+              "修复了多个bug"
+            ],
+            "suggestions": [
+              "改进时间估算方法",
+              "提高技术方案评估能力",
+              "建议加强需求澄清"
+            ],
+            "summary": "有明显偏离但在可接受范围内。偏离评分: 5.7, 完成率: 75%",
+            "confidence": 0.79,
+            "user_id": "user004",
+            "analysis_date": "2025-08-25",
+            "discussion_number": 1010,
+            "is_deviation": true,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 5.7/10\n**完成率**: 75.0%\n**评级**: 一般\n\n### 分析详情\n有明显偏离但在可接受范围内\n\n### 偏离原因\n- 需求理解有偏差\n- 时间估算不准确\n\n### 额外工作\n- 调整了架构设计\n- 修复了多个bug\n\n### 改进建议\n- 改进时间估算方法\n- 提高技术方案评估能力\n- 建议加强需求澄清\n",
+            "grade": "一般"
+          },
+          {
+            "score": 3.0,
+            "completion_rate": 0.87,
+            "deviation_reasons": [
+              "时间安排略有偏差",
+              "部分功能实现方式有调整"
+            ],
+            "additional_work": [
+              "处理了一些意外的技术问题",
+              "增加了错误处理逻辑"
+            ],
+            "suggestions": [
+              "可以优化时间规划"
+            ],
+            "summary": "基本按计划执行，有小幅调整。偏离评分: 3.0, 完成率: 87%",
+            "confidence": 0.83,
+            "user_id": "user004",
+            "analysis_date": "2025-08-26",
+            "discussion_number": 1011,
+            "is_deviation": false,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 3.0/10\n**完成率**: 87.0%\n**评级**: 良好\n\n### 分析详情\n基本按计划执行，有小幅调整\n\n### 偏离原因\n- 时间安排略有偏差\n- 部分功能实现方式有调整\n\n### 额外工作\n- 处理了一些意外的技术问题\n- 增加了错误处理逻辑\n\n### 改进建议\n- 可以优化时间规划\n",
+            "grade": "良好"
+          },
+          {
+            "score": 2.8,
+            "completion_rate": 0.92,
+            "deviation_reasons": [],
+            "additional_work": [
+              "增加了错误处理逻辑",
+              "处理了一些意外的技术问题"
+            ],
+            "suggestions": [
+              "建议提前识别潜在风险"
+            ],
+            "summary": "基本按计划执行，有小幅调整。偏离评分: 2.8, 完成率: 92%",
+            "confidence": 0.79,
+            "user_id": "user004",
+            "analysis_date": "2025-08-27",
+            "discussion_number": 1012,
+            "is_deviation": false,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 2.8/10\n**完成率**: 92.0%\n**评级**: 良好\n\n### 分析详情\n基本按计划执行，有小幅调整\n\n### 偏离原因\n无明显偏离\n\n### 额外工作\n- 增加了错误处理逻辑\n- 处理了一些意外的技术问题\n\n### 改进建议\n- 建议提前识别潜在风险\n",
+            "grade": "良好"
+          },
+          {
+            "score": 1.7,
+            "completion_rate": 0.98,
+            "deviation_reasons": [],
+            "additional_work": [
+              "完善了文档说明",
+              "添加了额外的测试用例"
+            ],
+            "suggestions": [
+              "可以考虑分享经验给团队",
+              "继续保持当前的工作节奏"
+            ],
+            "summary": "完全按计划执行，质量优秀。偏离评分: 1.7, 完成率: 98%",
+            "confidence": 0.72,
+            "user_id": "user004",
+            "analysis_date": "2025-08-28",
+            "discussion_number": 1013,
+            "is_deviation": false,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 1.7/10\n**完成率**: 98.0%\n**评级**: 优秀\n\n### 分析详情\n完全按计划执行，质量优秀\n\n### 偏离原因\n无明显偏离\n\n### 额外工作\n- 完善了文档说明\n- 添加了额外的测试用例\n\n### 改进建议\n- 可以考虑分享经验给团队\n- 继续保持当前的工作节奏\n",
+            "grade": "优秀"
+          }
+        ]
+      },
+      {
+        "user_id": "user005",
+        "timeline": [
+          {
+            "score": 3.0,
+            "completion_rate": 0.89,
+            "deviation_reasons": [],
+            "additional_work": [
+              "处理了一些意外的技术问题",
+              "增加了错误处理逻辑"
+            ],
+            "suggestions": [
+              "建议提前识别潜在风险",
+              "可以优化时间规划"
+            ],
+            "summary": "基本按计划执行，有小幅调整。偏离评分: 3.0, 完成率: 89%",
+            "confidence": 0.83,
+            "user_id": "user005",
+            "analysis_date": "2025-08-15",
+            "discussion_number": 1000,
+            "is_deviation": false,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 3.0/10\n**完成率**: 89.0%\n**评级**: 良好\n\n### 分析详情\n基本按计划执行，有小幅调整\n\n### 偏离原因\n无明显偏离\n\n### 额外工作\n- 处理了一些意外的技术问题\n- 增加了错误处理逻辑\n\n### 改进建议\n- 建议提前识别潜在风险\n- 可以优化时间规划\n",
+            "grade": "良好"
+          },
+          {
+            "score": 3.7,
+            "completion_rate": 0.86,
+            "deviation_reasons": [],
+            "additional_work": [
+              "增加了错误处理逻辑",
+              "处理了一些意外的技术问题"
+            ],
+            "suggestions": [
+              "可以优化时间规划",
+              "建议提前识别潜在风险"
+            ],
+            "summary": "基本按计划执行，有小幅调整。偏离评分: 3.7, 完成率: 86%",
+            "confidence": 0.9,
+            "user_id": "user005",
+            "analysis_date": "2025-08-16",
+            "discussion_number": 1001,
+            "is_deviation": false,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 3.7/10\n**完成率**: 86.0%\n**评级**: 良好\n\n### 分析详情\n基本按计划执行，有小幅调整\n\n### 偏离原因\n无明显偏离\n\n### 额外工作\n- 增加了错误处理逻辑\n- 处理了一些意外的技术问题\n\n### 改进建议\n- 可以优化时间规划\n- 建议提前识别潜在风险\n",
+            "grade": "良好"
+          },
+          {
+            "score": 1.7,
+            "completion_rate": 0.98,
+            "deviation_reasons": [],
+            "additional_work": [
+              "添加了额外的测试用例",
+              "优化了代码性能",
+              "完善了文档说明"
+            ],
+            "suggestions": [
+              "可以考虑分享经验给团队",
+              "继续保持当前的工作节奏"
+            ],
+            "summary": "完全按计划执行，质量优秀。偏离评分: 1.7, 完成率: 98%",
+            "confidence": 0.83,
+            "user_id": "user005",
+            "analysis_date": "2025-08-17",
+            "discussion_number": 1002,
+            "is_deviation": false,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 1.7/10\n**完成率**: 98.0%\n**评级**: 优秀\n\n### 分析详情\n完全按计划执行，质量优秀\n\n### 偏离原因\n无明显偏离\n\n### 额外工作\n- 添加了额外的测试用例\n- 优化了代码性能\n- 完善了文档说明\n\n### 改进建议\n- 可以考虑分享经验给团队\n- 继续保持当前的工作节奏\n",
+            "grade": "优秀"
+          },
+          {
+            "score": 3.1,
+            "completion_rate": 0.88,
+            "deviation_reasons": [
+              "部分功能实现方式有调整"
+            ],
+            "additional_work": [
+              "增加了错误处理逻辑",
+              "处理了一些意外的技术问题"
+            ],
+            "suggestions": [
+              "建议提前识别潜在风险"
+            ],
+            "summary": "基本按计划执行，有小幅调整。偏离评分: 3.1, 完成率: 88%",
+            "confidence": 0.76,
+            "user_id": "user005",
+            "analysis_date": "2025-08-18",
+            "discussion_number": 1003,
+            "is_deviation": false,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 3.1/10\n**完成率**: 88.0%\n**评级**: 良好\n\n### 分析详情\n基本按计划执行，有小幅调整\n\n### 偏离原因\n- 部分功能实现方式有调整\n\n### 额外工作\n- 增加了错误处理逻辑\n- 处理了一些意外的技术问题\n\n### 改进建议\n- 建议提前识别潜在风险\n",
+            "grade": "良好"
+          },
+          {
+            "score": 1.2,
+            "completion_rate": 0.95,
+            "deviation_reasons": [],
+            "additional_work": [
+              "优化了代码性能"
+            ],
+            "suggestions": [
+              "继续保持当前的工作节奏"
+            ],
+            "summary": "完全按计划执行，质量优秀。偏离评分: 1.2, 完成率: 95%",
+            "confidence": 0.73,
+            "user_id": "user005",
+            "analysis_date": "2025-08-19",
+            "discussion_number": 1004,
+            "is_deviation": false,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 1.2/10\n**完成率**: 95.0%\n**评级**: 优秀\n\n### 分析详情\n完全按计划执行，质量优秀\n\n### 偏离原因\n无明显偏离\n\n### 额外工作\n- 优化了代码性能\n\n### 改进建议\n- 继续保持当前的工作节奏\n",
+            "grade": "优秀"
+          },
+          {
+            "score": 8.7,
+            "completion_rate": 0.43,
+            "deviation_reasons": [
+              "项目目标不明确",
+              "外部环境发生重大变化",
+              "团队沟通严重不足"
+            ],
+            "additional_work": [
+              "处理了紧急的生产问题"
+            ],
+            "suggestions": [
+              "建议暂停当前工作进行复盘"
+            ],
+            "summary": "严重偏离计划，需要紧急干预。偏离评分: 8.7, 完成率: 43%",
+            "confidence": 0.75,
+            "user_id": "user005",
+            "analysis_date": "2025-08-20",
+            "discussion_number": 1005,
+            "is_deviation": true,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 8.7/10\n**完成率**: 43.0%\n**评级**: 较差\n\n### 分析详情\n严重偏离计划，需要紧急干预\n\n### 偏离原因\n- 项目目标不明确\n- 外部环境发生重大变化\n- 团队沟通严重不足\n\n### 额外工作\n- 处理了紧急的生产问题\n\n### 改进建议\n- 建议暂停当前工作进行复盘\n",
+            "grade": "较差"
+          },
+          {
+            "score": 2.7,
+            "completion_rate": 0.92,
+            "deviation_reasons": [],
+            "additional_work": [
+              "增加了错误处理逻辑"
+            ],
+            "suggestions": [
+              "可以优化时间规划"
+            ],
+            "summary": "基本按计划执行，有小幅调整。偏离评分: 2.7, 完成率: 92%",
+            "confidence": 0.92,
+            "user_id": "user005",
+            "analysis_date": "2025-08-21",
+            "discussion_number": 1006,
+            "is_deviation": false,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 2.7/10\n**完成率**: 92.0%\n**评级**: 良好\n\n### 分析详情\n基本按计划执行，有小幅调整\n\n### 偏离原因\n无明显偏离\n\n### 额外工作\n- 增加了错误处理逻辑\n\n### 改进建议\n- 可以优化时间规划\n",
+            "grade": "良好"
+          },
+          {
+            "score": 0.5,
+            "completion_rate": 1.0,
+            "deviation_reasons": [],
+            "additional_work": [
+              "添加了额外的测试用例"
+            ],
+            "suggestions": [
+              "继续保持当前的工作节奏",
+              "可以考虑分享经验给团队"
+            ],
+            "summary": "完全按计划执行，质量优秀。偏离评分: 0.5, 完成率: 100%",
+            "confidence": 0.78,
+            "user_id": "user005",
+            "analysis_date": "2025-08-22",
+            "discussion_number": 1007,
+            "is_deviation": false,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 0.5/10\n**完成率**: 100.0%\n**评级**: 优秀\n\n### 分析详情\n完全按计划执行，质量优秀\n\n### 偏离原因\n无明显偏离\n\n### 额外工作\n- 添加了额外的测试用例\n\n### 改进建议\n- 继续保持当前的工作节奏\n- 可以考虑分享经验给团队\n",
+            "grade": "优秀"
+          },
+          {
+            "score": 3.2,
+            "completion_rate": 0.9,
+            "deviation_reasons": [
+              "时间安排略有偏差",
+              "部分功能实现方式有调整"
+            ],
+            "additional_work": [
+              "处理了一些意外的技术问题",
+              "增加了错误处理逻辑"
+            ],
+            "suggestions": [
+              "建议提前识别潜在风险",
+              "可以优化时间规划"
+            ],
+            "summary": "基本按计划执行，有小幅调整。偏离评分: 3.2, 完成率: 90%",
+            "confidence": 0.92,
+            "user_id": "user005",
+            "analysis_date": "2025-08-23",
+            "discussion_number": 1008,
+            "is_deviation": false,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 3.2/10\n**完成率**: 90.0%\n**评级**: 良好\n\n### 分析详情\n基本按计划执行，有小幅调整\n\n### 偏离原因\n- 时间安排略有偏差\n- 部分功能实现方式有调整\n\n### 额外工作\n- 处理了一些意外的技术问题\n- 增加了错误处理逻辑\n\n### 改进建议\n- 建议提前识别潜在风险\n- 可以优化时间规划\n",
+            "grade": "良好"
+          },
+          {
+            "score": 3.1,
+            "completion_rate": 0.86,
+            "deviation_reasons": [],
+            "additional_work": [
+              "处理了一些意外的技术问题"
+            ],
+            "suggestions": [
+              "可以优化时间规划",
+              "建议提前识别潜在风险"
+            ],
+            "summary": "基本按计划执行，有小幅调整。偏离评分: 3.1, 完成率: 86%",
+            "confidence": 0.86,
+            "user_id": "user005",
+            "analysis_date": "2025-08-24",
+            "discussion_number": 1009,
+            "is_deviation": false,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 3.1/10\n**完成率**: 86.0%\n**评级**: 良好\n\n### 分析详情\n基本按计划执行，有小幅调整\n\n### 偏离原因\n无明显偏离\n\n### 额外工作\n- 处理了一些意外的技术问题\n\n### 改进建议\n- 可以优化时间规划\n- 建议提前识别潜在风险\n",
+            "grade": "良好"
+          },
+          {
+            "score": 4.0,
+            "completion_rate": 0.89,
+            "deviation_reasons": [
+              "时间安排略有偏差"
+            ],
+            "additional_work": [
+              "增加了错误处理逻辑",
+              "处理了一些意外的技术问题"
+            ],
+            "suggestions": [
+              "建议提前识别潜在风险",
+              "可以优化时间规划"
+            ],
+            "summary": "基本按计划执行，有小幅调整。偏离评分: 4.0, 完成率: 89%",
+            "confidence": 0.8,
+            "user_id": "user005",
+            "analysis_date": "2025-08-25",
+            "discussion_number": 1010,
+            "is_deviation": false,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 4.0/10\n**完成率**: 89.0%\n**评级**: 良好\n\n### 分析详情\n基本按计划执行，有小幅调整\n\n### 偏离原因\n- 时间安排略有偏差\n\n### 额外工作\n- 增加了错误处理逻辑\n- 处理了一些意外的技术问题\n\n### 改进建议\n- 建议提前识别潜在风险\n- 可以优化时间规划\n",
+            "grade": "良好"
+          },
+          {
+            "score": 5.3,
+            "completion_rate": 0.71,
+            "deviation_reasons": [
+              "需求理解有偏差",
+              "时间估算不准确",
+              "技术方案选择不当"
+            ],
+            "additional_work": [
+              "修复了多个bug",
+              "重新设计了部分功能"
+            ],
+            "suggestions": [
+              "改进时间估算方法",
+              "建议加强需求澄清"
+            ],
+            "summary": "有明显偏离但在可接受范围内。偏离评分: 5.3, 完成率: 71%",
+            "confidence": 0.94,
+            "user_id": "user005",
+            "analysis_date": "2025-08-26",
+            "discussion_number": 1011,
+            "is_deviation": true,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 5.3/10\n**完成率**: 71.0%\n**评级**: 一般\n\n### 分析详情\n有明显偏离但在可接受范围内\n\n### 偏离原因\n- 需求理解有偏差\n- 时间估算不准确\n- 技术方案选择不当\n\n### 额外工作\n- 修复了多个bug\n- 重新设计了部分功能\n\n### 改进建议\n- 改进时间估算方法\n- 建议加强需求澄清\n",
+            "grade": "一般"
+          },
+          {
+            "score": 9.3,
+            "completion_rate": 0.31,
+            "deviation_reasons": [
+              "技术方案完全错误",
+              "项目目标不明确",
+              "关键资源缺失"
+            ],
+            "additional_work": [
+              "重新搭建了开发环境",
+              "重新制定了项目计划"
+            ],
+            "suggestions": [
+              "需要高级管理层介入",
+              "考虑重新分配资源",
+              "建议寻求外部专业咨询"
+            ],
+            "summary": "严重偏离计划，需要紧急干预。偏离评分: 9.3, 完成率: 31%",
+            "confidence": 0.86,
+            "user_id": "user005",
+            "analysis_date": "2025-08-27",
+            "discussion_number": 1012,
+            "is_deviation": true,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 9.3/10\n**完成率**: 31.0%\n**评级**: 较差\n\n### 分析详情\n严重偏离计划，需要紧急干预\n\n### 偏离原因\n- 技术方案完全错误\n- 项目目标不明确\n- 关键资源缺失\n\n### 额外工作\n- 重新搭建了开发环境\n- 重新制定了项目计划\n\n### 改进建议\n- 需要高级管理层介入\n- 考虑重新分配资源\n- 建议寻求外部专业咨询\n",
+            "grade": "较差"
+          },
+          {
+            "score": 2.8,
+            "completion_rate": 0.85,
+            "deviation_reasons": [],
+            "additional_work": [
+              "处理了一些意外的技术问题"
+            ],
+            "suggestions": [
+              "可以优化时间规划"
+            ],
+            "summary": "基本按计划执行，有小幅调整。偏离评分: 2.8, 完成率: 85%",
+            "confidence": 0.76,
+            "user_id": "user005",
+            "analysis_date": "2025-08-28",
+            "discussion_number": 1013,
+            "is_deviation": false,
+            "raw_analysis_text": "## 工作执行分析报告\n\n**偏离评分**: 2.8/10\n**完成率**: 85.0%\n**评级**: 良好\n\n### 分析详情\n基本按计划执行，有小幅调整\n\n### 偏离原因\n无明显偏离\n\n### 额外工作\n- 处理了一些意外的技术问题\n\n### 改进建议\n- 可以优化时间规划\n",
+            "grade": "良好"
+          }
+        ]
+      }
+    ]
+  }
+}

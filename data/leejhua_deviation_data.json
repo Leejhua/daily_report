@@ -1,0 +1,280 @@
+{
+  "leejhua": {
+    "2025-01-15": {
+      "score": 7.2,
+      "completion_rate": 0.35,
+      "deviation_reasons": [
+        "全天参加季度规划会议",
+        "临时增加客户需求评审会",
+        "跨部门协调会议占用大量时间"
+      ],
+      "additional_work": [
+        "会议纪要整理",
+        "需求文档更新",
+        "向团队传达会议决策"
+      ],
+      "suggestions": [
+        "合理安排会议时间，避免集中在同一天",
+        "提前准备会议材料，提高会议效率",
+        "建议将部分会议改为异步沟通"
+      ],
+      "summary": "由于密集的会议安排，导致开发工作严重滞后",
+      "confidence": 0.9,
+      "user_id": "leejhua",
+      "analysis_date": "2025-01-15",
+      "discussion_number": 123,
+      "is_deviation": true,
+      "raw_analysis_text": "用户leejhua今日参加了多个重要会议，包括季度规划会议、客户需求评审等，导致原定的开发任务无法按时完成。",
+      "grade": "需改进"
+    },
+    "2025-01-16": {
+      "score": 8.1,
+      "completion_rate": 0.25,
+      "deviation_reasons": [
+        "出差前往客户现场进行系统部署",
+        "客户现场网络环境问题导致部署延迟",
+        "需要现场调试和问题排查"
+      ],
+      "additional_work": [
+        "客户现场技术支持",
+        "部署文档更新",
+        "问题解决方案整理"
+      ],
+      "suggestions": [
+        "出差前充分了解客户现场环境",
+        "准备备用部署方案",
+        "建立远程支持流程减少出差频率"
+      ],
+      "summary": "客户现场出差导致正常开发工作无法进行",
+      "confidence": 0.85,
+      "user_id": "leejhua",
+      "analysis_date": "2025-01-16",
+      "discussion_number": 124,
+      "is_deviation": true,
+      "raw_analysis_text": "用户leejhua出差到客户现场进行系统部署，由于现场环境复杂，花费了大量时间进行调试和问题解决。",
+      "grade": "较差"
+    },
+    "2025-01-17": {
+      "score": 8.5,
+      "completion_rate": 0.2,
+      "deviation_reasons": [
+        "继续客户现场出差工作",
+        "系统上线后发现性能问题",
+        "需要紧急优化和调整"
+      ],
+      "additional_work": [
+        "性能调优",
+        "客户培训",
+        "交接文档编写"
+      ],
+      "suggestions": [
+        "加强系统上线前的性能测试",
+        "建立标准化的客户培训流程",
+        "完善系统监控和预警机制"
+      ],
+      "summary": "出差第二天，系统性能问题处理占用大量时间",
+      "confidence": 0.88,
+      "user_id": "leejhua",
+      "analysis_date": "2025-01-17",
+      "discussion_number": 125,
+      "is_deviation": true,
+      "raw_analysis_text": "用户leejhua在客户现场第二天，系统上线后发现性能瓶颈，需要紧急进行优化处理。",
+      "grade": "较差"
+    },
+    "2025-01-18": {
+      "score": 9.2,
+      "completion_rate": 0.15,
+      "deviation_reasons": [
+        "生产环境突发严重故障",
+        "数据库连接池耗尽导致服务不可用",
+        "需要紧急回滚和修复"
+      ],
+      "additional_work": [
+        "故障排查和定位",
+        "紧急修复方案实施",
+        "故障报告编写",
+        "预防措施制定"
+      ],
+      "suggestions": [
+        "加强生产环境监控",
+        "建立完善的故障应急响应流程",
+        "定期进行故障演练",
+        "优化数据库连接池配置"
+      ],
+      "summary": "生产环境严重故障，全天投入紧急处理",
+      "confidence": 0.95,
+      "user_id": "leejhua",
+      "analysis_date": "2025-01-18",
+      "discussion_number": 126,
+      "is_deviation": true,
+      "raw_analysis_text": "用户leejhua遇到生产环境严重故障，数据库连接池问题导致服务中断，需要全天紧急处理。",
+      "grade": "差"
+    },
+    "2025-01-19": {
+      "score": 7.8,
+      "completion_rate": 0.3,
+      "deviation_reasons": [
+        "继续处理昨日故障的后续问题",
+        "故障复盘会议",
+        "系统稳定性加固工作"
+      ],
+      "additional_work": [
+        "故障复盘分析",
+        "系统监控优化",
+        "文档更新和流程改进"
+      ],
+      "suggestions": [
+        "建立故障知识库",
+        "加强团队技术分享",
+        "完善系统架构设计"
+      ],
+      "summary": "故障后续处理和系统加固工作",
+      "confidence": 0.82,
+      "user_id": "leejhua",
+      "analysis_date": "2025-01-19",
+      "discussion_number": 127,
+      "is_deviation": true,
+      "raw_analysis_text": "用户leejhua继续处理生产故障的后续工作，包括复盘分析和系统加固。",
+      "grade": "需改进"
+    },
+    "2025-01-20": {
+      "score": 8.3,
+      "completion_rate": 0.22,
+      "deviation_reasons": [
+        "参加为期两天的技术架构评审会议",
+        "跨部门技术方案讨论会持续4小时",
+        "临时加入产品路线图规划会议"
+      ],
+      "additional_work": [
+        "技术方案文档编写",
+        "架构设计图绘制",
+        "会议纪要整理和分发"
+      ],
+      "suggestions": [
+        "建议将长时间会议拆分为多个短会议",
+        "提前准备技术方案，减少现场讨论时间",
+        "设置会议时间上限，避免过度延长"
+      ],
+      "summary": "密集的技术会议导致开发时间严重不足",
+      "confidence": 0.87,
+      "user_id": "leejhua",
+      "analysis_date": "2025-01-20",
+      "discussion_number": 128,
+      "is_deviation": true,
+      "raw_analysis_text": "用户leejhua参加了多个重要的技术架构会议，会议时间过长影响了正常开发工作。",
+      "grade": "较差"
+    },
+    "2025-01-21": {
+      "score": 9.1,
+      "completion_rate": 0.18,
+      "deviation_reasons": [
+        "微服务集群出现级联故障",
+        "Redis缓存集群全部宕机",
+        "需要紧急切换到备用数据中心"
+      ],
+      "additional_work": [
+        "故障应急响应和处理",
+        "数据中心切换操作",
+        "服务恢复验证",
+        "故障影响评估报告"
+      ],
+      "suggestions": [
+        "加强微服务间的熔断机制",
+        "建立更完善的缓存容灾方案",
+        "定期进行灾备切换演练",
+        "优化监控告警机制"
+      ],
+      "summary": "严重的线上故障，全天投入紧急处理和恢复工作",
+      "confidence": 0.93,
+      "user_id": "leejhua",
+      "analysis_date": "2025-01-21",
+      "discussion_number": 129,
+      "is_deviation": true,
+      "raw_analysis_text": "用户leejhua遇到严重的微服务集群故障，需要紧急进行数据中心切换和服务恢复。",
+      "grade": "差"
+    },
+    "2025-01-22": {
+      "score": 7.9,
+      "completion_rate": 0.28,
+      "deviation_reasons": [
+        "出差到上海分公司进行技术交流",
+        "参加分公司的技术分享会议",
+        "协助解决分公司的技术难题"
+      ],
+      "additional_work": [
+        "技术方案演示和讲解",
+        "代码review和指导",
+        "技术文档编写和交接"
+      ],
+      "suggestions": [
+        "建立远程技术支持流程",
+        "通过视频会议减少出差频率",
+        "制作标准化的技术分享材料"
+      ],
+      "summary": "分公司技术交流出差，影响正常开发进度",
+      "confidence": 0.84,
+      "user_id": "leejhua",
+      "analysis_date": "2025-01-22",
+      "discussion_number": 130,
+      "is_deviation": true,
+      "raw_analysis_text": "用户leejhua出差到分公司进行技术交流和支持，占用了大量开发时间。",
+      "grade": "需改进"
+    },
+    "2025-01-23": {
+      "score": 8.7,
+      "completion_rate": 0.19,
+      "deviation_reasons": [
+        "API网关突发大量502错误",
+        "负载均衡器配置异常导致流量分发失败",
+        "需要紧急修复和流量切换"
+      ],
+      "additional_work": [
+        "网关日志分析和问题定位",
+        "负载均衡配置修复",
+        "流量切换和验证",
+        "事故报告编写"
+      ],
+      "suggestions": [
+        "加强API网关的健康检查机制",
+        "建立自动化的流量切换方案",
+        "完善负载均衡配置的版本管理",
+        "增加网关层面的监控告警"
+      ],
+      "summary": "API网关故障处理，严重影响开发工作",
+      "confidence": 0.91,
+      "user_id": "leejhua",
+      "analysis_date": "2025-01-23",
+      "discussion_number": 131,
+      "is_deviation": true,
+      "raw_analysis_text": "用户leejhua处理API网关的严重故障，需要紧急进行流量切换和配置修复。",
+      "grade": "较差"
+    },
+    "2025-01-24": {
+      "score": 7.6,
+      "completion_rate": 0.32,
+      "deviation_reasons": [
+        "参加公司年度技术大会",
+        "技术演讲和demo展示准备",
+        "与其他部门技术专家深度交流"
+      ],
+      "additional_work": [
+        "技术演讲PPT制作",
+        "demo环境搭建和调试",
+        "技术交流和经验分享"
+      ],
+      "suggestions": [
+        "提前准备演讲材料，避免临时赶工",
+        "建立标准化的demo环境模板",
+        "合理安排技术大会期间的工作计划"
+      ],
+      "summary": "技术大会活动占用大量时间，开发工作受到影响",
+      "confidence": 0.86,
+      "user_id": "leejhua",
+      "analysis_date": "2025-01-24",
+      "discussion_number": 132,
+      "is_deviation": true,
+      "raw_analysis_text": "用户leejhua参加公司技术大会，准备演讲和demo展示占用了大量开发时间。",
+      "grade": "需改进"
+    }
+  }
+}

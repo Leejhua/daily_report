@@ -173,9 +173,15 @@ quick_test.py
 verify_*.py
 
 # Test reports and logs
-*.json
+test_*.json
+report_*.json
+analysis_*.json
 *.md
 logs/
+
+# Important: Allow configuration JSON files
+!feishu_mapping.json
+!feishu_chat_ids.json
 
 # Configuration files
 config.yaml
