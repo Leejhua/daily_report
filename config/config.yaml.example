@@ -30,13 +30,39 @@ analysis:
     clarity_minimum: 0.6            # 清晰度最低要求
     consistency_minimum: 0.7        # 一致性最低要求
 
-# 定时任务配置
+# 调度器配置
 scheduler:
-  cron_expression: "0 18 * * *"     # Cron表达式：每天18:00执行
-  timezone: "Asia/Shanghai"         # 时区设置
-  retry_attempts: 3                 # 失败重试次数
+  cron_expression: "0 23 * * *"    # 每天23:00执行（与日常分析时间一致）
+  timezone: "Asia/Shanghai"         # 时区
+  retry_attempts: 3                 # 重试次数
+  retry_delay: 300                  # 重试延迟（秒）
+  max_execution_time: 1800          # 最大执行时间（秒）
+
+# V4.0 日报/日计划内容检查配置
+daily_content_check:
+  enabled: true                     # 启用内容检查功能
+  content_check_cron: 
+    - "0 12 * * *"  # 上午12点检查
+    - "0 22 * * *"  # 晚上22点检查
+  analysis_cron: "0 23 * * *"       # 日常分析时间（晚上23点）
+  
+  # 检查时间配置
+  check_date_offset: 0              # 检查日期偏移（0=当天，-1=昨天）
+  morning_check_hour: 12            # 上午检查时间（12点）
+  afternoon_check_hour: 14          # 下午检查时间（保留原配置）
+  evening_check_hour: 22            # 晚上检查时间（22点）
+  
+  # 执行规则配置
+  weekend_check_enabled: false      # 是否在周末执行检查
+  retry_attempts: 3                 # 检查失败重试次数
   retry_delay: 300                  # 重试延迟(秒)
-  max_execution_time: 1800          # 最大执行时间(秒)
+  max_execution_time: 600           # 最大执行时间(秒)
+  
+  # 提醒配置
+  reminder_enabled: true            # 启用提醒功能
+  duplicate_prevention_hours: 4     # 防重复提醒时间(小时)
+  batch_check_enabled: true         # 启用批量检查
+  summary_report_enabled: true      # 启用检查结果摘要报告
 
 # 日志配置
 logging:
@@ -144,6 +170,44 @@ feishu:
       title: "📊 工作偏离预警卡片"
       format: "card"
       color_theme: "orange"
+
+# V3.0 周报汇总配置
+weekly_reports:
+  enabled: true                    # 启用周报功能
+  execution_hour: 17               # 执行时间(小时，24小时制)
+  execution_day: 5                 # 执行日期(1-7，1为周一，5为周五)
+  
+  # 数据收集配置
+  data_collection:
+    days_to_collect: 7             # 收集天数
+    include_weekends: false        # 是否包含周末数据
+    min_records_required: 3        # 最少记录数要求
+  
+  # 报告生成配置
+  report_generation:
+    include_achievements: true      # 包含成就总结
+    include_issues: true           # 包含问题分析
+    include_suggestions: true      # 包含改进建议
+    include_trends: true           # 包含趋势分析
+    max_achievements: 5            # 最大成就条数
+    max_issues: 5                  # 最大问题条数
+    max_suggestions: 3             # 最大建议条数
+  
+  # GLM增强配置
+  glm_enhancement:
+    enabled: true                  # 启用GLM增强
+    personal_prompt: "基于员工一周的工作数据，生成个人周报总结，包含成就、问题和建议"
+    management_prompt: "基于团队一周的工作数据，生成管理层周报，重点关注团队表现和趋势"
+    max_tokens: 1500              # 最大生成token数
+    temperature: 0.7              # 生成温度
+  
+  # 发送配置
+  delivery:
+    send_to_individuals: true      # 发送个人周报
+    send_to_management: true       # 发送管理层周报
+    management_user_ids: []        # 管理层用户ID列表
+    message_format: "rich_text"    # 消息格式
+    include_charts: false          # 包含图表(暂不支持)
 
 # 通知配置(兼容旧版本)
 notifications:

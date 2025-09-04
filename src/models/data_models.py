@@ -96,6 +96,8 @@ class DeviationAnalysisResult:
     discussion_number: int = 0      # Discussion编号
     is_deviation: bool = False      # 是否存在偏离
     raw_analysis_text: str = ""     # 原始分析文本
+    content_type: str = ""          # 内容类型 (daily_report, daily_plan, weekly_plan)
+    original_content: str = ""      # 原始内容
     
     def get_grade(self) -> str:
         """获取评级"""
@@ -125,6 +127,8 @@ class DeviationAnalysisResult:
             'discussion_number': self.discussion_number,
             'is_deviation': self.is_deviation,
             'raw_analysis_text': self.raw_analysis_text,
+            'content_type': self.content_type,
+            'original_content': self.original_content,
             'grade': self.get_grade()
         }
     
@@ -143,7 +147,9 @@ class DeviationAnalysisResult:
             analysis_date=data.get('analysis_date', ''),
             discussion_number=data.get('discussion_number', 0),
             is_deviation=data.get('is_deviation', False),
-            raw_analysis_text=data.get('raw_analysis_text', '')
+            raw_analysis_text=data.get('raw_analysis_text', ''),
+            content_type=data.get('content_type', ''),
+            original_content=data.get('original_content', '')
         )
 
 

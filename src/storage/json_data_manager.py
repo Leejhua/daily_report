@@ -37,6 +37,9 @@ class JSONDataManager:
         self.analysis_results_file = self.data_dir / "analysis_results.json"
         self.deviation_records_file = self.data_dir / "deviation_records.json"
         self.user_stats_file = self.data_dir / "user_stats.json"
+        self.weekly_summaries_file = self.data_dir / "weekly_summaries.json"
+        self.user_weekly_data_file = self.data_dir / "user_weekly_data.json"
+        self.report_records_file = self.data_dir / "report_records.json"
         
         # 缓存
         self._cache = {} if cache_enabled else None
@@ -54,7 +57,8 @@ class JSONDataManager:
         self.data_dir.mkdir(parents=True, exist_ok=True)
         
         # 初始化数据文件
-        for file_path in [self.analysis_results_file, self.deviation_records_file, self.user_stats_file]:
+        for file_path in [self.analysis_results_file, self.deviation_records_file, self.user_stats_file,
+                         self.weekly_summaries_file, self.user_weekly_data_file, self.report_records_file]:
             if not file_path.exists():
                 self._write_json_file(file_path, {})
                 self.logger.info(f"初始化数据文件: {file_path}")
@@ -385,3 +389,203 @@ class JSONDataManager:
             else:
                 # 清除所有缓存
                 self._cache.clear()
+    
+    # 周报相关方法
+    async def get_analysis_results_by_date(self, date_str: str) -> List[DeviationAnalysisResult]:
+        """获取指定日期的所有分析结果
+        
+        Args:
+            date_str: 日期字符串 (YYYY-MM-DD)
+            
+        Returns:
+            List[DeviationAnalysisResult]: 分析结果列表
+        """
+        try:
+            data = self._read_json_file(self.analysis_results_file)
+            results = []
+            
+            for user_id, user_data in data.items():
+                if date_str in user_data:
+                    result = DeviationAnalysisResult.from_dict(user_data[date_str])
+                    results.append(result)
+            
+            return results
+            
+        except Exception as e:
+            self.logger.error(f"获取日期分析结果失败 {date_str}: {e}")
+            return []
+    
+    async def save_weekly_summary(self, summary_record) -> bool:
+        """保存周报汇总记录
+        
+        Args:
+            summary_record: WeeklySummaryRecord对象
+            
+        Returns:
+            bool: 保存是否成功
+        """
+        try:
+            data = self._read_json_file(self.weekly_summaries_file)
+            
+            # 转换为字典格式
+            summary_dict = {
+                'week_id': summary_record.week_id,
+                'start_date': summary_record.start_date,
+                'end_date': summary_record.end_date,
+                'created_at': summary_record.created_at.isoformat(),
+                'status': summary_record.status,
+                'user_count': summary_record.user_count,
+                'total_reports': summary_record.total_reports,
+                'error_message': summary_record.error_message
+            }
+            
+            data[summary_record.week_id] = summary_dict
+            self._write_json_file(self.weekly_summaries_file, data)
+            
+            self.logger.info(f"保存周报汇总记录成功: {summary_record.week_id}")
+            return True
+            
+        except Exception as e:
+            self.logger.error(f"保存周报汇总记录失败: {e}")
+            return False
+    
+    async def get_weekly_summary(self, week_id: str):
+        """获取周报汇总记录
+        
+        Args:
+            week_id: 周ID
+            
+        Returns:
+            WeeklySummaryRecord对象或None
+        """
+        try:
+            data = self._read_json_file(self.weekly_summaries_file)
+            
+            if week_id not in data:
+                return None
+            
+            summary_data = data[week_id]
+            
+            # 导入WeeklySummaryRecord类
+            from ..weekly_summarizer import WeeklySummaryRecord
+            
+            return WeeklySummaryRecord(
+                week_id=summary_data['week_id'],
+                start_date=summary_data['start_date'],
+                end_date=summary_data['end_date'],
+                created_at=datetime.fromisoformat(summary_data['created_at']),
+                status=summary_data['status'],
+                user_count=summary_data['user_count'],
+                total_reports=summary_data['total_reports'],
+                error_message=summary_data.get('error_message')
+            )
+            
+        except Exception as e:
+            self.logger.error(f"获取周报汇总记录失败 {week_id}: {e}")
+            return None
+    
+    async def save_user_weekly_data(self, user_weekly_data) -> bool:
+        """保存用户周报数据
+        
+        Args:
+            user_weekly_data: UserWeeklyData对象
+            
+        Returns:
+            bool: 保存是否成功
+        """
+        try:
+            data = self._read_json_file(self.user_weekly_data_file)
+            
+            week_id = user_weekly_data.week_id
+            if week_id not in data:
+                data[week_id] = {}
+            
+            # 转换为字典格式
+            user_data_dict = {
+                'user_id': user_weekly_data.user_id,
+                'week_id': user_weekly_data.week_id,
+                'total_reports': user_weekly_data.total_reports,
+                'deviation_count': user_weekly_data.deviation_count,
+                'avg_score': user_weekly_data.avg_score,
+                'daily_summaries': user_weekly_data.daily_summaries,
+                'daily_plans': user_weekly_data.daily_plans,
+                'weekly_plans': user_weekly_data.weekly_plans,
+                'work_completion_rate': user_weekly_data.work_completion_rate,
+                'key_achievements': user_weekly_data.key_achievements,
+                'identified_issues': user_weekly_data.identified_issues
+            }
+            
+            data[week_id][user_weekly_data.user_id] = user_data_dict
+            self._write_json_file(self.user_weekly_data_file, data)
+            
+            self.logger.info(f"保存用户周报数据成功: {user_weekly_data.user_id} - {week_id}")
+            return True
+            
+        except Exception as e:
+            self.logger.error(f"保存用户周报数据失败: {e}")
+            return False
+    
+    async def get_user_weekly_data(self, week_id: str, user_id: Optional[str] = None):
+        """获取用户周报数据
+        
+        Args:
+            week_id: 周ID
+            user_id: 用户ID，如果为None则返回所有用户数据
+            
+        Returns:
+            用户周报数据
+        """
+        try:
+            data = self._read_json_file(self.user_weekly_data_file)
+            
+            if week_id not in data:
+                return None if user_id else {}
+            
+            week_data = data[week_id]
+            
+            if user_id:
+                return week_data.get(user_id)
+            else:
+                return week_data
+                
+        except Exception as e:
+            self.logger.error(f"获取用户周报数据失败 {week_id}: {e}")
+            return None if user_id else {}
+    
+    async def save_report_record(self, report_record) -> bool:
+        """保存报告发送记录
+        
+        Args:
+            report_record: ReportRecord对象
+            
+        Returns:
+            bool: 保存是否成功
+        """
+        try:
+            data = self._read_json_file(self.report_records_file)
+            
+            week_id = report_record.week_id
+            if week_id not in data:
+                data[week_id] = []
+            
+            # 转换为字典格式
+            record_dict = {
+                'id': report_record.id,
+                'week_id': report_record.week_id,
+                'report_type': report_record.report_type,
+                'content': report_record.content,
+                'recipients': report_record.recipients,
+                'sent_success': report_record.sent_success,
+                'sent_at': report_record.sent_at.isoformat() if report_record.sent_at else None,
+                'error_message': report_record.error_message
+            }
+            
+            data[week_id].append(record_dict)
+            self._write_json_file(self.report_records_file, data)
+            
+            self.logger.info(f"保存报告记录成功: {report_record.id}")
+            return True
+            
+        except Exception as e:
+            self.logger.error(f"保存报告记录失败: {e}")
+            return False

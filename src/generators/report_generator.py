@@ -19,6 +19,7 @@ from src.utils.logger import get_logger
 from src.models.data_models import DeviationAnalysisResult
 from src.clients.glm_client import GLMClient
 from src.config import Config
+from src.weekly_summarizer import UserWeeklyData, WeeklySummaryRecord
 
 
 @dataclass
@@ -610,3 +611,301 @@ class ReportGenerator:
         except Exception as e:
             self.logger.error(f"AI增强汇报失败: {e}")
             return basic_report
+    
+    async def generate_weekly_report(self, weekly_data: UserWeeklyData, 
+                                   report_type: str = "personal") -> str:
+        """
+        生成周报内容
+        
+        Args:
+            weekly_data: 用户周数据
+            report_type: 报告类型 (personal/management)
+        
+        Returns:
+            周报内容
+        """
+        try:
+            if report_type == "management":
+                return await self._generate_management_weekly_report(weekly_data)
+            else:
+                return await self._generate_personal_weekly_report(weekly_data)
+        except Exception as e:
+            self.logger.error(f"生成周报失败: {e}")
+            return f"周报生成失败: {str(e)}"
+    
+    async def _generate_management_weekly_report(self, weekly_data: UserWeeklyData) -> str:
+        """
+        生成管理层周报（简化版）
+        
+        Args:
+            weekly_data: 用户周数据
+        
+        Returns:
+            管理层周报内容
+        """
+        report_lines = [
+            f"📊 **{weekly_data.user_name} 周报摘要**",
+            f"📅 **报告周期**: {weekly_data.week_start.strftime('%Y-%m-%d')} ~ {weekly_data.week_end.strftime('%Y-%m-%d')}",
+            ""
+        ]
+        
+        # 本周完成的工作
+        if weekly_data.achievements:
+            report_lines.extend([
+                "## 📋 本周完成的工作",
+                *[f"- {achievement}" for achievement in weekly_data.achievements],
+                ""
+            ])
+        else:
+            report_lines.extend([
+                "## 📋 本周完成的工作",
+                "- 按计划完成日常工作任务",
+                ""
+            ])
+        
+        # 工作总结
+        completion_summary = "工作进展良好，按计划推进" if weekly_data.avg_completion_rate >= 0.8 else "工作进度略有延迟，需要关注"
+        report_lines.extend([
+            "## 📝 工作总结",
+            f"- {completion_summary}",
+            ""
+        ])
+        
+        # 额外工作
+        if weekly_data.issues:
+            # 将issues重新解释为额外处理的工作
+            report_lines.extend([
+                "## ⚡ 额外工作",
+                *[f"- 处理了{issue}相关事务" for issue in weekly_data.issues[:2]],  # 最多显示2个
+                ""
+            ])
+        else:
+            report_lines.extend([
+                "## ⚡ 额外工作",
+                "- 本周主要专注于计划内工作",
+                ""
+            ])
+        
+        return "\n".join(report_lines)
+    
+    async def _generate_personal_weekly_report(self, weekly_data: UserWeeklyData) -> str:
+        """
+        生成个人周报（简化版）
+        
+        Args:
+            weekly_data: 用户周数据
+        
+        Returns:
+            个人周报内容
+        """
+        report_lines = [
+            f"📝 **{weekly_data.user_name} 个人周报**",
+            f"📅 **报告周期**: {weekly_data.week_start.strftime('%Y-%m-%d')} ~ {weekly_data.week_end.strftime('%Y-%m-%d')}",
+            ""
+        ]
+        
+        # 本周完成的工作
+        if weekly_data.achievements:
+            report_lines.extend([
+                "## 📋 本周完成的工作",
+                *[f"- {achievement}" for achievement in weekly_data.achievements],
+                ""
+            ])
+        else:
+            report_lines.extend([
+                "## 📋 本周完成的工作",
+                "- 按计划完成日常工作任务",
+                ""
+            ])
+        
+        # 工作总结
+        completion_summary = "本周工作进展顺利" if weekly_data.avg_completion_rate >= 0.8 else "本周工作遇到一些挑战，需要调整节奏"
+        report_lines.extend([
+            "## 📝 工作总结",
+            f"- {completion_summary}",
+            ""
+        ])
+        
+        # 额外工作
+        if weekly_data.issues:
+            # 将issues重新解释为额外处理的工作
+            report_lines.extend([
+                "## ⚡ 额外工作",
+                *[f"- 处理了{issue}相关事务" for issue in weekly_data.issues[:2]],  # 最多显示2个
+                ""
+            ])
+        else:
+            report_lines.extend([
+                "## ⚡ 额外工作",
+                "- 本周主要专注于计划内工作",
+                ""
+            ])
+        
+        return "\n".join(report_lines)
+    
+    def _generate_weekly_improvement_suggestions(self, weekly_data: UserWeeklyData) -> List[str]:
+        """
+        生成周报改进建议
+        
+        Args:
+            weekly_data: 用户周数据
+        
+        Returns:
+            改进建议列表
+        """
+        suggestions = []
+        
+        if weekly_data.avg_completion_rate < 0.6:
+            suggestions.append("建议重新评估任务优先级，专注于最重要的工作")
+            suggestions.append("考虑将大任务分解为更小的可管理部分")
+        elif weekly_data.avg_completion_rate < 0.8:
+            suggestions.append("尝试使用时间管理技巧，如番茄工作法")
+            suggestions.append("识别并减少工作中的干扰因素")
+        
+        if weekly_data.deviation_days >= 3:
+            suggestions.append("建议制定更详细的日计划，提高执行力")
+            suggestions.append("考虑寻求同事或上级的支持和指导")
+        
+        if not suggestions:
+            suggestions.append("保持当前良好的工作节奏")
+            suggestions.append("可以考虑挑战更有难度的任务")
+        
+        return suggestions
+    
+    async def generate_weekly_llm_report(self, weekly_data: UserWeeklyData, 
+                                       report_type: str = "personal") -> Dict[str, Any]:
+        """
+        使用LLM生成周报内容
+        
+        Args:
+            weekly_data: 用户周数据
+            report_type: 报告类型 (personal/management)
+        
+        Returns:
+            包含success和content字段的字典
+        """
+        try:
+            if not self.glm_client:
+                self.logger.warning("GLM客户端未配置，降级到传统周报生成")
+                traditional_content = await self.generate_weekly_report(weekly_data, report_type)
+                return {"success": True, "content": traditional_content, "format_type": "traditional"}
+            
+            # 构建LLM提示词
+            system_prompt, user_prompt = self._build_weekly_llm_prompts(weekly_data, report_type)
+            
+            # 调用LLM生成报告
+            llm_content = self.glm_client._call_glm_api_sync(
+                system_prompt=system_prompt,
+                user_prompt=user_prompt,
+                temperature=0.7
+            )
+            
+            self.logger.info(f"成功使用LLM生成用户 {weekly_data.user_name} 的{report_type}周报")
+            return {"success": True, "content": llm_content, "format_type": "llm_generated"}
+            
+        except Exception as e:
+            self.logger.error(f"LLM周报生成失败: {e}，降级到传统周报")
+            # 降级到传统周报生成
+            traditional_content = await self.generate_weekly_report(weekly_data, report_type)
+            return {"success": True, "content": traditional_content, "format_type": "traditional"}
+    
+    def _build_weekly_llm_prompts(self, weekly_data: UserWeeklyData, report_type: str) -> tuple[str, str]:
+        """
+        构建周报LLM提示词
+        
+        Args:
+            weekly_data: 用户周数据
+            report_type: 报告类型 (personal/management)
+        
+        Returns:
+            (system_prompt, user_prompt) 元组
+        """
+        if report_type == "management":
+            system_prompt = """
+你是一位高效的管理层助理，专门为管理者提供简洁的团队周报摘要。
+
+核心要求：
+1. 内容必须控制在200字以内
+2. 格式简洁：本周完成的工作 + 工作总结 + 额外工作
+3. 语言简洁明了，突出重点
+4. 避免复杂的数据统计
+
+禁止：
+- 详细的统计数据
+- 超过200字的内容
+- 复杂的分析报告
+"""
+            
+            user_prompt = f"""
+团队成员：{weekly_data.user_name}
+工作周期：{weekly_data.week_start.strftime('%m/%d')} - {weekly_data.week_end.strftime('%m/%d')}
+主要成就：{'; '.join(weekly_data.achievements[:3]) if weekly_data.achievements else '按计划完成日常工作'}
+遇到问题：{'; '.join(weekly_data.issues[:2]) if weekly_data.issues else '无特殊问题'}
+工作状态：{'进展良好' if weekly_data.avg_completion_rate >= 0.8 else '需要关注'}
+
+请生成200字以内的管理层周报，包含：
+1. 本周完成的工作（列出主要成就）
+2. 工作总结（简单评价工作状态）
+3. 额外工作（如有处理的特殊事务）
+
+格式要求：简洁、实用、重点突出。
+"""
+        else:  # personal
+            system_prompt = """
+你是一位贴心的个人助理，专门帮助员工整理和总结工作周报。
+
+核心要求：
+1. 内容必须控制在200字以内
+2. 格式简洁：本周完成的工作 + 工作总结 + 额外工作
+3. 语调积极正面，使用第一人称
+4. 避免复杂的数据统计
+
+禁止：
+- 详细的统计数据
+- 超过200字的内容
+- 复杂的分析报告
+"""
+            
+            user_prompt = f"""
+我的工作情况：
+工作周期：{weekly_data.week_start.strftime('%m/%d')} - {weekly_data.week_end.strftime('%m/%d')}
+主要成就：{'; '.join(weekly_data.achievements[:3]) if weekly_data.achievements else '按计划完成日常工作'}
+遇到问题：{'; '.join(weekly_data.issues[:2]) if weekly_data.issues else '无特殊问题'}
+工作状态：{'进展良好' if weekly_data.avg_completion_rate >= 0.8 else '需要关注'}
+
+请帮我生成200字以内的个人周报，包含：
+1. 本周完成的工作（列出主要成就）
+2. 工作总结（简单总结工作情况）
+3. 额外工作（如有处理的特殊事务）
+
+语调要求：积极、简洁、实用。使用第一人称。
+"""
+        
+        return system_prompt, user_prompt
+    
+    def _prepare_weekly_data_summary(self, weekly_data: UserWeeklyData) -> str:
+        """
+        准备周数据摘要用于LLM处理
+        
+        Args:
+            weekly_data: 用户周数据
+        
+        Returns:
+            数据摘要字符串
+        """
+        summary_parts = [
+            f"用户：{weekly_data.user_name}",
+            f"周期：{weekly_data.week_start.strftime('%Y-%m-%d')} 至 {weekly_data.week_end.strftime('%Y-%m-%d')}",
+            f"工作天数：{weekly_data.work_days}",
+            f"平均完成率：{weekly_data.avg_completion_rate*100:.1f}%",
+            f"偏离天数：{weekly_data.deviation_days}",
+            f"风险等级：{weekly_data.risk_level}"
+        ]
+        
+        if weekly_data.achievements:
+            summary_parts.append(f"主要成就：{'; '.join(weekly_data.achievements)}")
+        
+        if weekly_data.issues:
+            summary_parts.append(f"遇到问题：{'; '.join(weekly_data.issues)}")
+        
+        return "\n".join(summary_parts)

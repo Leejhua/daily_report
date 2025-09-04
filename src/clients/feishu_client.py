@@ -603,3 +603,169 @@ class FeishuClient:
         else:
             logger.error("所有管理层通知发送失败")
             return False
+    
+    def send_weekly_report(self, report_content: str, report_type: str = "employee", 
+                          users: Optional[List[str]] = None) -> bool:
+        """发送周报消息
+        
+        Args:
+            report_content: 周报内容
+            report_type: 报告类型 (employee/management)
+            users: 指定用户列表（用于员工版），为None时发送给所有相关用户
+            
+        Returns:
+            发送是否成功
+        """
+        try:
+            if report_type == "management":
+                # 管理版周报发送给管理层
+                return self.send_management_notification(report_content)
+            else:
+                # 员工版周报
+                if users:
+                    # 发送给指定用户
+                    success_count = 0
+                    for user in users:
+                        if self._send_private_message(user, report_content):
+                            success_count += 1
+                    
+                    if success_count > 0:
+                        logger.info(f"员工周报发送完成: {success_count}/{len(users)} 成功")
+                        return True
+                    else:
+                        logger.error("所有员工周报发送失败")
+                        return False
+                else:
+                    # 发送到群聊
+                    message = self._build_weekly_report_message(report_content)
+                    return self._send_webhook_message(message)
+                    
+        except Exception as e:
+            logger.error(f"发送周报失败: {e}")
+            return False
+    
+    def _build_weekly_report_message(self, report_content: str, user_name: str = None, 
+                                    week_start: datetime = None, week_end: datetime = None,
+                                    is_management: bool = False) -> Dict[str, Any]:
+        """构建周报消息体
+        
+        Args:
+            report_content: 周报内容
+            user_name: 用户名（可选）
+            week_start: 周开始时间（可选）
+            week_end: 周结束时间（可选）
+            is_management: 是否为管理层报告
+            
+        Returns:
+            飞书消息体
+        """
+        # 解析周报内容，提取关键信息
+        lines = report_content.strip().split('\n')
+        
+        # 构建富文本内容
+        rich_content = []
+        
+        # 添加标题
+        title_text = "📊 管理层周报" if is_management else "📊 团队周报汇总"
+        if user_name:
+            title_text = f"📊 {'管理层' if is_management else '个人'}周报"
+        
+        rich_content.append([
+            {
+                "tag": "text",
+                "text": title_text,
+                "style": ["bold"]
+            }
+        ])
+        
+        # 添加用户和时间信息（如果提供）
+        if user_name or (week_start and week_end):
+            info_parts = []
+            if user_name:
+                info_parts.append(f"👤 {user_name}")
+            if week_start and week_end:
+                info_parts.append(f"{week_start.strftime('%m/%d')} - {week_end.strftime('%m/%d')}")
+            
+            if info_parts:
+                rich_content.append([
+                    {
+                        "tag": "text",
+                        "text": f"\n{' | '.join(info_parts)}\n"
+                    }
+                ])
+        
+        # 添加分隔线
+        rich_content.append([
+            {
+                "tag": "text",
+                "text": "\n" + "="*30 + "\n"
+            }
+        ])
+        
+        # 添加报告内容
+        current_section = []
+        for line in lines:
+            line = line.strip()
+            if not line:
+                if current_section:
+                    rich_content.append(current_section)
+                    current_section = []
+                continue
+            
+            # 跳过重复的标题行
+            if line.startswith("📊") or line.startswith("📅"):
+                continue
+                
+            # 检查是否是标题行（包含特定关键词或以##开头）
+            if (line.startswith("##") or 
+                any(keyword in line for keyword in ["汇总期间", "参与用户", "总体情况", "主要成就", "发现问题", "改进建议"])):
+                if current_section:
+                    rich_content.append(current_section)
+                    current_section = []
+                
+                section_title = line.replace("##", "").strip()
+                current_section.append({
+                    "tag": "text",
+                    "text": f"\n{section_title}\n",
+                    "style": ["bold"]
+                })
+            elif line.startswith("-"):
+                # 列表项
+                item_text = line.replace("-", "").strip()
+                current_section.append({
+                    "tag": "text",
+                    "text": f"• {item_text}\n"
+                })
+            else:
+                # 普通文本
+                current_section.append({
+                    "tag": "text",
+                    "text": f"{line}\n"
+                })
+        
+        # 添加最后一个段落
+        if current_section:
+            rich_content.append(current_section)
+        
+        # 添加时间戳
+        rich_content.append([
+            {
+                "tag": "text",
+                "text": f"\n\n📅 生成时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
+                "style": ["italic"]
+            }
+        ])
+        
+        message = {
+            "msg_type": "post",
+            "content": {
+                "post": {
+                    "zh_cn": {
+                        "title": title_text,
+                        "content": rich_content
+                    }
+                }
+            }
+        }
+        
+        return message

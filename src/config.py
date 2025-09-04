@@ -6,7 +6,7 @@
 import os
 import yaml
 from pathlib import Path
-from typing import Dict, Any, Optional
+from typing import Dict, Any, Optional, Union, List
 from dataclasses import dataclass, field
 from dotenv import load_dotenv
 
@@ -119,6 +119,78 @@ class ManagementNotificationConfig:
     enabled: bool = False
     user_ids: list = field(default_factory=list)
     notification_type: str = "private_chat"  # private_chat 或 group_chat
+
+
+@dataclass
+class WeeklyDataCollectionConfig:
+    """周报数据收集配置"""
+    days_to_collect: int = 7
+    include_weekends: bool = False
+    min_records_required: int = 3
+
+
+@dataclass
+class WeeklyReportGenerationConfig:
+    """周报生成配置"""
+    include_achievements: bool = True
+    include_issues: bool = True
+    include_suggestions: bool = True
+    include_trends: bool = True
+    max_achievements: int = 5
+    max_issues: int = 5
+    max_suggestions: int = 3
+
+
+@dataclass
+class WeeklyGLMEnhancementConfig:
+    """周报GLM增强配置"""
+    enabled: bool = True
+    personal_prompt: str = "基于员工一周的工作数据，生成个人周报总结，包含成就、问题和建议"
+    management_prompt: str = "基于团队一周的工作数据，生成管理层周报，重点关注团队表现和趋势"
+    max_tokens: int = 1500
+    temperature: float = 0.7
+
+
+@dataclass
+class WeeklyDeliveryConfig:
+    """周报发送配置"""
+    send_to_individuals: bool = True
+    send_to_management: bool = True
+    management_user_ids: list = field(default_factory=list)
+    message_format: str = "rich_text"
+    include_charts: bool = False
+
+
+@dataclass
+class WeeklyReportsConfig:
+    """周报配置"""
+    enabled: bool = True
+    execution_hour: int = 17
+    execution_day: int = 5  # 1-7，1为周一，5为周五
+    data_collection: WeeklyDataCollectionConfig = field(default_factory=WeeklyDataCollectionConfig)
+    report_generation: WeeklyReportGenerationConfig = field(default_factory=WeeklyReportGenerationConfig)
+    glm_enhancement: WeeklyGLMEnhancementConfig = field(default_factory=WeeklyGLMEnhancementConfig)
+    delivery: WeeklyDeliveryConfig = field(default_factory=WeeklyDeliveryConfig)
+
+
+@dataclass
+class DailyContentCheckConfig:
+    """日报/日计划内容检查配置"""
+    enabled: bool = True
+    content_check_cron: Union[str, List[str]] = "0 14 * * *"  # 内容检查时间，支持单个或多个时间点
+    analysis_cron: str = "0 18 * * *"      # 日常分析时间
+    check_date_offset: int = 0              # 检查日期偏移
+    morning_check_hour: int = 9             # 上午检查时间
+    afternoon_check_hour: int = 14          # 下午检查时间
+    evening_check_hour: int = 18            # 晚上检查时间
+    weekend_check_enabled: bool = False     # 是否在周末检查
+    retry_attempts: int = 3                 # 重试次数
+    retry_delay: int = 300                  # 重试延迟
+    max_execution_time: int = 600           # 最大执行时间
+    reminder_enabled: bool = True           # 启用提醒功能
+    duplicate_prevention_hours: int = 4     # 防重复提醒时间
+    batch_check_enabled: bool = True        # 启用批量检查
+    summary_report_enabled: bool = True     # 启用检查结果摘要报告
 
 
 @dataclass
@@ -266,6 +338,67 @@ class Config:
             notification_type=management_config.get('notification_type', 'private_chat')
         )
         
+        # 周报配置
+        weekly_config = self._config_data.get('weekly_reports', {})
+        data_collection_config = weekly_config.get('data_collection', {})
+        report_generation_config = weekly_config.get('report_generation', {})
+        glm_enhancement_config = weekly_config.get('glm_enhancement', {})
+        delivery_config = weekly_config.get('delivery', {})
+        
+        self.weekly_reports = WeeklyReportsConfig(
+            enabled=self._get_bool_env_or_config('WEEKLY_REPORTS_ENABLED', weekly_config.get('enabled', True)),
+            execution_hour=int(self._get_env_or_config('WEEKLY_EXECUTION_HOUR', weekly_config.get('execution_hour', 17))),
+            execution_day=int(self._get_env_or_config('WEEKLY_EXECUTION_DAY', weekly_config.get('execution_day', 5))),
+            data_collection=WeeklyDataCollectionConfig(
+                days_to_collect=data_collection_config.get('days_to_collect', 7),
+                include_weekends=data_collection_config.get('include_weekends', False),
+                min_records_required=data_collection_config.get('min_records_required', 3)
+            ),
+            report_generation=WeeklyReportGenerationConfig(
+                include_achievements=report_generation_config.get('include_achievements', True),
+                include_issues=report_generation_config.get('include_issues', True),
+                include_suggestions=report_generation_config.get('include_suggestions', True),
+                include_trends=report_generation_config.get('include_trends', True),
+                max_achievements=report_generation_config.get('max_achievements', 5),
+                max_issues=report_generation_config.get('max_issues', 5),
+                max_suggestions=report_generation_config.get('max_suggestions', 3)
+            ),
+            glm_enhancement=WeeklyGLMEnhancementConfig(
+                enabled=glm_enhancement_config.get('enabled', True),
+                personal_prompt=glm_enhancement_config.get('personal_prompt', '基于员工一周的工作数据，生成个人周报总结，包含成就、问题和建议'),
+                management_prompt=glm_enhancement_config.get('management_prompt', '基于团队一周的工作数据，生成管理层周报，重点关注团队表现和趋势'),
+                max_tokens=glm_enhancement_config.get('max_tokens', 1500),
+                temperature=glm_enhancement_config.get('temperature', 0.7)
+            ),
+            delivery=WeeklyDeliveryConfig(
+                send_to_individuals=delivery_config.get('send_to_individuals', True),
+                send_to_management=delivery_config.get('send_to_management', True),
+                management_user_ids=delivery_config.get('management_user_ids', []),
+                message_format=delivery_config.get('message_format', 'rich_text'),
+                include_charts=delivery_config.get('include_charts', False)
+            )
+        )
+        
+        # 日报内容检查配置
+        daily_content_check_config = self._config_data.get('daily_content_check', {})
+        self.daily_content_check = DailyContentCheckConfig(
+            enabled=self._get_bool_env_or_config('DAILY_CONTENT_CHECK_ENABLED', daily_content_check_config.get('enabled', True)),
+            content_check_cron=daily_content_check_config.get('content_check_cron', '0 14 * * *'),
+            analysis_cron=daily_content_check_config.get('analysis_cron', '0 18 * * *'),
+            check_date_offset=daily_content_check_config.get('check_date_offset', 0),
+            morning_check_hour=daily_content_check_config.get('morning_check_hour', 9),
+            afternoon_check_hour=daily_content_check_config.get('afternoon_check_hour', 14),
+            evening_check_hour=daily_content_check_config.get('evening_check_hour', 18),
+            weekend_check_enabled=daily_content_check_config.get('weekend_check_enabled', False),
+            retry_attempts=daily_content_check_config.get('retry_attempts', 3),
+            retry_delay=daily_content_check_config.get('retry_delay', 300),
+            max_execution_time=daily_content_check_config.get('max_execution_time', 600),
+            reminder_enabled=daily_content_check_config.get('reminder_enabled', True),
+            duplicate_prevention_hours=daily_content_check_config.get('duplicate_prevention_hours', 4),
+            batch_check_enabled=daily_content_check_config.get('batch_check_enabled', True),
+            summary_report_enabled=daily_content_check_config.get('summary_report_enabled', True)
+        )
+        
         # 通知配置
         notifications_config = self._config_data.get('notifications', {})
         email_config = notifications_config.get('email', {})
@@ -333,5 +466,12 @@ class Config:
             'scheduler': {
                 'cron_expression': self.scheduler.cron_expression,
                 'timezone': self.scheduler.timezone
+            },
+            'weekly_reports': {
+                'enabled': self.weekly_reports.enabled,
+                'execution_time': f'周{self.weekly_reports.execution_day} {self.weekly_reports.execution_hour}:00',
+                'glm_enhancement_enabled': self.weekly_reports.glm_enhancement.enabled,
+                'send_to_individuals': self.weekly_reports.delivery.send_to_individuals,
+                'send_to_management': self.weekly_reports.delivery.send_to_management
             }
         }
