@@ -25,6 +25,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY src/ ./src/
 COPY config/ ./config/
 COPY env.example ./
+COPY feishu_mapping.json ./
 
 # 创建必要的目录
 RUN mkdir -p logs data reports .trae/documents tests/output tests/results
