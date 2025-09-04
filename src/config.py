@@ -178,7 +178,7 @@ class DailyContentCheckConfig:
     """日报/日计划内容检查配置"""
     enabled: bool = True
     content_check_cron: Union[str, List[str]] = "0 14 * * *"  # 内容检查时间，支持单个或多个时间点
-    analysis_cron: str = "0 18 * * *"      # 日常分析时间
+    analysis_cron: Union[str, List[str]] = "0 18 * * *"      # 日常分析时间，支持单个或多个时间点
     check_date_offset: int = 0              # 检查日期偏移
     morning_check_hour: int = 9             # 上午检查时间
     afternoon_check_hour: int = 14          # 下午检查时间

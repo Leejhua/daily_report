@@ -114,9 +114,8 @@ class AnalysisScheduler:
     def _get_next_run_time(self) -> datetime:
         """获取下次执行时间（基于日常分析的cron表达式）"""
         # 使用配置中的analysis_cron来计算下次运行时间
-        analysis_cron = getattr(self.config.daily_content_check, 'analysis_cron', self.config.scheduler.cron_expression)
-        cron = croniter(analysis_cron, datetime.now(self.timezone))
-        return cron.get_next(datetime)
+        current_time = datetime.now(self.timezone)
+        return self._get_next_analysis_time(current_time)
         
     async def _run_scheduler(self):
         """运行调度循环"""
@@ -156,13 +155,16 @@ class AnalysisScheduler:
         """检查是否应该运行任务（使用日常分析的cron表达式）"""
         # 使用配置中的analysis_cron来判断是否应该执行任务
         analysis_cron = getattr(self.config.daily_content_check, 'analysis_cron', self.config.scheduler.cron_expression)
-        cron = croniter(analysis_cron, current_time)
-        next_run = cron.get_next(datetime)
-        prev_run = cron.get_prev(datetime)
         
-        # 检查当前时间是否在预定运行时间的1分钟内
-        time_diff = abs((current_time - prev_run).total_seconds())
-        return time_diff <= 60
+        # 如果是列表，检查每个时间点
+        if isinstance(analysis_cron, list):
+            for cron_expr in analysis_cron:
+                if self._check_cron_time(cron_expr, current_time):
+                    return True
+            return False
+        else:
+            # 单个cron表达式
+            return self._check_cron_time(analysis_cron, current_time)
         
     def _should_run_content_check(self, current_time: datetime) -> bool:
         """检查当前时间是否应该执行内容检查任务"""
@@ -235,16 +237,36 @@ class AnalysisScheduler:
         """获取下次分析时间"""
         analysis_cron = getattr(self.config.daily_content_check, 'analysis_cron', '0 18 * * *')
         
-        try:
-            cron = croniter(analysis_cron, current_time)
-            return cron.get_next(datetime)
-        except Exception as e:
-            self.logger.error(f"解析分析cron表达式失败: {analysis_cron}, 错误: {e}")
-            # 返回默认时间（下午6点）
-            next_time = current_time.replace(hour=18, minute=0, second=0, microsecond=0)
-            if current_time.hour >= 18:
-                next_time += timedelta(days=1)
-            return next_time
+        if isinstance(analysis_cron, list):
+            # 如果是多个时间点，找到最近的下次执行时间
+            next_times = []
+            for cron_expr in analysis_cron:
+                try:
+                    cron = croniter(cron_expr, current_time)
+                    next_times.append(cron.get_next(datetime))
+                except Exception as e:
+                    self.logger.error(f"解析分析cron表达式失败: {cron_expr}, 错误: {e}")
+            
+            if next_times:
+                return min(next_times)  # 返回最近的时间
+            else:
+                # 如果解析失败，返回默认时间（下午6点）
+                next_time = current_time.replace(hour=18, minute=0, second=0, microsecond=0)
+                if current_time.hour >= 18:
+                    next_time += timedelta(days=1)
+                return next_time
+        else:
+            # 单个cron表达式
+            try:
+                cron = croniter(analysis_cron, current_time)
+                return cron.get_next(datetime)
+            except Exception as e:
+                self.logger.error(f"解析分析cron表达式失败: {analysis_cron}, 错误: {e}")
+                # 返回默认时间（下午6点）
+                next_time = current_time.replace(hour=18, minute=0, second=0, microsecond=0)
+                if current_time.hour >= 18:
+                    next_time += timedelta(days=1)
+                return next_time
         
     async def _execute_content_check_task(self):
         """执行内容检查任务"""
