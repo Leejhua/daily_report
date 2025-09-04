@@ -235,7 +235,7 @@ class AnalysisScheduler:
     
     def _get_next_analysis_time(self, current_time: datetime) -> datetime:
         """获取下次分析时间"""
-        analysis_cron = getattr(self.config.daily_content_check, 'analysis_cron', '0 18 * * *')
+        analysis_cron = getattr(self.config.daily_content_check, 'analysis_cron', '0 13 * * *')
         
         if isinstance(analysis_cron, list):
             # 如果是多个时间点，找到最近的下次执行时间
@@ -250,9 +250,9 @@ class AnalysisScheduler:
             if next_times:
                 return min(next_times)  # 返回最近的时间
             else:
-                # 如果解析失败，返回默认时间（下午6点）
-                next_time = current_time.replace(hour=18, minute=0, second=0, microsecond=0)
-                if current_time.hour >= 18:
+                # 如果解析失败，返回默认时间（下午1点）
+                next_time = current_time.replace(hour=13, minute=0, second=0, microsecond=0)
+                if current_time.hour >= 13:
                     next_time += timedelta(days=1)
                 return next_time
         else:
@@ -262,9 +262,9 @@ class AnalysisScheduler:
                 return cron.get_next(datetime)
             except Exception as e:
                 self.logger.error(f"解析分析cron表达式失败: {analysis_cron}, 错误: {e}")
-                # 返回默认时间（下午6点）
-                next_time = current_time.replace(hour=18, minute=0, second=0, microsecond=0)
-                if current_time.hour >= 18:
+                # 返回默认时间（下午1点）
+                next_time = current_time.replace(hour=13, minute=0, second=0, microsecond=0)
+                if current_time.hour >= 13:
                     next_time += timedelta(days=1)
                 return next_time
         

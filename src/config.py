@@ -57,7 +57,7 @@ class AnalysisConfig:
 @dataclass
 class SchedulerConfig:
     """调度器配置"""
-    cron_expression: str = "0 18 * * *"
+    cron_expression: str = "0 13 * * *"
     timezone: str = "Asia/Shanghai"
     retry_attempts: int = 3
     retry_delay: int = 300

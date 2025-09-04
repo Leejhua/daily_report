@@ -17817,3 +17817,65 @@ TypeError: DeviationTracker.record_continuous_deviation_alert() takes 3 position
 2025-09-04 14:14:42 - __main__ - INFO - 
 总计: 6/7 个测试通过
 2025-09-04 14:14:42 - __main__ - WARNING - ⚠️ 1 个测试失败，请检查相关配置和代码
+2025-09-04 16:49:31 - src.utils.logger - INFO - 日志系统初始化完成 - 级别: INFO, 文件: logs/analyzer.log
+2025-09-04 16:49:31 - __main__ - INFO - 配置验证通过
+2025-09-04 16:49:31 - __main__ - INFO - 正在启动GitHub Discussions自动化分析服务...
+2025-09-04 16:49:31 - src.clients.github_client - ERROR - GitHub客户端初始化失败: 
+2025-09-04 16:49:31 - __main__ - ERROR - 服务启动失败: 
+Traceback (most recent call last):
+  File "D:\cursor_glm\src\main.py", line 39, in start
+    self.scheduler = RetryableScheduler(self.config)
+                     ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\cursor_glm\src\scheduler.py", line 35, in __init__
+    self.daily_analyzer = DailyAnalyzer(config)
+                          ~~~~~~~~~~~~~^^^^^^^^
+  File "D:\cursor_glm\src\analyzers\daily_analyzer.py", line 28, in __init__
+    self.github_client = GitHubClient(config.github)
+                         ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "D:\cursor_glm\src\clients\github_client.py", line 54, in __init__
+    self.github = Github(
+                  ~~~~~~^
+        login_or_token=config.token,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        base_url=config.api_base_url,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        timeout=config.timeout
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\cursor_glm\.venv\Lib\site-packages\github\MainClass.py", line 241, in __init__
+    auth = github.Auth.Token(login_or_token)
+  File "D:\cursor_glm\.venv\Lib\site-packages\github\Auth.py", line 163, in __init__
+    assert len(token) > 0
+           ^^^^^^^^^^^^^^
+AssertionError
+2025-09-04 16:49:31 - __main__ - ERROR - 服务运行出错: 
+Traceback (most recent call last):
+  File "D:\cursor_glm\src\main.py", line 185, in main
+    await service.start()
+  File "D:\cursor_glm\src\main.py", line 39, in start
+    self.scheduler = RetryableScheduler(self.config)
+                     ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\cursor_glm\src\scheduler.py", line 35, in __init__
+    self.daily_analyzer = DailyAnalyzer(config)
+                          ~~~~~~~~~~~~~^^^^^^^^
+  File "D:\cursor_glm\src\analyzers\daily_analyzer.py", line 28, in __init__
+    self.github_client = GitHubClient(config.github)
+                         ~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "D:\cursor_glm\src\clients\github_client.py", line 54, in __init__
+    self.github = Github(
+                  ~~~~~~^
+        login_or_token=config.token,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        base_url=config.api_base_url,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        timeout=config.timeout
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\cursor_glm\.venv\Lib\site-packages\github\MainClass.py", line 241, in __init__
+    auth = github.Auth.Token(login_or_token)
+  File "D:\cursor_glm\.venv\Lib\site-packages\github\Auth.py", line 163, in __init__
+    assert len(token) > 0
+           ^^^^^^^^^^^^^^
+AssertionError
