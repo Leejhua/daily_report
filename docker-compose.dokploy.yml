@@ -1,0 +1,265 @@
+version: '3.8'
+
+services:
+  github-analyzer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: github-discussions-analyzer
+    restart: unless-stopped
+    
+    # Dokploy推荐的标签配置
+    labels:
+      - "dokploy.enable=true"
+      - "dokploy.project=github-analyzer"
+      - "dokploy.service=github-analyzer"
+      - "dokploy.description=GitHub Discussions自动分析和通知系统"
+      - "dokploy.version=1.0.0"
+      - "dokploy.maintainer=your-email@example.com"
+      - "traefik.enable=false"  # 如果不需要外部访问可以设为false
+    
+    # 环境变量配置 - 适配dokploy的环境变量管理
+    environment:
+      # GitHub配置
+      - GITHUB_TOKEN=${GITHUB_TOKEN:?GitHub token is required}
+      - GITHUB_ORG=${GITHUB_ORG:?GitHub organization is required}
+      - GITHUB_REPO=${GITHUB_REPO:?GitHub repository is required}
+      - USE_ORG_DISCUSSIONS=${USE_ORG_DISCUSSIONS:-false}
+      
+      # GLM-4.5配置
+      - GLM_API_KEY=${GLM_API_KEY:?GLM API key is required}
+      - GLM_BASE_URL=${GLM_BASE_URL:-https://open.bigmodel.cn/api/paas/v4/}
+      - GLM_MODEL=${GLM_MODEL:-glm-4-plus}
+      
+      # 飞书配置
+      - FEISHU_APP_ID=${FEISHU_APP_ID}
+      - FEISHU_APP_SECRET=${FEISHU_APP_SECRET}
+      - FEISHU_WEBHOOK_URL=${FEISHU_WEBHOOK_URL}
+      
+      # 调度配置
+      - SCHEDULE_CRON=${SCHEDULE_CRON:-0 18 * * *}
+      - TIMEZONE=${TIMEZONE:-Asia/Shanghai}
+      - CONTENT_CHECK_CRON_1=${CONTENT_CHECK_CRON_1:-0 12 * * *}
+      - CONTENT_CHECK_CRON_2=${CONTENT_CHECK_CRON_2:-0 19 * * *}
+      - ANALYSIS_CRON_1=${ANALYSIS_CRON_1:-0 13 * * *}
+      - ANALYSIS_CRON_2=${ANALYSIS_CRON_2:-0 20 * * *}
+      
+      # 周报配置
+      - WEEKLY_REPORTS_ENABLED=${WEEKLY_REPORTS_ENABLED:-true}
+      - WEEKLY_EXECUTION_HOUR=${WEEKLY_EXECUTION_HOUR:-17}
+      - WEEKLY_EXECUTION_DAY=${WEEKLY_EXECUTION_DAY:-5}
+      
+      # 日志配置
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - LOG_FILE=logs/analyzer.log
+      - LOG_MAX_SIZE=${LOG_MAX_SIZE:-10MB}
+      - LOG_BACKUP_COUNT=${LOG_BACKUP_COUNT:-5}
+      
+      # 分析配置
+      - ENABLE_DEVIATION_ANALYSIS=${ENABLE_DEVIATION_ANALYSIS:-true}
+      - ENABLE_CLARITY_ANALYSIS=${ENABLE_CLARITY_ANALYSIS:-true}
+      - ENABLE_CONSISTENCY_ANALYSIS=${ENABLE_CONSISTENCY_ANALYSIS:-true}
+      - ENABLE_WEEKLY_REPORTS=${ENABLE_WEEKLY_REPORTS:-true}
+      
+      # 性能配置
+      - MAX_CONCURRENT_REQUESTS=${MAX_CONCURRENT_REQUESTS:-5}
+      - REQUEST_TIMEOUT=${REQUEST_TIMEOUT:-30}
+      - RETRY_ATTEMPTS=${RETRY_ATTEMPTS:-3}
+      - RETRY_DELAY=${RETRY_DELAY:-300}
+      - ANALYSIS_TIMEOUT=${ANALYSIS_TIMEOUT:-1800}
+      - WEEKLY_REPORT_TIMEOUT=${WEEKLY_REPORT_TIMEOUT:-3600}
+      
+      # 存储配置
+      - STORAGE_TYPE=${STORAGE_TYPE:-json}
+      - DATA_BACKUP_ENABLED=${DATA_BACKUP_ENABLED:-true}
+      - BACKUP_RETENTION_DAYS=${BACKUP_RETENTION_DAYS:-30}
+    
+    # 挂载配置文件和数据目录
+    volumes:
+      - ./config:/app/config:ro
+      - analyzer_logs:/app/logs
+      - analyzer_data:/app/data
+    
+    # 网络配置 - dokploy推荐使用自定义网络
+    networks:
+      - dokploy-network
+    
+    # 健康检查 - 优化为dokploy环境
+    healthcheck:
+      test: ["CMD", "python", "-c", "import sys; sys.path.append('/app'); from src.config import Config; config = Config(); config.validate(); print('Health check passed')"]
+      interval: 60s
+      timeout: 30s
+      retries: 3
+      start_period: 60s
+    
+    # 日志配置 - 适配dokploy的日志管理
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "5"
+        labels: "dokploy.project,dokploy.service"
+    
+    # 资源限制 - 适合dokploy环境
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+          cpus: '1.0'
+        reservations:
+          memory: 512M
+          cpus: '0.5'
+      restart_policy:
+        condition: on-failure
+        delay: 30s
+        max_attempts: 3
+        window: 120s
+    
+    # 安全配置
+    security_opt:
+      - no-new-privileges:true
+    
+    # 用户配置
+    user: "1000:1000"
+    
+    # 依赖配置
+    depends_on:
+      - redis  # 如果需要Redis缓存
+    
+  # 可选：Redis缓存服务
+  redis:
+    image: redis:7-alpine
+    container_name: github-analyzer-redis
+    restart: unless-stopped
+    
+    labels:
+      - "dokploy.enable=true"
+      - "dokploy.project=github-analyzer"
+      - "dokploy.service=redis"
+      - "dokploy.description=Redis缓存服务"
+    
+    volumes:
+      - redis_data:/data
+    
+    networks:
+      - dokploy-network
+    
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+          cpus: '0.5'
+        reservations:
+          memory: 128M
+          cpus: '0.25'
+    
+    security_opt:
+      - no-new-privileges:true
+
+# 网络配置
+networks:
+  dokploy-network:
+    driver: bridge
+    name: github-analyzer-network
+    labels:
+      - "dokploy.project=github-analyzer"
+
+# 数据卷配置
+volumes:
+  analyzer_logs:
+    driver: local
+    labels:
+      - "dokploy.project=github-analyzer"
+      - "dokploy.volume=logs"
+  
+  analyzer_data:
+    driver: local
+    labels:
+      - "dokploy.project=github-analyzer"
+      - "dokploy.volume=data"
+  
+  redis_data:
+    driver: local
+    labels:
+      - "dokploy.project=github-analyzer"
+      - "dokploy.volume=redis"
+
+# 可选：监控服务配置
+# 如果需要监控，可以取消注释以下配置
+# services:
+#   prometheus:
+#     image: prom/prometheus:latest
+#     container_name: github-analyzer-prometheus
+#     restart: unless-stopped
+#     
+#     labels:
+#       - "dokploy.enable=true"
+#       - "dokploy.project=github-analyzer"
+#       - "dokploy.service=prometheus"
+#       - "traefik.enable=true"
+#       - "traefik.http.routers.prometheus.rule=Host(`prometheus.yourdomain.com`)"
+#       - "traefik.http.services.prometheus.loadbalancer.server.port=9090"
+#     
+#     ports:
+#       - "9090:9090"
+#     
+#     volumes:
+#       - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+#       - prometheus_data:/prometheus
+#     
+#     networks:
+#       - dokploy-network
+#     
+#     deploy:
+#       resources:
+#         limits:
+#           memory: 512M
+#           cpus: '0.5'
+#   
+#   grafana:
+#     image: grafana/grafana:latest
+#     container_name: github-analyzer-grafana
+#     restart: unless-stopped
+#     
+#     labels:
+#       - "dokploy.enable=true"
+#       - "dokploy.project=github-analyzer"
+#       - "dokploy.service=grafana"
+#       - "traefik.enable=true"
+#       - "traefik.http.routers.grafana.rule=Host(`grafana.yourdomain.com`)"
+#       - "traefik.http.services.grafana.loadbalancer.server.port=3000"
+#     
+#     ports:
+#       - "3000:3000"
+#     
+#     environment:
+#       - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD:-admin123}
+#       - GF_USERS_ALLOW_SIGN_UP=false
+#     
+#     volumes:
+#       - grafana_data:/var/lib/grafana
+#     
+#     networks:
+#       - dokploy-network
+#     
+#     deploy:
+#       resources:
+#         limits:
+#           memory: 512M
+#           cpus: '0.5'
+
+# volumes:
+#   prometheus_data:
+#     driver: local
+#     labels:
+#       - "dokploy.project=github-analyzer"
+#   grafana_data:
+#     driver: local
+#     labels:
+#       - "dokploy.project=github-analyzer"
