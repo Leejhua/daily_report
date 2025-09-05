@@ -177,8 +177,8 @@ class WeeklyReportsConfig:
 class DailyContentCheckConfig:
     """日报/日计划内容检查配置"""
     enabled: bool = True
-    content_check_cron: Union[str, List[str]] = "0 14 * * *"  # 内容检查时间，支持单个或多个时间点
-    analysis_cron: Union[str, List[str]] = "0 18 * * *"      # 日常分析时间，支持单个或多个时间点
+    content_check_cron: Union[str, List[str]] = field(default_factory=lambda: ["0 12 * * *", "0 19 * * *"])  # 内容检查时间，支持单个或多个时间点
+    analysis_cron: Union[str, List[str]] = field(default_factory=lambda: ["0 13 * * *", "0 20 * * *"])      # 日常分析时间，支持单个或多个时间点
     check_date_offset: int = 0              # 检查日期偏移
     morning_check_hour: int = 9             # 上午检查时间
     afternoon_check_hour: int = 14          # 下午检查时间
@@ -383,8 +383,8 @@ class Config:
         daily_content_check_config = self._config_data.get('daily_content_check', {})
         self.daily_content_check = DailyContentCheckConfig(
             enabled=self._get_bool_env_or_config('DAILY_CONTENT_CHECK_ENABLED', daily_content_check_config.get('enabled', True)),
-            content_check_cron=daily_content_check_config.get('content_check_cron', '0 14 * * *'),
-            analysis_cron=daily_content_check_config.get('analysis_cron', '0 18 * * *'),
+            content_check_cron=self._get_cron_list_env_or_config('CONTENT_CHECK_CRON', daily_content_check_config.get('content_check_cron', ['0 12 * * *', '0 19 * * *'])),
+            analysis_cron=self._get_cron_list_env_or_config('ANALYSIS_CRON', daily_content_check_config.get('analysis_cron', ['0 13 * * *', '0 20 * * *'])),
             check_date_offset=daily_content_check_config.get('check_date_offset', 0),
             morning_check_hour=daily_content_check_config.get('morning_check_hour', 9),
             afternoon_check_hour=daily_content_check_config.get('afternoon_check_hour', 14),
@@ -423,6 +423,17 @@ class Config:
         env_value = os.getenv(env_key)
         if env_value is not None:
             return env_value.lower() in ('true', '1', 'yes', 'on')
+        return config_value
+        
+    def _get_cron_list_env_or_config(self, env_key: str, config_value: Union[str, List[str]]) -> Union[str, List[str]]:
+        """获取cron表达式列表配置，支持环境变量中的逗号分隔格式"""
+        env_value = os.getenv(env_key)
+        if env_value is not None:
+            # 如果环境变量包含逗号，则分割为列表
+            if ',' in env_value:
+                return [cron.strip() for cron in env_value.split(',')]
+            else:
+                return env_value
         return config_value
         
     def validate(self) -> bool:

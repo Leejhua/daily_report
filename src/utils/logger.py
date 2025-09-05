@@ -70,10 +70,14 @@ def setup_logging(config=None):
     file_handler.setLevel(getattr(logging, log_level.upper()))
     file_handler.setFormatter(file_formatter)
     
-    # 控制台处理器
+    # 控制台处理器（禁用缓冲）
     console_handler = logging.StreamHandler(sys.stdout)
     console_handler.setLevel(getattr(logging, log_level.upper()))
     console_handler.setFormatter(console_formatter)
+    
+    # 强制刷新输出流
+    sys.stdout.reconfigure(line_buffering=True)
+    sys.stderr.reconfigure(line_buffering=True)
     
     # 添加处理器到根日志记录器
     root_logger.addHandler(file_handler)

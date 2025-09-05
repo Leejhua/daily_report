@@ -8,12 +8,15 @@ WORKDIR /app
 # 设置环境变量
 ENV PYTHONPATH=/app
 ENV PYTHONUNBUFFERED=1
+ENV TZ=Asia/Shanghai
 
 # 安装系统依赖
 RUN apt-get update && apt-get install -y \
     git \
     curl \
-    && rm -rf /var/lib/apt/lists/*
+    tzdata \
+    && rm -rf /var/lib/apt/lists/* \
+    && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 # 复制依赖文件
 COPY requirements.txt .
@@ -26,7 +29,7 @@ COPY src/ ./src/
 COPY config/ ./config/
 COPY main_enhanced.py ./
 COPY env.example ./
-COPY feishu_mapping.json ./
+COPY feishu_github_mapping.json ./
 
 # 创建必要的目录
 RUN mkdir -p logs data reports .trae/documents tests/output tests/results

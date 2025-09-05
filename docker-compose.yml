@@ -21,6 +21,8 @@ services:
       
       # 调度配置
       - SCHEDULE_CRON=${SCHEDULE_CRON:-0 18 * * *}
+      - CONTENT_CHECK_CRON=${CONTENT_CHECK_CRON:-0 12 * * *,0 19 * * *}
+      - ANALYSIS_CRON=${ANALYSIS_CRON:-0 13 * * *,0 20 * * *}
       - TIMEZONE=${TIMEZONE:-Asia/Shanghai}
       
       # 日志配置

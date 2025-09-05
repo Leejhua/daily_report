@@ -28,6 +28,10 @@ class AnalysisScheduler:
     def __init__(self, config: Config):
         self.config = config
         self.logger = get_logger(__name__)
+        # 设置日志级别为DEBUG以显示调试信息
+        self.logger.setLevel(logging.DEBUG)
+        # 同时设置根日志记录器级别为DEBUG
+        logging.getLogger().setLevel(logging.DEBUG)
         self.running = False
         self.thread = None
         
@@ -124,12 +128,21 @@ class AnalysisScheduler:
         # 记录调度器启动信息
         await self._log_scheduler_startup_info()
         
+        # 强制刷新日志缓冲区
+        import sys
+        sys.stdout.flush()
+        sys.stderr.flush()
+        
         while self.running:
             try:
                 now = datetime.now(self.timezone)
                 
-                # 每30秒打印一次当前运行状态
-                self._log_current_status(now)
+                # 每5分钟打印一次当前运行状态（减少频率）
+                if now.minute % 5 == 0 and now.second < 30:
+                    self._log_current_status(now)
+                    # 强制刷新日志缓冲区
+                    sys.stdout.flush()
+                    sys.stderr.flush()
                 
                 # 记录等待任务信息（每5分钟一次）
                 self._log_waiting_tasks(now)
@@ -138,19 +151,33 @@ class AnalysisScheduler:
                 if (hasattr(self.config, 'daily_content_check') and 
                     self.config.daily_content_check.enabled):
                     
-                    # 检查内容检查时间（改为12:00）
-                    content_check_cron = getattr(self.config.daily_content_check, 'content_check_cron', '0 12 * * *')
-                    if self._check_cron_time(content_check_cron, now):
-                        self.logger.info("🔍 触发内容检查任务 - 开始执行")
-                        await self._execute_content_check_task()
-                        self.logger.info("✅ 内容检查任务执行完成")
+                    # 检查内容检查时间
+                    content_check_cron = getattr(self.config.daily_content_check, 'content_check_cron', ['0 12 * * *', '0 19 * * *'])
+                    # 确保cron表达式是列表格式
+                    if isinstance(content_check_cron, str):
+                        content_check_cron = [content_check_cron]
                     
-                    # 检查分析时间（改为12:00）
-                    analysis_cron = getattr(self.config.daily_content_check, 'analysis_cron', '0 12 * * *')
-                    if self._check_cron_time(analysis_cron, now):
-                        self.logger.info("📊 触发日常分析任务 - 开始执行")
-                        await self._execute_analysis_task()
-                        self.logger.info("✅ 日常分析任务执行完成")
+                    # 检查是否匹配任何一个内容检查时间
+                    for cron_expr in content_check_cron:
+                        if self._check_cron_time(cron_expr, now):
+                            self.logger.info("🔍 触发内容检查任务 - 开始执行")
+                            await self._execute_content_check_task()
+                            self.logger.info("✅ 内容检查任务执行完成")
+                            break
+                    
+                    # 检查分析时间
+                    analysis_cron = getattr(self.config.daily_content_check, 'analysis_cron', ['0 13 * * *', '0 20 * * *'])
+                    # 确保cron表达式是列表格式
+                    if isinstance(analysis_cron, str):
+                        analysis_cron = [analysis_cron]
+                    
+                    # 检查是否匹配任何一个分析时间
+                    for cron_expr in analysis_cron:
+                        if self._check_cron_time(cron_expr, now):
+                            self.logger.info("📊 触发日常分析任务 - 开始执行")
+                            await self._execute_analysis_task()
+                            self.logger.info("✅ 日常分析任务执行完成")
+                            break
                 
                 # 检查周报任务（改为12:00）
                 if (hasattr(self.config, 'weekly_reports') and 
@@ -166,6 +193,11 @@ class AnalysisScheduler:
                 # 等待30秒后再次检查
                 await asyncio.sleep(30)
                 
+                # 定期强制刷新日志缓冲区
+                if now.second == 0:  # 每分钟刷新一次
+                    sys.stdout.flush()
+                    sys.stderr.flush()
+                
             except Exception as e:
                 self.logger.error(f"调度器运行出错: {e}")
                 await asyncio.sleep(60)  # 出错时等待更长时间
@@ -173,30 +205,71 @@ class AnalysisScheduler:
 
         
     def _should_run_task(self, current_time: datetime) -> bool:
-        """检查是否应该运行任务（使用日常分析的cron表达式）- 固定为12:00"""
-        # 固定使用12:00的cron表达式
-        cron_expr = '0 12 * * *'
-        return self._check_cron_time(cron_expr, current_time)
+        """检查是否应该运行任务（使用日常分析的cron表达式）"""
+        # 使用配置中的分析时间
+        analysis_cron = getattr(self.config.daily_content_check, 'analysis_cron', ['0 13 * * *', '0 20 * * *'])
+        if isinstance(analysis_cron, str):
+            analysis_cron = [analysis_cron]
+        
+        for cron_expr in analysis_cron:
+            if self._check_cron_time(cron_expr, current_time):
+                return True
+        return False
         
     def _should_run_content_check(self, current_time: datetime) -> bool:
-        """检查当前时间是否应该执行内容检查任务 - 固定为12:00"""
+        """检查当前时间是否应该执行内容检查任务"""
         if not hasattr(self.config, 'daily_content_check') or not self.config.daily_content_check.enabled:
             return False
             
-        # 固定使用12:00的cron表达式
-        cron_expr = '0 12 * * *'
-        return self._check_cron_time(cron_expr, current_time)
+        # 使用配置中的内容检查时间
+        content_check_cron = getattr(self.config.daily_content_check, 'content_check_cron', ['0 12 * * *', '0 19 * * *'])
+        if isinstance(content_check_cron, str):
+            content_check_cron = [content_check_cron]
+        
+        for cron_expr in content_check_cron:
+            if self._check_cron_time(cron_expr, current_time):
+                return True
+        return False
     
     def _check_cron_time(self, cron_expr: str, current_time: datetime) -> bool:
         """检查单个cron表达式是否匹配当前时间"""
         try:
-            cron = croniter(cron_expr, current_time)
-            next_run = cron.get_next(datetime)
-            prev_run = cron.get_prev(datetime)
+            # 添加详细调试日志
+            self.logger.debug(f"🔍 检查cron时间: {cron_expr}, 当前时间: {current_time.strftime('%Y-%m-%d %H:%M:%S')}")
             
-            # 检查当前时间是否在预定运行时间的1分钟内
-            time_diff = abs((current_time - prev_run).total_seconds())
-            return time_diff <= 60
+            # 解析cron表达式，检查当前时间是否匹配
+            # 对于 '40 12 * * *'，应该在每天12:40执行
+            parts = cron_expr.strip().split()
+            if len(parts) != 5:
+                self.logger.error(f"无效的cron表达式: {cron_expr}")
+                return False
+            
+            minute_part, hour_part = parts[0], parts[1]
+            
+            # 检查小时和分钟是否匹配
+            target_hour = int(hour_part) if hour_part != '*' else None
+            target_minute = int(minute_part) if minute_part != '*' else None
+            
+            self.logger.debug(f"📅 目标时间: {target_hour:02d}:{target_minute:02d}")
+            self.logger.debug(f"📅 当前时间: {current_time.hour:02d}:{current_time.minute:02d}:{current_time.second:02d}")
+            
+            # 检查是否匹配目标时间（允许1分钟的误差）
+            hour_match = (target_hour is None) or (current_time.hour == target_hour)
+            minute_match = (target_minute is None) or (abs(current_time.minute - target_minute) <= 1)
+            
+            # 为了避免重复执行，还需要检查秒数（只在前30秒内执行）
+            second_check = current_time.second <= 30
+            
+            should_run = hour_match and minute_match and second_check
+            
+            self.logger.debug(f"🎯 匹配检查: 小时={hour_match}, 分钟={minute_match}, 秒数={second_check}")
+            self.logger.debug(f"🎯 是否应该执行: {should_run}")
+            
+            if should_run:
+                self.logger.info(f"✅ 触发任务执行 - cron: {cron_expr}, 当前时间: {current_time.strftime('%H:%M:%S')}")
+            
+            return should_run
+            
         except Exception as e:
             self.logger.error(f"解析cron表达式失败: {cron_expr}, 错误: {e}")
             return False
@@ -215,37 +288,38 @@ class AnalysisScheduler:
             # 内容检查任务
              if hasattr(self.config, 'daily_content_check') and self.config.daily_content_check.enabled:
                  next_content_check = self._get_next_content_check_time(now)
-                 content_check_cron = getattr(self.config.daily_content_check, 'content_check_cron', ['0 12 * * *'])
-                 # 将所有cron表达式改为12:00
-                 if isinstance(content_check_cron, list):
-                     display_cron = ['0 12 * * *'] * len(content_check_cron)
-                 else:
-                     display_cron = '0 12 * * *'
+                 content_check_cron = getattr(self.config.daily_content_check, 'content_check_cron', ['0 12 * * *', '0 19 * * *'])
                  self.logger.info(f"📋 内容检查任务:")
-                 self.logger.info(f"   ⏰ Cron表达式: {display_cron}")
+                 self.logger.info(f"   ⏰ Cron表达式: {content_check_cron}")
                  self.logger.info(f"   ⏭️  下次执行: {next_content_check.strftime('%Y-%m-%d %H:%M:%S')}")
              
              # 日常分析任务
              next_analysis = self._get_next_analysis_time(now)
-             analysis_cron = getattr(self.config.daily_content_check, 'analysis_cron', ['0 12 * * *'])
-             # 将所有cron表达式改为12:00
-             if isinstance(analysis_cron, list):
-                 display_cron = ['0 12 * * *'] * len(analysis_cron)
-             else:
-                 display_cron = '0 12 * * *'
+             analysis_cron = getattr(self.config.daily_content_check, 'analysis_cron', ['0 13 * * *', '0 20 * * *'])
              self.logger.info(f"📊 日常分析任务:")
-             self.logger.info(f"   ⏰ Cron表达式: {display_cron}")
+             self.logger.info(f"   ⏰ Cron表达式: {analysis_cron}")
              self.logger.info(f"   ⏭️  下次执行: {next_analysis.strftime('%Y-%m-%d %H:%M:%S')}")
             
              # 周报任务
              if hasattr(self.config, 'weekly_reports') and self.config.weekly_reports.enabled:
-                 self.logger.info(f"📈 周报任务: 每周五 12:00 执行")
+                 execution_hour = getattr(self.config.weekly_reports, 'execution_hour', 12)
+                 self.logger.info(f"📈 周报任务: 每周五 {execution_hour}:00 执行")
             
         except Exception as e:
             self.logger.error(f"获取任务时间信息失败: {e}")
         
         self.logger.info("="*60)
         self.logger.info("⏳ 调度器正在等待任务执行...")
+        
+        # 强制刷新日志缓冲区
+        import sys
+        sys.stdout.flush()
+        sys.stderr.flush()
+        
+        # 立即打印一条运行状态确认
+        self.logger.info("🔄 调度器主循环已启动，正在监控任务执行时间")
+        sys.stdout.flush()
+        sys.stderr.flush()
     
     def _log_waiting_tasks(self, current_time: datetime):
         """记录当前正在等待的任务信息（每5分钟记录一次）"""
@@ -270,10 +344,15 @@ class AnalysisScheduler:
             # 检查周报任务
             if hasattr(self.config, 'weekly_reports') and self.config.weekly_reports.enabled:
                 if current_time.weekday() == 4:  # 周五
-                    target_hour = 12  # 固定为12:00
-                    if current_time.hour < target_hour:
-                        hours_until = target_hour - current_time.hour
-                        waiting_tasks.append(f"📈 周报任务 (还有 {hours_until} 小时)")
+                    target_hour = 13  # 临时改为13:20测试
+                    target_minute = 20
+                    if current_time.hour < target_hour or (current_time.hour == target_hour and current_time.minute < target_minute):
+                        if current_time.hour < target_hour:
+                            hours_until = target_hour - current_time.hour
+                            waiting_tasks.append(f"📈 周报任务 (还有 {hours_until} 小时)")
+                        else:
+                            minutes_until = target_minute - current_time.minute
+                            waiting_tasks.append(f"📈 周报任务 (还有 {minutes_until} 分钟)")
                 elif current_time.weekday() < 4:  # 周一到周四
                     days_until_friday = 4 - current_time.weekday()
                     waiting_tasks.append(f"📈 周报任务 (还有 {days_until_friday} 天)")
@@ -338,33 +417,45 @@ class AnalysisScheduler:
             self.logger.debug(f"打印运行状态失败: {e}")
     
     def _get_next_content_check_time(self, current_time: datetime) -> datetime:
-        """获取下次内容检查时间 - 固定为12:00"""
+        """获取下次内容检查时间"""
         try:
-            # 固定使用12:00的cron表达式
-            cron_expr = '0 12 * * *'
+            # 使用配置中的内容检查时间
+            content_check_cron = getattr(self.config.daily_content_check, 'content_check_cron', ['0 12 * * *', '0 19 * * *'])
+            if isinstance(content_check_cron, str):
+                content_check_cron = [content_check_cron]
             
-            # 解析cron表达式
-            cron = croniter(cron_expr, current_time)
-            return cron.get_next(datetime)
+            # 找到最近的下次执行时间
+            next_times = []
+            for cron_expr in content_check_cron:
+                cron = croniter(cron_expr, current_time)
+                next_times.append(cron.get_next(datetime))
+            
+            return min(next_times)
         except Exception as e:
-            self.logger.error(f"解析cron表达式失败: {cron_expr}, 错误: {e}")
-            # 默认返回明天12点
+            self.logger.error(f"解析cron表达式失败: {content_check_cron}, 错误: {e}")
+            # 默认返回明天12:00
             tomorrow = current_time.replace(hour=12, minute=0, second=0, microsecond=0) + timedelta(days=1)
             return tomorrow
     
     def _get_next_analysis_time(self, current_time: datetime) -> datetime:
-        """获取下次分析时间 - 固定为12:00"""
+        """获取下次分析时间"""
         try:
-            # 固定使用12:00的cron表达式
-            cron_expr = '0 12 * * *'
+            # 使用配置中的分析时间
+            analysis_cron = getattr(self.config.daily_content_check, 'analysis_cron', ['0 13 * * *', '0 20 * * *'])
+            if isinstance(analysis_cron, str):
+                analysis_cron = [analysis_cron]
             
-            # 解析cron表达式
-            cron = croniter(cron_expr, current_time)
-            return cron.get_next(datetime)
+            # 找到最近的下次执行时间
+            next_times = []
+            for cron_expr in analysis_cron:
+                cron = croniter(cron_expr, current_time)
+                next_times.append(cron.get_next(datetime))
+            
+            return min(next_times)
         except Exception as e:
-            self.logger.error(f"解析cron表达式失败: {cron_expr}, 错误: {e}")
-            # 默认返回明天12点
-            tomorrow = current_time.replace(hour=12, minute=0, second=0, microsecond=0) + timedelta(days=1)
+            self.logger.error(f"解析cron表达式失败: {analysis_cron}, 错误: {e}")
+            # 默认返回明天13:00
+            tomorrow = current_time.replace(hour=13, minute=0, second=0, microsecond=0) + timedelta(days=1)
             return tomorrow
         
     async def _execute_content_check_task(self):
@@ -464,13 +555,14 @@ class AnalysisScheduler:
         if now.weekday() != 4:
             return False
             
-        # 检查是否在12:00执行
+        # 检查是否在13:20执行（临时测试）
         current_hour = now.hour
         current_minute = now.minute
-        target_hour = 12
+        target_hour = 13
+        target_minute = 20
         
-        # 在12:00-12:01之间执行
-        return current_hour == target_hour and current_minute == 0
+        # 在13:20-13:21之间执行
+        return current_hour == target_hour and current_minute == target_minute
             
     async def _execute_weekly_report_task(self):
         """执行周报任务"""

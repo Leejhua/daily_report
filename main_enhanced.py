@@ -79,8 +79,21 @@ def start_scheduler():
         import asyncio
         from src.scheduler import AnalysisScheduler
         from src.config import Config
+        from src.utils.logger import setup_logging
         
         print("正在启动调度器...")
+        
+        # 初始化日志配置 - 设置为DEBUG级别以显示调试信息
+        import logging
+        
+        # 创建一个临时配置对象来设置DEBUG级别
+        class DebugLogConfig:
+            level = 'DEBUG'
+            file_path = 'logs/analyzer.log'
+            max_size = '10MB'
+            backup_count = 5
+        
+        setup_logging(DebugLogConfig())
         
         # 加载配置
         config = Config()
