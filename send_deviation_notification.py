@@ -43,7 +43,7 @@ class FeishuNotificationSender:
                 'user_ids': ['ou_6fb88a7bee0b98c450beb18e25152456'],  # leejhua的正确飞书用户ID
                 'notification_type': 'private'
             },
-            'mapping_file': 'feishu_mapping.json'
+            'mapping_file': 'feishu_github_mapping.json'
         }
         
         self.feishu_client = FeishuClient(feishu_config)

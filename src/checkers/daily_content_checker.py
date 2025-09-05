@@ -214,7 +214,7 @@ class DailyContentChecker:
         users = []
         
         # 尝试从飞书映射文件获取用户列表
-        mapping_file = "feishu_mapping.json"
+        mapping_file = self.config.feishu.mapping_file
         if os.path.exists(mapping_file):
             try:
                 with open(mapping_file, 'r', encoding='utf-8') as f:

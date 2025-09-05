@@ -443,7 +443,10 @@ class NotificationScheduler:
             user_mapping = {}
             try:
                 import json
-                with open('feishu_mapping.json', 'r', encoding='utf-8') as f:
+                from ..config import Config
+                config = Config()
+                mapping_file = config.feishu.mapping_file
+                with open(mapping_file, 'r', encoding='utf-8') as f:
                     mapping_config = json.load(f)
                     user_mapping = mapping_config.get('user_mapping', {})
             except Exception as e:

@@ -137,14 +137,14 @@ class AnalysisScheduler:
             try:
                 now = datetime.now(self.timezone)
                 
-                # 每5分钟打印一次当前运行状态（减少频率）
-                if now.minute % 5 == 0 and now.second < 30:
+                # 每10分钟打印一次当前运行状态（减少频率）
+                if now.minute % 10 == 0 and now.second < 30:
                     self._log_current_status(now)
                     # 强制刷新日志缓冲区
                     sys.stdout.flush()
                     sys.stderr.flush()
                 
-                # 记录等待任务信息（每5分钟一次）
+                # 记录等待任务信息（每10分钟一次）
                 self._log_waiting_tasks(now)
                 
                 # 检查内容检查任务
@@ -322,9 +322,9 @@ class AnalysisScheduler:
         sys.stderr.flush()
     
     def _log_waiting_tasks(self, current_time: datetime):
-        """记录当前正在等待的任务信息（每5分钟记录一次）"""
-        # 只在每5分钟的整点记录，避免日志过多
-        if current_time.minute % 5 != 0 or current_time.second > 30:
+        """记录当前正在等待的任务信息（每10分钟记录一次）"""
+        # 只在每10分钟的整点记录，避免日志过多
+        if current_time.minute % 10 != 0 or current_time.second > 30:
             return
             
         try:
@@ -382,7 +382,7 @@ class AnalysisScheduler:
             return f"{minutes}分钟"
     
     def _log_current_status(self, current_time: datetime):
-        """每30秒打印一次当前运行状态"""
+        """每10分钟打印一次当前运行状态"""
         try:
             # 获取下次任务执行时间
             next_tasks = []
