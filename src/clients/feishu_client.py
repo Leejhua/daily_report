@@ -25,7 +25,7 @@ class FeishuClient:
         if hasattr(config, 'api'):
             # FeishuConfig对象
             self.webhook_url = getattr(config.webhook, 'url', '') if hasattr(config, 'webhook') else ''
-            self.mapping_file = getattr(config, 'mapping_file', 'feishu_mapping.json')
+            self.mapping_file = getattr(config, 'mapping_file', 'feishu_github_mapping.json')
             self.timeout = getattr(config.api, 'timeout', 30) if hasattr(config, 'api') else 30
             self.retry_count = getattr(config.api, 'max_retries', 3) if hasattr(config, 'api') else 3
             
@@ -46,7 +46,7 @@ class FeishuClient:
         else:
             # 字典配置
             self.webhook_url = config.get('webhook_url', '')
-            self.mapping_file = config.get('mapping_file', 'feishu_mapping.json')
+            self.mapping_file = config.get('mapping_file', 'feishu_github_mapping.json')
             self.timeout = config.get('timeout', 30)
             self.retry_count = config.get('retry_count', 3)
             
