@@ -8,16 +8,6 @@ services:
     container_name: github-discussions-analyzer
     restart: unless-stopped
     
-    # Dokploy推荐的标签配置
-    labels:
-      - "dokploy.enable=true"
-      - "dokploy.project=github-analyzer"
-      - "dokploy.service=github-analyzer"
-      - "dokploy.description=GitHub Discussions自动分析和通知系统"
-      - "dokploy.version=1.0.0"
-      - "dokploy.maintainer=your-email@example.com"
-      - "traefik.enable=false"  # 如果不需要外部访问可以设为false
-    
     # 环境变量配置 - 适配dokploy的环境变量管理
     environment:
       # GitHub配置

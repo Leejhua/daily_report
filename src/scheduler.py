@@ -128,6 +128,9 @@ class AnalysisScheduler:
             try:
                 now = datetime.now(self.timezone)
                 
+                # 每30秒打印一次当前运行状态
+                self._log_current_status(now)
+                
                 # 记录等待任务信息（每5分钟一次）
                 self._log_waiting_tasks(now)
                 
@@ -298,6 +301,41 @@ class AnalysisScheduler:
             return f"{hours}小时{minutes}分钟"
         else:
             return f"{minutes}分钟"
+    
+    def _log_current_status(self, current_time: datetime):
+        """每30秒打印一次当前运行状态"""
+        try:
+            # 获取下次任务执行时间
+            next_tasks = []
+            
+            # 内容检查任务
+            if hasattr(self.config, 'daily_content_check') and self.config.daily_content_check.enabled:
+                next_content_check = self._get_next_content_check_time(current_time)
+                time_until = next_content_check - current_time
+                next_tasks.append(f"内容检查({self._format_time_delta(time_until)})")
+            
+            # 日常分析任务
+            next_analysis = self._get_next_analysis_time(current_time)
+            time_until = next_analysis - current_time
+            next_tasks.append(f"日常分析({self._format_time_delta(time_until)})")
+            
+            # 周报任务
+            if hasattr(self.config, 'weekly_reports') and self.config.weekly_reports.enabled:
+                if current_time.weekday() == 4:  # 周五
+                    target_hour = 12
+                    if current_time.hour < target_hour:
+                        hours_until = target_hour - current_time.hour
+                        next_tasks.append(f"周报任务({hours_until}小时)")
+                elif current_time.weekday() < 4:  # 周一到周四
+                    days_until_friday = 4 - current_time.weekday()
+                    next_tasks.append(f"周报任务({days_until_friday}天)")
+            
+            # 打印状态信息
+            status_msg = f"🔄 调度器运行中 | 当前时间: {current_time.strftime('%H:%M:%S')} | 等待任务: {' | '.join(next_tasks)}"
+            self.logger.info(status_msg)
+            
+        except Exception as e:
+            self.logger.debug(f"打印运行状态失败: {e}")
     
     def _get_next_content_check_time(self, current_time: datetime) -> datetime:
         """获取下次内容检查时间 - 固定为12:00"""
