@@ -24,6 +24,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # 复制应用代码和配置文件
 COPY src/ ./src/
 COPY config/ ./config/
+COPY main_enhanced.py ./
 COPY env.example ./
 COPY feishu_mapping.json ./
 
