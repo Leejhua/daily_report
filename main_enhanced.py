@@ -76,6 +76,7 @@ def run_analysis(target_date=None):
 def start_scheduler():
     """启动调度器"""
     try:
+        import asyncio
         from src.scheduler import AnalysisScheduler
         from src.config import Config
         
@@ -84,18 +85,17 @@ def start_scheduler():
         # 加载配置
         config = Config()
         
-        # 创建并启动调度器
+        # 创建调度器
         scheduler = AnalysisScheduler(config)
-        scheduler.start()
         
         print("调度器已启动，按 Ctrl+C 停止")
         
-        # 保持运行
+        # 启动异步调度器
         try:
-            scheduler.keep_alive()
+            asyncio.run(scheduler.start())
         except KeyboardInterrupt:
             print("\n正在停止调度器...")
-            scheduler.stop()
+            asyncio.run(scheduler.stop())
             print("调度器已停止")
         
     except Exception as e:
