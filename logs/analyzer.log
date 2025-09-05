@@ -18456,3 +18456,142 @@ TypeError: DeviationTracker.record_continuous_deviation_alert() takes 3 position
 2025-09-05 11:11:35 - src.scheduler - INFO - 正在启动分析任务调度器...
 2025-09-05 11:11:35 - src.scheduler - INFO - 设置定时任务: 0 23 * * *
 2025-09-05 11:11:35 - src.scheduler - INFO - 调度器启动成功，下次执行时间: 2025-09-05 13:00:00+08:00
+2025-09-05 11:27:15 - src.utils.logger - INFO - 日志系统初始化完成 - 级别: INFO, 文件: logs/analyzer.log
+2025-09-05 11:27:15 - __main__ - INFO - 配置验证通过
+2025-09-05 11:27:15 - __main__ - INFO - 正在启动GitHub Discussions自动化分析服务...
+2025-09-05 11:27:16 - src.clients.github_client - INFO - GitHub客户端初始化成功 (仓库级别): LambdaTheory/main
+2025-09-05 11:27:17 - src.clients.glm_client - INFO - GLM-4.5客户端初始化成功
+2025-09-05 11:27:18 - src.clients.enhanced_glm_client - INFO - 增强版GLM客户端初始化成功
+2025-09-05 11:27:19 - src.clients.github_client - INFO - GitHub客户端初始化成功 (仓库级别): LambdaTheory/main
+2025-09-05 11:27:19 - src.scheduler - INFO - 正在启动分析任务调度器...
+2025-09-05 11:27:19 - src.scheduler - INFO - 设置定时任务: 0 23 * * *
+2025-09-05 11:27:19 - src.scheduler - INFO - ============================================================
+2025-09-05 11:27:19 - src.scheduler - INFO - 🚀 调度器启动成功！
+2025-09-05 11:27:19 - src.scheduler - INFO - 📅 当前时间: 2025-09-05 11:27:19 CST
+2025-09-05 11:27:19 - src.scheduler - INFO - 🌍 时区设置: Asia/Shanghai
+2025-09-05 11:27:19 - src.scheduler - INFO - 📋 内容检查任务:
+2025-09-05 11:27:19 - src.scheduler - INFO -    ⏰ Cron表达式: ['0 12 * * *', '0 19 * * *']
+2025-09-05 11:27:19 - src.scheduler - INFO -    ⏭️  下次执行: 2025-09-05 12:00:00
+2025-09-05 11:27:19 - src.scheduler - INFO - 📊 日常分析任务:
+2025-09-05 11:27:19 - src.scheduler - INFO -    ⏰ Cron表达式: ['0 13 * * *', '0 20 * * *']
+2025-09-05 11:27:19 - src.scheduler - INFO -    ⏭️  下次执行: 2025-09-05 13:00:00
+2025-09-05 11:27:19 - src.scheduler - INFO - 📈 周报任务: 每周五 17:00 执行
+2025-09-05 11:27:19 - src.scheduler - INFO - ============================================================
+2025-09-05 11:27:19 - src.scheduler - INFO - ⏳ 调度器正在等待任务执行...
+2025-09-05 11:27:19 - src.scheduler - INFO - ============================================================
+2025-09-05 11:27:19 - src.scheduler - INFO - 🚀 调度器启动成功！
+2025-09-05 11:27:19 - src.scheduler - INFO - 📅 当前时间: 2025-09-05 11:27:19 CST
+2025-09-05 11:27:19 - src.scheduler - INFO - 🌍 时区设置: Asia/Shanghai
+2025-09-05 11:27:19 - src.scheduler - INFO - 📋 内容检查任务:
+2025-09-05 11:27:19 - src.scheduler - INFO -    ⏰ Cron表达式: ['0 12 * * *', '0 19 * * *']
+2025-09-05 11:27:19 - src.scheduler - INFO -    ⏭️  下次执行: 2025-09-05 12:00:00
+2025-09-05 11:27:19 - src.scheduler - INFO - 📊 日常分析任务:
+2025-09-05 11:27:19 - src.scheduler - INFO -    ⏰ Cron表达式: ['0 13 * * *', '0 20 * * *']
+2025-09-05 11:27:19 - src.scheduler - INFO -    ⏭️  下次执行: 2025-09-05 13:00:00
+2025-09-05 11:27:19 - src.scheduler - INFO - 📈 周报任务: 每周五 17:00 执行
+2025-09-05 11:27:19 - src.scheduler - INFO - ============================================================
+2025-09-05 11:27:19 - src.scheduler - INFO - ⏳ 调度器正在等待任务执行...
+2025-09-05 11:27:19 - src.scheduler - ERROR - 解析cron表达式失败: ['0 12 * * *', '0 19 * * *'], 错误: 'list' object has no attribute 'lower'
+2025-09-05 11:27:19 - src.scheduler - ERROR - 解析cron表达式失败: ['0 13 * * *', '0 20 * * *'], 错误: 'list' object has no attribute 'lower'
+2025-09-05 11:27:49 - src.scheduler - ERROR - 解析cron表达式失败: ['0 12 * * *', '0 19 * * *'], 错误: 'list' object has no attribute 'lower'
+2025-09-05 11:27:49 - src.scheduler - ERROR - 解析cron表达式失败: ['0 13 * * *', '0 20 * * *'], 错误: 'list' object has no attribute 'lower'
+2025-09-05 11:28:19 - src.scheduler - ERROR - 解析cron表达式失败: ['0 12 * * *', '0 19 * * *'], 错误: 'list' object has no attribute 'lower'
+2025-09-05 11:28:19 - src.scheduler - ERROR - 解析cron表达式失败: ['0 13 * * *', '0 20 * * *'], 错误: 'list' object has no attribute 'lower'
+2025-09-05 11:28:49 - src.scheduler - ERROR - 解析cron表达式失败: ['0 12 * * *', '0 19 * * *'], 错误: 'list' object has no attribute 'lower'
+2025-09-05 11:28:49 - src.scheduler - ERROR - 解析cron表达式失败: ['0 13 * * *', '0 20 * * *'], 错误: 'list' object has no attribute 'lower'
+2025-09-05 11:29:42 - src.utils.logger - INFO - 日志系统初始化完成 - 级别: INFO, 文件: logs/analyzer.log
+2025-09-05 11:29:42 - __main__ - INFO - 配置验证通过
+2025-09-05 11:29:42 - __main__ - INFO - 正在启动GitHub Discussions自动化分析服务...
+2025-09-05 11:29:43 - src.clients.github_client - INFO - GitHub客户端初始化成功 (仓库级别): LambdaTheory/main
+2025-09-05 11:29:44 - src.clients.glm_client - INFO - GLM-4.5客户端初始化成功
+2025-09-05 11:29:44 - src.clients.enhanced_glm_client - INFO - 增强版GLM客户端初始化成功
+2025-09-05 11:29:46 - src.clients.github_client - INFO - GitHub客户端初始化成功 (仓库级别): LambdaTheory/main
+2025-09-05 11:29:46 - src.scheduler - INFO - 正在启动分析任务调度器...
+2025-09-05 11:29:46 - src.scheduler - INFO - 设置定时任务: 0 23 * * *
+2025-09-05 11:29:46 - src.scheduler - INFO - ============================================================
+2025-09-05 11:29:46 - src.scheduler - INFO - 🚀 调度器启动成功！
+2025-09-05 11:29:46 - src.scheduler - INFO - 📅 当前时间: 2025-09-05 11:29:46 CST
+2025-09-05 11:29:46 - src.scheduler - INFO - 🌍 时区设置: Asia/Shanghai
+2025-09-05 11:29:46 - src.scheduler - INFO - 📋 内容检查任务:
+2025-09-05 11:29:46 - src.scheduler - INFO -    ⏰ Cron表达式: ['0 12 * * *', '0 12 * * *']
+2025-09-05 11:29:46 - src.scheduler - INFO -    ⏭️  下次执行: 2025-09-05 12:00:00
+2025-09-05 11:29:46 - src.scheduler - INFO - 📊 日常分析任务:
+2025-09-05 11:29:46 - src.scheduler - INFO -    ⏰ Cron表达式: ['0 12 * * *', '0 12 * * *']
+2025-09-05 11:29:46 - src.scheduler - INFO -    ⏭️  下次执行: 2025-09-05 12:00:00
+2025-09-05 11:29:46 - src.scheduler - INFO - 📈 周报任务: 每周五 17:00 执行
+2025-09-05 11:29:46 - src.scheduler - INFO - ============================================================
+2025-09-05 11:29:46 - src.scheduler - INFO - ⏳ 调度器正在等待任务执行...
+2025-09-05 11:29:46 - src.scheduler - INFO - ============================================================
+2025-09-05 11:29:46 - src.scheduler - INFO - 🚀 调度器启动成功！
+2025-09-05 11:29:46 - src.scheduler - INFO - 📅 当前时间: 2025-09-05 11:29:46 CST
+2025-09-05 11:29:46 - src.scheduler - INFO - 🌍 时区设置: Asia/Shanghai
+2025-09-05 11:29:46 - src.scheduler - INFO - 📋 内容检查任务:
+2025-09-05 11:29:46 - src.scheduler - INFO -    ⏰ Cron表达式: ['0 12 * * *', '0 12 * * *']
+2025-09-05 11:29:46 - src.scheduler - INFO -    ⏭️  下次执行: 2025-09-05 12:00:00
+2025-09-05 11:29:46 - src.scheduler - INFO - 📊 日常分析任务:
+2025-09-05 11:29:46 - src.scheduler - INFO -    ⏰ Cron表达式: ['0 12 * * *', '0 12 * * *']
+2025-09-05 11:29:46 - src.scheduler - INFO -    ⏭️  下次执行: 2025-09-05 12:00:00
+2025-09-05 11:29:46 - src.scheduler - INFO - 📈 周报任务: 每周五 17:00 执行
+2025-09-05 11:29:46 - src.scheduler - INFO - ============================================================
+2025-09-05 11:29:46 - src.scheduler - INFO - ⏳ 调度器正在等待任务执行...
+2025-09-05 11:29:46 - src.scheduler - ERROR - 解析cron表达式失败: ['0 12 * * *', '0 19 * * *'], 错误: 'list' object has no attribute 'lower'
+2025-09-05 11:29:46 - src.scheduler - ERROR - 解析cron表达式失败: ['0 13 * * *', '0 20 * * *'], 错误: 'list' object has no attribute 'lower'
+2025-09-05 11:30:16 - src.scheduler - INFO - ⏳ 等待中的任务: 📋 内容检查 (还有 29分钟) | 📊 日常分析 (还有 29分钟) | 📈 周报任务 (还有 6 小时)
+2025-09-05 11:30:16 - src.scheduler - ERROR - 解析cron表达式失败: ['0 12 * * *', '0 19 * * *'], 错误: 'list' object has no attribute 'lower'
+2025-09-05 11:30:16 - src.scheduler - ERROR - 解析cron表达式失败: ['0 13 * * *', '0 20 * * *'], 错误: 'list' object has no attribute 'lower'
+2025-09-05 11:30:46 - src.scheduler - ERROR - 解析cron表达式失败: ['0 12 * * *', '0 19 * * *'], 错误: 'list' object has no attribute 'lower'
+2025-09-05 11:30:46 - src.scheduler - ERROR - 解析cron表达式失败: ['0 13 * * *', '0 20 * * *'], 错误: 'list' object has no attribute 'lower'
+2025-09-05 11:31:34 - src.utils.logger - INFO - 日志系统初始化完成 - 级别: INFO, 文件: logs/analyzer.log
+2025-09-05 11:31:34 - __main__ - INFO - 配置验证通过
+2025-09-05 11:31:34 - __main__ - INFO - 正在启动GitHub Discussions自动化分析服务...
+2025-09-05 11:31:35 - src.clients.github_client - INFO - GitHub客户端初始化成功 (仓库级别): LambdaTheory/main
+2025-09-05 11:31:35 - src.clients.glm_client - INFO - GLM-4.5客户端初始化成功
+2025-09-05 11:31:36 - src.clients.enhanced_glm_client - INFO - 增强版GLM客户端初始化成功
+2025-09-05 11:31:37 - src.clients.github_client - INFO - GitHub客户端初始化成功 (仓库级别): LambdaTheory/main
+2025-09-05 11:31:37 - src.scheduler - INFO - 正在启动分析任务调度器...
+2025-09-05 11:31:37 - src.scheduler - INFO - 设置定时任务: 0 23 * * *
+2025-09-05 11:31:37 - src.scheduler - INFO - ============================================================
+2025-09-05 11:31:37 - src.scheduler - INFO - 🚀 调度器启动成功！
+2025-09-05 11:31:37 - src.scheduler - INFO - 📅 当前时间: 2025-09-05 11:31:37 CST
+2025-09-05 11:31:37 - src.scheduler - INFO - 🌍 时区设置: Asia/Shanghai
+2025-09-05 11:31:37 - src.scheduler - INFO - 📋 内容检查任务:
+2025-09-05 11:31:37 - src.scheduler - INFO -    ⏰ Cron表达式: ['0 12 * * *', '0 12 * * *']
+2025-09-05 11:31:37 - src.scheduler - INFO -    ⏭️  下次执行: 2025-09-05 12:00:00
+2025-09-05 11:31:37 - src.scheduler - INFO - 📊 日常分析任务:
+2025-09-05 11:31:37 - src.scheduler - INFO -    ⏰ Cron表达式: ['0 12 * * *', '0 12 * * *']
+2025-09-05 11:31:37 - src.scheduler - INFO -    ⏭️  下次执行: 2025-09-05 12:00:00
+2025-09-05 11:31:37 - src.scheduler - INFO - 📈 周报任务: 每周五 12:00 执行
+2025-09-05 11:31:37 - src.scheduler - INFO - ============================================================
+2025-09-05 11:31:37 - src.scheduler - INFO - ⏳ 调度器正在等待任务执行...
+2025-09-05 11:31:37 - src.scheduler - INFO - ============================================================
+2025-09-05 11:31:37 - src.scheduler - INFO - 🚀 调度器启动成功！
+2025-09-05 11:31:37 - src.scheduler - INFO - 📅 当前时间: 2025-09-05 11:31:37 CST
+2025-09-05 11:31:37 - src.scheduler - INFO - 🌍 时区设置: Asia/Shanghai
+2025-09-05 11:31:37 - src.scheduler - INFO - 📋 内容检查任务:
+2025-09-05 11:31:37 - src.scheduler - INFO -    ⏰ Cron表达式: ['0 12 * * *', '0 12 * * *']
+2025-09-05 11:31:37 - src.scheduler - INFO -    ⏭️  下次执行: 2025-09-05 12:00:00
+2025-09-05 11:31:37 - src.scheduler - INFO - 📊 日常分析任务:
+2025-09-05 11:31:37 - src.scheduler - INFO -    ⏰ Cron表达式: ['0 12 * * *', '0 12 * * *']
+2025-09-05 11:31:37 - src.scheduler - INFO -    ⏭️  下次执行: 2025-09-05 12:00:00
+2025-09-05 11:31:37 - src.scheduler - INFO - 📈 周报任务: 每周五 12:00 执行
+2025-09-05 11:31:37 - src.scheduler - INFO - ============================================================
+2025-09-05 11:31:37 - src.scheduler - INFO - ⏳ 调度器正在等待任务执行...
+2025-09-05 11:31:37 - src.scheduler - ERROR - 解析cron表达式失败: ['0 12 * * *', '0 19 * * *'], 错误: 'list' object has no attribute 'lower'
+2025-09-05 11:31:37 - src.scheduler - ERROR - 解析cron表达式失败: ['0 13 * * *', '0 20 * * *'], 错误: 'list' object has no attribute 'lower'
+2025-09-05 11:32:07 - src.scheduler - ERROR - 解析cron表达式失败: ['0 12 * * *', '0 19 * * *'], 错误: 'list' object has no attribute 'lower'
+2025-09-05 11:32:07 - src.scheduler - ERROR - 解析cron表达式失败: ['0 13 * * *', '0 20 * * *'], 错误: 'list' object has no attribute 'lower'
+2025-09-05 11:32:37 - src.scheduler - ERROR - 解析cron表达式失败: ['0 12 * * *', '0 19 * * *'], 错误: 'list' object has no attribute 'lower'
+2025-09-05 11:32:37 - src.scheduler - ERROR - 解析cron表达式失败: ['0 13 * * *', '0 20 * * *'], 错误: 'list' object has no attribute 'lower'
+2025-09-05 11:33:07 - src.scheduler - ERROR - 解析cron表达式失败: ['0 12 * * *', '0 19 * * *'], 错误: 'list' object has no attribute 'lower'
+2025-09-05 11:33:07 - src.scheduler - ERROR - 解析cron表达式失败: ['0 13 * * *', '0 20 * * *'], 错误: 'list' object has no attribute 'lower'
+2025-09-05 11:33:37 - src.scheduler - ERROR - 解析cron表达式失败: ['0 12 * * *', '0 19 * * *'], 错误: 'list' object has no attribute 'lower'
+2025-09-05 11:33:37 - src.scheduler - ERROR - 解析cron表达式失败: ['0 13 * * *', '0 20 * * *'], 错误: 'list' object has no attribute 'lower'
+2025-09-05 11:34:07 - src.scheduler - ERROR - 解析cron表达式失败: ['0 12 * * *', '0 19 * * *'], 错误: 'list' object has no attribute 'lower'
+2025-09-05 11:34:07 - src.scheduler - ERROR - 解析cron表达式失败: ['0 13 * * *', '0 20 * * *'], 错误: 'list' object has no attribute 'lower'
+2025-09-05 11:34:37 - src.scheduler - ERROR - 解析cron表达式失败: ['0 12 * * *', '0 19 * * *'], 错误: 'list' object has no attribute 'lower'
+2025-09-05 11:34:37 - src.scheduler - ERROR - 解析cron表达式失败: ['0 13 * * *', '0 20 * * *'], 错误: 'list' object has no attribute 'lower'
+2025-09-05 11:35:07 - src.scheduler - INFO - ⏳ 等待中的任务: 📋 内容检查 (还有 24分钟) | 📊 日常分析 (还有 24分钟) | 📈 周报任务 (还有 1 小时)
+2025-09-05 11:35:07 - src.scheduler - ERROR - 解析cron表达式失败: ['0 12 * * *', '0 19 * * *'], 错误: 'list' object has no attribute 'lower'
+2025-09-05 11:35:07 - src.scheduler - ERROR - 解析cron表达式失败: ['0 13 * * *', '0 20 * * *'], 错误: 'list' object has no attribute 'lower'
+2025-09-05 11:35:37 - src.scheduler - ERROR - 解析cron表达式失败: ['0 12 * * *', '0 19 * * *'], 错误: 'list' object has no attribute 'lower'
+2025-09-05 11:35:37 - src.scheduler - ERROR - 解析cron表达式失败: ['0 13 * * *', '0 20 * * *'], 错误: 'list' object has no attribute 'lower'
