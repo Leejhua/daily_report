@@ -18446,3 +18446,13 @@ TypeError: DeviationTracker.record_continuous_deviation_alert() takes 3 position
 2025-09-05 10:09:23 - __main__ - INFO - 🔗 检查GitHub连接...
 2025-09-05 10:09:25 - src.clients.github_client - ERROR - GitHub客户端初始化失败: 401 {"message": "Bad credentials", "documentation_url": "https://docs.github.com/rest", "status": "401"}
 2025-09-05 10:09:25 - __main__ - ERROR - ❌ GitHub连接失败: 401 {"message": "Bad credentials", "documentation_url": "https://docs.github.com/rest", "status": "401"}
+2025-09-05 11:11:31 - src.utils.logger - INFO - 日志系统初始化完成 - 级别: INFO, 文件: logs/analyzer.log
+2025-09-05 11:11:31 - __main__ - INFO - 配置验证通过
+2025-09-05 11:11:31 - __main__ - INFO - 正在启动GitHub Discussions自动化分析服务...
+2025-09-05 11:11:32 - src.clients.github_client - INFO - GitHub客户端初始化成功 (仓库级别): LambdaTheory/main
+2025-09-05 11:11:33 - src.clients.glm_client - INFO - GLM-4.5客户端初始化成功
+2025-09-05 11:11:33 - src.clients.enhanced_glm_client - INFO - 增强版GLM客户端初始化成功
+2025-09-05 11:11:35 - src.clients.github_client - INFO - GitHub客户端初始化成功 (仓库级别): LambdaTheory/main
+2025-09-05 11:11:35 - src.scheduler - INFO - 正在启动分析任务调度器...
+2025-09-05 11:11:35 - src.scheduler - INFO - 设置定时任务: 0 23 * * *
+2025-09-05 11:11:35 - src.scheduler - INFO - 调度器启动成功，下次执行时间: 2025-09-05 13:00:00+08:00
