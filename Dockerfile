@@ -48,5 +48,5 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
 # 暴露端口（如果需要的话）
 # EXPOSE 8000
 
-# 启动命令
-CMD ["python", "-u", "main_enhanced.py"]
+# 启动命令 - 自动启动调度器
+CMD ["python", "main_enhanced.py", "--scheduler"]

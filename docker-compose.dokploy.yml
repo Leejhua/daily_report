@@ -122,9 +122,9 @@ services:
     # 用户配置
     user: "1000:1000"
     
-    # 依赖配置
-    depends_on:
-      - redis  # 如果需要Redis缓存
+    # 依赖配置 - 暂时移除Redis依赖，避免启动失败
+    # depends_on:
+    #   - redis  # 如果需要Redis缓存
     
   # 可选：Redis缓存服务
   redis:
