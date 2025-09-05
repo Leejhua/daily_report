@@ -29,9 +29,9 @@ async def explore_discussion_categories():
         
         # 根据配置获取discussions
         if config.github.use_org_discussions:
-            discussions = client.org.get_discussions()
+            discussions = await client._get_org_discussions()
         else:
-            discussions = client.repo.get_discussions()
+            discussions = await client._get_repo_discussions()
         
         # 统计分类
         categories = defaultdict(int)
@@ -86,7 +86,11 @@ async def analyze_category_content(category_name: str, max_discussions: int = 10
         config = Config()
         client = GitHubClient(config.github)
         
-        discussions = client.repo.get_discussions()
+        # 根据配置获取discussions
+        if config.github.use_org_discussions:
+            discussions = await client._get_org_discussions()
+        else:
+            discussions = await client._get_repo_discussions()
         target_discussions = []
         
         for discussion in discussions:
@@ -175,7 +179,11 @@ async def analyze_recent_activity(days: int = 7):
         end_date = date.today()
         start_date = end_date - timedelta(days=days-1)
         
-        discussions = client.repo.get_discussions()
+        # 根据配置获取discussions
+        if config.github.use_org_discussions:
+            discussions = await client._get_org_discussions()
+        else:
+            discussions = await client._get_repo_discussions()
         daily_activity = defaultdict(lambda: defaultdict(int))
         
         for discussion in discussions:
@@ -236,6 +244,21 @@ async def suggest_configuration(categories: dict):
             print(f"   - {category} ({count} 个讨论)")
 
 
+async def full_exploration():
+    """完整探索功能"""
+    print("🚀 开始完整探索...")
+    categories, details = await explore_discussion_categories()
+    
+    if categories:
+        # 分析最活跃的分类
+        most_active = max(categories.items(), key=lambda x: x[1])
+        print(f"\n🔥 分析最活跃的分类: {most_active[0]}")
+        await analyze_category_content(most_active[0], 5)
+    
+    await analyze_recent_activity(7)
+    await suggest_configuration(categories)
+
+
 def main():
     """主函数"""
     parser = argparse.ArgumentParser(description="探索GitHub Discussions结构")
@@ -274,17 +297,7 @@ def main():
         asyncio.run(analyze_recent_activity(args.days))
         
     elif args.command == 'full':
-        print("🚀 开始完整探索...")
-        categories, details = asyncio.run(explore_discussion_categories())
-        
-        if categories:
-            # 分析最活跃的分类
-            most_active = max(categories.items(), key=lambda x: x[1])
-            print(f"\n🔥 分析最活跃的分类: {most_active[0]}")
-            await analyze_category_content(most_active[0], 5)
-        
-        await analyze_recent_activity(7)
-        await suggest_configuration(categories)
+        asyncio.run(full_exploration())
 
 
 if __name__ == "__main__":

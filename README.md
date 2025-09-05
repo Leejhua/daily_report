@@ -1,268 +1,277 @@
 # GitHub Discussions 自动化分析服务
 
-基于GLM-4.5模型的GitHub Discussions内容自动化分析系统，专门用于分析"日结"分类中的工作总结和计划内容。
+一个基于Python的智能化GitHub Discussions分析服务，提供日报/日计划内容检查、工作偏离度分析、飞书群组通知等功能。
 
-## 功能特性
+## 🚀 主要功能特性
 
-### 🕒 定时自动执行
-- 支持每日固定时间点自动触发
-- 基于Cron表达式的灵活调度配置
-- 自动重试机制和错误恢复
+### 📊 智能分析
+- **GitHub Discussions日报/日计划内容检查** - 自动检查用户提交的日报和日计划内容
+- **工作偏离度智能分析** - 基于GLM-4模型分析工作计划与实际执行的偏离情况
+- **数据一致性检查** - 确保GitHub数据的完整性和准确性
 
-### 🔍 GitHub Discussions集成
-- 自动访问指定GitHub组织的Discussions
-- 专门读取"2 - 日结"分类内容
-- 智能识别当日更新的内容
-- 支持周期计划（首楼）+ 日计划/日报（评论）结构
+### 🔔 自动通知
+- **飞书群组自动通知** - 支持管理层通知和普通群组消息推送
+- **定时提醒** - 自动提醒用户提交日报和日计划
+- **周报汇总** - 每周自动生成和发送工作总结报告
 
-### 🤖 GLM-4.5智能分析
-- **工作偏离度评估**：对比实际完成工作与预设计划的偏离程度
-- **内容完整性分析**：评估日结描述的清晰度、准确性和完整性
-- **计划一致性分析**：检查日计划与周期计划的一致性
+### 🤖 AI增强
+- **GLM-4模型集成** - 利用智谱AI的GLM-4模型进行智能分析
+- **Langfuse监控** - 完整的AI调用链路追踪和性能监控
+- **智能汇报** - 自动生成结构化的分析报告
 
-### 📝 自动化评论发布
-- 将分析结果自动发布为Discussion评论
-- 结构化的分析报告格式
-- 支持Markdown格式的详细反馈
+### ⏰ 定时任务
+- **灵活调度** - 支持多时间点的定时任务配置
+- **周末控制** - 可配置是否在周末执行检查任务
+- **任务监控** - 实时监控任务执行状态和结果
 
-## 技术架构
+## 🛠️ 技术栈
 
-```
-├── src/
-│   ├── main.py              # 主程序入口
-│   ├── config.py            # 配置管理
-│   ├── scheduler.py         # 定时任务调度器
-│   ├── clients/
-│   │   ├── github_client.py # GitHub API客户端
-│   │   └── glm_client.py    # GLM-4.5模型客户端
-│   ├── analyzers/
-│   │   ├── deviation_analyzer.py    # 偏离度分析器
-│   │   ├── clarity_analyzer.py      # 清晰度分析器
-│   │   └── consistency_analyzer.py  # 一致性分析器
-│   ├── models/
-│   │   └── data_models.py   # 数据模型定义
-│   └── utils/
-│       ├── logger.py        # 日志工具
-│       └── helpers.py       # 辅助工具
-├── config/
-│   ├── config.yaml          # 主配置文件
-│   └── prompts/             # GLM提示词模板
-├── logs/                    # 日志文件目录
-├── requirements.txt         # Python依赖
-├── Dockerfile              # Docker容器配置
-├── docker-compose.yml      # Docker Compose配置
-└── deploy/                 # 部署脚本
-```
+- **核心语言**: Python 3.8+
+- **API集成**: GitHub API, 飞书API, GLM-4 API
+- **数据处理**: PyYAML, Pydantic, python-dateutil
+- **任务调度**: croniter
+- **容器化**: Docker, Gunicorn
+- **监控**: Langfuse, colorlog
+- **测试**: pytest, pytest-asyncio
 
-## 快速开始
+## 🚀 快速开始
 
 ### 环境要求
-- Python 3.9+
-- GitHub Personal Access Token (具有Discussions读写权限)
-- GLM-4.5 API密钥
+
+- Python 3.8 或更高版本
+- Docker (可选，用于容器化部署)
 
 ### 安装步骤
 
 1. **克隆项目**
-```bash
-git clone <repository-url>
-cd github-discussions-analyzer
-```
+   ```bash
+   git clone <repository-url>
+   cd cursor_glm
+   ```
 
 2. **安装依赖**
-```bash
-pip install -r requirements.txt
-```
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 3. **配置环境变量**
+   ```bash
+   cp .env.example .env
+   # 编辑 .env 文件，填入必要的API密钥
+   ```
+
+4. **配置服务**
+   ```bash
+   cp config/config.yaml.example config/config.yaml
+   # 根据需要修改配置文件
+   ```
+
+### 配置说明
+
+#### 必需配置项
+
+- **GitHub配置**
+  ```yaml
+  github:
+    token: "your_github_token"
+    repo_owner: "your_username"
+    repo_name: "your_repo"
+    discussion_category: "Daily Reports"
+  ```
+
+- **GLM配置**
+  ```yaml
+  glm:
+    api_key: "your_glm_api_key"
+    model: "glm-4-plus"
+  ```
+
+- **飞书配置**
+  ```yaml
+  feishu:
+    app_id: "your_app_id"
+    app_secret: "your_app_secret"
+    webhook_url: "your_webhook_url"
+  ```
+
+#### 可选配置项
+
+- **Langfuse监控**
+  ```yaml
+  langfuse:
+    enabled: true
+    secret_key: "your_secret_key"
+    public_key: "your_public_key"
+    host: "https://cloud.langfuse.com"
+  ```
+
+### 运行方式
+
+#### 开发模式
 ```bash
-cp env.example .env
-# 编辑.env文件，填入必要的API密钥和配置
+python main.py
 ```
 
-4. **配置服务参数**
+#### 生产模式
 ```bash
-cp config/config.yaml.example config/config.yaml
-# 编辑config.yaml，设置GitHub组织、仓库等信息
+gunicorn -c gunicorn.conf.py main:app
 ```
 
-5. **测试配置**
-```bash
-python scripts/test_service.py --test connections
-```
+## ⏰ 定时任务说明
 
-6. **测试日报结构解析**
-```bash
-# 测试最近的讨论结构
-python scripts/test_daily_structure.py recent
+系统支持以下定时任务：
 
-# 测试特定讨论
-python scripts/test_daily_structure.py discuss 讨论编号
-```
+| 任务类型 | 执行时间 | 功能描述 |
+|---------|---------|----------|
+| 日报/日计划检查 | 每天 12:00, 19:00 | 检查用户是否提交了当日的日报和日计划 |
+| 日常分析任务 | 每天 13:00, 20:00 | 执行偏离度分析、工作分析报告、数据一致性检查 |
+| 周报汇总 | 每周五 17:00 | 生成并发送周报总结 |
 
-7. **运行服务**
-```bash
-python src/main.py
-```
+### 时间配置
 
-### Docker部署
+可以通过修改 `config/config.yaml` 中的相关配置来调整执行时间：
 
-```bash
-# 构建镜像
-docker-compose build
-
-# 启动服务
-docker-compose up -d
-```
-
-## 配置说明
-
-### 环境变量 (.env)
-```env
-# GitHub配置
-GITHUB_TOKEN=your_github_token_here
-GITHUB_ORG=your_organization_name
-GITHUB_REPO=your_repository_name
-
-# GLM-4.5配置
-GLM_API_KEY=your_glm_api_key_here
-GLM_BASE_URL=https://open.bigmodel.cn/api/paas/v4/
-
-# 调度配置
-SCHEDULE_CRON=0 18 * * *  # 每天18:00执行
-TIMEZONE=Asia/Shanghai
-
-# 日志配置
-LOG_LEVEL=INFO
-LOG_FILE=logs/analyzer.log
-```
-
-### 主配置文件 (config/config.yaml)
 ```yaml
-github:
-  organization: "your-org"
-  repository: "your-repo"
-  discussion_category: "2 - 日结"
-  
-glm:
-  model: "glm-4-flash"
-  temperature: 0.7
-  max_tokens: 2000
-  
-analysis:
-  enable_deviation_analysis: true
-  enable_clarity_analysis: true
-  enable_consistency_analysis: true
-  
-scheduler:
-  cron_expression: "0 18 * * *"
-  timezone: "Asia/Shanghai"
-  retry_attempts: 3
-  retry_delay: 300  # 5分钟
+daily_content_check:
+  content_check_cron: ["0 12 * * *", "0 19 * * *"]  # 日报检查时间
+  analysis_cron: ["0 13 * * *", "0 20 * * *"]        # 分析任务时间
+  weekend_check_enabled: false                        # 是否在周末执行
+
+weekly_summary:
+  enabled: true
+  execution_hour: 17                                   # 周报执行时间（小时）
 ```
 
-## 分析功能详解
+## 🐳 Docker部署
 
-### 1. 工作偏离度评估
-- 自动提取"日结"和"计划"内容
-- 使用GLM-4.5模型分析完成度和偏离度
-- 生成量化评分和详细说明
+### 构建镜像
+```bash
+docker build -t cursor-glm .
+```
 
-### 2. 内容清晰度分析
-- 评估描述的具体性和准确性
-- 识别模糊或不完整的表述
-- 提供改进建议
+### 运行容器
+```bash
+docker run -d \
+  --name cursor-glm-service \
+  -v $(pwd)/config:/app/config \
+  -v $(pwd)/data:/app/data \
+  -v $(pwd)/logs:/app/logs \
+  -p 8000:8000 \
+  cursor-glm
+```
 
-### 3. 计划一致性分析
-- 对比日计划与周期计划的一致性
-- 检测计划偏离和调整合理性
-- 评估计划执行的连贯性
+### Docker Compose
+```yaml
+version: '3.8'
+services:
+  cursor-glm:
+    build: .
+    container_name: cursor-glm-service
+    volumes:
+      - ./config:/app/config
+      - ./data:/app/data
+      - ./logs:/app/logs
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+```
 
-## 输出示例
+## 📁 项目结构
 
-服务将在对应的Discussion下自动发布如下格式的分析评论：
+```
+cursor_glm/
+├── src/                    # 源代码目录
+│   ├── analysis/          # 分析模块
+│   ├── feishu/           # 飞书集成
+│   ├── github_client/    # GitHub API客户端
+│   ├── glm/              # GLM模型集成
+│   ├── config.py         # 配置管理
+│   ├── scheduler.py      # 任务调度器
+│   └── main.py           # 主程序入口
+├── config/               # 配置文件目录
+│   ├── config.yaml       # 主配置文件
+│   └── config.yaml.example
+├── data/                 # 数据存储目录
+├── logs/                 # 日志文件目录
+├── tests/                # 测试文件
+├── requirements.txt      # Python依赖
+├── Dockerfile           # Docker配置
+├── gunicorn.conf.py     # Gunicorn配置
+└── README.md            # 项目文档
+```
 
-```markdown
-## 📊 每日工作分析报告 - 2024-01-15
+## 🔧 开发指南
 
-### 🎯 工作偏离度评估
-**评分**: 8.5/10
-- ✅ 主要计划任务完成度: 85%
-- ⚠️ 偏离项目: 临时会议占用2小时
-- 💡 建议: 建议预留缓冲时间处理突发事务
+### 代码规范
 
-### 📝 内容清晰度分析
-**评分**: 7.5/10
-- ✅ 技术实现描述详细
-- ⚠️ 需要改进: "优化了性能"表述过于笼统
-- 💡 建议: 补充具体的性能指标和优化方法
+项目使用以下工具确保代码质量：
 
-### 🔄 计划一致性分析
-**评分**: 9.0/10
-- ✅ 与周计划高度一致
-- ✅ 优先级安排合理
-- 💡 建议: 保持当前计划执行节奏
+- **Black**: 代码格式化
+- **Flake8**: 代码风格检查
+- **MyPy**: 类型检查
+
+运行代码检查：
+```bash
+# 格式化代码
+black src/
+
+# 检查代码风格
+flake8 src/
+
+# 类型检查
+mypy src/
+```
+
+### 运行测试
+
+```bash
+# 运行所有测试
+pytest
+
+# 运行特定测试文件
+pytest tests/test_analysis.py
+
+# 运行测试并生成覆盖率报告
+pytest --cov=src tests/
+```
+
+### 添加新功能
+
+1. 在 `src/` 目录下创建相应的模块
+2. 添加配置项到 `config/config.yaml.example`
+3. 编写单元测试
+4. 更新文档
+
+### 日志配置
+
+系统使用结构化日志，支持多种日志级别：
+
+```yaml
+logging:
+  level: INFO
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file_enabled: true
+  file_path: "logs/app.log"
+  max_file_size: 10485760  # 10MB
+  backup_count: 5
+```
+
+## 📄 许可证
+
+本项目采用 MIT 许可证。详情请参阅 [LICENSE](LICENSE) 文件。
+
+## 🤝 贡献
+
+欢迎提交 Issue 和 Pull Request 来改进这个项目！
+
+## 📞 支持
+
+如果您在使用过程中遇到问题，请：
+
+1. 查看日志文件 `logs/app.log`
+2. 检查配置文件是否正确
+3. 提交 Issue 描述问题详情
 
 ---
-*本分析由GLM-4.5自动生成 | 生成时间: 2024-01-15 18:00:00*
-```
 
-## 监控与日志
-
-### 日志级别
-- `DEBUG`: 详细的调试信息
-- `INFO`: 一般运行信息
-- `WARNING`: 警告信息
-- `ERROR`: 错误信息
-- `CRITICAL`: 严重错误
-
-### 监控指标
-- 任务执行成功率
-- API调用响应时间
-- 分析准确性指标
-- 系统资源使用情况
-
-## 故障排除
-
-### 常见问题
-
-1. **GitHub API限制**
-   - 检查Token权限
-   - 确认API调用频率限制
-   - 查看网络连接状态
-
-2. **GLM-4.5调用失败**
-   - 验证API密钥有效性
-   - 检查余额和配额
-   - 确认请求格式正确
-
-3. **定时任务未执行**
-   - 检查Cron表达式格式
-   - 确认时区设置
-   - 查看系统时间同步
-
-### 日志查看
-```bash
-# 查看实时日志
-tail -f logs/analyzer.log
-
-# 查看错误日志
-grep ERROR logs/analyzer.log
-
-# 查看今日日志
-grep "$(date +%Y-%m-%d)" logs/analyzer.log
-```
-
-## 贡献指南
-
-欢迎提交Issue和Pull Request来改进这个项目。
-
-## 许可证
-
-本项目采用MIT许可证。
-
-## 联系方式
-
-如有问题或建议，请通过以下方式联系：
-- 提交GitHub Issue
-- 发送邮件至项目维护者
+**注意**: 请确保在生产环境中妥善保管API密钥和敏感配置信息。

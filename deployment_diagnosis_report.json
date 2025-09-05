@@ -1,0 +1,51 @@
+{
+  "timestamp": "2025-09-05T10:09:25.013581",
+  "summary": {
+    "total_checks": 33,
+    "success_count": 24,
+    "warning_count": 7,
+    "issue_count": 2,
+    "overall_status": "FAIL"
+  },
+  "details": {
+    "success_items": [
+      "Python版本: 3.13.7",
+      "模块 asyncio 已安装",
+      "模块 aiohttp 已安装",
+      "模块 croniter 已安装",
+      "模块 pydantic 已安装",
+      "文件存在: src/main.py",
+      "文件存在: src/config.py",
+      "文件存在: src/scheduler.py",
+      "文件存在: config/config.yaml",
+      "文件存在: requirements.txt",
+      "配置文件加载成功",
+      "GitHub组织: LambdaTheory",
+      "Discussion分类: 2 - 日结",
+      "使用仓库级Discussions: main",
+      "调度器Cron: 0 23 * * *",
+      "内容检查配置正确",
+      "环境变量 GITHUB_TOKEN: ghp_xxxx...",
+      "环境变量 GLM_API_KEY: test-key",
+      "目录存在: logs",
+      "目录存在: data",
+      "目录存在: reports",
+      "部署文件存在: Dockerfile (用于Docker部署)",
+      "部署文件存在: docker-compose.yml (用于Docker Compose部署)",
+      "部署文件存在: deploy/deploy.sh (部署脚本)"
+    ],
+    "warnings": [
+      "未设置可选环境变量: GITHUB_ORG (可选，GitHub组织名称)",
+      "未设置可选环境变量: GITHUB_REPO (可选，GitHub仓库名称)",
+      "未设置可选环境变量: USE_ORG_DISCUSSIONS (可选，是否使用组织级Discussions)",
+      "未设置可选环境变量: GLM_BASE_URL (可选，GLM API基础URL)",
+      "未设置可选环境变量: LOG_LEVEL (可选，日志级别)",
+      "部署文件缺失: .env.example (环境变量示例文件)",
+      "环境变量文件 .env 不存在，请从 .env.example 复制并配置"
+    ],
+    "issues": [
+      "缺少必要模块: pyyaml",
+      "GitHub连接失败: 401 {\"message\": \"Bad credentials\", \"documentation_url\": \"https://docs.github.com/rest\", \"status\": \"401\"}"
+    ]
+  }
+}

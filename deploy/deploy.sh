@@ -175,7 +175,7 @@ User=${user}
 WorkingDirectory=${working_dir}
 Environment=PYTHONPATH=${working_dir}
 EnvironmentFile=${working_dir}/.env
-ExecStart=/usr/bin/python3 ${working_dir}/src/main.py
+ExecStart=/usr/bin/python3 ${working_dir}/main_enhanced.py
 Restart=always
 RestartSec=10
 
@@ -218,7 +218,7 @@ run_dev() {
     
     # 运行服务
     log_info "启动分析服务..."
-    python3 src/main.py
+    python3 main_enhanced.py
 }
 
 # 停止服务

@@ -48,4 +48,4 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
 # EXPOSE 8000
 
 # 启动命令
-CMD ["python", "-u", "src/main.py"]
+CMD ["python", "-u", "main_enhanced.py"]
