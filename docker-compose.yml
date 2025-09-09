@@ -21,8 +21,6 @@ services:
       
       # 调度配置
       - SCHEDULE_CRON=${SCHEDULE_CRON:-0 18 * * *}
-      - CONTENT_CHECK_CRON=${CONTENT_CHECK_CRON:-0 12 * * *,0 19 * * *}
-      - ANALYSIS_CRON=${ANALYSIS_CRON:-0 13 * * *,0 20 * * *}
       - TIMEZONE=${TIMEZONE:-Asia/Shanghai}
       
       # 日志配置
@@ -33,6 +31,21 @@ services:
       - ENABLE_DEVIATION_ANALYSIS=${ENABLE_DEVIATION_ANALYSIS:-true}
       - ENABLE_CLARITY_ANALYSIS=${ENABLE_CLARITY_ANALYSIS:-true}
       - ENABLE_CONSISTENCY_ANALYSIS=${ENABLE_CONSISTENCY_ANALYSIS:-true}
+      
+      # 飞书配置
+      - FEISHU_ENABLED=${FEISHU_ENABLED:-false}
+      - FEISHU_APP_ID=${FEISHU_APP_ID}
+      - FEISHU_APP_SECRET=${FEISHU_APP_SECRET}
+      - FEISHU_DEFAULT_CHAT_ID=${FEISHU_DEFAULT_CHAT_ID}
+      - FEISHU_WEBHOOK_URL=${FEISHU_WEBHOOK_URL}
+      
+      # 周报配置
+      - WEEKLY_REPORTS_ENABLED=${WEEKLY_REPORTS_ENABLED:-true}
+      - WEEKLY_EXECUTION_HOUR=${WEEKLY_EXECUTION_HOUR:-17}
+      - WEEKLY_EXECUTION_DAY=${WEEKLY_EXECUTION_DAY:-5}
+      
+      # 内容检查配置
+      - DAILY_CONTENT_CHECK_ENABLED=${DAILY_CONTENT_CHECK_ENABLED:-true}
       
       # 性能配置
       - MAX_CONCURRENT_REQUESTS=${MAX_CONCURRENT_REQUESTS:-5}
@@ -45,6 +58,7 @@ services:
       - ./config:/app/config:ro
       - ./logs:/app/logs
       - ./data:/app/data  # 可选：用于缓存数据
+      - ./feishu_mapping.json:/app/feishu_mapping.json:ro  # 飞书映射文件
     
     # 网络配置
     networks:

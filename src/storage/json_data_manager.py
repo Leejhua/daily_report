@@ -552,6 +552,35 @@ class JSONDataManager:
             self.logger.error(f"获取用户周报数据失败 {week_id}: {e}")
             return None if user_id else {}
     
+    async def save_data(self, filename: str, data: Dict[str, Any], category: str = 'general') -> bool:
+        """保存数据到指定文件
+        
+        Args:
+            filename: 文件名
+            data: 要保存的数据
+            category: 数据类别（用于组织目录结构）
+            
+        Returns:
+            bool: 保存是否成功
+        """
+        try:
+            # 根据类别创建子目录
+            category_dir = self.data_dir / category
+            category_dir.mkdir(parents=True, exist_ok=True)
+            
+            # 构建完整文件路径
+            file_path = category_dir / filename
+            
+            # 写入数据
+            self._write_json_file(file_path, data)
+            
+            self.logger.info(f"数据保存成功: {file_path}")
+            return True
+            
+        except Exception as e:
+            self.logger.error(f"保存数据失败 {filename}: {e}")
+            return False
+    
     async def save_report_record(self, report_record) -> bool:
         """保存报告发送记录
         

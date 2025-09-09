@@ -432,6 +432,130 @@ class DeviationReport:
         )
 
 
+@dataclass
+class DailyReportData:
+    """日报数据"""
+    user_id: str
+    username: str
+    date: str  # YYYY-MM-DD
+    plan_content: str
+    report_content: str
+    discussion_number: int
+    created_at: datetime = field(default_factory=datetime.now)
+    
+    def to_dict(self) -> Dict[str, Any]:
+        """转换为字典"""
+        return {
+            'user_id': self.user_id,
+            'username': self.username,
+            'date': self.date,
+            'plan_content': self.plan_content,
+            'report_content': self.report_content,
+            'discussion_number': self.discussion_number,
+            'created_at': self.created_at.isoformat()
+        }
+
+
+@dataclass
+class UserDailySummary:
+    """用户日报汇总"""
+    user_id: str
+    username: str
+    date: str  # YYYY-MM-DD
+    plan_content: str
+    report_content: str
+    deviation_score: float
+    completion_rate: float
+    analysis_summary: str
+    glm_insights: str
+    
+    def to_dict(self) -> Dict[str, Any]:
+        """转换为字典"""
+        return {
+            'user_id': self.user_id,
+            'username': self.username,
+            'date': self.date,
+            'plan_content': self.plan_content,
+            'report_content': self.report_content,
+            'deviation_score': self.deviation_score,
+            'completion_rate': self.completion_rate,
+            'analysis_summary': self.analysis_summary,
+            'glm_insights': self.glm_insights
+        }
+
+
+@dataclass
+class TeamDailySummaryReport:
+    """团队日报汇总报告"""
+    date: str  # YYYY-MM-DD
+    total_users: int
+    submitted_reports: int
+    submission_rate: float
+    average_deviation_score: float
+    average_completion_rate: float
+    user_summaries: List[UserDailySummary]
+    team_insights: str
+    recommendations: List[str]
+    overview_summary: str = ""
+    key_insights: List[str] = field(default_factory=list)
+    management_recommendations: str = ""
+    glm_enhanced_summary: str = ""
+    team_performance_metrics: Dict[str, Any] = field(default_factory=dict)
+    generated_at: datetime = field(default_factory=datetime.now)
+    
+    def to_dict(self) -> Dict[str, Any]:
+        """转换为字典"""
+        return {
+            'date': self.date,
+            'total_users': self.total_users,
+            'submitted_reports': self.submitted_reports,
+            'submission_rate': self.submission_rate,
+            'average_deviation_score': self.average_deviation_score,
+            'average_completion_rate': self.average_completion_rate,
+            'user_summaries': [summary.to_dict() for summary in self.user_summaries],
+            'team_insights': self.team_insights,
+            'recommendations': self.recommendations,
+            'generated_at': self.generated_at.isoformat()
+        }
+
+
+@dataclass
+class DailySummaryAnalysisTask:
+    """日报汇总分析任务"""
+    task_id: str
+    date: str  # YYYY-MM-DD
+    status: TaskStatus = TaskStatus.PENDING
+    created_at: datetime = field(default_factory=datetime.now)
+    started_at: Optional[datetime] = None
+    completed_at: Optional[datetime] = None
+    report: Optional[TeamDailySummaryReport] = None
+    error_message: Optional[str] = None
+    retry_count: int = 0
+    
+    def start(self):
+        """开始任务"""
+        self.status = TaskStatus.RUNNING
+        self.started_at = datetime.now()
+        
+    def complete(self, report: TeamDailySummaryReport):
+        """完成任务"""
+        self.status = TaskStatus.COMPLETED
+        self.completed_at = datetime.now()
+        self.report = report
+        
+    def fail(self, error_message: str):
+        """任务失败"""
+        self.status = TaskStatus.FAILED
+        self.completed_at = datetime.now()
+        self.error_message = error_message
+        
+    def get_duration(self) -> Optional[float]:
+        """获取任务持续时间（秒）"""
+        if self.started_at and self.completed_at:
+            return (self.completed_at - self.started_at).total_seconds()
+        return None
+
+
 # 工厂函数
 def create_analysis_task(discussion_number: int, 
                         analysis_types: Optional[List[AnalysisType]] = None) -> AnalysisTask:
@@ -459,4 +583,14 @@ def create_daily_summary(date_obj: date) -> DailyAnalysisSummary:
         comments_posted=0,
         total_processing_time=0.0,
         start_time=datetime.now()
+    )
+
+
+def create_daily_summary_analysis_task(date_str: str) -> DailySummaryAnalysisTask:
+    """创建日报汇总分析任务"""
+    task_id = f"daily_summary_{date_str}_{datetime.now().strftime('%H%M%S')}"
+    
+    return DailySummaryAnalysisTask(
+        task_id=task_id,
+        date=date_str
     )

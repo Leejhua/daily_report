@@ -206,6 +206,94 @@ class NotificationConfig:
     recipients: list = field(default_factory=list)
 
 
+@dataclass
+class DailySummaryScheduleConfig:
+    """日报汇总调度配置"""
+    enabled: bool = True
+    cron_expression: str = "0 9 * * *"  # 每天上午9点执行
+    timezone: str = "Asia/Shanghai"
+    retry_attempts: int = 3
+    retry_delay: int = 300
+    max_execution_time: int = 1800
+
+
+@dataclass
+class DailySummaryDataCollectionConfig:
+    """日报汇总数据收集配置"""
+    target_date_offset: int = -1  # 分析前一天的数据
+    include_weekends: bool = False
+    min_reports_required: int = 1
+    max_reports_per_user: int = 1
+    content_validation_enabled: bool = True
+
+
+@dataclass
+class DailySummaryAnalysisConfig:
+    """日报汇总分析配置"""
+    deviation_analysis_enabled: bool = True
+    completion_analysis_enabled: bool = True
+    trend_analysis_enabled: bool = True
+    performance_scoring_enabled: bool = True
+    team_insights_enabled: bool = True
+    individual_insights_enabled: bool = True
+
+
+@dataclass
+class DailySummaryGLMEnhancementConfig:
+    """日报汇总GLM增强配置"""
+    enabled: bool = True
+    user_analysis_prompt: str = "基于用户的日报和日计划，分析工作偏离度、完成率，并提供简洁的洞察和建议"
+    team_insights_prompt: str = "基于团队日报数据，生成团队整体表现洞察，包括趋势分析和改进建议"
+    recommendations_prompt: str = "基于团队表现数据，生成具体的管理建议和改进措施"
+    max_tokens: int = 1500
+    temperature: float = 0.7
+    timeout: int = 60
+
+
+@dataclass
+class DailySummaryNotificationConfig:
+    """日报汇总通知配置"""
+    enabled: bool = True
+    recipients: List[str] = field(default_factory=list)
+    notification_type: str = "private_chat"  # private_chat 或 group_chat
+    message_format: str = "rich_text"
+    include_individual_summaries: bool = True
+    include_team_insights: bool = True
+    include_recommendations: bool = True
+    max_users_in_summary: int = 10
+    
+    def get(self, key: str, default=None):
+        """字典式访问方法"""
+        return getattr(self, key, default)
+
+
+@dataclass
+class DailySummaryExecutionConfig:
+    """日报汇总执行控制配置"""
+    parallel_analysis_enabled: bool = True
+    max_concurrent_users: int = 5
+    batch_size: int = 10
+    error_tolerance_rate: float = 0.2  # 允许20%的用户分析失败
+    skip_on_no_data: bool = True
+    save_intermediate_results: bool = True
+
+
+@dataclass
+class DailySummaryConfig:
+    """日报汇总分析功能配置"""
+    enabled: bool = True
+    schedule: DailySummaryScheduleConfig = field(default_factory=DailySummaryScheduleConfig)
+    data_collection: DailySummaryDataCollectionConfig = field(default_factory=DailySummaryDataCollectionConfig)
+    analysis: DailySummaryAnalysisConfig = field(default_factory=DailySummaryAnalysisConfig)
+    glm_enhancement: DailySummaryGLMEnhancementConfig = field(default_factory=DailySummaryGLMEnhancementConfig)
+    notification: DailySummaryNotificationConfig = field(default_factory=DailySummaryNotificationConfig)
+    execution: DailySummaryExecutionConfig = field(default_factory=DailySummaryExecutionConfig)
+    
+    def get(self, key: str, default=None):
+        """字典式访问方法"""
+        return getattr(self, key, default)
+
+
 class Config:
     """主配置类"""
     
@@ -381,10 +469,18 @@ class Config:
         
         # 日报内容检查配置
         daily_content_check_config = self._config_data.get('daily_content_check', {})
+        # 确保从配置文件获取cron表达式，如果配置文件中没有则抛出异常
+        content_check_cron = daily_content_check_config.get('content_check_cron')
+        if not content_check_cron:
+            raise ValueError("daily_content_check.content_check_cron 配置项缺失")
+        analysis_cron = daily_content_check_config.get('analysis_cron')
+        if not analysis_cron:
+            raise ValueError("daily_content_check.analysis_cron 配置项缺失")
+            
         self.daily_content_check = DailyContentCheckConfig(
             enabled=self._get_bool_env_or_config('DAILY_CONTENT_CHECK_ENABLED', daily_content_check_config.get('enabled', True)),
-            content_check_cron=self._get_cron_list_env_or_config('CONTENT_CHECK_CRON', daily_content_check_config.get('content_check_cron', ['0 12 * * *', '0 19 * * *'])),
-            analysis_cron=self._get_cron_list_env_or_config('ANALYSIS_CRON', daily_content_check_config.get('analysis_cron', ['0 13 * * *', '0 20 * * *'])),
+            content_check_cron=self._get_cron_list_env_or_config('CONTENT_CHECK_CRON', content_check_cron),
+            analysis_cron=self._get_cron_list_env_or_config('ANALYSIS_CRON', analysis_cron),
             check_date_offset=daily_content_check_config.get('check_date_offset', 0),
             morning_check_hour=daily_content_check_config.get('morning_check_hour', 9),
             afternoon_check_hour=daily_content_check_config.get('afternoon_check_hour', 14),
@@ -412,6 +508,69 @@ class Config:
             username=email_config.get('username', ''),
             password=email_config.get('password', ''),
             recipients=email_config.get('recipients', [])
+        )
+        
+        # 日报汇总分析配置
+        daily_summary_config = self._config_data.get('daily_summary_analysis', {})
+        schedule_config = daily_summary_config.get('schedule', {})
+        data_collection_config = daily_summary_config.get('data_collection', {})
+        analysis_config = daily_summary_config.get('analysis', {})
+        glm_enhancement_config = daily_summary_config.get('glm_enhancement', {})
+        notification_config = daily_summary_config.get('notification', {})
+        execution_config = daily_summary_config.get('execution', {})
+        
+        self.daily_summary_analysis = DailySummaryConfig(
+            enabled=self._get_bool_env_or_config('DAILY_SUMMARY_ENABLED', daily_summary_config.get('enabled', True)),
+            schedule=DailySummaryScheduleConfig(
+                enabled=schedule_config.get('enabled', True),
+                cron_expression=self._get_env_or_config('DAILY_SUMMARY_CRON', schedule_config.get('cron_expression', '0 9 * * *')),
+                timezone=schedule_config.get('timezone', 'Asia/Shanghai'),
+                retry_attempts=schedule_config.get('retry_attempts', 3),
+                retry_delay=schedule_config.get('retry_delay', 300),
+                max_execution_time=schedule_config.get('max_execution_time', 1800)
+            ),
+            data_collection=DailySummaryDataCollectionConfig(
+                target_date_offset=data_collection_config.get('target_date_offset', -1),
+                include_weekends=data_collection_config.get('include_weekends', False),
+                min_reports_required=data_collection_config.get('min_reports_required', 1),
+                max_reports_per_user=data_collection_config.get('max_reports_per_user', 1),
+                content_validation_enabled=data_collection_config.get('content_validation_enabled', True)
+            ),
+            analysis=DailySummaryAnalysisConfig(
+                deviation_analysis_enabled=analysis_config.get('deviation_analysis_enabled', True),
+                completion_analysis_enabled=analysis_config.get('completion_analysis_enabled', True),
+                trend_analysis_enabled=analysis_config.get('trend_analysis_enabled', True),
+                performance_scoring_enabled=analysis_config.get('performance_scoring_enabled', True),
+                team_insights_enabled=analysis_config.get('team_insights_enabled', True),
+                individual_insights_enabled=analysis_config.get('individual_insights_enabled', True)
+            ),
+            glm_enhancement=DailySummaryGLMEnhancementConfig(
+                enabled=glm_enhancement_config.get('enabled', True),
+                user_analysis_prompt=glm_enhancement_config.get('user_analysis_prompt', '基于用户的日报和日计划，分析工作偏离度、完成率，并提供简洁的洞察和建议'),
+                team_insights_prompt=glm_enhancement_config.get('team_insights_prompt', '基于团队日报数据，生成团队整体表现洞察，包括趋势分析和改进建议'),
+                recommendations_prompt=glm_enhancement_config.get('recommendations_prompt', '基于团队表现数据，生成具体的管理建议和改进措施'),
+                max_tokens=glm_enhancement_config.get('max_tokens', 1500),
+                temperature=glm_enhancement_config.get('temperature', 0.7),
+                timeout=glm_enhancement_config.get('timeout', 60)
+            ),
+            notification=DailySummaryNotificationConfig(
+                enabled=notification_config.get('enabled', True),
+                recipients=notification_config.get('recipients', []),
+                notification_type=notification_config.get('notification_type', 'private_chat'),
+                message_format=notification_config.get('message_format', 'rich_text'),
+                include_individual_summaries=notification_config.get('include_individual_summaries', True),
+                include_team_insights=notification_config.get('include_team_insights', True),
+                include_recommendations=notification_config.get('include_recommendations', True),
+                max_users_in_summary=notification_config.get('max_users_in_summary', 10)
+            ),
+            execution=DailySummaryExecutionConfig(
+                parallel_analysis_enabled=execution_config.get('parallel_analysis_enabled', True),
+                max_concurrent_users=execution_config.get('max_concurrent_users', 5),
+                batch_size=execution_config.get('batch_size', 10),
+                error_tolerance_rate=execution_config.get('error_tolerance_rate', 0.2),
+                skip_on_no_data=execution_config.get('skip_on_no_data', True),
+                save_intermediate_results=execution_config.get('save_intermediate_results', True)
+            )
         )
         
     def _get_env_or_config(self, env_key: str, config_value: Any) -> str:

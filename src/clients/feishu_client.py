@@ -501,6 +501,18 @@ class FeishuClient:
         
         return None
     
+    def send_private_message(self, user_id: str, message: str) -> bool:
+        """发送私聊消息给指定用户（公开方法）
+        
+        Args:
+            user_id: GitHub用户名或飞书用户ID
+            message: 消息内容
+            
+        Returns:
+            发送是否成功
+        """
+        return self._send_private_message(user_id, message)
+    
     def _send_private_message(self, user_id: str, message_content: str) -> bool:
         """发送私聊消息给指定用户
         
@@ -538,7 +550,7 @@ class FeishuClient:
                 "receive_id": feishu_user_id,
                 "msg_type": "text",
                 "content": json.dumps({
-                    "text": f"📊 个人报告\n\n{message_content}"
+                    "text": message_content
                 }, ensure_ascii=False)
             }
             

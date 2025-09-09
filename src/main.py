@@ -105,6 +105,13 @@ class AnalysisService:
                 if not self.config.daily_content_check.analysis_cron:
                     raise ValueError("日常分析Cron表达式未配置")
                     
+            # 验证日报汇总分析配置
+            if hasattr(self.config, 'daily_summary_analysis') and self.config.daily_summary_analysis.enabled:
+                if not self.config.daily_summary_analysis.schedule.cron_expression:
+                    raise ValueError("日报汇总分析Cron表达式未配置")
+                if not self.config.daily_summary_analysis.notification.management_users:
+                    raise ValueError("管理层用户列表未配置")
+                    
             self.logger.info("配置验证通过")
             
         except Exception as e:
@@ -128,6 +135,8 @@ class AnalysisService:
                 self.logger.info(f"🔍 内容检查时间: {status.get('next_content_check_time', 'N/A')}")
             if status.get('analysis_enabled'):
                 self.logger.info(f"📈 日常分析时间: {status.get('next_analysis_time', 'N/A')}")
+            if status.get('daily_summary_analysis_enabled'):
+                self.logger.info("📊 日报汇总分析: 已启用")
             if status.get('weekly_report_enabled'):
                 self.logger.info("📋 周报功能: 已启用 (每周五17:00)")
                 

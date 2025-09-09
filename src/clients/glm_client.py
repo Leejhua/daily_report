@@ -477,6 +477,34 @@ class GLMClient:
             else:
                 return f"## 📈 团队状态分析\n\n报告生成失败，请检查系统配置。\n\n错误信息: {str(e)}"
     
+    async def generate_text(self, prompt: str, system_prompt: str = None, temperature: float = None) -> str:
+        """
+        生成文本内容
+        
+        Args:
+            prompt: 用户提示词
+            system_prompt: 系统提示词
+            temperature: 温度参数
+            
+        Returns:
+            str: 生成的文本内容
+        """
+        try:
+            if system_prompt is None:
+                system_prompt = "你是一个专业的AI助手，请根据用户的要求生成高质量的内容。"
+            
+            response = await self._call_glm_api(
+                system_prompt=system_prompt,
+                user_prompt=prompt,
+                temperature=temperature or 0.7
+            )
+            
+            return response
+            
+        except Exception as e:
+            self.logger.error(f"文本生成失败: {e}")
+            return f"文本生成失败: {str(e)}"
+    
     async def test_connection(self) -> bool:
         """
         测试GLM API连接

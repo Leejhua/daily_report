@@ -476,6 +476,136 @@ class EnhancedGLMClient:
             self.logger.error(f"GLM API调用失败: {e}")
             raise
     
+    async def analyze_daily_report_with_plan(self, daily_summary: str, daily_plan: str) -> Optional[Dict[str, Any]]:
+        """分析日报与计划的偏离度和完成率
+        
+        Args:
+            daily_summary: 日报内容
+            daily_plan: 日计划内容
+            
+        Returns:
+            Dict[str, Any]: 包含deviation_score、completion_rate和summary的分析结果
+        """
+        try:
+            self.logger.info("开始分析日报与计划的偏离度")
+            
+            # 构建分析提示词
+            system_prompt = """
+你是一个专业的工作分析助手，负责分析员工的日报与日计划的匹配情况。
+
+请分析以下维度：
+1. 偏离度评分（0-10分，0表示完全按计划执行，10表示完全偏离计划）
+2. 完成率（0-1之间的小数，表示计划完成的比例）
+3. 分析摘要（简洁描述偏离情况和完成情况）
+
+分析要求：
+- 客观评估实际工作与计划的匹配程度
+- 考虑额外工作的合理性
+- 提供建设性的分析意见
+"""
+            
+            user_prompt = f"""
+请分析以下日计划与日报的匹配情况：
+
+【日计划】
+{daily_plan if daily_plan and daily_plan.strip() else '未提供日计划内容'}
+
+【日报】
+{daily_summary if daily_summary and daily_summary.strip() else '未提供日报内容'}
+
+请提供JSON格式的分析结果：
+{{
+    "deviation_score": 偏离度评分(0-10),
+    "completion_rate": 完成率(0-1),
+    "summary": "分析摘要"
+}}
+"""
+            
+            # 调用GLM API
+            response = await self._call_glm_api(
+                system_prompt=system_prompt,
+                user_prompt=user_prompt,
+                temperature=0.3
+            )
+            
+            if not response:
+                self.logger.warning("GLM API返回空响应")
+                return None
+            
+            # 尝试解析JSON响应
+            try:
+                # 提取JSON部分
+                import re
+                json_match = re.search(r'\{[^{}]*"deviation_score"[^{}]*\}', response, re.DOTALL)
+                if json_match:
+                    json_str = json_match.group(0)
+                    result = json.loads(json_str)
+                else:
+                    # 如果没有找到JSON，尝试整个响应
+                    result = json.loads(response)
+                
+                # 验证和修正数据类型
+                validated_result = {
+                    'deviation_score': max(0.0, min(10.0, float(result.get('deviation_score', 5.0)))),
+                    'completion_rate': max(0.0, min(1.0, float(result.get('completion_rate', 0.5)))),
+                    'summary': str(result.get('summary', '分析完成'))
+                }
+                
+                self.logger.info(f"日报分析完成 - 偏离度: {validated_result['deviation_score']}, 完成率: {validated_result['completion_rate']}")
+                return validated_result
+                
+            except (json.JSONDecodeError, ValueError, KeyError) as e:
+                self.logger.warning(f"解析GLM响应失败: {e}，使用启发式分析")
+                
+                # 启发式分析作为备用方案
+                return self._heuristic_analysis(daily_summary, daily_plan, response)
+                
+        except Exception as e:
+            self.logger.error(f"分析日报与计划时出错: {e}")
+            return None
+    
+    def _heuristic_analysis(self, daily_summary: str, daily_plan: str, response: str) -> Dict[str, Any]:
+        """启发式分析作为备用方案"""
+        try:
+            # 基于关键词的简单分析
+            response_lower = response.lower() if response else ''
+            
+            # 偏离度评估
+            deviation_score = 5.0  # 默认中等偏离
+            if any(word in response_lower for word in ['严重偏离', '完全偏离', '重大偏离']):
+                deviation_score = 8.5
+            elif any(word in response_lower for word in ['明显偏离', '较大偏离']):
+                deviation_score = 7.0
+            elif any(word in response_lower for word in ['轻微偏离', '小幅偏离']):
+                deviation_score = 4.0
+            elif any(word in response_lower for word in ['基本符合', '按计划执行', '完全符合']):
+                deviation_score = 2.0
+            
+            # 完成率评估
+            completion_rate = 0.5  # 默认50%完成
+            if any(word in response_lower for word in ['完全完成', '全部完成', '100%']):
+                completion_rate = 1.0
+            elif any(word in response_lower for word in ['大部分完成', '基本完成', '80%']):
+                completion_rate = 0.8
+            elif any(word in response_lower for word in ['部分完成', '一半完成', '50%']):
+                completion_rate = 0.5
+            elif any(word in response_lower for word in ['少量完成', '未完成', '20%']):
+                completion_rate = 0.2
+            
+            return {
+                'deviation_score': deviation_score,
+                'completion_rate': completion_rate,
+                'summary': response[:200] if response else '启发式分析完成'
+            }
+            
+        except Exception as e:
+            self.logger.error(f"启发式分析失败: {e}")
+            return {
+                'deviation_score': 5.0,
+                'completion_rate': 0.5,
+                'summary': '分析失败，使用默认值'
+            }
+
     async def test_connection(self) -> bool:
         """测试GLM API连接"""
         try:
