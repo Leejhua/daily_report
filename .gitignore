@@ -214,6 +214,8 @@ feishu_*.py
 github_*.py
 weekly_*.py
 daily_*.py
+# Allow important daily analyzer files in src/analyzers
+!src/analyzers/daily_*.py
 notification_*.py
 verification_*.py
 demo_*.py
@@ -299,6 +301,8 @@ diagnostic_result.json
 
 # Configuration files
 config.yaml
+# Allow important config file
+!config/config.yaml
 .env
 
 # IDE files
