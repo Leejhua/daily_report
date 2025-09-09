@@ -1,0 +1,282 @@
+# GitHub Discussions 自动化分析服务配置文件
+
+# GitHub配置
+github:
+  organization: "LambdaTheory"          # GitHub组织名称
+  repository: "main"                    # 仓库名称（组织级别Discussions时可为空）
+  discussion_category: "2 - 日结"   # Discussion分类名称
+  api_base_url: "https://api.github.com"
+  timeout: 30                       # API请求超时时间(秒)
+  use_org_discussions: false        # true=组织级别, false=仓库级别
+
+# GLM-4.5模型配置
+glm:
+  model: "glm-4-flash"             # 使用的模型名称
+  temperature: 0.7                  # 生成温度参数
+  max_tokens: 2000                 # 最大生成token数
+  top_p: 0.9                       # Top-p采样参数
+  timeout: 60                      # API请求超时时间(秒)
+
+# 分析功能配置
+analysis:
+  enable_deviation_analysis: true   # 启用偏离度分析
+  enable_clarity_analysis: true     # 启用清晰度分析  
+  enable_consistency_analysis: true # 启用一致性分析
+  
+  # 分析阈值配置
+  thresholds:
+    deviation_warning: 0.3          # 偏离度警告阈值
+    deviation_critical: 0.5         # 偏离度严重阈值
+    clarity_minimum: 0.6            # 清晰度最低要求
+    consistency_minimum: 0.7        # 一致性最低要求
+
+# 调度器配置
+scheduler:
+  cron_expression: "0 23 * * *"    # 每天23:00执行（与日常分析时间一致）
+  timezone: "Asia/Shanghai"         # 时区
+  retry_attempts: 3                 # 重试次数
+  retry_delay: 300                  # 重试延迟（秒）
+  max_execution_time: 1800          # 最大执行时间（秒）
+
+# V4.0 日报/日计划内容检查配置
+daily_content_check:
+  enabled: true                     # 启用内容检查功能
+  content_check_cron: 
+    - "0 12 * * *"  # 上午12点检查
+    - "0 22 * * *"  # 晚上22点检查
+  analysis_cron: "0 23 * * *"       # 日常分析时间（晚上23点）
+  
+  # 检查时间配置
+  check_date_offset: 0              # 检查日期偏移（0=当天，-1=昨天）
+  morning_check_hour: 12            # 上午检查时间（12点）
+  afternoon_check_hour: 14          # 下午检查时间（保留原配置）
+  evening_check_hour: 22            # 晚上检查时间（22点）
+  
+  # 执行规则配置
+  weekend_check_enabled: false      # 是否在周末执行检查
+  retry_attempts: 3                 # 检查失败重试次数
+  retry_delay: 300                  # 重试延迟(秒)
+  max_execution_time: 600           # 最大执行时间(秒)
+  
+  # 提醒配置
+  reminder_enabled: true            # 启用提醒功能
+  duplicate_prevention_hours: 4     # 防重复提醒时间(小时)
+  batch_check_enabled: true         # 启用批量检查
+  summary_report_enabled: true      # 启用检查结果摘要报告
+
+# 日志配置
+logging:
+  level: "INFO"                     # 日志级别
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file_path: "logs/analyzer.log"    # 日志文件路径
+  max_size: "10MB"                  # 日志文件最大大小
+  backup_count: 5                   # 备份文件数量
+  
+# 性能配置
+performance:
+  max_concurrent_requests: 5        # 最大并发请求数
+  request_pool_size: 10            # 请求池大小
+  cache_enabled: true              # 启用缓存
+  cache_ttl: 3600                  # 缓存过期时间(秒)
+
+# V2.0 数据存储配置
+storage:
+  type: "json"                     # 存储类型：json
+  base_dir: "data"                 # 数据存储目录
+  file_name: "analysis_data.json"  # 数据文件名
+  backup_enabled: true             # 启用备份
+  backup_count: 5                  # 备份文件数量
+  auto_cleanup_days: 30            # 自动清理天数
+  file_lock_timeout: 10            # 文件锁超时时间(秒)
+  memory_cache_enabled: true       # 启用内存缓存
+  memory_cache_ttl: 300           # 内存缓存过期时间(秒)
+
+# V2.0 偏离检测配置
+deviation_tracking:
+  enabled: true                    # 启用偏离检测
+  continuous_threshold: 3          # 连续偏离阈值(天)
+  check_interval_minutes: 60       # 检查间隔(分钟)
+  deviation_threshold: 0.3         # 偏离度阈值
+  track_recent_days: 7            # 跟踪最近天数
+  auto_alert_enabled: true         # 启用自动预警
+  
+  # 偏离类型权重配置
+  weights:
+    high_deviation: 1.0            # 高偏离权重
+    medium_deviation: 0.7          # 中偏离权重
+    low_deviation: 0.4             # 低偏离权重
+
+# V2.0 智能汇报配置
+report:
+  enabled: true                    # 启用汇报生成
+  default_format: "detailed"       # 默认格式：simple/detailed/card
+  include_suggestions: true        # 包含改进建议
+  include_trends: true             # 包含趋势分析
+  include_statistics: true         # 包含统计信息
+  max_recent_days: 7              # 最大分析天数
+  
+  # GLM增强配置
+  glm_enhancement:
+    enabled: true                  # 启用GLM增强
+    suggestion_prompt: "基于以下偏离分析数据，请提供3-5条具体的改进建议"
+    trend_analysis_prompt: "分析以下数据的趋势变化，提供趋势总结"
+    max_tokens: 1000              # 最大生成token数
+
+# V2.0 飞书群组通知配置
+feishu:
+  enabled: false                  # 启用飞书通知
+  
+  # 飞书开放平台API配置（推荐）
+  api:
+    enabled: true                # 启用API模式
+    app_id: ""                   # 飞书应用ID
+    app_secret: ""               # 飞书应用密钥
+    base_url: "https://open.feishu.cn"  # API基础URL
+    default_chat_id: ""          # 默认群聊ID
+    timeout: 30                  # API请求超时时间(秒)
+    max_retries: 3               # 最大重试次数
+    retry_delay: 1.0             # 重试延迟(秒)
+  
+  # 管理层通知配置
+  management_users:
+    enabled: false               # 启用管理层通知
+    user_ids: []                 # 管理层用户飞书ID列表，例如: ["ou_xxx", "ou_yyy"]
+    notification_type: "private" # 通知类型：private(私聊)
+  
+  # 飞书Webhook配置（备选方案）
+  webhook:
+    enabled: false               # 启用Webhook模式
+    url: ""                      # 飞书机器人Webhook URL
+  
+  # 通用配置
+  mapping_file: "feishu_mapping.json"  # 用户映射文件
+  message_type: "rich_text"        # 消息类型：text/rich_text/card
+  
+  # 通知规则配置
+  notification_hours: [9, 14, 18] # 通知时间(小时)
+  weekend_notifications: false    # 周末通知
+  duplicate_prevention_hours: 4   # 防重复通知时间(小时)
+  max_users_per_message: 10      # 每条消息最大用户数
+  
+  # 消息模板配置
+  templates:
+    simple:
+      title: "📊 工作偏离预警"
+      format: "text"
+    detailed:
+      title: "📊 详细工作偏离分析报告"
+      format: "rich_text"
+    card:
+      title: "📊 工作偏离预警卡片"
+      format: "card"
+      color_theme: "orange"
+
+# V3.0 周报汇总配置
+weekly_reports:
+  enabled: true                    # 启用周报功能
+  execution_hour: 17               # 执行时间(小时，24小时制)
+  execution_day: 5                 # 执行日期(1-7，1为周一，5为周五)
+  
+  # 数据收集配置
+  data_collection:
+    days_to_collect: 7             # 收集天数
+    include_weekends: false        # 是否包含周末数据
+    min_records_required: 3        # 最少记录数要求
+  
+  # 报告生成配置
+  report_generation:
+    include_achievements: true      # 包含成就总结
+    include_issues: true           # 包含问题分析
+    include_suggestions: true      # 包含改进建议
+    include_trends: true           # 包含趋势分析
+    max_achievements: 5            # 最大成就条数
+    max_issues: 5                  # 最大问题条数
+    max_suggestions: 3             # 最大建议条数
+  
+  # GLM增强配置
+  glm_enhancement:
+    enabled: true                  # 启用GLM增强
+    personal_prompt: "基于员工一周的工作数据，生成个人周报总结，包含成就、问题和建议"
+    management_prompt: "基于团队一周的工作数据，生成管理层周报，重点关注团队表现和趋势"
+    max_tokens: 1500              # 最大生成token数
+    temperature: 0.7              # 生成温度
+  
+  # 发送配置
+  delivery:
+    send_to_individuals: true      # 发送个人周报
+    send_to_management: true       # 发送管理层周报
+    management_user_ids: []        # 管理层用户ID列表
+    message_format: "rich_text"    # 消息格式
+    include_charts: false          # 包含图表(暂不支持)
+
+# V4.0 日报汇总分析配置
+daily_summary_analysis:
+  enabled: true                    # 启用日报汇总分析
+  
+  # 调度配置
+  schedule:
+    enabled: true
+    cron_expression: "30 11 * * *"    
+    timezone: "Asia/Shanghai"
+    retry_attempts: 3
+    retry_delay: 300
+    max_execution_time: 1800
+  
+  # 数据收集配置
+  data_collection:
+    target_date_offset: -1          # 分析前一天的数据
+    include_weekends: false
+    min_reports_required: 1
+    max_reports_per_user: 1
+    content_validation_enabled: true
+  
+  # 分析配置
+  analysis:
+    deviation_analysis_enabled: true
+    completion_analysis_enabled: true
+    trend_analysis_enabled: true
+    performance_scoring_enabled: true
+    team_insights_enabled: true
+    individual_insights_enabled: true
+  
+  # GLM增强配置
+  glm_enhancement:
+    enabled: true
+    user_analysis_prompt: "基于用户的日报和日计划，分析工作偏离度、完成率，并提供简洁的洞察和建议"
+    team_insights_prompt: "基于团队日报数据，直接提取和整理团队的具体工作进展和遇到的问题，不需要任何数据分析、偏离度、完成率或趋势分析。严格按照以下格式输出：\n\n日报汇总（YYYY-MM-DD）\n\n## 团队进展\n- 支付模块已修复核心 Bug，正在准备联调（张三）\n- 测试用例已完成一半，需求文档初稿完成（李四）\n- 数据库优化上线，新版本已部署（王五）\n\n## 当前问题\n- 测试环境配置异常，阻塞部分用例执行（李四，需要运维支持）\n- 接口文档未确认，影响前后端对接（张三 & 前端组）\n- 数据初始化耗时过长，影响上线效率（王五）\n\n只需要从日报中提取具体的工作内容和问题，每项都标注负责人，不要添加任何分析性内容。"
+    recommendations_prompt: "基于团队表现数据，生成具体的管理建议和改进措施"
+    max_tokens: 1500
+    temperature: 0.7
+    timeout: 60
+  
+  # 通知配置
+  notification:
+    enabled: true
+    recipients: ["ou_6fb88a7bee0b98c450beb18e25152456"]  # 测试用户ID列表
+    notification_type: "private_chat"
+    message_format: "rich_text"
+    include_individual_summaries: true
+    include_team_insights: true
+    include_recommendations: true
+    max_users_in_summary: 10
+  
+  # 执行配置
+  execution:
+    parallel_analysis_enabled: true
+    max_concurrent_users: 5
+    batch_size: 10
+    error_tolerance_rate: 0.2
+    skip_on_no_data: true
+    save_intermediate_results: true
+
+# 通知配置(兼容旧版本)
+notifications:
+  enabled: false                   # 启用通知
+  webhook_url: ""                  # Webhook URL
+  email:
+    enabled: false
+    smtp_server: ""
+    smtp_port: 587
+    username: ""
+    password: ""
+    recipients: []
