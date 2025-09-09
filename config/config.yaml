@@ -32,7 +32,7 @@ analysis:
 
 # 调度器配置
 scheduler:
-  cron_expression: "0 23 * * *"    # 每天23:00执行（与日常分析时间一致）
+  cron_expression: "40 19 * * *"    # 每天23:00执行（与日常分析时间一致）
   timezone: "Asia/Shanghai"         # 时区
   retry_attempts: 3                 # 重试次数
   retry_delay: 300                  # 重试延迟（秒）
@@ -43,8 +43,8 @@ daily_content_check:
   enabled: true                     # 启用内容检查功能
   content_check_cron: 
     - "0 12 * * *"  # 上午12点检查
-    - "0 22 * * *"  # 晚上22点检查
-  analysis_cron: "0 23 * * *"       # 日常分析时间（晚上23点）
+    - "0 19 * * *"  # 晚上22点检查
+  analysis_cron: "20 19 * * *"       # 日常分析时间（晚上23点）
   
   # 检查时间配置
   check_date_offset: 0              # 检查日期偏移（0=当天，-1=昨天）
@@ -216,7 +216,7 @@ daily_summary_analysis:
   # 调度配置
   schedule:
     enabled: true
-    cron_expression: "30 11 * * *"    
+    cron_expression: "0 20 * * *"    
     timezone: "Asia/Shanghai"
     retry_attempts: 3
     retry_delay: 300
@@ -252,7 +252,7 @@ daily_summary_analysis:
   # 通知配置
   notification:
     enabled: true
-    recipients: ["ou_6fb88a7bee0b98c450beb18e25152456"]  # 测试用户ID列表
+    recipients: ["ou_f5e1ea3a16da42ea0e8c28cab7319a84"]  # 测试用户ID列表
     notification_type: "private_chat"
     message_format: "rich_text"
     include_individual_summaries: true

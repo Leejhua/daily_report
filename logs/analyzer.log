@@ -37022,3 +37022,1531 @@ TypeError: DeviationTracker.record_continuous_deviation_alert() takes 3 position
 2025-09-09 14:13:33 - src.scheduler - DEBUG - 📅 当前时间: 14:13:33
 2025-09-09 14:13:33 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
 2025-09-09 14:13:33 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:14:03 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:14:03
+2025-09-09 14:14:03 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:14:03 - src.scheduler - DEBUG - 📅 当前时间: 14:14:03
+2025-09-09 14:14:03 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:14:03 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:14:03 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:14:03
+2025-09-09 14:14:03 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:14:03 - src.scheduler - DEBUG - 📅 当前时间: 14:14:03
+2025-09-09 14:14:03 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:14:03 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:14:03 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:14:03
+2025-09-09 14:14:03 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:14:03 - src.scheduler - DEBUG - 📅 当前时间: 14:14:03
+2025-09-09 14:14:03 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:14:03 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:14:03 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:14:03
+2025-09-09 14:14:03 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:14:03 - src.scheduler - DEBUG - 📅 当前时间: 14:14:03
+2025-09-09 14:14:03 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:14:03 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:14:33 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:14:33
+2025-09-09 14:14:33 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:14:33 - src.scheduler - DEBUG - 📅 当前时间: 14:14:33
+2025-09-09 14:14:33 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:14:33 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:14:33 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:14:33
+2025-09-09 14:14:33 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:14:33 - src.scheduler - DEBUG - 📅 当前时间: 14:14:33
+2025-09-09 14:14:33 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:14:33 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:14:33 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:14:33
+2025-09-09 14:14:33 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:14:33 - src.scheduler - DEBUG - 📅 当前时间: 14:14:33
+2025-09-09 14:14:33 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:14:33 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:14:33 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:14:33
+2025-09-09 14:14:33 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:14:33 - src.scheduler - DEBUG - 📅 当前时间: 14:14:33
+2025-09-09 14:14:33 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:14:33 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:15:03 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:15:03
+2025-09-09 14:15:03 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:15:03 - src.scheduler - DEBUG - 📅 当前时间: 14:15:03
+2025-09-09 14:15:03 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:15:03 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:15:03 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:15:03
+2025-09-09 14:15:03 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:15:03 - src.scheduler - DEBUG - 📅 当前时间: 14:15:03
+2025-09-09 14:15:03 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:15:03 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:15:03 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:15:03
+2025-09-09 14:15:03 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:15:03 - src.scheduler - DEBUG - 📅 当前时间: 14:15:03
+2025-09-09 14:15:03 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:15:03 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:15:03 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:15:03
+2025-09-09 14:15:03 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:15:03 - src.scheduler - DEBUG - 📅 当前时间: 14:15:03
+2025-09-09 14:15:03 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:15:03 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:15:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:15:34
+2025-09-09 14:15:34 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:15:34 - src.scheduler - DEBUG - 📅 当前时间: 14:15:34
+2025-09-09 14:15:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:15:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:15:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:15:34
+2025-09-09 14:15:34 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:15:34 - src.scheduler - DEBUG - 📅 当前时间: 14:15:34
+2025-09-09 14:15:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:15:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:15:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:15:34
+2025-09-09 14:15:34 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:15:34 - src.scheduler - DEBUG - 📅 当前时间: 14:15:34
+2025-09-09 14:15:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:15:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:15:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:15:34
+2025-09-09 14:15:34 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:15:34 - src.scheduler - DEBUG - 📅 当前时间: 14:15:34
+2025-09-09 14:15:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:15:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:16:04 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:16:04
+2025-09-09 14:16:04 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:16:04 - src.scheduler - DEBUG - 📅 当前时间: 14:16:04
+2025-09-09 14:16:04 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:16:04 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:16:04 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:16:04
+2025-09-09 14:16:04 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:16:04 - src.scheduler - DEBUG - 📅 当前时间: 14:16:04
+2025-09-09 14:16:04 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:16:04 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:16:04 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:16:04
+2025-09-09 14:16:04 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:16:04 - src.scheduler - DEBUG - 📅 当前时间: 14:16:04
+2025-09-09 14:16:04 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:16:04 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:16:04 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:16:04
+2025-09-09 14:16:04 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:16:04 - src.scheduler - DEBUG - 📅 当前时间: 14:16:04
+2025-09-09 14:16:04 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:16:04 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:16:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:16:34
+2025-09-09 14:16:34 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:16:34 - src.scheduler - DEBUG - 📅 当前时间: 14:16:34
+2025-09-09 14:16:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:16:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:16:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:16:34
+2025-09-09 14:16:34 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:16:34 - src.scheduler - DEBUG - 📅 当前时间: 14:16:34
+2025-09-09 14:16:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:16:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:16:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:16:34
+2025-09-09 14:16:34 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:16:34 - src.scheduler - DEBUG - 📅 当前时间: 14:16:34
+2025-09-09 14:16:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:16:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:16:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:16:34
+2025-09-09 14:16:34 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:16:34 - src.scheduler - DEBUG - 📅 当前时间: 14:16:34
+2025-09-09 14:16:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:16:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:17:04 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:17:04
+2025-09-09 14:17:04 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:17:04 - src.scheduler - DEBUG - 📅 当前时间: 14:17:04
+2025-09-09 14:17:04 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:17:04 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:17:04 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:17:04
+2025-09-09 14:17:04 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:17:04 - src.scheduler - DEBUG - 📅 当前时间: 14:17:04
+2025-09-09 14:17:04 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:17:04 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:17:04 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:17:04
+2025-09-09 14:17:04 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:17:04 - src.scheduler - DEBUG - 📅 当前时间: 14:17:04
+2025-09-09 14:17:04 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:17:04 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:17:04 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:17:04
+2025-09-09 14:17:04 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:17:04 - src.scheduler - DEBUG - 📅 当前时间: 14:17:04
+2025-09-09 14:17:04 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:17:04 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:17:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:17:34
+2025-09-09 14:17:34 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:17:34 - src.scheduler - DEBUG - 📅 当前时间: 14:17:34
+2025-09-09 14:17:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:17:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:17:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:17:34
+2025-09-09 14:17:34 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:17:34 - src.scheduler - DEBUG - 📅 当前时间: 14:17:34
+2025-09-09 14:17:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:17:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:17:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:17:34
+2025-09-09 14:17:34 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:17:34 - src.scheduler - DEBUG - 📅 当前时间: 14:17:34
+2025-09-09 14:17:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:17:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:17:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:17:34
+2025-09-09 14:17:34 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:17:34 - src.scheduler - DEBUG - 📅 当前时间: 14:17:34
+2025-09-09 14:17:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:17:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:18:04 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:18:04
+2025-09-09 14:18:04 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:18:04 - src.scheduler - DEBUG - 📅 当前时间: 14:18:04
+2025-09-09 14:18:04 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:18:04 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:18:04 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:18:04
+2025-09-09 14:18:04 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:18:04 - src.scheduler - DEBUG - 📅 当前时间: 14:18:04
+2025-09-09 14:18:04 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:18:04 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:18:04 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:18:04
+2025-09-09 14:18:04 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:18:04 - src.scheduler - DEBUG - 📅 当前时间: 14:18:04
+2025-09-09 14:18:04 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:18:04 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:18:04 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:18:04
+2025-09-09 14:18:04 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:18:04 - src.scheduler - DEBUG - 📅 当前时间: 14:18:04
+2025-09-09 14:18:04 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:18:04 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:18:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:18:34
+2025-09-09 14:18:34 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:18:34 - src.scheduler - DEBUG - 📅 当前时间: 14:18:34
+2025-09-09 14:18:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:18:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:18:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:18:34
+2025-09-09 14:18:34 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:18:34 - src.scheduler - DEBUG - 📅 当前时间: 14:18:34
+2025-09-09 14:18:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:18:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:18:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:18:34
+2025-09-09 14:18:34 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:18:34 - src.scheduler - DEBUG - 📅 当前时间: 14:18:34
+2025-09-09 14:18:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:18:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:18:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:18:34
+2025-09-09 14:18:34 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:18:34 - src.scheduler - DEBUG - 📅 当前时间: 14:18:34
+2025-09-09 14:18:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:18:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:19:04 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:19:04
+2025-09-09 14:19:04 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:19:04 - src.scheduler - DEBUG - 📅 当前时间: 14:19:04
+2025-09-09 14:19:04 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:19:04 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:19:04 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:19:04
+2025-09-09 14:19:04 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:19:04 - src.scheduler - DEBUG - 📅 当前时间: 14:19:04
+2025-09-09 14:19:04 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:19:04 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:19:04 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:19:04
+2025-09-09 14:19:04 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:19:04 - src.scheduler - DEBUG - 📅 当前时间: 14:19:04
+2025-09-09 14:19:04 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:19:04 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:19:04 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:19:04
+2025-09-09 14:19:04 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:19:04 - src.scheduler - DEBUG - 📅 当前时间: 14:19:04
+2025-09-09 14:19:04 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:19:04 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:19:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:19:34
+2025-09-09 14:19:34 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:19:34 - src.scheduler - DEBUG - 📅 当前时间: 14:19:34
+2025-09-09 14:19:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:19:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:19:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:19:34
+2025-09-09 14:19:34 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:19:34 - src.scheduler - DEBUG - 📅 当前时间: 14:19:34
+2025-09-09 14:19:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:19:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:19:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:19:34
+2025-09-09 14:19:34 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:19:34 - src.scheduler - DEBUG - 📅 当前时间: 14:19:34
+2025-09-09 14:19:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:19:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:19:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:19:34
+2025-09-09 14:19:34 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:19:34 - src.scheduler - DEBUG - 📅 当前时间: 14:19:34
+2025-09-09 14:19:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:19:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:20:04 - src.scheduler - INFO - 🔄 调度器运行中 | 当前时间: 14:20:04 | 等待任务: 内容检查(7小时39分钟) | 日常分析(8小时39分钟) | 周报任务(3天)
+2025-09-09 14:20:04 - src.scheduler - INFO - ⏳ 等待中的任务: 📋 内容检查 (还有 7小时39分钟) | 📊 日常分析 (还有 8小时39分钟) | 📈 周报任务 (还有 3 天)
+2025-09-09 14:20:04 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:20:04
+2025-09-09 14:20:04 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:20:04 - src.scheduler - DEBUG - 📅 当前时间: 14:20:04
+2025-09-09 14:20:04 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:20:04 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:20:04 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:20:04
+2025-09-09 14:20:04 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:20:04 - src.scheduler - DEBUG - 📅 当前时间: 14:20:04
+2025-09-09 14:20:04 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:20:04 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:20:04 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:20:04
+2025-09-09 14:20:04 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:20:04 - src.scheduler - DEBUG - 📅 当前时间: 14:20:04
+2025-09-09 14:20:04 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:20:04 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:20:04 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:20:04
+2025-09-09 14:20:04 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:20:04 - src.scheduler - DEBUG - 📅 当前时间: 14:20:04
+2025-09-09 14:20:04 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:20:04 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:20:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:20:34
+2025-09-09 14:20:34 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:20:34 - src.scheduler - DEBUG - 📅 当前时间: 14:20:34
+2025-09-09 14:20:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:20:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:20:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:20:34
+2025-09-09 14:20:34 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:20:34 - src.scheduler - DEBUG - 📅 当前时间: 14:20:34
+2025-09-09 14:20:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:20:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:20:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:20:34
+2025-09-09 14:20:34 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:20:34 - src.scheduler - DEBUG - 📅 当前时间: 14:20:34
+2025-09-09 14:20:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:20:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:20:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:20:34
+2025-09-09 14:20:34 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:20:34 - src.scheduler - DEBUG - 📅 当前时间: 14:20:34
+2025-09-09 14:20:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:20:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:21:04 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:21:04
+2025-09-09 14:21:04 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:21:04 - src.scheduler - DEBUG - 📅 当前时间: 14:21:04
+2025-09-09 14:21:04 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:21:04 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:21:04 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:21:04
+2025-09-09 14:21:04 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:21:04 - src.scheduler - DEBUG - 📅 当前时间: 14:21:04
+2025-09-09 14:21:04 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:21:04 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:21:04 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:21:04
+2025-09-09 14:21:04 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:21:04 - src.scheduler - DEBUG - 📅 当前时间: 14:21:04
+2025-09-09 14:21:04 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:21:04 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:21:04 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:21:04
+2025-09-09 14:21:04 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:21:04 - src.scheduler - DEBUG - 📅 当前时间: 14:21:04
+2025-09-09 14:21:04 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:21:04 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:21:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:21:34
+2025-09-09 14:21:34 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:21:34 - src.scheduler - DEBUG - 📅 当前时间: 14:21:34
+2025-09-09 14:21:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:21:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:21:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:21:34
+2025-09-09 14:21:34 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:21:34 - src.scheduler - DEBUG - 📅 当前时间: 14:21:34
+2025-09-09 14:21:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:21:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:21:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:21:34
+2025-09-09 14:21:34 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:21:34 - src.scheduler - DEBUG - 📅 当前时间: 14:21:34
+2025-09-09 14:21:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:21:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:21:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:21:34
+2025-09-09 14:21:34 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:21:34 - src.scheduler - DEBUG - 📅 当前时间: 14:21:34
+2025-09-09 14:21:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:21:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:22:04 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:22:04
+2025-09-09 14:22:04 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:22:04 - src.scheduler - DEBUG - 📅 当前时间: 14:22:04
+2025-09-09 14:22:04 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:22:04 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:22:04 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:22:04
+2025-09-09 14:22:04 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:22:04 - src.scheduler - DEBUG - 📅 当前时间: 14:22:04
+2025-09-09 14:22:04 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:22:04 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:22:04 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:22:04
+2025-09-09 14:22:04 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:22:04 - src.scheduler - DEBUG - 📅 当前时间: 14:22:04
+2025-09-09 14:22:04 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:22:04 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:22:04 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:22:04
+2025-09-09 14:22:04 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:22:04 - src.scheduler - DEBUG - 📅 当前时间: 14:22:04
+2025-09-09 14:22:04 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:22:04 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:22:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:22:34
+2025-09-09 14:22:34 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:22:34 - src.scheduler - DEBUG - 📅 当前时间: 14:22:34
+2025-09-09 14:22:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:22:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:22:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:22:34
+2025-09-09 14:22:34 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:22:34 - src.scheduler - DEBUG - 📅 当前时间: 14:22:34
+2025-09-09 14:22:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:22:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:22:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:22:34
+2025-09-09 14:22:34 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:22:34 - src.scheduler - DEBUG - 📅 当前时间: 14:22:34
+2025-09-09 14:22:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:22:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:22:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:22:34
+2025-09-09 14:22:34 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:22:34 - src.scheduler - DEBUG - 📅 当前时间: 14:22:34
+2025-09-09 14:22:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:22:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:23:04 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:23:04
+2025-09-09 14:23:04 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:23:04 - src.scheduler - DEBUG - 📅 当前时间: 14:23:04
+2025-09-09 14:23:04 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:23:04 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:23:04 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:23:04
+2025-09-09 14:23:04 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:23:04 - src.scheduler - DEBUG - 📅 当前时间: 14:23:04
+2025-09-09 14:23:04 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:23:04 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:23:04 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:23:04
+2025-09-09 14:23:04 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:23:04 - src.scheduler - DEBUG - 📅 当前时间: 14:23:04
+2025-09-09 14:23:04 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:23:04 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:23:04 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:23:04
+2025-09-09 14:23:04 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:23:04 - src.scheduler - DEBUG - 📅 当前时间: 14:23:04
+2025-09-09 14:23:04 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:23:04 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:23:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:23:34
+2025-09-09 14:23:34 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:23:34 - src.scheduler - DEBUG - 📅 当前时间: 14:23:34
+2025-09-09 14:23:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:23:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:23:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:23:34
+2025-09-09 14:23:34 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:23:34 - src.scheduler - DEBUG - 📅 当前时间: 14:23:34
+2025-09-09 14:23:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:23:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:23:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:23:34
+2025-09-09 14:23:34 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:23:34 - src.scheduler - DEBUG - 📅 当前时间: 14:23:34
+2025-09-09 14:23:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:23:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:23:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:23:34
+2025-09-09 14:23:34 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:23:34 - src.scheduler - DEBUG - 📅 当前时间: 14:23:34
+2025-09-09 14:23:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:23:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:24:04 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:24:04
+2025-09-09 14:24:04 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:24:04 - src.scheduler - DEBUG - 📅 当前时间: 14:24:04
+2025-09-09 14:24:04 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:24:04 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:24:04 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:24:04
+2025-09-09 14:24:04 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:24:04 - src.scheduler - DEBUG - 📅 当前时间: 14:24:04
+2025-09-09 14:24:04 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:24:04 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:24:04 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:24:04
+2025-09-09 14:24:04 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:24:04 - src.scheduler - DEBUG - 📅 当前时间: 14:24:04
+2025-09-09 14:24:04 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:24:04 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:24:04 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:24:04
+2025-09-09 14:24:04 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:24:04 - src.scheduler - DEBUG - 📅 当前时间: 14:24:04
+2025-09-09 14:24:04 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:24:04 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:24:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:24:34
+2025-09-09 14:24:34 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:24:34 - src.scheduler - DEBUG - 📅 当前时间: 14:24:34
+2025-09-09 14:24:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:24:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:24:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:24:34
+2025-09-09 14:24:34 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:24:34 - src.scheduler - DEBUG - 📅 当前时间: 14:24:34
+2025-09-09 14:24:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:24:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:24:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:24:34
+2025-09-09 14:24:34 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:24:34 - src.scheduler - DEBUG - 📅 当前时间: 14:24:34
+2025-09-09 14:24:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:24:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:24:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:24:34
+2025-09-09 14:24:34 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:24:34 - src.scheduler - DEBUG - 📅 当前时间: 14:24:34
+2025-09-09 14:24:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:24:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:25:04 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:25:04
+2025-09-09 14:25:04 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:25:04 - src.scheduler - DEBUG - 📅 当前时间: 14:25:04
+2025-09-09 14:25:04 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:25:04 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:25:04 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:25:04
+2025-09-09 14:25:04 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:25:04 - src.scheduler - DEBUG - 📅 当前时间: 14:25:04
+2025-09-09 14:25:04 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:25:04 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:25:04 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:25:04
+2025-09-09 14:25:04 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:25:04 - src.scheduler - DEBUG - 📅 当前时间: 14:25:04
+2025-09-09 14:25:04 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:25:04 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:25:04 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:25:04
+2025-09-09 14:25:04 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:25:04 - src.scheduler - DEBUG - 📅 当前时间: 14:25:04
+2025-09-09 14:25:04 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:25:04 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:25:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:25:34
+2025-09-09 14:25:34 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:25:34 - src.scheduler - DEBUG - 📅 当前时间: 14:25:34
+2025-09-09 14:25:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:25:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:25:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:25:34
+2025-09-09 14:25:34 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:25:34 - src.scheduler - DEBUG - 📅 当前时间: 14:25:34
+2025-09-09 14:25:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:25:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:25:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:25:34
+2025-09-09 14:25:34 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:25:34 - src.scheduler - DEBUG - 📅 当前时间: 14:25:34
+2025-09-09 14:25:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:25:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:25:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:25:34
+2025-09-09 14:25:34 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:25:34 - src.scheduler - DEBUG - 📅 当前时间: 14:25:34
+2025-09-09 14:25:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:25:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:26:04 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:26:04
+2025-09-09 14:26:04 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:26:04 - src.scheduler - DEBUG - 📅 当前时间: 14:26:04
+2025-09-09 14:26:04 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:26:04 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:26:04 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:26:04
+2025-09-09 14:26:04 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:26:04 - src.scheduler - DEBUG - 📅 当前时间: 14:26:04
+2025-09-09 14:26:04 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:26:04 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:26:04 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:26:04
+2025-09-09 14:26:04 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:26:04 - src.scheduler - DEBUG - 📅 当前时间: 14:26:04
+2025-09-09 14:26:04 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:26:04 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:26:04 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:26:04
+2025-09-09 14:26:04 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:26:04 - src.scheduler - DEBUG - 📅 当前时间: 14:26:04
+2025-09-09 14:26:04 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:26:04 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:26:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:26:34
+2025-09-09 14:26:34 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:26:34 - src.scheduler - DEBUG - 📅 当前时间: 14:26:34
+2025-09-09 14:26:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:26:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:26:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:26:34
+2025-09-09 14:26:34 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:26:34 - src.scheduler - DEBUG - 📅 当前时间: 14:26:34
+2025-09-09 14:26:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:26:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:26:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:26:34
+2025-09-09 14:26:34 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:26:34 - src.scheduler - DEBUG - 📅 当前时间: 14:26:34
+2025-09-09 14:26:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:26:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:26:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:26:34
+2025-09-09 14:26:34 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:26:34 - src.scheduler - DEBUG - 📅 当前时间: 14:26:34
+2025-09-09 14:26:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:26:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:27:04 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:27:04
+2025-09-09 14:27:04 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:27:04 - src.scheduler - DEBUG - 📅 当前时间: 14:27:04
+2025-09-09 14:27:04 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:27:04 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:27:04 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:27:04
+2025-09-09 14:27:04 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:27:04 - src.scheduler - DEBUG - 📅 当前时间: 14:27:04
+2025-09-09 14:27:04 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:27:04 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:27:04 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:27:04
+2025-09-09 14:27:04 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:27:04 - src.scheduler - DEBUG - 📅 当前时间: 14:27:04
+2025-09-09 14:27:04 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:27:04 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:27:04 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:27:04
+2025-09-09 14:27:04 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:27:04 - src.scheduler - DEBUG - 📅 当前时间: 14:27:04
+2025-09-09 14:27:04 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:27:04 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:27:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:27:34
+2025-09-09 14:27:34 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:27:34 - src.scheduler - DEBUG - 📅 当前时间: 14:27:34
+2025-09-09 14:27:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:27:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:27:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:27:34
+2025-09-09 14:27:34 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:27:34 - src.scheduler - DEBUG - 📅 当前时间: 14:27:34
+2025-09-09 14:27:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:27:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:27:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:27:34
+2025-09-09 14:27:34 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:27:34 - src.scheduler - DEBUG - 📅 当前时间: 14:27:34
+2025-09-09 14:27:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:27:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:27:34 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:27:34
+2025-09-09 14:27:34 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:27:34 - src.scheduler - DEBUG - 📅 当前时间: 14:27:34
+2025-09-09 14:27:34 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:27:34 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:28:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:28:05
+2025-09-09 14:28:05 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:28:05 - src.scheduler - DEBUG - 📅 当前时间: 14:28:05
+2025-09-09 14:28:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:28:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:28:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:28:05
+2025-09-09 14:28:05 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:28:05 - src.scheduler - DEBUG - 📅 当前时间: 14:28:05
+2025-09-09 14:28:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:28:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:28:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:28:05
+2025-09-09 14:28:05 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:28:05 - src.scheduler - DEBUG - 📅 当前时间: 14:28:05
+2025-09-09 14:28:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:28:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:28:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:28:05
+2025-09-09 14:28:05 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:28:05 - src.scheduler - DEBUG - 📅 当前时间: 14:28:05
+2025-09-09 14:28:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:28:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:28:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:28:35
+2025-09-09 14:28:35 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:28:35 - src.scheduler - DEBUG - 📅 当前时间: 14:28:35
+2025-09-09 14:28:35 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:28:35 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:28:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:28:35
+2025-09-09 14:28:35 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:28:35 - src.scheduler - DEBUG - 📅 当前时间: 14:28:35
+2025-09-09 14:28:35 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:28:35 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:28:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:28:35
+2025-09-09 14:28:35 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:28:35 - src.scheduler - DEBUG - 📅 当前时间: 14:28:35
+2025-09-09 14:28:35 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:28:35 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:28:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:28:35
+2025-09-09 14:28:35 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:28:35 - src.scheduler - DEBUG - 📅 当前时间: 14:28:35
+2025-09-09 14:28:35 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:28:35 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:29:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:29:05
+2025-09-09 14:29:05 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:29:05 - src.scheduler - DEBUG - 📅 当前时间: 14:29:05
+2025-09-09 14:29:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:29:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:29:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:29:05
+2025-09-09 14:29:05 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:29:05 - src.scheduler - DEBUG - 📅 当前时间: 14:29:05
+2025-09-09 14:29:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:29:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:29:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:29:05
+2025-09-09 14:29:05 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:29:05 - src.scheduler - DEBUG - 📅 当前时间: 14:29:05
+2025-09-09 14:29:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:29:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:29:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:29:05
+2025-09-09 14:29:05 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:29:05 - src.scheduler - DEBUG - 📅 当前时间: 14:29:05
+2025-09-09 14:29:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=True, 秒数=True
+2025-09-09 14:29:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:29:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:29:35
+2025-09-09 14:29:35 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:29:35 - src.scheduler - DEBUG - 📅 当前时间: 14:29:35
+2025-09-09 14:29:35 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:29:35 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:29:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:29:35
+2025-09-09 14:29:35 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:29:35 - src.scheduler - DEBUG - 📅 当前时间: 14:29:35
+2025-09-09 14:29:35 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:29:35 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:29:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:29:35
+2025-09-09 14:29:35 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:29:35 - src.scheduler - DEBUG - 📅 当前时间: 14:29:35
+2025-09-09 14:29:35 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:29:35 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:29:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:29:35
+2025-09-09 14:29:35 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:29:35 - src.scheduler - DEBUG - 📅 当前时间: 14:29:35
+2025-09-09 14:29:35 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=True, 秒数=False
+2025-09-09 14:29:35 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:30:05 - src.scheduler - INFO - 🔄 调度器运行中 | 当前时间: 14:30:05 | 等待任务: 内容检查(7小时29分钟) | 日常分析(8小时29分钟) | 周报任务(3天)
+2025-09-09 14:30:05 - src.scheduler - INFO - ⏳ 等待中的任务: 📋 内容检查 (还有 7小时29分钟) | 📊 日常分析 (还有 8小时29分钟) | 📈 周报任务 (还有 3 天)
+2025-09-09 14:30:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:30:05
+2025-09-09 14:30:05 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:30:05 - src.scheduler - DEBUG - 📅 当前时间: 14:30:05
+2025-09-09 14:30:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:30:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:30:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:30:05
+2025-09-09 14:30:05 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:30:05 - src.scheduler - DEBUG - 📅 当前时间: 14:30:05
+2025-09-09 14:30:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:30:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:30:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:30:05
+2025-09-09 14:30:05 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:30:05 - src.scheduler - DEBUG - 📅 当前时间: 14:30:05
+2025-09-09 14:30:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:30:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:30:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:30:05
+2025-09-09 14:30:05 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:30:05 - src.scheduler - DEBUG - 📅 当前时间: 14:30:05
+2025-09-09 14:30:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=True, 秒数=True
+2025-09-09 14:30:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:30:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:30:35
+2025-09-09 14:30:35 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:30:35 - src.scheduler - DEBUG - 📅 当前时间: 14:30:35
+2025-09-09 14:30:35 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:30:35 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:30:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:30:35
+2025-09-09 14:30:35 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:30:35 - src.scheduler - DEBUG - 📅 当前时间: 14:30:35
+2025-09-09 14:30:35 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:30:35 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:30:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:30:35
+2025-09-09 14:30:35 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:30:35 - src.scheduler - DEBUG - 📅 当前时间: 14:30:35
+2025-09-09 14:30:35 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:30:35 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:30:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:30:35
+2025-09-09 14:30:35 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:30:35 - src.scheduler - DEBUG - 📅 当前时间: 14:30:35
+2025-09-09 14:30:35 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=True, 秒数=False
+2025-09-09 14:30:35 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:31:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:31:05
+2025-09-09 14:31:05 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:31:05 - src.scheduler - DEBUG - 📅 当前时间: 14:31:05
+2025-09-09 14:31:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:31:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:31:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:31:05
+2025-09-09 14:31:05 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:31:05 - src.scheduler - DEBUG - 📅 当前时间: 14:31:05
+2025-09-09 14:31:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:31:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:31:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:31:05
+2025-09-09 14:31:05 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:31:05 - src.scheduler - DEBUG - 📅 当前时间: 14:31:05
+2025-09-09 14:31:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:31:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:31:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:31:05
+2025-09-09 14:31:05 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:31:05 - src.scheduler - DEBUG - 📅 当前时间: 14:31:05
+2025-09-09 14:31:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=True, 秒数=True
+2025-09-09 14:31:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:31:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:31:35
+2025-09-09 14:31:35 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:31:35 - src.scheduler - DEBUG - 📅 当前时间: 14:31:35
+2025-09-09 14:31:35 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:31:35 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:31:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:31:35
+2025-09-09 14:31:35 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:31:35 - src.scheduler - DEBUG - 📅 当前时间: 14:31:35
+2025-09-09 14:31:35 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:31:35 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:31:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:31:35
+2025-09-09 14:31:35 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:31:35 - src.scheduler - DEBUG - 📅 当前时间: 14:31:35
+2025-09-09 14:31:35 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:31:35 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:31:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:31:35
+2025-09-09 14:31:35 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:31:35 - src.scheduler - DEBUG - 📅 当前时间: 14:31:35
+2025-09-09 14:31:35 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=True, 秒数=False
+2025-09-09 14:31:35 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:32:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:32:05
+2025-09-09 14:32:05 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:32:05 - src.scheduler - DEBUG - 📅 当前时间: 14:32:05
+2025-09-09 14:32:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:32:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:32:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:32:05
+2025-09-09 14:32:05 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:32:05 - src.scheduler - DEBUG - 📅 当前时间: 14:32:05
+2025-09-09 14:32:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:32:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:32:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:32:05
+2025-09-09 14:32:05 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:32:05 - src.scheduler - DEBUG - 📅 当前时间: 14:32:05
+2025-09-09 14:32:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:32:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:32:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:32:05
+2025-09-09 14:32:05 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:32:05 - src.scheduler - DEBUG - 📅 当前时间: 14:32:05
+2025-09-09 14:32:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:32:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:32:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:32:35
+2025-09-09 14:32:35 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:32:35 - src.scheduler - DEBUG - 📅 当前时间: 14:32:35
+2025-09-09 14:32:35 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:32:35 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:32:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:32:35
+2025-09-09 14:32:35 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:32:35 - src.scheduler - DEBUG - 📅 当前时间: 14:32:35
+2025-09-09 14:32:35 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:32:35 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:32:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:32:35
+2025-09-09 14:32:35 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:32:35 - src.scheduler - DEBUG - 📅 当前时间: 14:32:35
+2025-09-09 14:32:35 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:32:35 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:32:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:32:35
+2025-09-09 14:32:35 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:32:35 - src.scheduler - DEBUG - 📅 当前时间: 14:32:35
+2025-09-09 14:32:35 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:32:35 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:33:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:33:05
+2025-09-09 14:33:05 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:33:05 - src.scheduler - DEBUG - 📅 当前时间: 14:33:05
+2025-09-09 14:33:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:33:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:33:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:33:05
+2025-09-09 14:33:05 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:33:05 - src.scheduler - DEBUG - 📅 当前时间: 14:33:05
+2025-09-09 14:33:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:33:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:33:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:33:05
+2025-09-09 14:33:05 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:33:05 - src.scheduler - DEBUG - 📅 当前时间: 14:33:05
+2025-09-09 14:33:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:33:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:33:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:33:05
+2025-09-09 14:33:05 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:33:05 - src.scheduler - DEBUG - 📅 当前时间: 14:33:05
+2025-09-09 14:33:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:33:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:33:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:33:35
+2025-09-09 14:33:35 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:33:35 - src.scheduler - DEBUG - 📅 当前时间: 14:33:35
+2025-09-09 14:33:35 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:33:35 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:33:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:33:35
+2025-09-09 14:33:35 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:33:35 - src.scheduler - DEBUG - 📅 当前时间: 14:33:35
+2025-09-09 14:33:35 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:33:35 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:33:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:33:35
+2025-09-09 14:33:35 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:33:35 - src.scheduler - DEBUG - 📅 当前时间: 14:33:35
+2025-09-09 14:33:35 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:33:35 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:33:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:33:35
+2025-09-09 14:33:35 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:33:35 - src.scheduler - DEBUG - 📅 当前时间: 14:33:35
+2025-09-09 14:33:35 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:33:35 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:34:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:34:05
+2025-09-09 14:34:05 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:34:05 - src.scheduler - DEBUG - 📅 当前时间: 14:34:05
+2025-09-09 14:34:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:34:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:34:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:34:05
+2025-09-09 14:34:05 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:34:05 - src.scheduler - DEBUG - 📅 当前时间: 14:34:05
+2025-09-09 14:34:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:34:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:34:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:34:05
+2025-09-09 14:34:05 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:34:05 - src.scheduler - DEBUG - 📅 当前时间: 14:34:05
+2025-09-09 14:34:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:34:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:34:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:34:05
+2025-09-09 14:34:05 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:34:05 - src.scheduler - DEBUG - 📅 当前时间: 14:34:05
+2025-09-09 14:34:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:34:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:34:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:34:35
+2025-09-09 14:34:35 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:34:35 - src.scheduler - DEBUG - 📅 当前时间: 14:34:35
+2025-09-09 14:34:35 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:34:35 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:34:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:34:35
+2025-09-09 14:34:35 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:34:35 - src.scheduler - DEBUG - 📅 当前时间: 14:34:35
+2025-09-09 14:34:35 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:34:35 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:34:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:34:35
+2025-09-09 14:34:35 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:34:35 - src.scheduler - DEBUG - 📅 当前时间: 14:34:35
+2025-09-09 14:34:35 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:34:35 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:34:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:34:35
+2025-09-09 14:34:35 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:34:35 - src.scheduler - DEBUG - 📅 当前时间: 14:34:35
+2025-09-09 14:34:35 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:34:35 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:35:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:35:05
+2025-09-09 14:35:05 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:35:05 - src.scheduler - DEBUG - 📅 当前时间: 14:35:05
+2025-09-09 14:35:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:35:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:35:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:35:05
+2025-09-09 14:35:05 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:35:05 - src.scheduler - DEBUG - 📅 当前时间: 14:35:05
+2025-09-09 14:35:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:35:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:35:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:35:05
+2025-09-09 14:35:05 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:35:05 - src.scheduler - DEBUG - 📅 当前时间: 14:35:05
+2025-09-09 14:35:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:35:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:35:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:35:05
+2025-09-09 14:35:05 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:35:05 - src.scheduler - DEBUG - 📅 当前时间: 14:35:05
+2025-09-09 14:35:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:35:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:35:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:35:35
+2025-09-09 14:35:35 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:35:35 - src.scheduler - DEBUG - 📅 当前时间: 14:35:35
+2025-09-09 14:35:35 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:35:35 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:35:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:35:35
+2025-09-09 14:35:35 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:35:35 - src.scheduler - DEBUG - 📅 当前时间: 14:35:35
+2025-09-09 14:35:35 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:35:35 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:35:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:35:35
+2025-09-09 14:35:35 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:35:35 - src.scheduler - DEBUG - 📅 当前时间: 14:35:35
+2025-09-09 14:35:35 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:35:35 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:35:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:35:35
+2025-09-09 14:35:35 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:35:35 - src.scheduler - DEBUG - 📅 当前时间: 14:35:35
+2025-09-09 14:35:35 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:35:35 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:36:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:36:05
+2025-09-09 14:36:05 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:36:05 - src.scheduler - DEBUG - 📅 当前时间: 14:36:05
+2025-09-09 14:36:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:36:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:36:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:36:05
+2025-09-09 14:36:05 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:36:05 - src.scheduler - DEBUG - 📅 当前时间: 14:36:05
+2025-09-09 14:36:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:36:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:36:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:36:05
+2025-09-09 14:36:05 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:36:05 - src.scheduler - DEBUG - 📅 当前时间: 14:36:05
+2025-09-09 14:36:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:36:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:36:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:36:05
+2025-09-09 14:36:05 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:36:05 - src.scheduler - DEBUG - 📅 当前时间: 14:36:05
+2025-09-09 14:36:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:36:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:36:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:36:35
+2025-09-09 14:36:35 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:36:35 - src.scheduler - DEBUG - 📅 当前时间: 14:36:35
+2025-09-09 14:36:35 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:36:35 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:36:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:36:35
+2025-09-09 14:36:35 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:36:35 - src.scheduler - DEBUG - 📅 当前时间: 14:36:35
+2025-09-09 14:36:35 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:36:35 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:36:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:36:35
+2025-09-09 14:36:35 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:36:35 - src.scheduler - DEBUG - 📅 当前时间: 14:36:35
+2025-09-09 14:36:35 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:36:35 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:36:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:36:35
+2025-09-09 14:36:35 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:36:35 - src.scheduler - DEBUG - 📅 当前时间: 14:36:35
+2025-09-09 14:36:35 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:36:35 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:37:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:37:05
+2025-09-09 14:37:05 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:37:05 - src.scheduler - DEBUG - 📅 当前时间: 14:37:05
+2025-09-09 14:37:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:37:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:37:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:37:05
+2025-09-09 14:37:05 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:37:05 - src.scheduler - DEBUG - 📅 当前时间: 14:37:05
+2025-09-09 14:37:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:37:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:37:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:37:05
+2025-09-09 14:37:05 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:37:05 - src.scheduler - DEBUG - 📅 当前时间: 14:37:05
+2025-09-09 14:37:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:37:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:37:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:37:05
+2025-09-09 14:37:05 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:37:05 - src.scheduler - DEBUG - 📅 当前时间: 14:37:05
+2025-09-09 14:37:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:37:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:37:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:37:35
+2025-09-09 14:37:35 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:37:35 - src.scheduler - DEBUG - 📅 当前时间: 14:37:35
+2025-09-09 14:37:35 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:37:35 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:37:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:37:35
+2025-09-09 14:37:35 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:37:35 - src.scheduler - DEBUG - 📅 当前时间: 14:37:35
+2025-09-09 14:37:35 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:37:35 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:37:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:37:35
+2025-09-09 14:37:35 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:37:35 - src.scheduler - DEBUG - 📅 当前时间: 14:37:35
+2025-09-09 14:37:35 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:37:35 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:37:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:37:35
+2025-09-09 14:37:35 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:37:35 - src.scheduler - DEBUG - 📅 当前时间: 14:37:35
+2025-09-09 14:37:35 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:37:35 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:38:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:38:05
+2025-09-09 14:38:05 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:38:05 - src.scheduler - DEBUG - 📅 当前时间: 14:38:05
+2025-09-09 14:38:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:38:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:38:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:38:05
+2025-09-09 14:38:05 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:38:05 - src.scheduler - DEBUG - 📅 当前时间: 14:38:05
+2025-09-09 14:38:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:38:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:38:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:38:05
+2025-09-09 14:38:05 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:38:05 - src.scheduler - DEBUG - 📅 当前时间: 14:38:05
+2025-09-09 14:38:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:38:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:38:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:38:05
+2025-09-09 14:38:05 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:38:05 - src.scheduler - DEBUG - 📅 当前时间: 14:38:05
+2025-09-09 14:38:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:38:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:38:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:38:35
+2025-09-09 14:38:35 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:38:35 - src.scheduler - DEBUG - 📅 当前时间: 14:38:35
+2025-09-09 14:38:35 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:38:35 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:38:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:38:35
+2025-09-09 14:38:35 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:38:35 - src.scheduler - DEBUG - 📅 当前时间: 14:38:35
+2025-09-09 14:38:35 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:38:35 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:38:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:38:35
+2025-09-09 14:38:35 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:38:35 - src.scheduler - DEBUG - 📅 当前时间: 14:38:35
+2025-09-09 14:38:35 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:38:35 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:38:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:38:35
+2025-09-09 14:38:35 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:38:35 - src.scheduler - DEBUG - 📅 当前时间: 14:38:35
+2025-09-09 14:38:35 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:38:35 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:39:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:39:05
+2025-09-09 14:39:05 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:39:05 - src.scheduler - DEBUG - 📅 当前时间: 14:39:05
+2025-09-09 14:39:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:39:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:39:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:39:05
+2025-09-09 14:39:05 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:39:05 - src.scheduler - DEBUG - 📅 当前时间: 14:39:05
+2025-09-09 14:39:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:39:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:39:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:39:05
+2025-09-09 14:39:05 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:39:05 - src.scheduler - DEBUG - 📅 当前时间: 14:39:05
+2025-09-09 14:39:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:39:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:39:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:39:05
+2025-09-09 14:39:05 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:39:05 - src.scheduler - DEBUG - 📅 当前时间: 14:39:05
+2025-09-09 14:39:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:39:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:39:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:39:35
+2025-09-09 14:39:35 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:39:35 - src.scheduler - DEBUG - 📅 当前时间: 14:39:35
+2025-09-09 14:39:35 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:39:35 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:39:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:39:35
+2025-09-09 14:39:35 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:39:35 - src.scheduler - DEBUG - 📅 当前时间: 14:39:35
+2025-09-09 14:39:35 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:39:35 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:39:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:39:35
+2025-09-09 14:39:35 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:39:35 - src.scheduler - DEBUG - 📅 当前时间: 14:39:35
+2025-09-09 14:39:35 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:39:35 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:39:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:39:35
+2025-09-09 14:39:35 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:39:35 - src.scheduler - DEBUG - 📅 当前时间: 14:39:35
+2025-09-09 14:39:35 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:39:35 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:40:05 - src.scheduler - INFO - 🔄 调度器运行中 | 当前时间: 14:40:05 | 等待任务: 内容检查(7小时19分钟) | 日常分析(8小时19分钟) | 周报任务(3天)
+2025-09-09 14:40:05 - src.scheduler - INFO - ⏳ 等待中的任务: 📋 内容检查 (还有 7小时19分钟) | 📊 日常分析 (还有 8小时19分钟) | 📈 周报任务 (还有 3 天)
+2025-09-09 14:40:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:40:05
+2025-09-09 14:40:05 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:40:05 - src.scheduler - DEBUG - 📅 当前时间: 14:40:05
+2025-09-09 14:40:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:40:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:40:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:40:05
+2025-09-09 14:40:05 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:40:05 - src.scheduler - DEBUG - 📅 当前时间: 14:40:05
+2025-09-09 14:40:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:40:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:40:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:40:05
+2025-09-09 14:40:05 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:40:05 - src.scheduler - DEBUG - 📅 当前时间: 14:40:05
+2025-09-09 14:40:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:40:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:40:05 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:40:05
+2025-09-09 14:40:05 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:40:05 - src.scheduler - DEBUG - 📅 当前时间: 14:40:05
+2025-09-09 14:40:05 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:40:05 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:40:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:40:35
+2025-09-09 14:40:35 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:40:35 - src.scheduler - DEBUG - 📅 当前时间: 14:40:35
+2025-09-09 14:40:35 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:40:35 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:40:35 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:40:35
+2025-09-09 14:40:36 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:40:36 - src.scheduler - DEBUG - 📅 当前时间: 14:40:35
+2025-09-09 14:40:36 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:40:36 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:40:36 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:40:35
+2025-09-09 14:40:36 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:40:36 - src.scheduler - DEBUG - 📅 当前时间: 14:40:35
+2025-09-09 14:40:36 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:40:36 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:40:36 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:40:35
+2025-09-09 14:40:36 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:40:36 - src.scheduler - DEBUG - 📅 当前时间: 14:40:35
+2025-09-09 14:40:36 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:40:36 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:41:06 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:41:06
+2025-09-09 14:41:06 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:41:06 - src.scheduler - DEBUG - 📅 当前时间: 14:41:06
+2025-09-09 14:41:06 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:41:06 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:41:06 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:41:06
+2025-09-09 14:41:06 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:41:06 - src.scheduler - DEBUG - 📅 当前时间: 14:41:06
+2025-09-09 14:41:06 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:41:06 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:41:06 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:41:06
+2025-09-09 14:41:06 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:41:06 - src.scheduler - DEBUG - 📅 当前时间: 14:41:06
+2025-09-09 14:41:06 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:41:06 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:41:06 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:41:06
+2025-09-09 14:41:06 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:41:06 - src.scheduler - DEBUG - 📅 当前时间: 14:41:06
+2025-09-09 14:41:06 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:41:06 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:41:36 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:41:36
+2025-09-09 14:41:36 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:41:36 - src.scheduler - DEBUG - 📅 当前时间: 14:41:36
+2025-09-09 14:41:36 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:41:36 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:41:36 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:41:36
+2025-09-09 14:41:36 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:41:36 - src.scheduler - DEBUG - 📅 当前时间: 14:41:36
+2025-09-09 14:41:36 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:41:36 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:41:36 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:41:36
+2025-09-09 14:41:36 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:41:36 - src.scheduler - DEBUG - 📅 当前时间: 14:41:36
+2025-09-09 14:41:36 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:41:36 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:41:36 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:41:36
+2025-09-09 14:41:36 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:41:36 - src.scheduler - DEBUG - 📅 当前时间: 14:41:36
+2025-09-09 14:41:36 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:41:36 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:42:06 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:42:06
+2025-09-09 14:42:06 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:42:06 - src.scheduler - DEBUG - 📅 当前时间: 14:42:06
+2025-09-09 14:42:06 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:42:06 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:42:06 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:42:06
+2025-09-09 14:42:06 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:42:06 - src.scheduler - DEBUG - 📅 当前时间: 14:42:06
+2025-09-09 14:42:06 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:42:06 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:42:06 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:42:06
+2025-09-09 14:42:06 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:42:06 - src.scheduler - DEBUG - 📅 当前时间: 14:42:06
+2025-09-09 14:42:06 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:42:06 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:42:06 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:42:06
+2025-09-09 14:42:06 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:42:06 - src.scheduler - DEBUG - 📅 当前时间: 14:42:06
+2025-09-09 14:42:06 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:42:06 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:42:36 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:42:36
+2025-09-09 14:42:36 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:42:36 - src.scheduler - DEBUG - 📅 当前时间: 14:42:36
+2025-09-09 14:42:36 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:42:36 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:42:36 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:42:36
+2025-09-09 14:42:36 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:42:36 - src.scheduler - DEBUG - 📅 当前时间: 14:42:36
+2025-09-09 14:42:36 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:42:36 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:42:36 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:42:36
+2025-09-09 14:42:36 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:42:36 - src.scheduler - DEBUG - 📅 当前时间: 14:42:36
+2025-09-09 14:42:36 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:42:36 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:42:36 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:42:36
+2025-09-09 14:42:36 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:42:36 - src.scheduler - DEBUG - 📅 当前时间: 14:42:36
+2025-09-09 14:42:36 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:42:36 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:43:06 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:43:06
+2025-09-09 14:43:06 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:43:06 - src.scheduler - DEBUG - 📅 当前时间: 14:43:06
+2025-09-09 14:43:06 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:43:06 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:43:06 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:43:06
+2025-09-09 14:43:06 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:43:06 - src.scheduler - DEBUG - 📅 当前时间: 14:43:06
+2025-09-09 14:43:06 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:43:06 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:43:06 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:43:06
+2025-09-09 14:43:06 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:43:06 - src.scheduler - DEBUG - 📅 当前时间: 14:43:06
+2025-09-09 14:43:06 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:43:06 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:43:06 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:43:06
+2025-09-09 14:43:06 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:43:06 - src.scheduler - DEBUG - 📅 当前时间: 14:43:06
+2025-09-09 14:43:06 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:43:06 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:43:36 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:43:36
+2025-09-09 14:43:36 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:43:36 - src.scheduler - DEBUG - 📅 当前时间: 14:43:36
+2025-09-09 14:43:36 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:43:36 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:43:36 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:43:36
+2025-09-09 14:43:36 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:43:36 - src.scheduler - DEBUG - 📅 当前时间: 14:43:36
+2025-09-09 14:43:36 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:43:36 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:43:36 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:43:36
+2025-09-09 14:43:36 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:43:36 - src.scheduler - DEBUG - 📅 当前时间: 14:43:36
+2025-09-09 14:43:36 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:43:36 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:43:36 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:43:36
+2025-09-09 14:43:36 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:43:36 - src.scheduler - DEBUG - 📅 当前时间: 14:43:36
+2025-09-09 14:43:36 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:43:36 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:44:06 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:44:06
+2025-09-09 14:44:06 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:44:06 - src.scheduler - DEBUG - 📅 当前时间: 14:44:06
+2025-09-09 14:44:06 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:44:06 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:44:06 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:44:06
+2025-09-09 14:44:06 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:44:06 - src.scheduler - DEBUG - 📅 当前时间: 14:44:06
+2025-09-09 14:44:06 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:44:06 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:44:06 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:44:06
+2025-09-09 14:44:06 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:44:06 - src.scheduler - DEBUG - 📅 当前时间: 14:44:06
+2025-09-09 14:44:06 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:44:06 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:44:06 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:44:06
+2025-09-09 14:44:06 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:44:06 - src.scheduler - DEBUG - 📅 当前时间: 14:44:06
+2025-09-09 14:44:06 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:44:06 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:44:36 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:44:36
+2025-09-09 14:44:36 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:44:36 - src.scheduler - DEBUG - 📅 当前时间: 14:44:36
+2025-09-09 14:44:36 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:44:36 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:44:36 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:44:36
+2025-09-09 14:44:36 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:44:36 - src.scheduler - DEBUG - 📅 当前时间: 14:44:36
+2025-09-09 14:44:36 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:44:36 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:44:36 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:44:36
+2025-09-09 14:44:36 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:44:36 - src.scheduler - DEBUG - 📅 当前时间: 14:44:36
+2025-09-09 14:44:36 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:44:36 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:44:36 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:44:36
+2025-09-09 14:44:36 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:44:36 - src.scheduler - DEBUG - 📅 当前时间: 14:44:36
+2025-09-09 14:44:36 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:44:36 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:45:06 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:45:06
+2025-09-09 14:45:06 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:45:06 - src.scheduler - DEBUG - 📅 当前时间: 14:45:06
+2025-09-09 14:45:06 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:45:06 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:45:06 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:45:06
+2025-09-09 14:45:06 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:45:06 - src.scheduler - DEBUG - 📅 当前时间: 14:45:06
+2025-09-09 14:45:06 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:45:06 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:45:06 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:45:06
+2025-09-09 14:45:06 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:45:06 - src.scheduler - DEBUG - 📅 当前时间: 14:45:06
+2025-09-09 14:45:06 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:45:06 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:45:06 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:45:06
+2025-09-09 14:45:06 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:45:06 - src.scheduler - DEBUG - 📅 当前时间: 14:45:06
+2025-09-09 14:45:06 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:45:06 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:45:36 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:45:36
+2025-09-09 14:45:36 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:45:36 - src.scheduler - DEBUG - 📅 当前时间: 14:45:36
+2025-09-09 14:45:36 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:45:36 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:45:36 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:45:36
+2025-09-09 14:45:36 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:45:36 - src.scheduler - DEBUG - 📅 当前时间: 14:45:36
+2025-09-09 14:45:36 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:45:36 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:45:36 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:45:36
+2025-09-09 14:45:36 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:45:36 - src.scheduler - DEBUG - 📅 当前时间: 14:45:36
+2025-09-09 14:45:36 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:45:36 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:45:36 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:45:36
+2025-09-09 14:45:36 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:45:36 - src.scheduler - DEBUG - 📅 当前时间: 14:45:36
+2025-09-09 14:45:36 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:45:36 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:46:06 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:46:06
+2025-09-09 14:46:06 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:46:06 - src.scheduler - DEBUG - 📅 当前时间: 14:46:06
+2025-09-09 14:46:06 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:46:06 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:46:06 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:46:06
+2025-09-09 14:46:06 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:46:06 - src.scheduler - DEBUG - 📅 当前时间: 14:46:06
+2025-09-09 14:46:06 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:46:06 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:46:06 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:46:06
+2025-09-09 14:46:06 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:46:06 - src.scheduler - DEBUG - 📅 当前时间: 14:46:06
+2025-09-09 14:46:06 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:46:06 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:46:06 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:46:06
+2025-09-09 14:46:06 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:46:06 - src.scheduler - DEBUG - 📅 当前时间: 14:46:06
+2025-09-09 14:46:06 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:46:06 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:46:36 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:46:36
+2025-09-09 14:46:36 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:46:36 - src.scheduler - DEBUG - 📅 当前时间: 14:46:36
+2025-09-09 14:46:36 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:46:36 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:46:36 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:46:36
+2025-09-09 14:46:36 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:46:36 - src.scheduler - DEBUG - 📅 当前时间: 14:46:36
+2025-09-09 14:46:36 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:46:36 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:46:36 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:46:36
+2025-09-09 14:46:36 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:46:36 - src.scheduler - DEBUG - 📅 当前时间: 14:46:36
+2025-09-09 14:46:36 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:46:36 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:46:36 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:46:36
+2025-09-09 14:46:36 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:46:36 - src.scheduler - DEBUG - 📅 当前时间: 14:46:36
+2025-09-09 14:46:36 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:46:36 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:47:06 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:47:06
+2025-09-09 14:47:06 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:47:06 - src.scheduler - DEBUG - 📅 当前时间: 14:47:06
+2025-09-09 14:47:06 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:47:06 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:47:06 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:47:06
+2025-09-09 14:47:06 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:47:06 - src.scheduler - DEBUG - 📅 当前时间: 14:47:06
+2025-09-09 14:47:06 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:47:06 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:47:06 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:47:06
+2025-09-09 14:47:06 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:47:06 - src.scheduler - DEBUG - 📅 当前时间: 14:47:06
+2025-09-09 14:47:06 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:47:06 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:47:06 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:47:06
+2025-09-09 14:47:06 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:47:06 - src.scheduler - DEBUG - 📅 当前时间: 14:47:06
+2025-09-09 14:47:06 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:47:06 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:47:36 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:47:36
+2025-09-09 14:47:36 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:47:36 - src.scheduler - DEBUG - 📅 当前时间: 14:47:36
+2025-09-09 14:47:36 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:47:36 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:47:36 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:47:36
+2025-09-09 14:47:36 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:47:36 - src.scheduler - DEBUG - 📅 当前时间: 14:47:36
+2025-09-09 14:47:36 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:47:36 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:47:36 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:47:36
+2025-09-09 14:47:36 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:47:36 - src.scheduler - DEBUG - 📅 当前时间: 14:47:36
+2025-09-09 14:47:36 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:47:36 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:47:36 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:47:36
+2025-09-09 14:47:36 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:47:36 - src.scheduler - DEBUG - 📅 当前时间: 14:47:36
+2025-09-09 14:47:36 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:47:36 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:48:06 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:48:06
+2025-09-09 14:48:06 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:48:06 - src.scheduler - DEBUG - 📅 当前时间: 14:48:06
+2025-09-09 14:48:06 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:48:06 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:48:06 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:48:06
+2025-09-09 14:48:06 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:48:06 - src.scheduler - DEBUG - 📅 当前时间: 14:48:06
+2025-09-09 14:48:06 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:48:06 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:48:06 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:48:06
+2025-09-09 14:48:06 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:48:06 - src.scheduler - DEBUG - 📅 当前时间: 14:48:06
+2025-09-09 14:48:06 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:48:06 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:48:06 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:48:06
+2025-09-09 14:48:06 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:48:06 - src.scheduler - DEBUG - 📅 当前时间: 14:48:06
+2025-09-09 14:48:06 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:48:06 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:48:36 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:48:36
+2025-09-09 14:48:36 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:48:36 - src.scheduler - DEBUG - 📅 当前时间: 14:48:36
+2025-09-09 14:48:36 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:48:36 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:48:36 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:48:36
+2025-09-09 14:48:36 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:48:36 - src.scheduler - DEBUG - 📅 当前时间: 14:48:36
+2025-09-09 14:48:36 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:48:36 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:48:36 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:48:36
+2025-09-09 14:48:36 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:48:36 - src.scheduler - DEBUG - 📅 当前时间: 14:48:36
+2025-09-09 14:48:36 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:48:36 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:48:36 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:48:36
+2025-09-09 14:48:36 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:48:36 - src.scheduler - DEBUG - 📅 当前时间: 14:48:36
+2025-09-09 14:48:36 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:48:36 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:49:06 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:49:06
+2025-09-09 14:49:06 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:49:06 - src.scheduler - DEBUG - 📅 当前时间: 14:49:06
+2025-09-09 14:49:06 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:49:06 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:49:06 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:49:06
+2025-09-09 14:49:06 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:49:06 - src.scheduler - DEBUG - 📅 当前时间: 14:49:06
+2025-09-09 14:49:06 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:49:06 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:49:06 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:49:06
+2025-09-09 14:49:06 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:49:06 - src.scheduler - DEBUG - 📅 当前时间: 14:49:06
+2025-09-09 14:49:06 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:49:06 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:49:06 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:49:06
+2025-09-09 14:49:06 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:49:06 - src.scheduler - DEBUG - 📅 当前时间: 14:49:06
+2025-09-09 14:49:06 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:49:06 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:49:36 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:49:36
+2025-09-09 14:49:36 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:49:36 - src.scheduler - DEBUG - 📅 当前时间: 14:49:36
+2025-09-09 14:49:36 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:49:36 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:49:36 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:49:36
+2025-09-09 14:49:36 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:49:36 - src.scheduler - DEBUG - 📅 当前时间: 14:49:36
+2025-09-09 14:49:36 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:49:36 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:49:36 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:49:36
+2025-09-09 14:49:36 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:49:36 - src.scheduler - DEBUG - 📅 当前时间: 14:49:36
+2025-09-09 14:49:36 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:49:36 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:49:36 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:49:36
+2025-09-09 14:49:36 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:49:36 - src.scheduler - DEBUG - 📅 当前时间: 14:49:36
+2025-09-09 14:49:36 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:49:36 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:50:06 - src.scheduler - INFO - 🔄 调度器运行中 | 当前时间: 14:50:06 | 等待任务: 内容检查(7小时9分钟) | 日常分析(8小时9分钟) | 周报任务(3天)
+2025-09-09 14:50:06 - src.scheduler - INFO - ⏳ 等待中的任务: 📋 内容检查 (还有 7小时9分钟) | 📊 日常分析 (还有 8小时9分钟) | 📈 周报任务 (还有 3 天)
+2025-09-09 14:50:06 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:50:06
+2025-09-09 14:50:06 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:50:06 - src.scheduler - DEBUG - 📅 当前时间: 14:50:06
+2025-09-09 14:50:06 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:50:06 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:50:06 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:50:06
+2025-09-09 14:50:06 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:50:06 - src.scheduler - DEBUG - 📅 当前时间: 14:50:06
+2025-09-09 14:50:06 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:50:06 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:50:06 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:50:06
+2025-09-09 14:50:06 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:50:06 - src.scheduler - DEBUG - 📅 当前时间: 14:50:06
+2025-09-09 14:50:06 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:50:06 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:50:06 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:50:06
+2025-09-09 14:50:06 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:50:06 - src.scheduler - DEBUG - 📅 当前时间: 14:50:06
+2025-09-09 14:50:06 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:50:06 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:50:36 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:50:36
+2025-09-09 14:50:36 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:50:36 - src.scheduler - DEBUG - 📅 当前时间: 14:50:36
+2025-09-09 14:50:36 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:50:36 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:50:36 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:50:36
+2025-09-09 14:50:36 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:50:36 - src.scheduler - DEBUG - 📅 当前时间: 14:50:36
+2025-09-09 14:50:36 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:50:36 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:50:36 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:50:36
+2025-09-09 14:50:36 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:50:36 - src.scheduler - DEBUG - 📅 当前时间: 14:50:36
+2025-09-09 14:50:36 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:50:36 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:50:36 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:50:36
+2025-09-09 14:50:36 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:50:36 - src.scheduler - DEBUG - 📅 当前时间: 14:50:36
+2025-09-09 14:50:36 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:50:36 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:51:06 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:51:06
+2025-09-09 14:51:06 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:51:06 - src.scheduler - DEBUG - 📅 当前时间: 14:51:06
+2025-09-09 14:51:06 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:51:06 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:51:06 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:51:06
+2025-09-09 14:51:06 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:51:06 - src.scheduler - DEBUG - 📅 当前时间: 14:51:06
+2025-09-09 14:51:06 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:51:06 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:51:06 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:51:06
+2025-09-09 14:51:06 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:51:06 - src.scheduler - DEBUG - 📅 当前时间: 14:51:06
+2025-09-09 14:51:06 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:51:06 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:51:06 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:51:06
+2025-09-09 14:51:06 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:51:06 - src.scheduler - DEBUG - 📅 当前时间: 14:51:06
+2025-09-09 14:51:06 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=True
+2025-09-09 14:51:06 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:51:36 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 12 * * *, 当前时间: 2025-09-09 14:51:36
+2025-09-09 14:51:36 - src.scheduler - DEBUG - 📅 目标时间: 12:00
+2025-09-09 14:51:36 - src.scheduler - DEBUG - 📅 当前时间: 14:51:36
+2025-09-09 14:51:36 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:51:36 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:51:36 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 22 * * *, 当前时间: 2025-09-09 14:51:36
+2025-09-09 14:51:36 - src.scheduler - DEBUG - 📅 目标时间: 22:00
+2025-09-09 14:51:36 - src.scheduler - DEBUG - 📅 当前时间: 14:51:36
+2025-09-09 14:51:36 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:51:36 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:51:36 - src.scheduler - DEBUG - 🔍 检查cron时间: 0 23 * * *, 当前时间: 2025-09-09 14:51:36
+2025-09-09 14:51:36 - src.scheduler - DEBUG - 📅 目标时间: 23:00
+2025-09-09 14:51:36 - src.scheduler - DEBUG - 📅 当前时间: 14:51:36
+2025-09-09 14:51:36 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:51:36 - src.scheduler - DEBUG - 🎯 是否应该执行: False
+2025-09-09 14:51:36 - src.scheduler - DEBUG - 🔍 检查cron时间: 30 11 * * *, 当前时间: 2025-09-09 14:51:36
+2025-09-09 14:51:36 - src.scheduler - DEBUG - 📅 目标时间: 11:30
+2025-09-09 14:51:36 - src.scheduler - DEBUG - 📅 当前时间: 14:51:36
+2025-09-09 14:51:36 - src.scheduler - DEBUG - 🎯 匹配检查: 小时=False, 分钟=False, 秒数=False
+2025-09-09 14:51:36 - src.scheduler - DEBUG - 🎯 是否应该执行: False
