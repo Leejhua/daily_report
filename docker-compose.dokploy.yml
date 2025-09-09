@@ -67,6 +67,7 @@ services:
     # 挂载配置文件和数据目录
     volumes:
       - ./config:/app/config:ro
+      - ./src:/app/src:ro
       - analyzer_logs:/app/logs
       - analyzer_data:/app/data
     
