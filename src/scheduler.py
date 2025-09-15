@@ -161,6 +161,13 @@ class AnalysisScheduler:
                     
                     # 检查是否匹配任何一个内容检查时间
                     for cron_expr in content_check_cron:
+                        # 检查是否是周末并且禁用了周末检查
+                        if hasattr(self.config.daily_content_check, 'weekend_check_enabled') and not self.config.daily_content_check.weekend_check_enabled:
+                            # 0表示周一，6表示周日
+                            if now.weekday() in [5, 6]:  # 周六或周日
+                                self.logger.info(f"📅 今天是周末，周末检查已禁用，跳过内容检查任务")
+                                break
+                        
                         if self._check_cron_time(cron_expr, now):
                             self.logger.info("🔍 触发内容检查任务 - 开始执行")
                             await self._execute_content_check_task()
@@ -228,6 +235,13 @@ class AnalysisScheduler:
         """检查当前时间是否应该执行内容检查任务"""
         if not hasattr(self.config, 'daily_content_check') or not self.config.daily_content_check.enabled:
             return False
+            
+        # 检查是否是周末并且禁用了周末检查
+        if hasattr(self.config.daily_content_check, 'weekend_check_enabled') and not self.config.daily_content_check.weekend_check_enabled:
+            # 0表示周一，6表示周日
+            if current_time.weekday() in [5, 6]:  # 周六或周日
+                self.logger.debug(f"📅 今天是周末，周末检查已禁用，跳过内容检查")
+                return False
             
         # 直接使用配置中的内容检查时间，不使用硬编码默认值
         content_check_cron = self.config.daily_content_check.content_check_cron
